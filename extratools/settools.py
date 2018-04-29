@@ -4,9 +4,20 @@ from typing import *
 
 T = TypeVar('T')
 
+from .mathtools import safediv
+
 def addtoset(s: Set[T], x: T) -> bool:
     if x in s:
         return False
 
     s.add(x)
     return True
+
+
+def weightedjaccard(a: Set[T], b: Set[T], key: Callable[[Set[T]], float] = sum) -> float:
+    x = key(a & b)
+    return safediv(x, key(a) + key(b) - x)
+
+
+def jaccard(a: Set[T], b: Set[T]) -> float:
+    return weightedjaccard(a, b, key=len)

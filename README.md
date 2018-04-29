@@ -20,13 +20,17 @@ Please check individual source file for details.
 
 Tools for sequences (including strings).
 
-- `findsubseq(a, b)` returns the first position where `a` a sub-sequence of `b`, or `-1` when not found.
+- `findsubseq(a, b)` returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
+
+- `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps between matching items are allowed, or `[]` when not found.
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps between matching items are allowed.
 
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
+
+- `sortedbyrank(sth, ranks, reverse=False)` returns the sorted list of `sth`, according to the respective rank of each individual element in `ranks`.
 
 ### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
@@ -45,6 +49,10 @@ Tools for strings.
 Tools for sets.
 
 - `addtoset(s, x)` checks whether adding `x` to set `s` is successful.
+
+- `jaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`.
+
+- `weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
 
 ### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 

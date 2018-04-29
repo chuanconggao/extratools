@@ -24,7 +24,7 @@ def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseq(a, b) >= 0
 
 
-def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
+def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> List[int]:
     sentinel = object()
 
     x, y = iter(a), iter(b)
@@ -32,15 +32,25 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     m: Union[T, object] = sentinel
     n: Union[T, object] = sentinel
 
+    poss = []
+
+    pos = -1
     while True:
-        m, n = m or next(x, sentinel), next(y, sentinel)
+        m, n = next(x, sentinel) if m is sentinel else m, next(y, sentinel)
         if m is sentinel or n is sentinel:
             break
 
+        pos += 1
+
         if m == n:
             m = sentinel
+            poss.append(pos)
 
-    return m is sentinel
+    return poss if m is sentinel else []
+
+
+def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
+    return len(findsubseqwithgap(a, b)) > 0
 
 
 def productcmp(x: Iterable[T], y: Iterable[T]) -> int:
@@ -61,3 +71,12 @@ def productcmp(x: Iterable[T], y: Iterable[T]) -> int:
             return None
 
     return cmp(lc, gc)
+
+
+def sortedbyrank(sth: Iterable[T], ranks: Iterable[float], reverse: bool = False) -> List[T]:
+    return [
+        v for _, v in sorted(
+            zip(ranks, sth),
+            reverse=reverse
+        )
+    ]

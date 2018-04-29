@@ -18,9 +18,12 @@ def sorteddiff(
     n: Union[T, object] = sentinel
 
     while True:
-        m, n = next(x, sentinel), n or next(y, sentinel)
+        m, n = next(x, sentinel), next(y, sentinel) if n is sentinel else n
         if n is sentinel:
             break
+
+        if m is sentinel:
+            raise ValueError
 
         if key(m) == key(n):
             n = sentinel
