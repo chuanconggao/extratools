@@ -6,28 +6,54 @@ Extra functional tools that go beyond standard libraries `itertools`, `functools
 
 - This library is under active development, and new functions will be added on regular basis.
 
+- Any idea or contribution is highly welcome.
+
 ## Installation
 
 This package is available on PyPi. Just use `pip3 install -U extratools` to install it.
 
-## Tools
+## Available Tools
 
 Please check individual source file for details.
 
-### `seqtools`
+### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-Tools for sequences.
+Tools for sequences (including strings).
+
+- `findsubseq(a, b)` returns the first position where `a` a sub-sequence of `b`, or `-1` when not found.
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps between matching items are allowed.
 
-### `sortedtools`
+- `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
+
+### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 Tools for sorted sequences.
 
 - `sorteddiff(a, b)` returns the difference between `a` and `b`, where `a` is a super-sequence of `b` with gaps allowed.
 
-## Idea or Contribution
+### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
-Any idea or contribution is welcome.
+Tools for strings.
+
+- `str2grams(s, n)` returns the ordered `n`-grams of string `s`.
+
+### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
+
+Tools for tables.
+
+- `transpose(m)` returns the transpose of table `m`, i.e., switch rows and columns.
+
+### [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
+
+Tools for math.
+
+- `safediv(a, b)` avoids the `division by zero` exception, by returning infinite with proper sign, closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
+
+### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+
+Tools for miscellaneous purposes.
+
+- `cmp(a, b)` restores the useful `cmp` function previously in Python 2, according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
