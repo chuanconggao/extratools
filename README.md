@@ -40,6 +40,12 @@ Tools for strings.
 
 - `str2grams(s, n)` returns the ordered `n`-grams of string `s`.
 
+### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
+
+Tools for sets.
+
+- `addtoset(s, x)` checks whether adding `x` to set `s` is successful.
+
 ### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
 Tools for tables.
