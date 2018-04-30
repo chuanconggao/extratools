@@ -18,17 +18,23 @@ Please check individual source file for details.
 
 ### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-Tools for sequences (including strings).
+Tools for matching sequences (including strings), with or without gaps allowed between matching items.
 
 - `findsubseq(a, b)` returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
 
-- `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps between matching items are allowed, or `None` when not found.
+- `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
 
-- `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps between matching items are allowed.
+- `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
+
+Tools for comparing sequences (including strings).
 
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
+
+    - Throw exception if `x` and `y` have different lengths.
+
+Tools for sorting sequences.
 
 - `sortedbyrank(sth, ranks, reverse=False)` returns the sorted list of `sth`, according to the respective rank of each individual element in `ranks`.
 
@@ -37,6 +43,8 @@ Tools for sequences (including strings).
 Tools for sorted sequences.
 
 - `sorteddiff(a, b)` returns the difference between `a` and `b`, where `a` is a super-sequence of `b` with gaps allowed.
+
+    - Throw exception if `a` is not a super-sequence of `b`.
 
 ### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 

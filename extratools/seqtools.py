@@ -12,6 +12,8 @@ from .misctools import cmp
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
     x = list(a)
+    if len(x) == 0:
+        return 0
 
     for pos, y in enumerate(sliding_window(len(x), b)):
         if all(m == n for m, n in zip(x, y)):

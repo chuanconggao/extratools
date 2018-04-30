@@ -8,8 +8,6 @@ def sorteddiff(
         a: Iterable[T], b: Iterable[T],
         key: Callable[[T], Any] = lambda v: v
     ) -> Iterable[T]:
-    # Assume a and b are sorted, where issubseqwithgap(b, a) == True.
-    # Output is also sorted.
     sentinel = object()
 
     x, y = iter(a), iter(b)
