@@ -46,11 +46,19 @@ Tools for sorted sequences.
 
 - `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`.
 
-    - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) & set(b))` but more efficient.
+    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
 
-- `sorteddiff(a, b, key=None)` returns the difference between `a` and `b`.
+- `sortedalone(a, b, key=None)` returns the elements not in both `a` and `b`.
 
-    - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) - set(b))` but more efficient.
+    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
+
+- `sorteddiff(a, b, key=None)` returns the elements only in `a` and not in `b`.
+
+    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
+
+- `issubsorted(a, b, key=None)` checks if `a` is a sorted sub-sequence of `b`.
+
+    - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
 ### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
