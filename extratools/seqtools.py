@@ -46,11 +46,11 @@ def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> List[int]:
             m = sentinel
             poss.append(pos)
 
-    return poss if m is sentinel else []
+    return poss if m is sentinel else None
 
 
 def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
-    return len(findsubseqwithgap(a, b)) > 0
+    return findsubseqwithgap(a, b) is not None
 
 
 def productcmp(x: Iterable[T], y: Iterable[T]) -> int:

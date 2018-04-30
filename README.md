@@ -24,7 +24,7 @@ Tools for sequences (including strings).
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
 
-- `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps between matching items are allowed, or `[]` when not found.
+- `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps between matching items are allowed, or `None` when not found.
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps between matching items are allowed.
 
