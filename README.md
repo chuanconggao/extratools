@@ -10,15 +10,15 @@ This library is under active development, and new functions will be added on reg
 
 - Any idea or contribution is highly welcome.
 
-## Installation
+# Installation
 
 This package is available on PyPi. Just use `pip3 install -U extratools` to install it.
 
-## Available Tools
+# Available Tools
 
 Please check individual source file for details.
 
-### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
+## [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
 
@@ -40,7 +40,7 @@ Tools for sorting sequences.
 
 - `sortedbyrank(sth, ranks, reverse=False)` returns the sorted list of `sth`, according to the respective rank of each individual element in `ranks`.
 
-### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
+## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 Tools for sorted sequences.
 
@@ -60,7 +60,7 @@ Tools for sorted sequences.
 
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
-### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
+## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 Tools for strings.
 
@@ -97,7 +97,7 @@ Tools for remapping elements.
 
     - In default, `key` returns integers starting from `0`.
 
-### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
+## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
 Tools for set operations.
 
@@ -111,13 +111,13 @@ Tools for set similarities.
 
 - `weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
 
-### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
+## [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
 Tools for tables.
 
 - `transpose(m)` returns the transpose of table `m`, i.e., switch rows and columns.
 
-### [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
+## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
 Tools for math.
 
@@ -125,7 +125,7 @@ Tools for math.
 
     - Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
 
-### [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
+## [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
 
 Tools for statistics.
 
@@ -135,7 +135,7 @@ Tools for statistics.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
 
-### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
 
@@ -143,7 +143,7 @@ Tools for miscellaneous purposes.
 
     - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
 
-### [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
+## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression. After `d = DisjointSets()`:
 
