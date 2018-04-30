@@ -121,6 +121,8 @@ Tools for statistics.
 
 - `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
+    - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
+
 ### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
