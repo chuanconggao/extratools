@@ -42,9 +42,11 @@ Tools for sorting sequences.
 
 Tools for sorted sequences.
 
-- `sorteddiff(a, b)` returns the difference between `a` and `b`, where `a` is a super-sequence of `b` with gaps allowed.
+- `sortedcommon(a, b)` returns the common elements between `a` and `b`.
 
-    - Throw exception if `a` is not a super-sequence of `b`.
+    - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) & set(b))` but more efficient.
+
+- `sorteddiff(a, b)` returns the difference between `a` and `b`.
 
     - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) - set(b))` but more efficient.
 
