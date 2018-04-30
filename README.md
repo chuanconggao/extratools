@@ -4,7 +4,9 @@
 
 Extra functional tools that go beyond standard libraries `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz) and [`fancy`](https://github.com/Suor/funcy).
 
-- This library is under active development, and new functions will be added on regular basis.
+- Like `toolz`, most of the tools are designed to be efficient, pure, and lazy.
+
+This library is under active development, and new functions will be added on regular basis.
 
 - Any idea or contribution is highly welcome.
 
@@ -54,7 +56,9 @@ Tools for sorted sequences.
 
 Tools for strings.
 
-- `str2grams(s, n)` returns the ordered `n`-grams of string `s`.
+- `str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
+
+    - Optional padding at the start and end can be added by specifying `pad` 
 
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
