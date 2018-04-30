@@ -56,6 +56,26 @@ Tools for strings.
 
 - `str2grams(s, n)` returns the ordered `n`-grams of string `s`.
 
+### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
+
+Tools for inverting dictionaries.
+
+- `invertdict(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
+
+    - If multiple keys share the same value, the inverted directory keeps one of the respective keys.
+
+- `invertdict_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+
+    - If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
+
+Tools for remapping elements.
+
+- `remap(data, mapping, key=None)` remaps each unique element in `data` according to function `key`.
+
+    - `mapping` is a dictionary recording all the mappings, optionally containing initial mappings.
+
+    - In default, `key` returns integers starting from `0`.
+
 ### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
 Tools for set operations.

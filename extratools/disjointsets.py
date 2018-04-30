@@ -58,7 +58,7 @@ class DisjointSets(Generic[T]):
         return root
 
 
-    def disjoints(self) -> Dict[T, Iterable[T]]:
+    def disjoints(self) -> Mapping[T, Iterable[T]]:
         return groupby(self.__getitem__, self.parents)
 
 
