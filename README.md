@@ -72,7 +72,12 @@ Tools for remapping elements.
 
 - `remap(data, mapping, key=None)` remaps each unique element in `data` according to function `key`.
 
-    - `mapping` is a dictionary recording all the mappings, optionally containing initial mappings.
+    - `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
+
+    ``` python
+    wordmap = {}
+    db = [list(remap(doc, wordmap)) for doc in docs]
+    ```
 
     - In default, `key` returns integers starting from `0`.
 
