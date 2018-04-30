@@ -86,7 +86,9 @@ Tools for math.
 
 Tools for statistics.
 
-- `medianabsdev(data)` computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation).
+- `medianabsdev(data)` computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation) of a list of floats.
+
+- `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
 ### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
