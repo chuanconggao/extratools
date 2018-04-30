@@ -18,7 +18,7 @@ Please check individual source file for details.
 
 ### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-Tools for matching sequences (including strings), with or without gaps allowed between matching items.
+Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
 
 - `findsubseq(a, b)` returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
@@ -46,6 +46,8 @@ Tools for sorted sequences.
 
     - Throw exception if `a` is not a super-sequence of `b`.
 
+    - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) - set(b))` but more efficient.
+
 ### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 Tools for strings.
@@ -72,10 +74,14 @@ Tools for tables.
 
 Tools for math.
 
-- `safediv(a, b)` avoids the `division by zero` exception, by returning infinite with proper sign, closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
+- `safediv(a, b)` avoids the `division by zero` exception, by returning infinite with proper sign.
+
+    - Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
 
 ### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
 
-- `cmp(a, b)` restores the useful `cmp` function previously in Python 2, according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
+- `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
+
+    - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
