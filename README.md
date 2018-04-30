@@ -62,7 +62,11 @@ Tools for inverting dictionaries.
 
 - `invertdict(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
 
-    - If multiple keys share the same value, the inverted directory keeps one of the respective keys.
+    - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+- `invertdict_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
+
+    - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
 - `invertdict_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
 
