@@ -4,8 +4,7 @@ from typing import *
 
 T = TypeVar('T')
 
-def transpose(m: List[List[T]]) -> List[List[T]]:
-    return [
-        [r[i] for r in m]
-        for i in range(len(m[0]))
-    ]
+Table = List[List[T]]
+
+def transpose(data: Table) -> Table:
+    return [list(row) for row in zip(*data)]

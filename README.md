@@ -115,7 +115,20 @@ Tools for set similarities.
 
 Tools for tables.
 
-- `transpose(m)` returns the transpose of table `m`, i.e., switch rows and columns.
+- `transpose(data)` returns the transpose of table `data`, i.e., switch rows and columns.
+
+    - Useful to switch table `data` from row-based to column-based and backwards.
+
+    ``` python
+    transpose([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ])
+    # [[1, 4, 7],
+    #  [2, 5, 8],
+    #  [3, 6, 9]]
+    ```
 
 ## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
