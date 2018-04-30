@@ -2,7 +2,5 @@
 
 from typing import *
 
-T = TypeVar('T')
-
-def cmp(a: T, b: T) -> int:
+def cmp(a: Any, b: Any) -> int:
     return (a > b) - (a < b)

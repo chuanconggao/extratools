@@ -31,8 +31,8 @@ def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> List[int]:
 
     x, y = iter(a), iter(b)
 
-    m: Union[T, object] = sentinel
-    n: Union[T, object] = sentinel
+    m: Any = sentinel
+    n: Any = sentinel
 
     poss = []
 

@@ -12,8 +12,8 @@ def sorteddiff(
 
     x, y = iter(a), iter(b)
 
-    m: Union[T, object] = sentinel
-    n: Union[T, object] = sentinel
+    m: Any = sentinel
+    n: Any = sentinel
 
     while True:
         m, n = next(x, sentinel), next(y, sentinel) if n is sentinel else n

@@ -14,10 +14,14 @@ def addtoset(s: Set[T], x: T) -> bool:
     return True
 
 
-def weightedjaccard(a: Set[T], b: Set[T], key: Callable[[Set[T]], float] = sum) -> float:
+def weightedjaccard(a: Any, b: Any, key: Callable[[Any], float] = sum) -> float:
     x = key(a & b)
     return safediv(x, key(a) + key(b) - x)
 
 
 def jaccard(a: Set[T], b: Set[T]) -> float:
     return weightedjaccard(a, b, key=len)
+
+
+def multisetjaccard(a: Counter[T], b: Counter[T]) -> float:
+    return weightedjaccard(a, b, key=lambda c: sum(c.values()))
