@@ -6,8 +6,11 @@ T = TypeVar('T')
 
 def sortedcommon(
         a: Iterable[T], b: Iterable[T],
-        key: Callable[[T], Any] = lambda v: v
+        key: Callable[[T], Any] = None
     ) -> Iterable[T]:
+    if key is None:
+        key = lambda v: v
+
     sentinel = object()
 
     x, y = iter(a), iter(b)
@@ -33,8 +36,11 @@ def sortedcommon(
 
 def sorteddiff(
         a: Iterable[T], b: Iterable[T],
-        key: Callable[[T], Any] = lambda v: v
+        key: Callable[[T], Any] = None
     ) -> Iterable[T]:
+    if key is None:
+        key = lambda v: v
+
     sentinel = object()
 
     x, y = iter(a), iter(b)

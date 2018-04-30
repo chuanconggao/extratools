@@ -42,11 +42,11 @@ Tools for sorting sequences.
 
 Tools for sorted sequences.
 
-- `sortedcommon(a, b)` returns the common elements between `a` and `b`.
+- `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`.
 
     - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) & set(b))` but more efficient.
 
-- `sorteddiff(a, b)` returns the difference between `a` and `b`.
+- `sorteddiff(a, b, key=None)` returns the difference between `a` and `b`.
 
     - When both `a` and `b` are sorted sets with no duplicate element, the output is equal to `sorted(set(a) - set(b))` but more efficient.
 
@@ -58,9 +58,11 @@ Tools for strings.
 
 ### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
-Tools for sets.
+Tools for set operations.
 
 - `addtoset(s, x)` checks whether adding `x` to set `s` is successful.
+
+Tools for set similarities.
 
 - `jaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`.
 

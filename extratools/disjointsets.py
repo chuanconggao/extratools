@@ -7,9 +7,9 @@ T = TypeVar('T')
 from toolz.itertoolz import groupby
 
 class DisjointSets(Generic[T]):
-    def __init__(self, *objs: Iterable[T]):
-        self.weights = {}
-        self.parents = {}
+    def __init__(self, *objs: T) -> None:
+        self.weights: Dict[T, int] = {}
+        self.parents: Dict[T, T] = {}
         self.numofsets = 0
 
         for obj in objs:
