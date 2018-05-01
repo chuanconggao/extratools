@@ -206,14 +206,6 @@ histogram(
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
 ```
 
-## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
-
-Tools for miscellaneous purposes.
-
-- `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
-
-    - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
-
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
@@ -226,6 +218,14 @@ Tools for miscellaneous purposes.
 
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
 
+## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+
+Tools for miscellaneous purposes.
+
+- `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
+
+    - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
+
 ## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
 
 Tools for non-functional but useful printing purposes.
@@ -233,3 +233,15 @@ Tools for non-functional but useful printing purposes.
 - `print2(*args, **kwargs)` redirects the output of `print` to standard error.
 
     - The same parameters are accepted.
+
+## [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
+
+Tools for non-functional but useful debugging purposes.
+
+- `stopwatch()` returns both the duration since program start and the duration since last call in seconds.
+
+    - Technically, the stopwatch starts when `debugtools` is imported.
+
+- `peakmem()` returns the peak memory usage since program start.
+
+    - In bytes on macOS, and in kilobytes on Linux.
