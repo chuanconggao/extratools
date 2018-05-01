@@ -3,12 +3,13 @@
 from setuptools import setup
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.3.6"
+version = "0.3.6.1"
 
 setup(
     name="extratools",
 
     packages=["extratools"],
+    include_package_data=True,
 
     url=url,
 
