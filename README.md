@@ -16,8 +16,20 @@ This package is available on PyPi. Just use `pip3 install -U extratools` to inst
 
 # Available Tools
 
-Please check individual source file for details.
+[`seqtools`](#seqtools)
+[`sortedtools`](#sortedtools)
+[`strtools`](#strtools)
+[`dicttools`](#dicttools)
+[`settools`](#settools)
+[`tabletools`](#tabletools)
+[`mathtools`](#mathtools)
+[`stattools`](#stattools)
+[`disjointsets`](#disjointsets)
+[`misctools`](#misctools)
+[`printtools`](#printtools)
+[`debugtools`](#debugtools)
 
+<a name="seqtools"></a>
 ## [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
@@ -66,6 +78,7 @@ list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 
     - For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
 
+<a name="sortedtools"></a>
 ## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 Tools for sorted sequences.
@@ -86,6 +99,7 @@ Tools for sorted sequences.
 
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
+<a name="strtools"></a>
 ## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 Tools for string transformations.
@@ -114,6 +128,7 @@ tagstats(
 # {'a b': 1, 'a c': 0, 'b c': 2}
 ```
 
+<a name="dicttools"></a>
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
 Tools for inverting dictionaries.
@@ -143,6 +158,7 @@ wordmap = {}
 db = [list(remap(doc, wordmap)) for doc in docs]
 ```
 
+<a name="settools"></a>
 ## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
 Tools for set operations.
@@ -157,6 +173,7 @@ Tools for set similarities.
 
 - `weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
 
+<a name="tabletools"></a>
 ## [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
 Tools for tables.
@@ -180,6 +197,7 @@ transpose([
 
 - `dumpcsv(path, data)` dumps a table `data` in CSV, to either a file path or a file object.
 
+<a name="mathtools"></a>
 ## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
 Tools for math.
@@ -188,6 +206,7 @@ Tools for math.
 
     - Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
 
+<a name="stattools"></a>
 ## [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
 
 Tools for statistics.
@@ -216,6 +235,7 @@ histogram(
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
 ```
 
+<a name="disjointsets"></a>
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
@@ -228,6 +248,7 @@ histogram(
 
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
 
+<a name="misctools"></a>
 ## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
@@ -238,6 +259,7 @@ Tools for miscellaneous purposes.
 
 - `parsebool(s)` parses a string to boolean, if its lowercase equals to either `1`, `true`, or `yes`.
 
+<a name="printtools"></a>
 ## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
 
 Tools for non-functional but useful printing purposes.
@@ -246,6 +268,7 @@ Tools for non-functional but useful printing purposes.
 
     - The same parameters are accepted.
 
+<a name="debugtools"></a>
 ## [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
 
 Tools for non-functional but useful debugging purposes.
