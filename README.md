@@ -170,9 +170,9 @@ transpose([
 #  [3, 6, 9]]
 ```
 
-- `loadcsv(path)` loads a CSV file.
+- `loadcsv(path)` loads a CSV file, from either a file path or a file object.
 
-- `dumpcsv(path, data)` dumps a table `data` to a CSV file.
+- `dumpcsv(path, data)` dumps a table `data` in CSV, to either a file path or a file object.
 
 ## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
