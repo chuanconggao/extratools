@@ -174,6 +174,24 @@ Tools for statistics.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
 
+- `histogram(thresholds, data)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the values in `data`.
+
+    - The search space is divided by the thresholds of bins specified in `thresholds`.
+
+    - Each bin of the histogram is labelled by its lower threshold.
+
+        - All values in the bin are no less than the current threshold and less than the next threshold.
+
+        - The first bin is always labelled by `-infinity`.
+
+``` python
+histogram(
+    [0.1, 0.5, 0.8, 0.9],
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+)
+# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
+```
+
 ## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
