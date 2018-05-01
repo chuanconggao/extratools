@@ -3,7 +3,7 @@
 from setuptools import setup
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.3.3"
+version = "0.3.4"
 
 setup(
     name="extratools",
@@ -34,7 +34,9 @@ setup(
         "Programming Language :: Python :: 3"
     ],
 
+    python_requires=">= 3",
     install_requires=[
-        "toolz>=0.9.0"
+        "TagStats >= 0.1.2",
+        "toolz >= 0.9.0"
     ]
 )

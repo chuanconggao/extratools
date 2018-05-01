@@ -94,6 +94,20 @@ Tools for strings.
 
     - Optional padding at the start and end can be added by specifying `pad`. `\0` is usually a safe choice for `pad` when not displaying.
 
+- `tagstats(tags, lines, separator=None)` efficiently computes the number of lines containing each tag.
+
+    - [TagStats](https://github.com/chuanconggao/TagStats) is used to compute efficiently, where the common prefixes among tags are matched only once.
+
+    - `separator` is a regex to tokenize each string. In default when `separator` is `None`, each string is not tokenized.
+
+``` python
+tagstats(
+    ["a b", "a c", "b c"],
+    ["a b c", "b c d", "c d e"]
+)
+# {'a b': 1, 'a c': 0, 'b c': 2}
+```
+
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
 Tools for inverting dictionaries.
@@ -174,7 +188,7 @@ Tools for statistics.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
 
-- `histogram(thresholds, data)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the values in `data`.
+- `histogram(thresholds, data)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
 
     - The search space is divided by the thresholds of bins specified in `thresholds`.
 
