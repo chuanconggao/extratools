@@ -4,6 +4,7 @@ from typing import *
 
 T = TypeVar('T')
 
+import operator
 import itertools
 from itertools import zip_longest, repeat
 
@@ -96,7 +97,7 @@ def decompress(data: Iterable[Tuple[T, int]]) -> Iterable[T]:
         yield from repeat(k, n)
 
 
-def todeltas(data: Iterable[T]) -> Iterable[T]:
+def todeltas(data: Iterable[T], op: Callable[[T, T], T] = operator.sub) -> Iterable[T]:
     sentinel = object()
 
     seq = iter(data)
@@ -110,12 +111,12 @@ def todeltas(data: Iterable[T]) -> Iterable[T]:
     prev = curr
 
     for curr in seq:
-        yield curr - prev
+        yield op(curr, prev)
 
         prev = curr
 
 
-def fromdeltas(data: Iterable[T]) -> Iterable[T]:
+def fromdeltas(data: Iterable[T], op: Callable[[T, T], T] = operator.add) -> Iterable[T]:
     sentinel = object()
 
     seq = iter(data)
@@ -129,7 +130,7 @@ def fromdeltas(data: Iterable[T]) -> Iterable[T]:
     prev = curr
 
     for curr in seq:
-        curr += prev
+        curr = op(prev, curr)
         yield curr
 
         prev = curr
