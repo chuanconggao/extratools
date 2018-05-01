@@ -225,3 +225,11 @@ Tools for miscellaneous purposes.
 - `d.disjoints()` returns all the representing elements and their respective disjoint sets.
 
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
+
+## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
+
+Tools for non-functional but useful printing purposes.
+
+- `print2(*args, **kwargs)` redirects the output of `print` to standard error.
+
+    - The same parameters are accepted.
