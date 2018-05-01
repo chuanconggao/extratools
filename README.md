@@ -170,6 +170,10 @@ transpose([
 #  [3, 6, 9]]
 ```
 
+- `loadcsv(path)` loads a CSV file.
+
+- `dumpcsv(path, data)` dumps a table `data` to a CSV file.
+
 ## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
 Tools for math.
@@ -225,6 +229,8 @@ Tools for miscellaneous purposes.
 - `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
 
     - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
+
+- `parsebool(s)` parses a string to boolean, if its lowercase equals to either `1`, `true`, or `yes`.
 
 ## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
 
