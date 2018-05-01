@@ -3,6 +3,8 @@
 from typing import *
 
 import re
+from hashlib import sha1, sha256, sha512, md5
+from io import TextIOBase, BufferedIOBase
 
 import tagstats as tagmatches
 
@@ -32,6 +34,37 @@ def str2grams(s: str, n: int, pad: str = None) -> Iterable[str]:
 
         if pad:
             yield from __str2grams(s[-(n - 1):] + pad, n)
+
+
+def __checksum(f: Any, func: Callable[[bytes], Any]) -> str:
+    content: bytes
+
+    if isinstance(f, str):
+        content = f.encode("utf-8")
+    elif isinstance(f, bytes):
+        content = f
+    elif isinstance(f, TextIOBase):
+        content = f.read().encode("utf-8")
+    elif isinstance(f, BufferedIOBase):
+        content = f.read()
+
+    return func(content).hexdigest()
+
+
+def sha1sum(f: Any) -> str:
+    return __checksum(f, sha1)
+
+
+def sha256sum(f: Any) -> str:
+    return __checksum(f, sha256)
+
+
+def sha512sum(f: Any) -> str:
+    return __checksum(f, sha512)
+
+
+def md5sum(f: Any) -> str:
+    return __checksum(f, md5)
 
 
 def tagstats(tags: Iterable[str], lines: Iterable[str], separator: str = None) -> Mapping[str, int]:
