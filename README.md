@@ -40,7 +40,7 @@ Tools for sorting sequences.
 
 - `sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
 
-Tools for transforming sequences.
+Tools for encoding/decoding sequences.
 
 - `compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
@@ -50,6 +50,17 @@ Tools for transforming sequences.
 list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [(1, 1), (2, 2), (3, 3), (4, 4)]
 ```
+
+- `decompress(data)` decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+
+- `todeltas(data)` compresses the sequence by encoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
+
+``` python
+list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
+# [1, 1, 0, 1, 0, 0, 1, 0, 0, 0]
+```
+
+- `fromdeltas(data)` decompresses the sequence by decoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
 
 ## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
@@ -77,7 +88,7 @@ Tools for strings.
 
 - `str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
 
-    - Optional padding at the start and end can be added by specifying `pad` 
+    - Optional padding at the start and end can be added by specifying `pad`. `\0` is usually a safe choice for `pad` when not displaying.
 
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
@@ -169,7 +180,7 @@ Tools for miscellaneous purposes.
 
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
-[Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression. After `d = DisjointSets()`:
+[Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
 
 - `d.add(x)` adds a new disjoint set containing `x`.
 

@@ -5,7 +5,7 @@ from typing import *
 T = TypeVar('T')
 
 import itertools
-from itertools import zip_longest
+from itertools import zip_longest, repeat
 
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
@@ -89,3 +89,47 @@ def sortedbyrank(data: Iterable[T], ranks: Iterable[float], reverse: bool = Fals
 def compress(data: Iterable[T], key: Callable[[T], Any] = None) -> Iterable[Tuple[T, int]]:
     for k, g in itertools.groupby(data, key=key):
         yield (k, itertoolz.count(g))
+
+
+def decompress(data: Iterable[Tuple[T, int]]) -> Iterable[T]:
+    for k, n in data:
+        yield from repeat(k, n)
+
+
+def todeltas(data: Iterable[T]) -> Iterable[T]:
+    sentinel = object()
+
+    seq = iter(data)
+
+    curr: Any = next(seq, sentinel)
+    if curr is sentinel:
+        return
+
+    yield curr
+
+    prev = curr
+
+    for curr in seq:
+        yield curr - prev
+
+        prev = curr
+
+
+def fromdeltas(data: Iterable[T]) -> Iterable[T]:
+    sentinel = object()
+
+    seq = iter(data)
+
+    curr: Any = next(seq, sentinel)
+    if curr is sentinel:
+        return
+
+    yield curr
+
+    prev = curr
+
+    for curr in seq:
+        curr += prev
+        yield curr
+
+        prev = curr
