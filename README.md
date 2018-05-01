@@ -38,7 +38,18 @@ Tools for comparing sequences (including strings).
 
 Tools for sorting sequences.
 
-- `sortedbyrank(sth, ranks, reverse=False)` returns the sorted list of `sth`, according to the respective rank of each individual element in `ranks`.
+- `sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+
+Tools for transforming sequences.
+
+- `compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+
+    - Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
+
+``` python
+list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
+# [(1, 1), (2, 2), (3, 3), (4, 4)]
+```
 
 ## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
@@ -90,12 +101,12 @@ Tools for remapping elements.
 
     - `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
 
-    ``` python
-    wordmap = {}
-    db = [list(remap(doc, wordmap)) for doc in docs]
-    ```
-
     - In default, `key` returns integers starting from `0`.
+
+``` python
+wordmap = {}
+db = [list(remap(doc, wordmap)) for doc in docs]
+```
 
 ## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
@@ -119,16 +130,16 @@ Tools for tables.
 
     - Useful to switch table `data` from row-based to column-based and backwards.
 
-    ``` python
-    transpose([
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ])
-    # [[1, 4, 7],
-    #  [2, 5, 8],
-    #  [3, 6, 9]]
-    ```
+``` python
+transpose([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+])
+# [[1, 4, 7],
+#  [2, 5, 8],
+#  [3, 6, 9]]
+```
 
 ## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 

@@ -4,8 +4,10 @@ from typing import *
 
 T = TypeVar('T')
 
+import itertools
 from itertools import zip_longest
 
+from toolz import itertoolz
 from toolz.itertoolz import sliding_window
 
 from .misctools import cmp
@@ -75,10 +77,15 @@ def productcmp(x: Iterable[T], y: Iterable[T]) -> int:
     return cmp(lc, gc)
 
 
-def sortedbyrank(sth: Iterable[T], ranks: Iterable[float], reverse: bool = False) -> List[T]:
+def sortedbyrank(data: Iterable[T], ranks: Iterable[float], reverse: bool = False) -> List[T]:
     return [
         v for _, v in sorted(
-            zip(ranks, sth),
+            zip(ranks, data),
             reverse=reverse
         )
     ]
+
+
+def compress(data: Iterable[T], key: Callable[[T], Any] = None) -> Iterable[Tuple[T, int]]:
+    for k, g in itertools.groupby(data, key=key):
+        yield (k, itertoolz.count(g))
