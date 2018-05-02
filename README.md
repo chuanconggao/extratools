@@ -19,6 +19,7 @@ This package is available on PyPi. Just use `pip3 install -U extratools` to inst
 [`seqtools`](#seqtools)
 [`sortedtools`](#sortedtools)
 [`strtools`](#strtools)
+[`rangetools`](#rangetools)
 [`dicttools`](#dicttools)
 [`settools`](#settools)
 [`tabletools`](#tabletools)
@@ -128,6 +129,48 @@ tagstats(
 # {'a b': 1, 'a c': 0, 'b c': 2}
 ```
 
+<a name="rangetools"></a>
+### [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
+
+Tools for ranges. Note that each range is closed on the left side, and open on the right side.
+
+- `histogram(thresholds, data, leftmost=-inf)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
+
+    - The search space is divided by the thresholds of bins specified in `thresholds`.
+
+    - Each bin of the histogram is labelled by its lower threshold.
+
+        - All values in the bin are no less than the current threshold and less than the next threshold.
+
+        - The first bin is labelled by `leftmost`, which is `-inf` in default.
+
+``` python
+histogram(
+    [0.1, 0.5, 0.8, 0.9],
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+)
+# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
+```
+
+- `merge(covers)` merges the covered ranges `covers` to resolve any overlap.
+
+``` python
+merge([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)])
+# [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]
+```
+
+- `gaps(covers, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covers`.
+
+    - Overlaps among covered ranges `covers` are also resolved by calling `merge(covers)`.
+
+``` python
+gaps(
+    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
+    (0, 1)
+)
+# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
+```
+
 <a name="dicttools"></a>
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
@@ -216,24 +259,6 @@ Tools for statistics.
 - `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
-
-- `histogram(thresholds, data)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
-
-    - The search space is divided by the thresholds of bins specified in `thresholds`.
-
-    - Each bin of the histogram is labelled by its lower threshold.
-
-        - All values in the bin are no less than the current threshold and less than the next threshold.
-
-        - The first bin is always labelled by `-infinity`.
-
-``` python
-histogram(
-    [0.1, 0.5, 0.8, 0.9],
-    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-)
-# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
-```
 
 <a name="disjointsets"></a>
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
