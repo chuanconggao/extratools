@@ -10,7 +10,7 @@ from io import TextIOBase
 Table = List[List[T]]
 
 def transpose(data: Table) -> Table:
-    return [list(row) for row in zip(*data)]
+    return [list(col) for col in zip(*data)]
 
 
 def loadcsv(path: Union[str, TextIOBase]) -> Table:

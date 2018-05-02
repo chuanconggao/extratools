@@ -7,4 +7,4 @@ def cmp(a: Any, b: Any) -> int:
 
 
 def parsebool(s: str) -> bool:
-    return s.lower() in {"1", "true", "yes"}
+    return s.lower() in {"1", "true", "yes", "真", "是"}
