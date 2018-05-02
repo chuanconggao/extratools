@@ -58,3 +58,28 @@ def gaps(covers: Iterable[Range], whole: Range = (-inf, inf)) -> Iterable[Range]
         uncovered.append((lastend, end))
 
     return uncovered
+
+
+def sortedgaps(covers: Iterable[Range], whole: Range = (-inf, inf)) -> Iterable[Range]:
+    sentinel = object()
+
+    start, end = whole
+    lastend = start
+
+    seq = iter(covers)
+
+    while True:
+        v: Any = next(seq, sentinel)
+
+        if v is sentinel:
+            break
+
+        localstart, localend = v
+
+        if lastend < localstart:
+            yield (lastend, localstart)
+
+        lastend = localend
+
+    if lastend < end:
+        yield (lastend, end)

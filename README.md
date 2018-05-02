@@ -1,6 +1,6 @@
-[![PyPi version](https://img.shields.io/pypi/v/extratools.svg)](https://pypi.python.org/pypi/extratools/)
-[![PyPi pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
-[![PyPi license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
+[![PyPI version](https://img.shields.io/pypi/v/extratools.svg)](https://pypi.python.org/pypi/extratools/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
+[![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 
 Extra functional tools that go beyond standard libraries `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz) and [`fancy`](https://github.com/Suor/funcy).
 
@@ -12,7 +12,7 @@ This library is under active development, and new functions will be added on reg
 
 # Installation
 
-This package is available on PyPi. Just use `pip3 install -U extratools` to install it.
+This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
 # Available Tools
 
@@ -100,6 +100,8 @@ Tools for sorted sequences.
 
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
+- `sortedgaps` is alias of a tool in `rangetools`.
+
 <a name="strtools"></a>
 ## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
@@ -132,7 +134,7 @@ tagstats(
 <a name="rangetools"></a>
 ### [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
 
-Tools for ranges. Note that each range is closed on the left side, and open on the right side.
+Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.
 
 - `histogram(thresholds, data, leftmost=-inf)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
 
@@ -152,6 +154,8 @@ histogram(
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
 ```
 
+Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.
+
 - `merge(covers)` merges the covered ranges `covers` to resolve any overlap.
 
 ``` python
@@ -170,6 +174,12 @@ gaps(
 )
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```
+
+- `sortedgaps(covers, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the sorted covered ranges `covers`.
+
+    - Covered ranges `covers` must be sorted and overlaps are not allowed.
+
+    - Unlike `gaps`, `sortedgaps` is lazy and can handle infinite input.
 
 <a name="dicttools"></a>
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
@@ -259,6 +269,8 @@ Tools for statistics.
 - `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
+
+- `histogram` is alias of a tool in `rangetools`.
 
 <a name="disjointsets"></a>
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)

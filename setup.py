@@ -3,7 +3,7 @@
 from setuptools import setup
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.4"
+version = "0.4.1"
 
 setup(
     name="extratools",

@@ -8,6 +8,8 @@ from statistics import median
 from collections import Counter
 from math import log2
 
+from .rangetools import histogram # Alias
+
 def medianabsdev(data: Iterable[float]) -> float:
     m = median(data)
 
