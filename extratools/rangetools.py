@@ -17,69 +17,35 @@ def histogram(thresholds: List[float], data: Iterable[float], leftmost: float = 
     return dict(zip([leftmost] + thresholds, stats))
 
 
-def merge(covers: Iterable[Range]) -> Iterable[Range]:
-    covered: List[Range] = []
+def covers(covered: Iterable[Range]) -> Iterable[Range]:
+    laststart = lastend = -inf
+    for localstart, localend in covered:
+        if lastend < localstart:
+            if laststart < lastend:
+                yield (laststart, lastend)
 
-    laststart = None
-    lastend = -inf
-    for localstart, localend in sorted(covers, key=lambda p: p[0]):
+            laststart = localstart
+
         if lastend < localend:
-            if len(covered) == 0 or lastend < localstart:
-                covered.append((localstart, localend))
-
-                laststart = localstart
-            else:
-                covered[-1] = (laststart, localend)
-
             lastend = localend
 
-    return covered
+    if laststart < lastend:
+        yield (laststart, lastend)
 
 
-def gaps(covers: Iterable[Range], whole: Range = (-inf, inf)) -> Iterable[Range]:
+def gaps(covered: Iterable[Range], whole: Range = (-inf, inf)) -> Iterable[Range]:
     start, end = whole
 
-    uncovered: List[Range] = []
-
     lastend = start
-    for localstart, localend in merge(covers):
+    for localstart, localend in covered:
         localstart = max(start, localstart)
         localend = min(end, localend)
 
         if lastend < localstart:
-            uncovered.append((lastend, localstart))
-
-        lastend = localend
-
-    if lastend == start:
-        return [whole]
-
-    if lastend < end:
-        uncovered.append((lastend, end))
-
-    return uncovered
-
-
-def sortedgaps(covers: Iterable[Range], whole: Range = (-inf, inf)) -> Iterable[Range]:
-    sentinel = object()
-
-    start, end = whole
-    lastend = start
-
-    seq = iter(covers)
-
-    while True:
-        v: Any = next(seq, sentinel)
-
-        if v is sentinel:
-            break
-
-        localstart, localend = v
-
-        if lastend < localstart:
             yield (lastend, localstart)
 
-        lastend = localend
+        if lastend < localend:
+            lastend = localend
 
     if lastend < end:
         yield (lastend, end)

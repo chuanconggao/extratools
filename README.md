@@ -100,8 +100,6 @@ Tools for sorted sequences.
 
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
-- `sortedgaps` is alias of a tool in `rangetools`.
-
 <a name="strtools"></a>
 ## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
@@ -156,30 +154,28 @@ histogram(
 
 Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.
 
-- `merge(covers)` merges the covered ranges `covers` to resolve any overlap.
+- `covers(covered)` merges the covered ranges `covered` to resolve any overlap.
+
+    - Covered ranges in `covered` are sorted by the left side of each range.
 
 ``` python
-merge([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)])
+list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
 # [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]
 ```
 
-- `gaps(covers, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covers`.
+- `gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
-    - Overlaps among covered ranges `covers` are also resolved by calling `merge(covers)`.
+    - Covered ranges in `covered` are sorted by the left side of each range.
+
+    - Overlaps among covered ranges `covered` are resolved, like `covers(covered)`.
 
 ``` python
-gaps(
+list(gaps(
     [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
     (0, 1)
-)
+))
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```
-
-- `sortedgaps(covers, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the sorted covered ranges `covers`.
-
-    - Covered ranges `covers` must be sorted and overlaps are not allowed.
-
-    - Unlike `gaps`, `sortedgaps` is lazy and can handle infinite input.
 
 <a name="dicttools"></a>
 ### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
