@@ -2,10 +2,14 @@
 
 from typing import *
 
+T = TypeVar('T')
+
 Range = Tuple[float, float]
 
 from math import inf
 from bisect import bisect
+
+from RangeMinQuery import SegmentTree
 
 def histogram(thresholds: List[float], data: Iterable[float], leftmost: float = -inf) -> Mapping[float, int]:
     stats = [0] * (len(thresholds) + 1)
@@ -15,6 +19,12 @@ def histogram(thresholds: List[float], data: Iterable[float], leftmost: float = 
         stats[pos] += 1
 
     return dict(zip([leftmost] + thresholds, stats))
+
+
+def rangequery(keyvalues: Dict[float, T], query: Range, func: Callable[[Iterable[T]], T] = min) -> T:
+    s = SegmentTree(keyvalues.keys(), func=func)
+    s.update(keyvalues)
+    return s.query(query)
 
 
 def covers(covered: Iterable[Range]) -> Iterable[Range]:

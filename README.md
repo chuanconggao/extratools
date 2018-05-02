@@ -152,6 +152,22 @@ histogram(
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
 ```
 
+Tools for querying ranges.
+
+- `rangequery(keyvalues, query, func=min)` finds the best value from the covered values in `keyvalues`, if each key in `keyvalues` is within the query range `query`.
+
+    - Implemented by [RangeMinQuery](https://github.com/chuanconggao/RangeMinQuery) to solve the [range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) problem.
+
+    - `func` defines how the best value is computed, and defaults to `min` for minimum value.
+
+``` python
+rangequery(
+    {0.1: 1, 0.2: 3, 0.3: 0},
+    (0.2, 0.4)
+)
+# 0
+```
+
 Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.
 
 - `covers(covered)` merges the covered ranges `covered` to resolve any overlap.
