@@ -254,11 +254,11 @@ Tools for tables.
     - Useful to switch table `data` from row-based to column-based and backwards.
 
 ``` python
-transpose([
+list(transpose([
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
-])
+]))
 # [[1, 4, 7],
 #  [2, 5, 8],
 #  [3, 6, 9]]
