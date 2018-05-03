@@ -49,6 +49,31 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
 
+- `nextentries(data, entries)` scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
+
+    - Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
+
+``` python
+data = [
+    s.split() for s in [
+        "a b c d e",
+        "b b b d e",
+        "c b c c a",
+        "b b b c c"
+    ]
+]
+
+entries = [(0, 2), (2, 0), (3, 3)]
+# the first positions of `c` among sequences.
+
+nextentries(data, entries)
+# {'d': [(0, 3)],
+#  'e': [(0, 4)],
+#  'b': [(2, 1)],
+#  'c': [(2, 2), (3, 4)],
+#  'a': [(2, 4)]}
+```
+
 Tools for comparing sequences (including strings).
 
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
