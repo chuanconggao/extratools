@@ -315,6 +315,18 @@ Tools for statistics.
 
 - `histogram` is alias of a tool in `rangetools`.
 
+Tools for binary classification.
+
+- `teststats(truths, predictions)` matches the truth labels and the prediction labels. Return a tuples of `(tp, fp, tn, fn)` as [true positive, false positive, true negative, and false negative](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
+
+- `accuracy(tp, fp, tn, fn)` returns the [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
+
+    - Note that you can simply call `accuracy(*teststats(truths, predictions))`.
+
+- `precision(tp, fp, tn, fn)` and `recall(tp, fp, tn, fn)` return the [precision and recall](https://en.wikipedia.org/wiki/Precision_and_recall).
+
+- `f1(tp, fp, tn, fn, beta=1)` returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.
+
 <a name="disjointsets"></a>
 ## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 

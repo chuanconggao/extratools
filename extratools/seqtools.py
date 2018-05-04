@@ -31,7 +31,7 @@ def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseq(a, b) >= 0
 
 
-def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> List[int]:
+def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
     sentinel = object()
 
     x, y = iter(a), iter(b)
@@ -76,7 +76,7 @@ def nextentries(data: List[List[T]], entries: Entries) -> Mapping[T, Entries]:
     return entriesDict
 
 
-def productcmp(x: Iterable[T], y: Iterable[T]) -> int:
+def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
     lc, gc = 0, 0
 
     sentinel = object()
