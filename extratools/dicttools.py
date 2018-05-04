@@ -10,6 +10,8 @@ from itertools import count
 
 from toolz.dicttoolz import merge
 
+from . import jsontools
+
 def invertdict(d: Mapping[KT, VT]) -> Mapping[VT, KT]:
     return {v: k for k, v in d.items()}
 
@@ -37,3 +39,7 @@ def remap(data: Iterable[KT], mapping: Dict[KT, VT], key: Callable[[KT], VT] = N
 
     for k in data:
         yield mapping.setdefault(k, key(k))
+
+
+def flatten(d: Any, force: bool = False) -> Any:
+    return jsontools.__flatten(d, force=force, json=False)
