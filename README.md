@@ -2,7 +2,7 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 
-Extra functional tools that go beyond standard libraries `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+Extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy.
 
@@ -22,6 +22,8 @@ This package is available on PyPI. Just use `pip3 install -U extratools` to inst
 
 # Available Tools
 
+Functions:
+
 [`seqtools`](#seqtools)
 [`sortedtools`](#sortedtools)
 [`strtools`](#strtools)
@@ -32,13 +34,19 @@ This package is available on PyPI. Just use `pip3 install -U extratools` to inst
 [`tabletools`](#tabletools)
 [`mathtools`](#mathtools)
 [`stattools`](#stattools)
-[`disjointsets`](#disjointsets)
 [`misctools`](#misctools)
 [`printtools`](#printtools)
 [`debugtools`](#debugtools)
 
+Data Structures:
+
+[`disjointsets`](#disjointsets)
+[`defaultlist`](#defaultlist)
+
+## Functions
+
 <a name="seqtools"></a>
-## [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
+### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
 
@@ -112,7 +120,7 @@ list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
     - For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
 
 <a name="sortedtools"></a>
-## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
+### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 Tools for sorted sequences.
 
@@ -133,7 +141,7 @@ Tools for sorted sequences.
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
 <a name="strtools"></a>
-## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
+### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 Tools for string transformations.
 
@@ -162,7 +170,7 @@ tagstats(
 ```
 
 <a name="rangetools"></a>
-## [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
+### [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
 
 Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.
 
@@ -226,7 +234,7 @@ list(gaps(
 ```
 
 <a name="dicttools"></a>
-## [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
+### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
 Tools for inverting dictionaries.
 
@@ -299,7 +307,7 @@ flatten(json.loads("""
 ```
 
 <a name="jsontools"></a>
-## [`jsontools`](https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py)
+### [`jsontools`](https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py)
 
 Tools for flatten/unflatten a JSON object.
 
@@ -345,7 +353,7 @@ flatten(json.loads("""
 ```
 
 <a name="settools"></a>
-## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
+### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
 Tools for set operations.
 
@@ -360,7 +368,7 @@ Tools for set similarities.
 - `weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
 
 <a name="tabletools"></a>
-## [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
+### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
 Tools for tables.
 
@@ -384,7 +392,7 @@ list(transpose([
 - `dumpcsv(path, data)` dumps a table `data` in CSV, to either a file path or a file object.
 
 <a name="mathtools"></a>
-## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
+### [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
 Tools for math.
 
@@ -393,7 +401,7 @@ Tools for math.
     - Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
 
 <a name="stattools"></a>
-## [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
+### [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
 
 Tools for statistics.
 
@@ -417,8 +425,43 @@ Tools for binary classification.
 
 - `f1(tp, fp, tn, fn, beta=1)` returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.
 
+<a name="misctools"></a>
+### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+
+Tools for miscellaneous purposes.
+
+- `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
+
+    - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
+
+- `parsebool(s)` parses a string to boolean, if its lowercase equals to either `1`, `true`, or `yes`.
+
+<a name="printtools"></a>
+### [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
+
+Tools for non-functional but useful printing purposes.
+
+- `print2(*args, **kwargs)` redirects the output of `print` to standard error.
+
+    - The same parameters are accepted.
+
+<a name="debugtools"></a>
+### [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
+
+Tools for non-functional but useful debugging purposes.
+
+- `stopwatch()` returns both the duration since program start and the duration since last call in seconds.
+
+    - Technically, the stopwatch starts when `debugtools` is imported.
+
+- `peakmem()` returns the peak memory usage since program start.
+
+    - In bytes on macOS, and in kilobytes on Linux.
+
+## Data Structures
+
 <a name="disjointsets"></a>
-## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
+### [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
 
@@ -430,35 +473,20 @@ Tools for binary classification.
 
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
 
-<a name="misctools"></a>
-## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+<a name="defaultlist"></a>
+### [`defaultlist`](https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py)
 
-Tools for miscellaneous purposes.
+A sub-class of `list` that automatically grows when setting an index beyond the list size.
 
-- `cmp(a, b)` restores the useful `cmp` function previously in Python 2.
+- When creating a list, use `DefaultList(default, ...)` to specify a function that returns default value when visiting an unassigned index.
 
-    - Implemented according to [What's New in Python 3.0](https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons).
+- This library is designed to be highly similar to `collections.defaultdict` in standard library.
 
-- `parsebool(s)` parses a string to boolean, if its lowercase equals to either `1`, `true`, or `yes`.
+``` python
+l = DefaultList(lambda: None, range(10))
 
-<a name="printtools"></a>
-## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
+l[11] = 11
 
-Tools for non-functional but useful printing purposes.
-
-- `print2(*args, **kwargs)` redirects the output of `print` to standard error.
-
-    - The same parameters are accepted.
-
-<a name="debugtools"></a>
-## [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
-
-Tools for non-functional but useful debugging purposes.
-
-- `stopwatch()` returns both the duration since program start and the duration since last call in seconds.
-
-    - Technically, the stopwatch starts when `debugtools` is imported.
-
-- `peakmem()` returns the peak memory usage since program start.
-
-    - In bytes on macOS, and in kilobytes on Linux.
+l
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, None, 11]
+```
