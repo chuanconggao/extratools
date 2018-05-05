@@ -101,6 +101,7 @@ CLI Tools:
 
 [`dicttools.remap`](#dicttools)
 [`jsontools.flatten`](#jsontools)
+[`stattools.teststats`](#stattools)
 
 ## Functions
 

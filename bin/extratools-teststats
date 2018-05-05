@@ -1,0 +1,28 @@
+#! /usr/bin/env python3
+
+"""
+Usage:
+    extratools-teststats <truth> <prediction>
+"""
+
+import json
+
+from docopt import docopt
+from extratools.stattools import teststats, precision, recall, f1, accuracy
+from extratools.misctools import parsebool
+
+argv = docopt(__doc__)
+truth = map(parsebool, open(argv["<truth>"]))
+prediction = map(parsebool, open(argv["<prediction>"]))
+
+stats = teststats(truth, prediction)
+
+print(json.dumps({
+    "stats": dict(zip(("tp", "fp", "tn", "fn"), stats)),
+    "f1": {
+        "measure": f1(*stats),
+        "precision": precision(*stats),
+        "recall": recall(*stats),
+    },
+    "accuracy": accuracy(*stats),
+}))
