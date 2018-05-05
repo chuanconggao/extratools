@@ -10,8 +10,8 @@ setup(
 
     packages=["extratools"],
     scripts=[
-        "extratools-remap",
-        "extratools-flatten"
+        "bin/extratools-remap",
+        "bin/extratools-flatten"
     ],
     include_package_data=True,
 
