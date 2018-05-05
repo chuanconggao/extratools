@@ -4,13 +4,11 @@
 
 Extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
-- Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy.
+- Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
-- Several useful yet non-functional tools are also included.
+- While `toolz` and others target basic scenarios, most tools in this library target more advanced and complete scenarios.
 
-- While `toolz` and others target basic scenarios, many tools in this library target more advanced and complete scenarios.
-
-- A few useful CLI tools for respective functions are also installed. They are named as `extratools-[funcname]`.
+- A few useful CLI tools for respective functions are also installed. They are available as `extratools-[funcname]`.
 
 This library is under active development, and new functions will be added on regular basis.
 
@@ -26,14 +24,14 @@ This package is available on PyPI. Just use `pip3 install -U extratools` to inst
 
 Here are three examples out of dozens of our tools.
 
-- `compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+- `seqtools.compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
 list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [(1, 1), (2, 2), (3, 3), (4, 4)]
 ```
 
-- `gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
+- `rangetools.gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
 ``` python
 list(gaps(
@@ -43,7 +41,7 @@ list(gaps(
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```
 
-- `flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+- `jsontools.flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
 ``` python
 flatten(json.loads("""{
@@ -76,7 +74,7 @@ flatten(json.loads("""{
 #  'spouse': None}
 ```
 
-# All Available Tools
+# Index of All Tools
 
 Functions:
 
@@ -101,8 +99,8 @@ Data Structures:
 
 CLI Tools:
 
-[`remap` in `dicttools`](#dicttools)
-[`flatten` in `jsontools`](#jsontools)
+[`dicttools.remap`](#dicttools)
+[`jsontools.flatten`](#jsontools)
 
 ## Functions
 
