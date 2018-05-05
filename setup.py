@@ -3,7 +3,7 @@
 from setuptools import setup
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.4.10"
+version = "0.5"
 
 setup(
     name="extratools",
@@ -11,7 +11,8 @@ setup(
     packages=["extratools"],
     scripts=[
         "bin/extratools-remap",
-        "bin/extratools-flatten"
+        "bin/extratools-flatten",
+        "bin/extratools-teststats"
     ],
     include_package_data=True,
 

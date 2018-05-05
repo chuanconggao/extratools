@@ -298,15 +298,15 @@ list(gaps(
 
 Tools for inverting dictionaries.
 
-- `invertdict(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
+- `invert(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
 
     - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
-- `invertdict_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
+- `invert_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
 
     - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
-- `invertdict_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+- `invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
 
     - If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
 
@@ -322,6 +322,12 @@ Tools for remapping elements.
 wordmap = {}
 db = [list(remap(doc, wordmap)) for doc in docs]
 ```
+
+Tools for indexing.
+
+- `invertedindex(seqs)` creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
+
+    - Each item's index is a list of `(ID, position)` pairs for all the sequences in `seqs` containing the item.
 
 Tools for flatten/unflatten a dictionary.
 
