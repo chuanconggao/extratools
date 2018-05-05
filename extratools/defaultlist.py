@@ -1,9 +1,8 @@
 #! /usr/bin/env python3
 
 class DefaultList(list):
-    def __init__(self, default, *args, **kwargs):
-        print(args, kwargs)
-        super().__init__(*args, **kwargs)
+    def __init__(self, default, *args):
+        super().__init__(*args)
 
         self.default = default
 

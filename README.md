@@ -272,8 +272,7 @@ Tools for flatten/unflatten a dictionary.
     - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.
 
 ``` python
-flatten(json.loads("""
-{
+flatten(json.loads("""{
   "firstName": "John",
   "lastName": "Smith",
   "address": {
@@ -292,8 +291,7 @@ flatten(json.loads("""
   ],
   "children": [],
   "spouse": null
-}
-"""))
+}"""))
 # {'firstName': 'John',
 #  'lastName': 'Smith',
 #  ('address', 'streetAddress'): '21 2nd Street',
@@ -318,8 +316,7 @@ Tools for flatten/unflatten a JSON object.
     - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.
 
 ``` python
-flatten(json.loads("""
-{
+flatten(json.loads("""{
   "firstName": "John",
   "lastName": "Smith",
   "address": {
@@ -338,8 +335,7 @@ flatten(json.loads("""
   ],
   "children": [],
   "spouse": null
-}
-"""))
+}"""))
 # {'firstName': 'John',
 #  'lastName': 'Smith',
 #  'address.streetAddress': '21 2nd Street',
