@@ -20,7 +20,61 @@ This library is under active development, and new functions will be added on reg
 
 This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
-# Available Tools
+# Examples
+
+Here are three examples out of dozens of our tools.
+
+- `compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+
+``` python
+list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
+# [(1, 1), (2, 2), (3, 3), (4, 4)]
+```
+
+- `gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
+
+``` python
+list(gaps(
+    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
+    (0, 1)
+))
+# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
+```
+
+- `flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+
+``` python
+flatten(json.loads("""{
+  "name": "John",
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}"""))
+# {'name': 'John',
+#  'address.streetAddress': '21 2nd Street',
+#  'address.city': 'New York',
+#  'phoneNumbers[0].type': 'home',
+#  'phoneNumbers[0].number': '212 555-1234',
+#  'phoneNumbers[1].type': 'office',
+#  'phoneNumbers[1].number': '646 555-4567',
+#  'children': [],
+#  'spouse': None}
+```
+
+# All Available Tools
 
 Functions:
 
@@ -273,8 +327,7 @@ Tools for flatten/unflatten a dictionary.
 
 ``` python
 flatten(json.loads("""{
-  "firstName": "John",
-  "lastName": "Smith",
+  "name": "John",
   "address": {
     "streetAddress": "21 2nd Street",
     "city": "New York",
@@ -292,8 +345,7 @@ flatten(json.loads("""{
   "children": [],
   "spouse": null
 }"""))
-# {'firstName': 'John',
-#  'lastName': 'Smith',
+# {'name': 'John',
 #  ('address', 'streetAddress'): '21 2nd Street',
 #  ('address', 'city'): 'New York',
 #  (('phoneNumbers', 0), 'type'): 'home',
@@ -317,8 +369,7 @@ Tools for flatten/unflatten a JSON object.
 
 ``` python
 flatten(json.loads("""{
-  "firstName": "John",
-  "lastName": "Smith",
+  "name": "John",
   "address": {
     "streetAddress": "21 2nd Street",
     "city": "New York",
@@ -336,8 +387,7 @@ flatten(json.loads("""{
   "children": [],
   "spouse": null
 }"""))
-# {'firstName': 'John',
-#  'lastName': 'Smith',
+# {'name': 'John',
 #  'address.streetAddress': '21 2nd Street',
 #  'address.city': 'New York',
 #  'phoneNumbers[0].type': 'home',
