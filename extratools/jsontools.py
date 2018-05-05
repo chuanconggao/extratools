@@ -27,8 +27,8 @@ def __flatten(d: Any, force: bool = False, json: bool = True) -> Any:
     def jsonpath(path: Tuple) -> str:
         return '.'.join(
             "{}[{}]".format(
-                '' if k[0] is None else k[0],
-                "][".join(str(i) for i in k[1:])
+                k[0] or '',
+                "][".join(map(str, k[1:]))
             ) if isinstance(k, tuple) else k
             for k in path
         )
@@ -39,7 +39,7 @@ def __flatten(d: Any, force: bool = False, json: bool = True) -> Any:
             for k, v in d.items():
                 yield from flatten_act(v, path + (k,))
         elif isinstance(d, list) and not issafe(d):
-            k = path[-1] if len(path) > 0 else (None,)
+            k = path[-1] if len(path) else (None,)
             for i, v in enumerate(d):
                 yield from flatten_act(v, path[:-1] + (
                     (k + (i,) if isinstance(k, tuple) else (k, i)),
@@ -48,7 +48,7 @@ def __flatten(d: Any, force: bool = False, json: bool = True) -> Any:
             yield (
                 (
                     path[0] if len(path) == 1 and not isinstance(path[0], tuple)
-                    else jsonpath(path) if json else path
+                    else (jsonpath(path) if json else path)
                 ),
                 d
             )
