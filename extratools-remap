@@ -1,0 +1,28 @@
+#! /usr/bin/env python3
+
+"""
+Usage:
+    extratools-remap <mapping>
+"""
+
+import sys
+from os.path import isfile
+
+from docopt import docopt
+from extratools.dicttools import remap
+from extratools.tabletools import loadcsv, dumpcsv
+
+argv = docopt(__doc__)
+mapfile = argv["<mapping>"]
+
+wordmap = dict(loadcsv(mapfile) if isfile(mapfile) else [])
+
+for doc in sys.stdin:
+    print(' '.join(
+        str(v) for v in remap(
+            doc.rstrip().split(' '),
+            wordmap
+        )
+    ))
+
+dumpcsv(mapfile, wordmap.items())

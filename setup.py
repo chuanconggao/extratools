@@ -3,12 +3,16 @@
 from setuptools import setup
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.4.8.1"
+version = "0.4.9"
 
 setup(
     name="extratools",
 
     packages=["extratools"],
+    scripts=[
+        "extratools-remap",
+        "extratools-flatten"
+    ],
     include_package_data=True,
 
     url=url,

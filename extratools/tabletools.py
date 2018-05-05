@@ -14,15 +14,15 @@ def transpose(data: Table) -> Table:
         yield list(col)
 
 
-def loadcsv(path: Union[str, TextIOBase]) -> Table:
+def loadcsv(path: Union[str, TextIOBase], delimiter: str = ',') -> Table:
+    f = cast(TextIOBase, path if isinstance(path, TextIOBase) else open(path, 'r', newline=''))
+
+    yield from csv.reader(f, delimiter=delimiter)
+
+
+def dumpcsv(path: Union[str, TextIOBase], data: Table, delimiter: str = ',') -> None:
     f = cast(TextIOBase, path if isinstance(path, TextIOBase) else open(path, 'w', newline=''))
 
-    yield from csv.reader(f)
-
-
-def dumpcsv(path: Union[str, TextIOBase], data: Table) -> None:
-    f = cast(TextIOBase, path if isinstance(path, TextIOBase) else open(path, 'w', newline=''))
-
-    writer = csv.writer(f)
+    writer = csv.writer(f, delimiter=delimiter)
     for row in data:
         writer.writerow(row)

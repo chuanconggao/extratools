@@ -10,6 +10,8 @@ Extra functional tools that go beyond standard library's `itertools`, `functools
 
 - While `toolz` and others target basic scenarios, many tools in this library target more advanced and complete scenarios.
 
+- A few useful CLI tools for respective functions are also installed. They are named as `extratools-[funcname]`.
+
 This library is under active development, and new functions will be added on regular basis.
 
 - Any idea or contribution is highly welcome.
@@ -96,6 +98,11 @@ Data Structures:
 
 [`disjointsets`](#disjointsets)
 [`defaultlist`](#defaultlist)
+
+CLI Tools:
+
+[`remap` in `dicttools`](#dicttools)
+[`flatten` in `jsontools`](#jsontools)
 
 ## Functions
 
@@ -433,9 +440,9 @@ list(transpose([
 #  [3, 6, 9]]
 ```
 
-- `loadcsv(path)` loads a CSV file, from either a file path or a file object.
+- `loadcsv(path, delimiter=',')` loads a CSV file, from either a file path or a file object.
 
-- `dumpcsv(path, data)` dumps a table `data` in CSV, to either a file path or a file object.
+- `dumpcsv(path, data, delimiter=',')` dumps a table `data` in CSV, to either a file path or a file object.
 
 <a name="mathtools"></a>
 ### [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
