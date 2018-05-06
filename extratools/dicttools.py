@@ -61,5 +61,12 @@ def invertedindex(seqs: Iterable[Sequence[T]], entries: Entries = None) -> Mappi
     return index
 
 
+def nextentries(data: List[List[T]], entries: Entries) -> Mapping[T, Entries]:
+    return invertedindex(
+        (data[i][lastpos + 1:] for i, lastpos in entries),
+        entries
+    )
+
+
 def flatten(d: Any, force: bool = False) -> Any:
     return jsontools.__flatten(d, force=force, json=False)

@@ -118,30 +118,7 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
 
-- `nextentries(data, entries)` scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
-
-    - Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
-
-``` python
-data = [
-    s.split() for s in [
-        "a b c d e",
-        "b b b d e",
-        "c b c c a",
-        "b b b c c"
-    ]
-]
-
-entries = [(0, 2), (2, 0), (3, 3)]
-# the first positions of `c` among sequences.
-
-nextentries(data, entries)
-# {'d': [(0, 3)],
-#  'e': [(0, 4)],
-#  'b': [(2, 1)],
-#  'c': [(2, 2), (3, 4)],
-#  'a': [(2, 4)]}
-```
+- `nextentries` is alias of a tool in `dicttools`.
 
 Tools for comparing sequences (including strings).
 
@@ -328,6 +305,40 @@ Tools for indexing.
 - `invertedindex(seqs)` creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
 
     - Each item's index is a list of `(ID, position)` pairs for all the sequences in `seqs` containing the item.
+
+``` python
+data = [s.split() for s in [
+    "a b c d e",
+    "b b b d e",
+    "c b c c a",
+    "b b b c c"
+]]
+
+invertedindex(data)
+# {'a': [(0, 0), (2, 4)],
+#  'b': [(0, 1), (1, 0), (2, 1), (3, 0)],
+#  'c': [(0, 2), (2, 0), (3, 3)],
+#  'd': [(0, 3), (1, 3)],
+#  'e': [(0, 4), (1, 4)]}
+```
+
+- `nextentries(data, entries)` scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
+
+    - Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
+
+``` python
+# same data from previous example
+
+# the first positions of `c` among sequences.
+entries = [(0, 2), (2, 0), (3, 3)]
+
+nextentries(data, entries)
+# {'d': [(0, 3)],
+#  'e': [(0, 4)],
+#  'b': [(2, 1)],
+#  'c': [(2, 2), (3, 4)],
+#  'a': [(2, 4)]}
+```
 
 Tools for flatten/unflatten a dictionary.
 

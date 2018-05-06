@@ -11,7 +11,7 @@ from itertools import zip_longest, repeat
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
 
-from .dicttools import Entries, invertedindex
+from .dicttools import nextentries
 from .misctools import cmp
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
@@ -57,13 +57,6 @@ def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
 
 def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
-
-
-def nextentries(data: List[List[T]], entries: Entries) -> Mapping[T, Entries]:
-    return invertedindex(
-        (data[i][lastpos + 1:] for i, lastpos in entries),
-        entries
-    )
 
 
 def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
