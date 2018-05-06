@@ -122,17 +122,21 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 Tools for comparing sequences (including strings).
 
-- `align(a, b, cost=None, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) sequences `a` and `b` such that the pair-wise cost function `cost(x, y)` is minimized.
+- `align(a, b, cost=None, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
-    - In default, the cost function `cost` returns `1` when two items match and `0` when not.
+    - Assume the aligned sequences are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
+
+    - Both the minimum total cost and the respective aligned sequences are returned as a tuple.
+
+    - In default, the cost function `cost(x, y)` returns `1` when `x == y` and `0` when not. This is equal to the [edit distance](https://en.wikipedia.org/wiki/Edit_distance).
 
 ``` python
 align(
     [0, 1, 1, 0, 1],
     [0, 0, 1, 1, 1]
 )
-# ([0, None, 1, 1, 0,    1],
-#  [0, 0,    1, 1, None, 1])
+# (2, ([0, None, 1, 1, 0,    1],
+#      [0, 0,    1, 1, None, 1]))
 ```
 
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
