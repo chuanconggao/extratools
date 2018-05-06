@@ -156,10 +156,40 @@ list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 
     - For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
 
+Tools for joining sequences.
+
+- `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=__default, rightdefault=__default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+
+    - If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
+
+    - Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
+
 <a name="sortedtools"></a>
 ### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
-Tools for sorted sequences.
+Tools for joining sorted sequences.
+
+- `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=__default, rightdefault=__default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+
+    - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
+
+    - `sortedjoin` is completely lazy, and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+
+``` python
+list(sortedjoin([-1, -1, -2, -4, -5, -6], [0, 1, 1, 2, 3, 4, 5, 5], leftkey=abs, leftdefault=None))
+# [(None, 0),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-2, 2),
+#  (None, 3),
+#  (-4, 4),
+#  (-5, 5),
+#  (-5, 5)]
+```
+
+Tools for matching sorted sequences.
 
 - `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`.
 

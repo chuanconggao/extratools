@@ -11,8 +11,9 @@ from itertools import zip_longest, repeat
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
 
-from .dicttools import nextentries
 from .misctools import cmp
+from .dicttools import nextentries
+from .__join import join
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
     x = list(a)

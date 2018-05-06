@@ -4,6 +4,8 @@ from typing import *
 
 T = TypeVar('T')
 
+from .__join import sortedjoin
+
 def __sortedscan(
         adiff: bool, bdiff: bool,
         a: Iterable[T], b: Iterable[T],

@@ -1,19 +1,16 @@
 #! /usr/bin/env python3
 
 from setuptools import setup
+from glob import glob
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.5"
+version = "0.5.1"
 
 setup(
     name="extratools",
 
     packages=["extratools"],
-    scripts=[
-        "bin/extratools-remap",
-        "bin/extratools-flatten",
-        "bin/extratools-teststats"
-    ],
+    scripts=glob("bin/extratools-*"),
     include_package_data=True,
 
     url=url,
