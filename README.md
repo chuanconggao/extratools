@@ -158,7 +158,7 @@ list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 
 Tools for joining sequences.
 
-- `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=__default, rightdefault=__default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+- `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
     - If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
 
@@ -169,7 +169,7 @@ Tools for joining sequences.
 
 Tools for joining sorted sequences.
 
-- `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=__default, rightdefault=__default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+- `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
     - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 

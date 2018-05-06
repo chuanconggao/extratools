@@ -7,12 +7,10 @@ from itertools import groupby
 from toolz import itertoolz
 from toolz.utils import no_default
 
-__default = no_default
-
 def join(
         leftseq, rightseq,
         leftkey=None, rightkey=None,
-        leftdefault=__default, rightdefault=__default
+        leftdefault=no_default, rightdefault=no_default
     ):
     if not leftkey:
         leftkey = lambda x: x
@@ -25,7 +23,7 @@ def join(
 def sortedjoin(
         leftseq, rightseq,
         leftkey=None, rightkey=None,
-        leftdefault=__default, rightdefault=__default
+        leftdefault=no_default, rightdefault=no_default
     ):
     if not leftkey:
         leftkey = lambda x: x
@@ -49,12 +47,12 @@ def sortedjoin(
             break
 
         if leftkey(m[0]) < rightkey(n[0]):
-            if rightdefault is not __default:
+            if rightdefault is not no_default:
                 for v in m[1]:
                     yield (v, rightdefault)
             m = sentinel
         elif leftkey(m[0]) > rightkey(n[0]):
-            if leftdefault is not __default:
+            if leftdefault is not no_default:
                 for v in n[1]:
                     yield (leftdefault, v)
             n = sentinel
@@ -65,14 +63,14 @@ def sortedjoin(
                     yield (u, v)
             m = n = sentinel
 
-    if rightdefault is not __default:
+    if rightdefault is not no_default:
         while m is not sentinel:
             for v in m[1]:
                 yield (v, rightdefault)
 
             m = next(x, sentinel)
 
-    if leftdefault is not __default:
+    if leftdefault is not no_default:
         while n is not sentinel:
             for v in n[1]:
                 yield (leftdefault, v)
