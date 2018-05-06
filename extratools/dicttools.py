@@ -43,13 +43,15 @@ def remap(data: Iterable[KT], mapping: Dict[KT, VT], key: Callable[[KT], VT] = N
         yield mapping.setdefault(k, key(k))
 
 
-Index = Dict[T, List[Tuple[int, int]]]
+Entries = List[Tuple[int, int]]
 
-def invertedindex(seqs: Iterable[Sequence[T]]) -> Index:
-    index: Index = defaultdict(list)
+def invertedindex(seqs: Iterable[Sequence[T]], entries: Entries = None) -> Mapping[T, Entries]:
+    index: Mapping[T, Entries] = defaultdict(list)
 
-    for i, seq in enumerate(seqs):
-        for p, item in enumerate(seq):
+    for k, seq in enumerate(seqs):
+        i, lastpos = entries[k] if entries else (k, -1)
+
+        for p, item in enumerate(seq, start=(lastpos + 1)):
             l = index[item]
             if len(l) and l[-1][0] == i:
                 continue

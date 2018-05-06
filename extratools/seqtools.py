@@ -8,11 +8,10 @@ import operator
 import itertools
 from itertools import zip_longest, repeat
 
-from collections import defaultdict
-
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
 
+from .dicttools import Entries, invertedindex
 from .misctools import cmp
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
@@ -60,20 +59,11 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
 
 
-Entries = List[Tuple[int, int]]
-
 def nextentries(data: List[List[T]], entries: Entries) -> Mapping[T, Entries]:
-    entriesDict: Mapping[T, Entries] = defaultdict(list)
-
-    for i, lastpos in entries:
-        seq = data[i]
-
-        for pos in range(lastpos + 1, len(seq)):
-            l = entriesDict[seq[pos]]
-            if len(l) == 0 or l[-1][0] != i:
-                l.append((i, pos))
-
-    return entriesDict
+    return invertedindex(
+        (data[i][lastpos + 1:] for i, lastpos in entries),
+        entries
+    )
 
 
 def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
