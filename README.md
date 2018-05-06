@@ -120,15 +120,15 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 - `nextentries` is alias of a tool in `dicttools`.
 
-Tools for comparing sequences (including strings).
-
-- `align(a, b, cost=None, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
+- `align(a, b, cost=None, bound=inf, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
     - Assume the aligned sequences are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
 
     - Both the minimum total cost and the respective aligned sequences are returned as a tuple.
 
     - In default, the cost function `cost(x, y)` returns `1` when `x == y` and `0` when not. This is equal to the [edit distance](https://en.wikipedia.org/wiki/Edit_distance).
+
+    - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
 
 ``` python
 align(
@@ -137,7 +137,16 @@ align(
 )
 # (2, ([0, None, 1, 1, 0,    1],
 #      [0, 0,    1, 1, None, 1]))
+
+align(
+    [0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1],
+    bound=1
+)
+# None
 ```
+
+Tools for comparing sequences (including strings).
 
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
 
@@ -251,6 +260,15 @@ tagstats(
     ["a b c", "b c d", "c d e"]
 )
 # {'a b': 1, 'a c': 0, 'b c': 2}
+```
+
+- `editdist(a, b, bound=inf)` computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) between two strings `a` and `b`.
+
+    - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
+
+``` python
+editdist("dog", "frog")
+# 2
 ```
 
 <a name="rangetools"></a>

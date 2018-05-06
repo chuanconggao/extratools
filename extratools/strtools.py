@@ -5,8 +5,11 @@ from typing import *
 import re
 from hashlib import sha1, sha256, sha512, md5
 from io import TextIOBase, BufferedIOBase
+import math
 
 import tagstats as tagmatches
+
+from .seqtools import align
 
 def __str2grams(s: str, n: int) -> Iterable[str]:
     yield from (
@@ -77,3 +80,8 @@ def tagstats(tags: Iterable[str], lines: Iterable[str], separator: str = None) -
             {tag: [tag] for tag in tags}
         ).items()
     }
+
+
+def editdist(a: str, b: str, bound: float = math.inf) -> float:
+    res = align(list(a), list(b), bound=bound)
+    return res[0] if res else None

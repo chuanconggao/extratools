@@ -7,6 +7,7 @@ T = TypeVar('T')
 import operator
 import itertools
 from itertools import zip_longest, repeat
+import math
 
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
@@ -60,18 +61,26 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
 
 
-def align(a: List[T], b: List[T], cost: Callable[[T, T], float] = None, default: T = None) -> Tuple[float, Tuple[List[T], List[T]]]:
+def align(
+        a: List[T], b: List[T],
+        cost: Callable[[T, T], float] = None, bound: float = math.inf,
+        default: T = None
+    ) -> Tuple[float, Tuple[List[T], List[T]]]:
     def merge(prev, curr):
+        if not prev:
+            return None
+
         prevcost, (l, r) = prev
         x, y = curr
 
         l.append(x)
         r.append(y)
 
-        return (
-            prevcost + cost(x, y),
-            (l, r)
-        )
+        currcost = prevcost + cost(x, y)
+        if currcost > bound:
+            return None
+
+        return (currcost, (l, r))
 
 
     def align_rec(alen, blen):
@@ -88,10 +97,13 @@ def align(a: List[T], b: List[T], cost: Callable[[T, T], float] = None, default:
             )
 
         return min(
-            merge(align_rec(alen - 1, blen), (a[alen - 1], default)),
-            merge(align_rec(alen, blen - 1), (default, b[blen - 1])),
-            merge(align_rec(alen - 1, blen - 1), (a[alen - 1], b[blen - 1])),
-            key=lambda x: x[0]
+            (
+                merge(align_rec(alen - 1, blen), (a[alen - 1], default)),
+                merge(align_rec(alen, blen - 1), (default, b[blen - 1])),
+                merge(align_rec(alen - 1, blen - 1), (a[alen - 1], b[blen - 1]))
+            ),
+            key=lambda x: x[0] if x else math.inf,
+            default=None
         )
 
 
