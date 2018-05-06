@@ -60,6 +60,47 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
 
 
+def align(a: List[T], b: List[T], cost: Callable[[T, T], float] = None, default: T = None) -> Tuple[List[T], List[T]]:
+    def merge(prev, curr):
+        prevcost, (l, r) = prev
+        x, y = curr
+
+        l.append(x)
+        r.append(y)
+
+        return (
+            prevcost + cost(x, y),
+            (l, r)
+        )
+
+
+    def align_rec(alen, blen):
+        if alen == 0 or blen == 0:
+            res = (
+                [default] * blen, b[:blen]
+            ) if alen == 0 else (
+                a[:alen], [default] * alen,
+            )
+
+            return (
+                sum(cost(x, y) for x, y in zip(*res)),
+                res
+            )
+
+        return min(
+            merge(align_rec(alen - 1, blen), (a[alen - 1], default)),
+            merge(align_rec(alen, blen - 1), (default, b[blen - 1])),
+            merge(align_rec(alen - 1, blen - 1), (a[alen - 1], b[blen - 1])),
+            key=lambda x: x[0]
+        )
+
+
+    if not cost:
+        cost = lambda x, y: 0 if x == y else 1
+
+    return align_rec(len(a), len(b))[1]
+
+
 def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
     lc, gc = 0, 0
 

@@ -122,6 +122,19 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 Tools for comparing sequences (including strings).
 
+- `align(a, b, cost=None, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) sequences `a` and `b` such that the pair-wise cost function `cost(x, y)` is minimized.
+
+    - In default, the cost function `cost` returns `1` when two items match and `0` when not.
+
+``` python
+align(
+    [0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1]
+)
+# ([0, None, 1, 1, 0,    1],
+#  [0, 0,    1, 1, None, 1])
+```
+
 - `productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
 
     - Throw exception if `x` and `y` have different lengths.
