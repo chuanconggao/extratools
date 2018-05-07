@@ -10,13 +10,23 @@ Extra functional tools that go beyond standard library's `itertools`, `functools
 
 - A few useful CLI tools for respective functions are also installed. They are available as `extratools-[funcname]`.
 
-This library is under active development, and new functions will be added on regular basis.
+Full documentation available [here](https://www.chuancong.site/extratools/).
+
+## Plans
+
+This library is under active development, and new functions are added on regular basis.
 
 - Any idea or contribution is highly welcome.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
-Full documentation available [here](https://www.chuancong.site/extratools/).
+Besides other interesting ideas, I am planning to make the following updates in recent days/weeks/months.
+
+- Add `dicttools.unflatten` and `jsontools.unflatten`.
+
+- Update `seqtools.commonsubseq`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
+
+- Add `trie` and `suffixtree` (according to [generalized suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)).
 
 ## Installation
 
