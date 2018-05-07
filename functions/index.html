@@ -744,10 +744,10 @@ align(
 <p>Tools for querying ranges.</p>
 <ul>
 <li>
-<p><code>rangequery(keyvalues, query, func=min)</code> finds the best value from the covered values in <code>keyvalues</code>, if each key in <code>keyvalues</code> is within the query range <code>query</code>.</p>
+<p><code>rangequery(keyvalues, query, func=min)</code> efficiently finds the best value from the covered values in <code>keyvalues</code>, if each key in <code>keyvalues</code> is within the query range <code>query</code>.</p>
 <ul>
 <li>
-<p>Implemented by <a href="https://github.com/chuanconggao/RangeMinQuery">RangeMinQuery</a> to solve the <a href="https://en.wikipedia.org/wiki/Range_minimum_query">range minimum query</a> problem.</p>
+<p>Implemented by <a href="../datastructures/#segmenttree">SegmentTree</a> to solve the <a href="https://en.wikipedia.org/wiki/Range_minimum_query">range minimum query</a> problem.</p>
 </li>
 <li>
 <p><code>func</code> defines how the best value is computed, and defaults to <code>min</code> for minimum value.</p>
