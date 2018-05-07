@@ -1,0 +1,642 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Functions &#8212; Python  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="functions">
+<span id="functions"></span><h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<p><a name="seqtools"></a></p>
+<div class="section" id="seqtools">
+<span id="seqtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py"><code class="docutils literal notranslate"><span class="pre">seqtools</span></code></a><a class="headerlink" href="#seqtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">findsubseq(a,</span> <span class="pre">b)</span></code> returns the first position where <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sub-sequence of <code class="docutils literal notranslate"><span class="pre">b</span></code>, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when not found.</li>
+<li><code class="docutils literal notranslate"><span class="pre">issubseq(a,</span> <span class="pre">b)</span></code> checks if <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sub-sequence of <code class="docutils literal notranslate"><span class="pre">b</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">findsubseqwithgap(a,</span> <span class="pre">b)</span></code> returns the matching positions where <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sub-sequence of <code class="docutils literal notranslate"><span class="pre">b</span></code>, where gaps are allowed, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when not found.</li>
+<li><code class="docutils literal notranslate"><span class="pre">issubseqwithgap(a,</span> <span class="pre">b)</span></code> checks if <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sub-sequence of <code class="docutils literal notranslate"><span class="pre">b</span></code>, where gaps are allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">nextentries</span></code> is alias of a tool in <code class="docutils literal notranslate"><span class="pre">dicttools</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">align(a,</span> <span class="pre">b,</span> <span class="pre">cost=None,</span> <span class="pre">bound=inf,</span> <span class="pre">default=None)</span></code> <a class="reference external" href="https://en.wikipedia.org/wiki/Sequence_alignment">aligns</a> two sequences <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, such that the total cost of the aligned sequences given the pair-wise cost function <code class="docutils literal notranslate"><span class="pre">cost(x,</span> <span class="pre">y)</span></code> is minimized.<ul>
+<li>Assume the aligned sequences are <code class="docutils literal notranslate"><span class="pre">a'</span></code> and <code class="docutils literal notranslate"><span class="pre">b'</span></code>. The total cost is <code class="docutils literal notranslate"><span class="pre">sum(cost(x,</span> <span class="pre">y)</span> <span class="pre">for</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">in</span> <span class="pre">zip(a',</span> <span class="pre">b'))</span></code>.</li>
+<li>Both the minimum total cost and the respective aligned sequences are returned as a tuple.</li>
+<li>In default, the cost function <code class="docutils literal notranslate"><span class="pre">cost(x,</span> <span class="pre">y)</span></code> returns <code class="docutils literal notranslate"><span class="pre">1</span></code> when <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> when not. This is equal to the <a class="reference external" href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a>.</li>
+<li>To speedup the computation, a threshold of maximum cost <code class="docutils literal notranslate"><span class="pre">bound=inf</span></code> can be specified. When there is no satisfying result, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">align</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># (2, ([0, None, 1, 1, 0,    1],</span>
+<span class="c1">#      [0, 0,    1, 1, None, 1]))</span>
+
+<span class="n">align</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">bound</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="c1"># None</span>
+</pre></div>
+</div>
+<p>Tools for comparing sequences (including strings).</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">productcmp(x,</span> <span class="pre">y)</span></code> compares two sequences <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> with equal length according to <a class="reference external" href="https://en.wikipedia.org/wiki/Product_order">product order</a>. Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if smaller, <code class="docutils literal notranslate"><span class="pre">0</span></code> if equal, <code class="docutils literal notranslate"><span class="pre">1</span></code> if greater, and <code class="docutils literal notranslate"><span class="pre">None</span></code> if not comparable.<ul>
+<li>Throw exception if <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> have different lengths.</li>
+</ul>
+</li>
+</ul>
+<p>Tools for sorting sequences.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sortedbyrank(data,</span> <span class="pre">ranks,</span> <span class="pre">reverse=False)</span></code> returns the sorted list of <code class="docutils literal notranslate"><span class="pre">data</span></code>, according to the respective rank of each individual element in <code class="docutils literal notranslate"><span class="pre">ranks</span></code>.</li>
+</ul>
+<p>Tools for encoding/decoding sequences.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">compress(data,</span> <span class="pre">key=None)</span></code> compresses the sequence by encoding continuous identical <code class="docutils literal notranslate"><span class="pre">Item</span></code> to <code class="docutils literal notranslate"><span class="pre">(Item,</span> <span class="pre">Count)</span></code>, according to <a class="reference external" href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.<ul>
+<li>Different from <a class="reference external" href="https://docs.python.org/3.6/library/itertools.html#itertools.compress"><code class="docutils literal notranslate"><span class="pre">itertools.compress</span></code></a>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">compress</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="c1"># [(1, 1), (2, 2), (3, 3), (4, 4)]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">decompress(data)</span></code> decompresses the sequence by decoding <code class="docutils literal notranslate"><span class="pre">(Item,</span> <span class="pre">Count)</span></code> to continuous identical <code class="docutils literal notranslate"><span class="pre">Item</span></code>, according to <a class="reference external" href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">todeltas(data,</span> <span class="pre">op=operator.sub)</span></code> compresses the sequence by encoding the difference between previous and current items, according to <a class="reference external" href="https://en.wikipedia.org/wiki/Delta_encoding">delta encoding</a>.<ul>
+<li>For custom type of item, either define the <code class="docutils literal notranslate"><span class="pre">-</span></code> operator or specify the <code class="docutils literal notranslate"><span class="pre">op</span></code> function computing the difference.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">todeltas</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="c1"># [1, 1, 0, 1, 0, 0, 1, 0, 0, 0]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">fromdeltas(data,</span> <span class="pre">op=operator.add)</span></code> decompresses the sequence by decoding the difference between previous and current items, according to <a class="reference external" href="https://en.wikipedia.org/wiki/Delta_encoding">delta encoding</a>.<ul>
+<li>For custom type of item, either define the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator or specify the <code class="docutils literal notranslate"><span class="pre">op</span></code> function merging the difference.</li>
+</ul>
+</li>
+</ul>
+<p>Tools for joining sequences.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">join(leftseq,</span> <span class="pre">rightseq,</span> <span class="pre">leftkey=None,</span> <span class="pre">rightkey=None,</span> <span class="pre">leftdefault=no_default,</span> <span class="pre">rightdefault=no_default)</span></code> joins two sequences, optionally according to <code class="docutils literal notranslate"><span class="pre">leftkey</span></code> and <code class="docutils literal notranslate"><span class="pre">rightkey</span></code>, respectively. Outer join is also supported.<ul>
+<li>If both two sequences are sorted according to <code class="docutils literal notranslate"><span class="pre">leftkey</span></code> and <code class="docutils literal notranslate"><span class="pre">rightkey</span></code>, respectively, then optimized <code class="docutils literal notranslate"><span class="pre">sortedtools.join</span></code> with the same API should be used for better efficiency.</li>
+<li>Unlike <code class="docutils literal notranslate"><span class="pre">sortedtools.join</span></code>, <code class="docutils literal notranslate"><span class="pre">join</span></code> is just a wrapper of <code class="docutils literal notranslate"><span class="pre">toolz.itertools.join</span></code> with a slightly more friendly API.</li>
+</ul>
+</li>
+</ul>
+<p><a name="sortedtools"></a></p>
+</div>
+<div class="section" id="sortedtools">
+<span id="sortedtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py"><code class="docutils literal notranslate"><span class="pre">sortedtools</span></code></a><a class="headerlink" href="#sortedtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for joining sorted sequences.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sortedjoin(leftseq,</span> <span class="pre">rightseq,</span> <span class="pre">leftkey=None,</span> <span class="pre">rightkey=None,</span> <span class="pre">leftdefault=no_default,</span> <span class="pre">rightdefault=no_default)</span></code> joins two sequences, optionally according to <code class="docutils literal notranslate"><span class="pre">leftkey</span></code> and <code class="docutils literal notranslate"><span class="pre">rightkey</span></code>, respectively. Outer join is also supported.<ul>
+<li>Two sequences must be already sorted according to <code class="docutils literal notranslate"><span class="pre">leftkey</span></code> and <code class="docutils literal notranslate"><span class="pre">rightkey</span></code>, respectively.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sortedjoin</span></code> is completely lazy, and more efficient than <code class="docutils literal notranslate"><span class="pre">seqtools.join</span></code> and its underneath <code class="docutils literal notranslate"><span class="pre">toolz.itertools.join</span></code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedjoin</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">leftkey</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">leftdefault</span><span class="o">=</span><span class="bp">None</span><span class="p">))</span>
+<span class="c1"># [(None, 0),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-2, 2),</span>
+<span class="c1">#  (None, 3),</span>
+<span class="c1">#  (-4, 4),</span>
+<span class="c1">#  (-5, 5),</span>
+<span class="c1">#  (-5, 5)]</span>
+</pre></div>
+</div>
+<p>Tools for matching sorted sequences.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sortedcommon(a,</span> <span class="pre">b,</span> <span class="pre">key=None)</span></code> returns the common elements between <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.<ul>
+<li>When both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are sorted sets with no duplicate element, equal to <code class="docutils literal notranslate"><span class="pre">sorted(set(a)</span> <span class="pre">&amp;</span> <span class="pre">set(b))</span></code> but more efficient.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">sortedalone(a,</span> <span class="pre">b,</span> <span class="pre">key=None)</span></code> returns the elements not in both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.<ul>
+<li>When both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are sorted sets with no duplicate element, equal to <code class="docutils literal notranslate"><span class="pre">sorted((set(a)</span> <span class="pre">|</span> <span class="pre">set(b))</span> <span class="pre">-</span> <span class="pre">(set(a)</span> <span class="pre">&amp;</span> <span class="pre">set(b)))</span></code> but more efficient.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">sorteddiff(a,</span> <span class="pre">b,</span> <span class="pre">key=None)</span></code> returns the elements only in <code class="docutils literal notranslate"><span class="pre">a</span></code> and not in <code class="docutils literal notranslate"><span class="pre">b</span></code>.<ul>
+<li>When both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are sorted sets with no duplicate element, equal to <code class="docutils literal notranslate"><span class="pre">sorted(set(a)</span> <span class="pre">-</span> <span class="pre">set(b))</span></code> but more efficient.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">issubsorted(a,</span> <span class="pre">b,</span> <span class="pre">key=None)</span></code> checks if <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sorted sub-sequence of <code class="docutils literal notranslate"><span class="pre">b</span></code>.<ul>
+<li>When both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are sorted sets with no duplicate element, equal to <code class="docutils literal notranslate"><span class="pre">set(a)</span> <span class="pre">&lt;=</span> <span class="pre">set(b)</span></code> but more efficient.</li>
+</ul>
+</li>
+</ul>
+<p><a name="strtools"></a></p>
+</div>
+<div class="section" id="strtools">
+<span id="strtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py"><code class="docutils literal notranslate"><span class="pre">strtools</span></code></a><a class="headerlink" href="#strtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for string transformations.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">str2grams(s,</span> <span class="pre">n,</span> <span class="pre">pad=None)</span></code> returns the ordered <a class="reference external" href="https://en.wikipedia.org/wiki/N-gram"><code class="docutils literal notranslate"><span class="pre">n</span></code>-grams</a> of string <code class="docutils literal notranslate"><span class="pre">s</span></code>.<ul>
+<li>Optional padding at the start and end can be added by specifying <code class="docutils literal notranslate"><span class="pre">pad</span></code>. <code class="docutils literal notranslate"><span class="pre">\0</span></code> is usually a safe choice for <code class="docutils literal notranslate"><span class="pre">pad</span></code> when not displaying.</li>
+</ul>
+</li>
+</ul>
+<p>Tools for checksums.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sha1sum(f)</span></code>, <code class="docutils literal notranslate"><span class="pre">sha256sum(f)</span></code>, <code class="docutils literal notranslate"><span class="pre">sha512sum(f)</span></code>, <code class="docutils literal notranslate"><span class="pre">md5sum(f)</span></code> compute the respective checksum, accepting string, bytes, text file object, and binary file object.</li>
+</ul>
+<p>Tools for string matching.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">tagstats(tags,</span> <span class="pre">lines,</span> <span class="pre">separator=None)</span></code> efficiently computes the number of lines containing each tag.<ul>
+<li><a class="reference external" href="https://github.com/chuanconggao/TagStats">TagStats</a> is used to compute efficiently, where the common prefixes among tags are matched only once.</li>
+<li><code class="docutils literal notranslate"><span class="pre">separator</span></code> is a regex to tokenize each string. In default when <code class="docutils literal notranslate"><span class="pre">separator</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, each string is not tokenized.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tagstats</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;a b&quot;</span><span class="p">,</span> <span class="s2">&quot;a c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;a b c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c d&quot;</span><span class="p">,</span> <span class="s2">&quot;c d e&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># {&#39;a b&#39;: 1, &#39;a c&#39;: 0, &#39;b c&#39;: 2}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">editdist(a,</span> <span class="pre">b,</span> <span class="pre">bound=inf)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between two strings <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.<ul>
+<li>To speedup the computation, a threshold of maximum cost <code class="docutils literal notranslate"><span class="pre">bound=inf</span></code> can be specified. When there is no satisfying result, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">editdist</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;frog&quot;</span><span class="p">)</span>
+<span class="c1"># 2</span>
+</pre></div>
+</div>
+<p><a name="rangetools"></a></p>
+</div>
+<div class="section" id="rangetools">
+<span id="rangetools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py"><code class="docutils literal notranslate"><span class="pre">rangetools</span></code></a><a class="headerlink" href="#rangetools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">histogram(thresholds,</span> <span class="pre">data,</span> <span class="pre">leftmost=-inf)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Histogram">histogram</a> over all the floats in <code class="docutils literal notranslate"><span class="pre">data</span></code>.<ul>
+<li>The search space is divided by the thresholds of bins specified in <code class="docutils literal notranslate"><span class="pre">thresholds</span></code>.</li>
+<li>Each bin of the histogram is labelled by its lower threshold.<ul>
+<li>All values in the bin are no less than the current threshold and less than the next threshold.</li>
+<li>The first bin is labelled by <code class="docutils literal notranslate"><span class="pre">leftmost</span></code>, which is <code class="docutils literal notranslate"><span class="pre">-inf</span></code> in default.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">histogram</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}</span>
+</pre></div>
+</div>
+<p>Tools for querying ranges.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">rangequery(keyvalues,</span> <span class="pre">query,</span> <span class="pre">func=min)</span></code> finds the best value from the covered values in <code class="docutils literal notranslate"><span class="pre">keyvalues</span></code>, if each key in <code class="docutils literal notranslate"><span class="pre">keyvalues</span></code> is within the query range <code class="docutils literal notranslate"><span class="pre">query</span></code>.<ul>
+<li>Implemented by <a class="reference external" href="https://github.com/chuanconggao/RangeMinQuery">RangeMinQuery</a> to solve the <a class="reference external" href="https://en.wikipedia.org/wiki/Range_minimum_query">range minimum query</a> problem.</li>
+<li><code class="docutils literal notranslate"><span class="pre">func</span></code> defines how the best value is computed, and defaults to <code class="docutils literal notranslate"><span class="pre">min</span></code> for minimum value.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rangequery</span><span class="p">(</span>
+    <span class="p">{</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># 0</span>
+</pre></div>
+</div>
+<p>Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">covers(covered)</span></code> merges the covered ranges <code class="docutils literal notranslate"><span class="pre">covered</span></code> to resolve any overlap.<ul>
+<li>Covered ranges in <code class="docutils literal notranslate"><span class="pre">covered</span></code> are sorted by the left side of each range.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">covers</span><span class="p">([(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)]))</span>
+<span class="c1"># [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">gaps(covered,</span> <span class="pre">whole=(-inf,</span> <span class="pre">inf))</span></code> computes the uncovered ranges of the whole range <code class="docutils literal notranslate"><span class="pre">whole</span></code>, given the covered ranges <code class="docutils literal notranslate"><span class="pre">covered</span></code>.<ul>
+<li>Covered ranges in <code class="docutils literal notranslate"><span class="pre">covered</span></code> are sorted by the left side of each range.</li>
+<li>Overlaps among covered ranges <code class="docutils literal notranslate"><span class="pre">covered</span></code> are resolved, like <code class="docutils literal notranslate"><span class="pre">covers(covered)</span></code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">gaps</span><span class="p">(</span>
+    <span class="p">[(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)],</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">))</span>
+<span class="c1"># [(0, 0.1), (0.2, 0.5), (0.9, 1)]</span>
+</pre></div>
+</div>
+<p><a name="dicttools"></a></p>
+</div>
+<div class="section" id="dicttools">
+<span id="dicttools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py"><code class="docutils literal notranslate"><span class="pre">dicttools</span></code></a><a class="headerlink" href="#dicttools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for inverting dictionaries.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">invert(d)</span></code> inverts <code class="docutils literal notranslate"><span class="pre">(Key,</span> <span class="pre">Value)</span></code> pairs to <code class="docutils literal notranslate"><span class="pre">(Value,</span> <span class="pre">Key)</span></code>.<ul>
+<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">invert_multiple(d)</span></code> inverts <code class="docutils literal notranslate"><span class="pre">(Key,</span> <span class="pre">List[Value])</span></code> pairs to <code class="docutils literal notranslate"><span class="pre">(Value,</span> <span class="pre">Key)</span></code>.<ul>
+<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">invert_safe(d)</span></code> inverts <code class="docutils literal notranslate"><span class="pre">(Key,</span> <span class="pre">Value)</span></code> pairs to <code class="docutils literal notranslate"><span class="pre">(Value,</span> <span class="pre">List[Key])</span></code>.<ul>
+<li>If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.</li>
+</ul>
+</li>
+</ul>
+<p>Tools for remapping elements.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">remap(data,</span> <span class="pre">mapping,</span> <span class="pre">key=None)</span></code> remaps each unique element in <code class="docutils literal notranslate"><span class="pre">data</span></code> according to function <code class="docutils literal notranslate"><span class="pre">key</span></code>.<ul>
+<li><code class="docutils literal notranslate"><span class="pre">mapping</span></code> is a dictionary recording all the mappings, optionally containing previous mappings to reuse.</li>
+<li>In default, <code class="docutils literal notranslate"><span class="pre">key</span></code> returns integers starting from <code class="docutils literal notranslate"><span class="pre">0</span></code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wordmap</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">db</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">remap</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">wordmap</span><span class="p">))</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Tools for indexing.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">invertedindex(seqs)</span></code> creates an <a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_index">inverted index</a>.<ul>
+<li>Each item’s index is a list of <code class="docutils literal notranslate"><span class="pre">(ID,</span> <span class="pre">position)</span></code> pairs for all the sequences in <code class="docutils literal notranslate"><span class="pre">seqs</span></code> containing the item.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s2">&quot;a b c d e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;b b b d e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;c b c c a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;b b b c c&quot;</span>
+<span class="p">]]</span>
+
+<span class="n">invertedindex</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># {&#39;a&#39;: [(0, 0), (2, 4)],</span>
+<span class="c1">#  &#39;b&#39;: [(0, 1), (1, 0), (2, 1), (3, 0)],</span>
+<span class="c1">#  &#39;c&#39;: [(0, 2), (2, 0), (3, 3)],</span>
+<span class="c1">#  &#39;d&#39;: [(0, 3), (1, 3)],</span>
+<span class="c1">#  &#39;e&#39;: [(0, 4), (1, 4)]}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">nextentries(data,</span> <span class="pre">entries)</span></code> scans the sequences in <code class="docutils literal notranslate"><span class="pre">data</span></code> from left to right after current entries <code class="docutils literal notranslate"><span class="pre">entries</span></code>, and returns each item and its respective following entries.<ul>
+<li>Each entry is a pair of <code class="docutils literal notranslate"><span class="pre">(ID,</span> <span class="pre">Position)</span></code> denoting the sequence ID and its respective matching position.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># same data from previous example</span>
+
+<span class="c1"># the first positions of `c` among sequences.</span>
+<span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+
+<span class="n">nextentries</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">entries</span><span class="p">)</span>
+<span class="c1"># {&#39;d&#39;: [(0, 3)],</span>
+<span class="c1">#  &#39;e&#39;: [(0, 4)],</span>
+<span class="c1">#  &#39;b&#39;: [(2, 1)],</span>
+<span class="c1">#  &#39;c&#39;: [(2, 2), (3, 4)],</span>
+<span class="c1">#  &#39;a&#39;: [(2, 4)]}</span>
+</pre></div>
+</div>
+<p>Tools for flatten/unflatten a dictionary.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">flatten(d,</span> <span class="pre">force=False)</span></code> flattens a dictionary by returning <code class="docutils literal notranslate"><span class="pre">(Path,</span> <span class="pre">Value</span></code>) tuples with each path <code class="docutils literal notranslate"><span class="pre">Path</span></code> from root to each value <code class="docutils literal notranslate"><span class="pre">Value</span></code>.<ul>
+<li>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</li>
+<li>In default, only an array with nested dictionary is flatten. Instead, parameter <code class="docutils literal notranslate"><span class="pre">force</span></code> can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flatten</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="s2">  &quot;name&quot;: &quot;John&quot;,</span>
+<span class="s2">  &quot;address&quot;: {</span>
+<span class="s2">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
+<span class="s2">    &quot;city&quot;: &quot;New York&quot;,</span>
+<span class="s2">  },</span>
+<span class="s2">  &quot;phoneNumbers&quot;: [</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;type&quot;: &quot;home&quot;,</span>
+<span class="s2">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
+<span class="s2">    },</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;type&quot;: &quot;office&quot;,</span>
+<span class="s2">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
+<span class="s2">    }</span>
+<span class="s2">  ],</span>
+<span class="s2">  &quot;children&quot;: [],</span>
+<span class="s2">  &quot;spouse&quot;: null</span>
+<span class="s2">}&quot;&quot;&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;name&#39;: &#39;John&#39;,</span>
+<span class="c1">#  (&#39;address&#39;, &#39;streetAddress&#39;): &#39;21 2nd Street&#39;,</span>
+<span class="c1">#  (&#39;address&#39;, &#39;city&#39;): &#39;New York&#39;,</span>
+<span class="c1">#  ((&#39;phoneNumbers&#39;, 0), &#39;type&#39;): &#39;home&#39;,</span>
+<span class="c1">#  ((&#39;phoneNumbers&#39;, 0), &#39;number&#39;): &#39;212 555-1234&#39;,</span>
+<span class="c1">#  ((&#39;phoneNumbers&#39;, 1), &#39;type&#39;): &#39;office&#39;,</span>
+<span class="c1">#  ((&#39;phoneNumbers&#39;, 1), &#39;number&#39;): &#39;646 555-4567&#39;,</span>
+<span class="c1">#  &#39;children&#39;: [],</span>
+<span class="c1">#  &#39;spouse&#39;: None}</span>
+</pre></div>
+</div>
+<p><a name="jsontools"></a></p>
+</div>
+<div class="section" id="jsontools">
+<span id="jsontools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py"><code class="docutils literal notranslate"><span class="pre">jsontools</span></code></a><a class="headerlink" href="#jsontools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for flatten/unflatten a JSON object.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">flatten(data,</span> <span class="pre">force=False)</span></code> flattens a JSON object by returning <code class="docutils literal notranslate"><span class="pre">(Path,</span> <span class="pre">Value</span></code>) tuples with each path <code class="docutils literal notranslate"><span class="pre">Path</span></code> from root to each value <code class="docutils literal notranslate"><span class="pre">Value</span></code>.<ul>
+<li>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</li>
+<li>In default, only an array with nested dictionary is flatten. Instead, parameter <code class="docutils literal notranslate"><span class="pre">force</span></code> can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flatten</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="s2">  &quot;name&quot;: &quot;John&quot;,</span>
+<span class="s2">  &quot;address&quot;: {</span>
+<span class="s2">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
+<span class="s2">    &quot;city&quot;: &quot;New York&quot;,</span>
+<span class="s2">  },</span>
+<span class="s2">  &quot;phoneNumbers&quot;: [</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;type&quot;: &quot;home&quot;,</span>
+<span class="s2">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
+<span class="s2">    },</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;type&quot;: &quot;office&quot;,</span>
+<span class="s2">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
+<span class="s2">    }</span>
+<span class="s2">  ],</span>
+<span class="s2">  &quot;children&quot;: [],</span>
+<span class="s2">  &quot;spouse&quot;: null</span>
+<span class="s2">}&quot;&quot;&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;name&#39;: &#39;John&#39;,</span>
+<span class="c1">#  &#39;address.streetAddress&#39;: &#39;21 2nd Street&#39;,</span>
+<span class="c1">#  &#39;address.city&#39;: &#39;New York&#39;,</span>
+<span class="c1">#  &#39;phoneNumbers[0].type&#39;: &#39;home&#39;,</span>
+<span class="c1">#  &#39;phoneNumbers[0].number&#39;: &#39;212 555-1234&#39;,</span>
+<span class="c1">#  &#39;phoneNumbers[1].type&#39;: &#39;office&#39;,</span>
+<span class="c1">#  &#39;phoneNumbers[1].number&#39;: &#39;646 555-4567&#39;,</span>
+<span class="c1">#  &#39;children&#39;: [],</span>
+<span class="c1">#  &#39;spouse&#39;: None}</span>
+</pre></div>
+</div>
+<p><a name="settools"></a></p>
+</div>
+<div class="section" id="settools">
+<span id="settools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py"><code class="docutils literal notranslate"><span class="pre">settools</span></code></a><a class="headerlink" href="#settools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for set operations.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">addtoset(s,</span> <span class="pre">x)</span></code> checks whether adding <code class="docutils literal notranslate"><span class="pre">x</span></code> to set <code class="docutils literal notranslate"><span class="pre">s</span></code> is successful.</li>
+</ul>
+<p>Tools for set similarities.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jaccard(a,</span> <span class="pre">b)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two sets <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">multisetjaccard(a,</span> <span class="pre">b)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two multi-sets (Counters) <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">weightedjaccard(a,</span> <span class="pre">b,</span> <span class="pre">key=sum)</span></code> computes the weighted <a class="reference external" href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two sets <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, using function <code class="docutils literal notranslate"><span class="pre">key</span></code> to compute the total weight of the elements within a set.</li>
+</ul>
+<p><a name="tabletools"></a></p>
+</div>
+<div class="section" id="tabletools">
+<span id="tabletools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py"><code class="docutils literal notranslate"><span class="pre">tabletools</span></code></a><a class="headerlink" href="#tabletools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for tables.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">transpose(data)</span></code> returns the transpose of table <code class="docutils literal notranslate"><span class="pre">data</span></code>, i.e., switch rows and columns.<ul>
+<li>Useful to switch table <code class="docutils literal notranslate"><span class="pre">data</span></code> from row-based to column-based and backwards.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">transpose</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">]))</span>
+<span class="c1"># [[1, 4, 7],</span>
+<span class="c1">#  [2, 5, 8],</span>
+<span class="c1">#  [3, 6, 9]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">loadcsv(path,</span> <span class="pre">delimiter=',')</span></code> loads a CSV file, from either a file path or a file object.</li>
+<li><code class="docutils literal notranslate"><span class="pre">dumpcsv(path,</span> <span class="pre">data,</span> <span class="pre">delimiter=',')</span></code> dumps a table <code class="docutils literal notranslate"><span class="pre">data</span></code> in CSV, to either a file path or a file object.</li>
+</ul>
+<p><a name="mathtools"></a></p>
+</div>
+<div class="section" id="mathtools">
+<span id="mathtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py"><code class="docutils literal notranslate"><span class="pre">mathtools</span></code></a><a class="headerlink" href="#mathtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for math.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">safediv(a,</span> <span class="pre">b)</span></code> avoids the <code class="docutils literal notranslate"><span class="pre">division</span> <span class="pre">by</span> <span class="pre">zero</span></code> exception, by returning infinite with proper sign.<ul>
+<li>Closely referring <a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE Standard 754</a>.</li>
+</ul>
+</li>
+</ul>
+<p><a name="stattools"></a></p>
+</div>
+<div class="section" id="stattools">
+<span id="stattools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py"><code class="docutils literal notranslate"><span class="pre">stattools</span></code></a><a class="headerlink" href="#stattools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for statistics.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">medianabsdev(data)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a> of a list of floats.</li>
+<li><code class="docutils literal notranslate"><span class="pre">entropy(data)</span></code> computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> of a list of any items.<ul>
+<li>You can also pass a dictionary of <code class="docutils literal notranslate"><span class="pre">(item,</span> <span class="pre">frequency)</span></code> as frequency distribution to <code class="docutils literal notranslate"><span class="pre">data</span></code>.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">histogram</span></code> is alias of a tool in <code class="docutils literal notranslate"><span class="pre">rangetools</span></code>.</li>
+</ul>
+<p>Tools for binary classification.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">teststats(truths,</span> <span class="pre">predictions)</span></code> matches the truth labels and the prediction labels. Return a tuples of <code class="docutils literal notranslate"><span class="pre">(tp,</span> <span class="pre">fp,</span> <span class="pre">tn,</span> <span class="pre">fn)</span></code> as <a class="reference external" href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">true positive, false positive, true negative, and false negative</a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">accuracy(tp,</span> <span class="pre">fp,</span> <span class="pre">tn,</span> <span class="pre">fn)</span></code> returns the <a class="reference external" href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">accuracy</a>.<ul>
+<li>Note that you can simply call <code class="docutils literal notranslate"><span class="pre">accuracy(*teststats(truths,</span> <span class="pre">predictions))</span></code>.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">precision(tp,</span> <span class="pre">fp,</span> <span class="pre">tn,</span> <span class="pre">fn)</span></code> and <code class="docutils literal notranslate"><span class="pre">recall(tp,</span> <span class="pre">fp,</span> <span class="pre">tn,</span> <span class="pre">fn)</span></code> return the <a class="reference external" href="https://en.wikipedia.org/wiki/Precision_and_recall">precision and recall</a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">f1(tp,</span> <span class="pre">fp,</span> <span class="pre">tn,</span> <span class="pre">fn,</span> <span class="pre">beta=1)</span></code> returns the <a class="reference external" href="https://en.wikipedia.org/wiki/F1_score">F-1 measure</a> in default, and returns the F-β measure when <code class="docutils literal notranslate"><span class="pre">beta</span></code> is specified.</li>
+</ul>
+<p><a name="misctools"></a></p>
+</div>
+<div class="section" id="misctools">
+<span id="misctools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py"><code class="docutils literal notranslate"><span class="pre">misctools</span></code></a><a class="headerlink" href="#misctools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for miscellaneous purposes.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">cmp(a,</span> <span class="pre">b)</span></code> restores the useful <code class="docutils literal notranslate"><span class="pre">cmp</span></code> function previously in Python 2.<ul>
+<li>Implemented according to <a class="reference external" href="https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons">What’s New in Python 3.0</a>.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">parsebool(s)</span></code> parses a string to boolean, if its lowercase equals to either <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">true</span></code>, or <code class="docutils literal notranslate"><span class="pre">yes</span></code>.</li>
+</ul>
+<p><a name="printtools"></a></p>
+</div>
+<div class="section" id="printtools">
+<span id="printtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py"><code class="docutils literal notranslate"><span class="pre">printtools</span></code></a><a class="headerlink" href="#printtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for non-functional but useful printing purposes.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">print2(*args,</span> <span class="pre">**kwargs)</span></code> redirects the output of <code class="docutils literal notranslate"><span class="pre">print</span></code> to standard error.<ul>
+<li>The same parameters are accepted.</li>
+</ul>
+</li>
+</ul>
+<p><a name="debugtools"></a></p>
+</div>
+<div class="section" id="debugtools">
+<span id="debugtools"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py"><code class="docutils literal notranslate"><span class="pre">debugtools</span></code></a><a class="headerlink" href="#debugtools" title="Permalink to this headline">¶</a></h2>
+<p>Tools for non-functional but useful debugging purposes.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">stopwatch()</span></code> returns both the duration since program start and the duration since last call in seconds.<ul>
+<li>Technically, the stopwatch starts when <code class="docutils literal notranslate"><span class="pre">debugtools</span></code> is imported.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">peakmem()</span></code> returns the peak memory usage since program start.<ul>
+<li>In bytes on macOS, and in kilobytes on Linux.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="data-structures">
+<span id="data-structures"></span><h1>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
+<p><a name="disjointsets"></a></p>
+<div class="section" id="disjointsets">
+<span id="disjointsets"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py"><code class="docutils literal notranslate"><span class="pre">disjointsets</span></code></a><a class="headerlink" href="#disjointsets" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Disjoint_sets">Disjoint sets</a> with path compression, based a lot on this <a class="reference external" href="https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py">implementation</a>. After <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">DisjointSets()</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">d.add(x)</span></code> adds a new disjoint set containing <code class="docutils literal notranslate"><span class="pre">x</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">d[x]</span></code> returns the representing element of the disjoint set containing <code class="docutils literal notranslate"><span class="pre">x</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">d.disjoints()</span></code> returns all the representing elements and their respective disjoint sets.</li>
+<li><code class="docutils literal notranslate"><span class="pre">d.union(*xs)</span></code> union all the elements in <code class="docutils literal notranslate"><span class="pre">xs</span></code> into a single disjoint set.</li>
+</ul>
+<p><a name="defaultlist"></a></p>
+</div>
+<div class="section" id="defaultlist">
+<span id="defaultlist"></span><h2><a class="reference external" href="https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py"><code class="docutils literal notranslate"><span class="pre">defaultlist</span></code></a><a class="headerlink" href="#defaultlist" title="Permalink to this headline">¶</a></h2>
+<p>A sub-class of <code class="docutils literal notranslate"><span class="pre">list</span></code> that automatically grows when setting an index beyond the list size.</p>
+<ul class="simple">
+<li>When creating a list, use <code class="docutils literal notranslate"><span class="pre">DefaultList(default,</span> <span class="pre">...)</span></code> to specify a function that returns default value when visiting an unassigned index.</li>
+<li>This library is designed to be highly similar to <code class="docutils literal notranslate"><span class="pre">collections.defaultdict</span></code> in standard library.</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">DefaultList</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">l</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span>
+
+<span class="n">l</span>
+<span class="c1"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, None, 11]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cli-tools">
+<span id="cli-tools"></span><h1>CLI Tools<a class="headerlink" href="#cli-tools" title="Permalink to this headline">¶</a></h1>
+<p>Please check the <code class="docutils literal notranslate"><span class="pre">bin</span></code> <a class="reference external" href="https://github.com/chuanconggao/extratools/tree/master/bin">folder</a> for more details.</p>
+<p><a class="reference external" href="#dicttools"><code class="docutils literal notranslate"><span class="pre">dicttools.remap</span></code></a></p>
+<p><a class="reference external" href="#jsontools"><code class="docutils literal notranslate"><span class="pre">jsontools.flatten</span></code></a></p>
+<p><a class="reference external" href="#stattools"><code class="docutils literal notranslate"><span class="pre">stattools.teststats</span></code></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Functions</a><ul>
+<li><a class="reference internal" href="#seqtools"><code class="docutils literal notranslate"><span class="pre">seqtools</span></code></a></li>
+<li><a class="reference internal" href="#sortedtools"><code class="docutils literal notranslate"><span class="pre">sortedtools</span></code></a></li>
+<li><a class="reference internal" href="#strtools"><code class="docutils literal notranslate"><span class="pre">strtools</span></code></a></li>
+<li><a class="reference internal" href="#rangetools"><code class="docutils literal notranslate"><span class="pre">rangetools</span></code></a></li>
+<li><a class="reference internal" href="#dicttools"><code class="docutils literal notranslate"><span class="pre">dicttools</span></code></a></li>
+<li><a class="reference internal" href="#jsontools"><code class="docutils literal notranslate"><span class="pre">jsontools</span></code></a></li>
+<li><a class="reference internal" href="#settools"><code class="docutils literal notranslate"><span class="pre">settools</span></code></a></li>
+<li><a class="reference internal" href="#tabletools"><code class="docutils literal notranslate"><span class="pre">tabletools</span></code></a></li>
+<li><a class="reference internal" href="#mathtools"><code class="docutils literal notranslate"><span class="pre">mathtools</span></code></a></li>
+<li><a class="reference internal" href="#stattools"><code class="docutils literal notranslate"><span class="pre">stattools</span></code></a></li>
+<li><a class="reference internal" href="#misctools"><code class="docutils literal notranslate"><span class="pre">misctools</span></code></a></li>
+<li><a class="reference internal" href="#printtools"><code class="docutils literal notranslate"><span class="pre">printtools</span></code></a></li>
+<li><a class="reference internal" href="#debugtools"><code class="docutils literal notranslate"><span class="pre">debugtools</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-structures">Data Structures</a><ul>
+<li><a class="reference internal" href="#disjointsets"><code class="docutils literal notranslate"><span class="pre">disjointsets</span></code></a></li>
+<li><a class="reference internal" href="#defaultlist"><code class="docutils literal notranslate"><span class="pre">defaultlist</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cli-tools">CLI Tools</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
