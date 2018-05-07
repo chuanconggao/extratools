@@ -1,7 +1,7 @@
 # Data Structures
 
 <a name="disjointsets"></a>
-## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
+## [`disjointsets.DisjointSets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
 
@@ -14,7 +14,7 @@
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
 
 <a name="defaultlist"></a>
-## [`defaultlist`](https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py)
+## [`defaultlist.defaultlist`](https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py)
 
 A sub-class of `list` that automatically grows when setting an index beyond the list size.
 
@@ -32,7 +32,7 @@ l
 ```
 
 <a name="segmenttree"></a>
-## [`segmenttree`](https://github.com/chuanconggao/extratools/blob/master/extratools/segmenttree.py)
+## [`segmenttree.SegmentTree`](https://github.com/chuanconggao/extratools/blob/master/extratools/segmenttree.py)
 
 This data structure solves the [range minimum query problem](https://en.wikipedia.org/wiki/Range_minimum_query) of finding the minimal value in a sub-array of an array of comparable objects. Different from the original problem, this data structure also supports updating the values.
 
