@@ -132,12 +132,12 @@
         },
         {
             "location": "/cli/",
-            "text": "CLI Tools\n\n\nPlease check the \nbin\n \nfolder\n for more details.\n\n\ndicttools.remap\n\n\njsontools.flatten\n\n\nstattools.teststats",
+            "text": "CLI Tools\n\n\nPlease check each individual script for more details.\n\n\ndicttools.remap\n\n\nUsage:\n    extratools-remap <mapping>\n\n\n\n\nCode\n\n\njsontools.flatten\n\n\nUsage:\n    extratools-flatten [--force]\n\n\n\n\nCode\n\n\nstattools.teststats\n\n\nUsage:\n    extratools-teststats <truth> <prediction>\n\n\n\n\nCode",
             "title": "CLI Tools"
         },
         {
             "location": "/cli/#cli-tools",
-            "text": "Please check the  bin   folder  for more details.  dicttools.remap  jsontools.flatten  stattools.teststats",
+            "text": "Please check each individual script for more details.  dicttools.remap  Usage:\n    extratools-remap <mapping>  Code  jsontools.flatten  Usage:\n    extratools-flatten [--force]  Code  stattools.teststats  Usage:\n    extratools-teststats <truth> <prediction>  Code",
             "title": "CLI Tools"
         }
     ]
