@@ -85,3 +85,10 @@ flatten(json.loads("""{
 #  'children': [],
 #  'spouse': None}
 ```
+
+## Other Libraries
+
+The following libraries are highly recommended to use together with `extratools`.
+
+[`toolz`](https://github.com/pytoolz/toolz)
+[`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html)
