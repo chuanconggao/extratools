@@ -471,6 +471,18 @@
 <p><code>issubseq(a, b)</code> checks if <code>a</code> is a sub-sequence of <code>b</code>.</p>
 </li>
 <li>
+<p><code>commonsubseq(a, b)</code> finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-sequence</a> among two sequences <code>a</code> and <code>b</code>.</p>
+</li>
+</ul>
+<pre><code class="python">commonsubseq(
+    [0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1]
+)
+# [0, 1, 1]
+</code></pre>
+
+<ul>
+<li>
 <p><code>findsubseqwithgap(a, b)</code> returns the matching positions where <code>a</code> is a sub-sequence of <code>b</code>, where gaps are allowed, or <code>None</code> when not found.</p>
 </li>
 <li>
@@ -488,9 +500,6 @@
 </code></pre>
 
 <ul>
-<li>
-<p><code>nextentries</code> is alias of a tool in <code>dicttools</code>.</p>
-</li>
 <li>
 <p><code>align(a, b, cost=None, bound=inf, default=None)</code> <a href="https://en.wikipedia.org/wiki/Sequence_alignment">aligns</a> two sequences <code>a</code> and <code>b</code>, such that the total cost of the aligned sequences given the pair-wise cost function <code>cost(x, y)</code> is minimized.</p>
 <ul>
@@ -645,20 +654,29 @@ align(
 </ul>
 <p><a name="strtools"></a></p>
 <h2 id="strtools"><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py"><code>strtools</code></a></h2>
-<p>Tools for string transformations.</p>
+<p>Tools for string matching.</p>
+<ul>
+<li><code>commonsubstr(a, b)</code> finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-string</a> among two strings <code>a</code> and <code>b</code>.</li>
+</ul>
+<pre><code class="python">commonsubstr(
+    &quot;abbab&quot;,
+    &quot;aabbb&quot;
+)
+# &quot;abb&quot;
+</code></pre>
+
 <ul>
 <li>
-<p><code>str2grams(s, n, pad=None)</code> returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of string <code>s</code>.</p>
+<p><code>editdist(a, b, bound=inf)</code> computes the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between two strings <code>a</code> and <code>b</code>.</p>
 <ul>
-<li>Optional padding at the start and end can be added by specifying <code>pad</code>. <code>\0</code> is usually a safe choice for <code>pad</code> when not displaying.</li>
+<li>To speedup the computation, a threshold of maximum cost <code>bound=inf</code> can be specified. When there is no satisfying result, <code>None</code> is returned.</li>
 </ul>
 </li>
 </ul>
-<p>Tools for checksums.</p>
-<ul>
-<li><code>sha1sum(f)</code>, <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, <code>md5sum(f)</code> compute the respective checksum, accepting string, bytes, text file object, and binary file object.</li>
-</ul>
-<p>Tools for string matching.</p>
+<pre><code class="python">editdist(&quot;dog&quot;, &quot;frog&quot;)
+# 2
+</code></pre>
+
 <ul>
 <li>
 <p><code>tagstats(tags, lines, separator=None)</code> efficiently computes the number of lines containing each tag.</p>
@@ -679,18 +697,19 @@ align(
 # {'a b': 1, 'a c': 0, 'b c': 2}
 </code></pre>
 
+<p>Tools for string transformations.</p>
 <ul>
 <li>
-<p><code>editdist(a, b, bound=inf)</code> computes the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between two strings <code>a</code> and <code>b</code>.</p>
+<p><code>str2grams(s, n, pad=None)</code> returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of string <code>s</code>.</p>
 <ul>
-<li>To speedup the computation, a threshold of maximum cost <code>bound=inf</code> can be specified. When there is no satisfying result, <code>None</code> is returned.</li>
+<li>Optional padding at the start and end can be added by specifying <code>pad</code>. <code>\0</code> is usually a safe choice for <code>pad</code> when not displaying.</li>
 </ul>
 </li>
 </ul>
-<pre><code class="python">editdist(&quot;dog&quot;, &quot;frog&quot;)
-# 2
-</code></pre>
-
+<p>Tools for checksums.</p>
+<ul>
+<li><code>sha1sum(f)</code>, <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, <code>md5sum(f)</code> compute the respective checksum, accepting string, bytes, text file object, and binary file object.</li>
+</ul>
 <p><a name="rangetools"></a></p>
 <h2 id="rangetools"><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py"><code>rangetools</code></a></h2>
 <p>Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.</p>
@@ -1022,9 +1041,6 @@ nextentries(data, entries)
 <ul>
 <li>You can also pass a dictionary of <code>(item, frequency)</code> as frequency distribution to <code>data</code>.</li>
 </ul>
-</li>
-<li>
-<p><code>histogram</code> is alias of a tool in <code>rangetools</code>.</p>
 </li>
 </ul>
 <p>Tools for binary classification.</p>
