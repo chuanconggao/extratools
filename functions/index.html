@@ -465,6 +465,17 @@
 <p>Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
 <ul>
 <li>
+<p><code>findallsubseqs(a, b, overlap=False)</code> returns all the positions where <code>a</code> is a sub-sequence of <code>b</code>.</p>
+<ul>
+<li>
+<p>In default, no overlapping is allowed. You can change the behavior by specify <code>overlap</code>.</p>
+</li>
+<li>
+<p>Unlike other function in <code>seqtools</code>, nothing is returned when <code>a</code> is empty.</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>findsubseq(a, b)</code> returns the first position where <code>a</code> is a sub-sequence of <code>b</code>, or <code>-1</code> when not found.</p>
 </li>
 <li>
