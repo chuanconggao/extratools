@@ -9,7 +9,28 @@ import math
 
 import tagstats as tagmatches
 
-from .seqtools import align
+from .seqtools import commonsubseq, align
+
+def commonsubstr(a: str, b: str) -> str:
+    return ''.join(commonsubseq(list(a), list(b)))
+
+
+def editdist(a: str, b: str, bound: float = math.inf) -> float:
+    res = align(list(a), list(b), bound=bound)
+    return res[0] if res else None
+
+
+def tagstats(tags: Iterable[str], lines: Iterable[str], separator: str = None) -> Mapping[str, int]:
+    tagmatches.tagstats.tokenizer = None if separator is None else re.compile(separator)
+
+    return {
+        tag: sum(matches)
+        for tag, matches in tagmatches.compute(
+            lines,
+            {tag: [tag] for tag in tags}
+        ).items()
+    }
+
 
 def __str2grams(s: str, n: int) -> Iterable[str]:
     yield from (
@@ -68,20 +89,3 @@ def sha512sum(f: Any) -> str:
 
 def md5sum(f: Any) -> str:
     return __checksum(f, md5)
-
-
-def tagstats(tags: Iterable[str], lines: Iterable[str], separator: str = None) -> Mapping[str, int]:
-    tagmatches.tagstats.tokenizer = None if separator is None else re.compile(separator)
-
-    return {
-        tag: sum(matches)
-        for tag, matches in tagmatches.compute(
-            lines,
-            {tag: [tag] for tag in tags}
-        ).items()
-    }
-
-
-def editdist(a: str, b: str, bound: float = math.inf) -> float:
-    res = align(list(a), list(b), bound=bound)
-    return res[0] if res else None

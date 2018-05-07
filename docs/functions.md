@@ -9,6 +9,16 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
 
+- `commonsubseq(a, b)` finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two sequences `a` and `b`.
+
+``` python
+commonsubseq(
+    [0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1]
+)
+# [0, 1, 1]
+```
+
 - `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
@@ -22,8 +32,6 @@ commonsubseqwithgap(
 )
 # [0, 1, 1, 1]
 ```
-
-- `nextentries` is alias of a tool in `dicttools`.
 
 - `align(a, b, cost=None, bound=inf, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
@@ -141,17 +149,26 @@ Tools for matching sorted sequences.
 <a name="strtools"></a>
 ## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
-Tools for string transformations.
-
-- `str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
-
-    - Optional padding at the start and end can be added by specifying `pad`. `\0` is usually a safe choice for `pad` when not displaying.
-
-Tools for checksums.
-
-- `sha1sum(f)`, `sha256sum(f)`, `sha512sum(f)`, `md5sum(f)` compute the respective checksum, accepting string, bytes, text file object, and binary file object.
-
 Tools for string matching.
+
+- `commonsubstr(a, b)` finds the [longest common sub-string](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two strings `a` and `b`.
+
+``` python
+commonsubstr(
+    "abbab",
+    "aabbb"
+)
+# "abb"
+```
+
+- `editdist(a, b, bound=inf)` computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) between two strings `a` and `b`.
+
+    - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
+
+``` python
+editdist("dog", "frog")
+# 2
+```
 
 - `tagstats(tags, lines, separator=None)` efficiently computes the number of lines containing each tag.
 
@@ -167,14 +184,15 @@ tagstats(
 # {'a b': 1, 'a c': 0, 'b c': 2}
 ```
 
-- `editdist(a, b, bound=inf)` computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) between two strings `a` and `b`.
+Tools for string transformations.
 
-    - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
+- `str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
 
-``` python
-editdist("dog", "frog")
-# 2
-```
+    - Optional padding at the start and end can be added by specifying `pad`. `\0` is usually a safe choice for `pad` when not displaying.
+
+Tools for checksums.
+
+- `sha1sum(f)`, `sha256sum(f)`, `sha512sum(f)`, `md5sum(f)` compute the respective checksum, accepting string, bytes, text file object, and binary file object.
 
 <a name="rangetools"></a>
 ## [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
@@ -449,8 +467,6 @@ Tools for statistics.
 - `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
     - You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
-
-- `histogram` is alias of a tool in `rangetools`.
 
 Tools for binary classification.
 

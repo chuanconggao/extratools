@@ -33,6 +33,25 @@ def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseq(a, b) >= 0
 
 
+def commonsubseq(a: List[T], b: List[T]) -> List[T]:
+    @lru_cache(maxsize=None)
+    def align_rec(alen, blen):
+        if alen == 0 or blen == 0 or a[alen - 1] != b[blen - 1]:
+            return []
+
+        return align_rec(alen - 1, blen - 1) + [a[alen - 1]]
+
+
+    return max(
+        (
+            align_rec(i, j)
+            for i in range(0, len(a) + 1)
+            for j in range(0, len(b) + 1)
+        ),
+        key=len
+    )
+
+
 def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
     sentinel = object()
 
