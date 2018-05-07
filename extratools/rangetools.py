@@ -9,7 +9,7 @@ Range = Tuple[float, float]
 from math import inf
 from bisect import bisect
 
-from RangeMinQuery import SegmentTree
+from .segmenttree import SegmentTree
 
 def histogram(thresholds: List[float], data: Iterable[float], leftmost: float = -inf) -> Mapping[float, int]:
     stats = [0] * (len(thresholds) + 1)
