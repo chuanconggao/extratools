@@ -1,7 +1,7 @@
-## Functions
+# Functions
 
 <a name="seqtools"></a>
-### [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
+## [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
 
@@ -96,7 +96,7 @@ Tools for joining sequences.
     - Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
 
 <a name="sortedtools"></a>
-### [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
+## [`sortedtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 Tools for joining sorted sequences.
 
@@ -139,7 +139,7 @@ Tools for matching sorted sequences.
     - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
 <a name="strtools"></a>
-### [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
+## [`strtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 Tools for string transformations.
 
@@ -177,7 +177,7 @@ editdist("dog", "frog")
 ```
 
 <a name="rangetools"></a>
-### [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
+## [`rangetools`](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
 
 Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.
 
@@ -241,7 +241,7 @@ list(gaps(
 ```
 
 <a name="dicttools"></a>
-### [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
+## [`dicttools`](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
 Tools for inverting dictionaries.
 
@@ -350,7 +350,7 @@ flatten(json.loads("""{
 ```
 
 <a name="jsontools"></a>
-### [`jsontools`](https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py)
+## [`jsontools`](https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py)
 
 Tools for flatten/unflatten a JSON object.
 
@@ -392,7 +392,7 @@ flatten(json.loads("""{
 ```
 
 <a name="settools"></a>
-### [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
+## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
 Tools for set operations.
 
@@ -407,7 +407,7 @@ Tools for set similarities.
 - `weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
 
 <a name="tabletools"></a>
-### [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
+## [`tabletools`](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
 Tools for tables.
 
@@ -431,7 +431,7 @@ list(transpose([
 - `dumpcsv(path, data, delimiter=',')` dumps a table `data` in CSV, to either a file path or a file object.
 
 <a name="mathtools"></a>
-### [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
+## [`mathtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
 Tools for math.
 
@@ -440,7 +440,7 @@ Tools for math.
     - Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
 
 <a name="stattools"></a>
-### [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
+## [`stattools`](https://github.com/chuanconggao/extratools/blob/master/extratools/stattools.py)
 
 Tools for statistics.
 
@@ -465,7 +465,7 @@ Tools for binary classification.
 - `f1(tp, fp, tn, fn, beta=1)` returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.
 
 <a name="misctools"></a>
-### [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
+## [`misctools`](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
 Tools for miscellaneous purposes.
 
@@ -476,7 +476,7 @@ Tools for miscellaneous purposes.
 - `parsebool(s)` parses a string to boolean, if its lowercase equals to either `1`, `true`, or `yes`.
 
 <a name="printtools"></a>
-### [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
+## [`printtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py)
 
 Tools for non-functional but useful printing purposes.
 
@@ -485,7 +485,7 @@ Tools for non-functional but useful printing purposes.
     - The same parameters are accepted.
 
 <a name="debugtools"></a>
-### [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
+## [`debugtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py)
 
 Tools for non-functional but useful debugging purposes.
 
@@ -497,10 +497,10 @@ Tools for non-functional but useful debugging purposes.
 
     - In bytes on macOS, and in kilobytes on Linux.
 
-## Data Structures
+# Data Structures
 
 <a name="disjointsets"></a>
-### [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
+## [`disjointsets`](https://github.com/chuanconggao/extratools/blob/master/extratools/disjointsets.py)
 
 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) with path compression, based a lot on this [implementation](https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py). After `d = DisjointSets()`:
 
@@ -513,7 +513,7 @@ Tools for non-functional but useful debugging purposes.
 - `d.union(*xs)` union all the elements in `xs` into a single disjoint set.
 
 <a name="defaultlist"></a>
-### [`defaultlist`](https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py)
+## [`defaultlist`](https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py)
 
 A sub-class of `list` that automatically grows when setting an index beyond the list size.
 
@@ -530,7 +530,51 @@ l
 # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, None, 11]
 ```
 
-## CLI Tools
+<a name="segmenttree"></a>
+## [`segmenttree`](https://github.com/chuanconggao/extratools/blob/master/extratools/segmenttree.py)
+
+This data structure solves the [range minimum query problem](https://en.wikipedia.org/wiki/Range_minimum_query) of finding the minimal value in a sub-array of an array of comparable objects. Different from the original problem, this data structure also supports updating the values.
+
+### Initialization
+
+Use `SegmentTree()` to initialize the tree with a set of keys, in **comparable and hashable** type.
+
+- `func=min` specifies how the best value is computed for any range of keys.
+
+- `default=None` specifies the default value for each key.
+
+- `maxChildNum=2` specifies the maximum number of children for each node.
+
+``` Python
+tree = SegmentTree(
+    {1, 2, 3, 4, 5},
+    func=min, default=0, maxChildNum=2
+)
+```
+
+The space complexity should be $O(n)$.
+
+### Updating
+
+You need to use `update()` to initialize the values, or update the values if necessary, by specifying a dictionary of key/value pairs. Currently, adding new keys is not supported yet.
+
+``` Python
+tree.update({1: 3, 4: 6})
+```
+
+Given m values updated, the time complexity should be $O(m^2)$.
+
+### Querying
+
+Use `query()` to to find the best value of a range of keys. The range is denoted by a tuple `(a, b)`, representing each key `x` such that `a <= x < b`. The range here is closed on the left side and open on the right side, consistent with Python tradition.
+
+``` Python
+tree.query((1, 3))
+```
+
+The time complexity should be $O(log n)$.
+
+# CLI Tools
 
 Please check the `bin` [folder](https://github.com/chuanconggao/extratools/tree/master/bin) for more details.
 
