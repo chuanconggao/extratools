@@ -35,21 +35,22 @@ def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
 
 def commonsubseq(a: List[T], b: List[T]) -> List[T]:
     @lru_cache(maxsize=None)
+    # Find the start pos in list `a`
     def align_rec(alen, blen):
         if alen == 0 or blen == 0 or a[alen - 1] != b[blen - 1]:
-            return []
+            return alen
 
-        return align_rec(alen - 1, blen - 1) + [a[alen - 1]]
+        return align_rec(alen - 1, blen - 1)
 
 
-    return max(
+    return a[slice(*max(
         (
-            align_rec(i, j)
+            (align_rec(i, j), i)
             for i in range(0, len(a) + 1)
             for j in range(0, len(b) + 1)
         ),
-        key=len
-    )
+        key=lambda x: x[1] - x[0]
+    ))]
 
 
 def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
