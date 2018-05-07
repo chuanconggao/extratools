@@ -17,16 +17,25 @@ from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
+def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> int:
+    x = list(a)
+    if len(x) == 0:
+        return
+
+    start = 0
+
+    for pos, y in enumerate(sliding_window(len(x), b)):
+        if (overlap or pos >= start) and all(m == n for m, n in zip(x, y)):
+            yield pos
+            start = pos + len(x)
+
+
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
     x = list(a)
     if len(x) == 0:
         return 0
 
-    for pos, y in enumerate(sliding_window(len(x), b)):
-        if all(m == n for m, n in zip(x, y)):
-            return pos
-
-    return -1
+    return next(findallsubseqs(a, b), -1)
 
 
 def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:

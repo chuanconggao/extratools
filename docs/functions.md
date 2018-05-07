@@ -5,6 +5,12 @@
 
 Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
 
+- `findallsubseqs(a, b, overlap=False)` returns all the positions where `a` is a sub-sequence of `b`.
+
+    - In default, no overlapping is allowed. You can change the behavior by specify `overlap`.
+
+    - Unlike other function in `seqtools`, nothing is returned when `a` is empty.
+
 - `findsubseq(a, b)` returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
 - `issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
