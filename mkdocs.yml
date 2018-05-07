@@ -1,3 +1,9 @@
 site_name: extratools APIs
 
 theme: material
+
+pages:
+    - Introduction: index.md
+    - Functions: functions.md
+    - Data Structures: datastructures.md
+    - CLI Tools: cli.md

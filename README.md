@@ -16,15 +16,13 @@ This library is under active development, and new functions will be added on reg
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
-# Documentation
-
 Full documentation available [here](https://www.chuancong.site/extratools/).
 
-# Installation
+## Installation
 
 This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
-# Examples
+## Examples
 
 Here are three examples out of dozens of our tools.
 
