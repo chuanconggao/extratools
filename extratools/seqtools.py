@@ -8,6 +8,7 @@ import operator
 import itertools
 from itertools import zip_longest, repeat
 import math
+from functools import lru_cache
 
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window
@@ -83,6 +84,7 @@ def align(
         return (currcost, (l, r))
 
 
+    @lru_cache(maxsize=None)
     def align_rec(alen, blen):
         if alen == 0 or blen == 0:
             res = (
