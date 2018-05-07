@@ -62,6 +62,10 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
 
 
+def commonsubseqwithgap(a: List[T], b: List[T]) -> List[T]:
+    return [x for x, y in zip(*(align(a, b)[1])) if x == y]
+
+
 def align(
         a: List[T], b: List[T],
         cost: Callable[[T, T], float] = None, bound: float = math.inf,
@@ -74,14 +78,11 @@ def align(
         prevcost, (l, r) = prev
         x, y = curr
 
-        l.append(x)
-        r.append(y)
-
         currcost = prevcost + cost(x, y)
         if currcost > bound:
             return None
 
-        return (currcost, (l, r))
+        return (currcost, (l + [x], r + [y]))
 
 
     @lru_cache(maxsize=None)

@@ -13,6 +13,16 @@ Tools for matching sequences (including strings), with or without gaps allowed b
 
 - `issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
 
+- `commonsubseqwithgap(a, b)` finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
+
+``` python
+commonsubseqwithgap(
+    [0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1]
+)
+# [0, 1, 1, 1]
+```
+
 - `nextentries` is alias of a tool in `dicttools`.
 
 - `align(a, b, cost=None, bound=inf, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
