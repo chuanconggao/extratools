@@ -28,9 +28,34 @@ Besides other interesting ideas, I am planning to make the following updates in 
 
 - Add `trie` and `suffixtree` (according to [generalized suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)).
 
-## Installation
+## Index of Available Tools
 
-This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
+- Functions:
+
+[`seqtools`](https://chuanconggao.github.io/extratools/functions#seqtools)
+[`sortedtools`](https://chuanconggao.github.io/extratools/functions#sortedtools)
+[`strtools`](https://chuanconggao.github.io/extratools/functions#strtools)
+[`rangetools`](https://chuanconggao.github.io/extratools/functions#rangetools)
+[`dicttools`](https://chuanconggao.github.io/extratools/functions#dicttools)
+[`jsontools`](https://chuanconggao.github.io/extratools/functions#jsontools)
+[`settools`](https://chuanconggao.github.io/extratools/functions#settools)
+[`tabletools`](https://chuanconggao.github.io/extratools/functions#tabletools)
+[`mathtools`](https://chuanconggao.github.io/extratools/functions#mathtools)
+[`stattools`](https://chuanconggao.github.io/extratools/functions#stattools)
+[`misctools`](https://chuanconggao.github.io/extratools/functions#misctools)
+[`printtools`](https://chuanconggao.github.io/extratools/functions#printtools)
+[`debugtools`](https://chuanconggao.github.io/extratools/functions#debugtools)
+
+- Data Structures:
+
+[`disjointsets`](https://chuanconggao.github.io/extratools/datastructures#disjointsets)
+[`defaultlist`](https://chuanconggao.github.io/extratools/datastructures#defaultlist)
+
+- CLI Tools:
+
+[`dicttools.remap`](https://chuanconggao.github.io/extratools/cli)
+[`jsontools.flatten`](https://chuanconggao.github.io/extratools/cli)
+[`jsontools.teststats`](https://chuanconggao.github.io/extratools/cli)
 
 ## Examples
 
@@ -85,6 +110,10 @@ flatten(json.loads("""{
 #  'children': [],
 #  'spouse': None}
 ```
+
+## Installation
+
+This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
 ## Other Libraries
 
