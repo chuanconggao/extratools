@@ -70,10 +70,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#plans" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +92,7 @@
                 extratools APIs
               </span>
               <span class="md-header-nav__topic">
-                Introduction
+                Index
               </span>
             
           
@@ -173,50 +169,9 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Introduction
-      </label>
-    
-    <a href="." title="Introduction" class="md-nav__link md-nav__link--active">
-      Introduction
+    <a href="." title="Index" class="md-nav__link md-nav__link--active">
+      Index
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#plans" title="Plans" class="md-nav__link">
-    Plans
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -264,148 +219,41 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#plans" title="Plans" class="md-nav__link">
-    Plans
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Introduction</h1>
+                  <h1>Index</h1>
                 
-                <p><a href="https://pypi.python.org/pypi/extratools/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/extratools.svg" /></a>
-<a href="https://pypi.python.org/pypi/extratools/"><img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/extratools.svg" /></a>
-<a href="https://pypi.python.org/pypi/extratools/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/extratools.svg" /></a></p>
-<p>Extra functional tools that go beyond standard library's <code>itertools</code>, <code>functools</code>, etc. and popular third-party libraries like <a href="https://github.com/pytoolz/toolz"><code>toolz</code></a>, <a href="https://github.com/Suor/funcy"><code>fancy</code></a>, and <a href="https://github.com/erikrose/more-itertools"><code>more-itertools</code></a>.</p>
-<ul>
-<li>
-<p>Like <code>toolz</code> and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.</p>
-</li>
-<li>
-<p>While <code>toolz</code> and others target basic scenarios, most tools in this library target more advanced and complete scenarios.</p>
-</li>
-<li>
-<p>A few useful CLI tools for respective functions are also installed. They are available as <code>extratools-[funcname]</code>.</p>
-</li>
+                <ul>
+<li>Functions:</li>
 </ul>
-<p>Full documentation available <a href="https://www.chuancong.site/extratools/">here</a>.</p>
-<h2 id="plans">Plans</h2>
-<p>This library is under active development, and new functions are added on regular basis.</p>
+<p><a href="functions/#seqtools"><code>seqtools</code></a>
+<a href="functions/#sortedtools"><code>sortedtools</code></a>
+<a href="functions/#strtools"><code>strtools</code></a>
+<a href="functions/#rangetools"><code>rangetools</code></a>
+<a href="functions/#dicttools"><code>dicttools</code></a>
+<a href="functions/#jsontools"><code>jsontools</code></a>
+<a href="functions/#settools"><code>settools</code></a>
+<a href="functions/#tabletools"><code>tabletools</code></a>
+<a href="functions/#mathtools"><code>mathtools</code></a>
+<a href="functions/#stattools"><code>stattools</code></a>
+<a href="functions/#misctools"><code>misctools</code></a>
+<a href="functions/#printtools"><code>printtools</code></a>
+<a href="functions/#debugtools"><code>debugtools</code></a></p>
 <ul>
-<li>
-<p>Any idea or contribution is highly welcome.</p>
-</li>
-<li>
-<p>Currently adopted by <a href="https://github.com/chuanconggao/TopSim">TopSim</a> and <a href="https://github.com/chuanconggao/PrefixSpan-py">PrefixSpan-py</a>.</p>
-</li>
+<li>Data Structures:</li>
 </ul>
-<p>Besides other interesting ideas, I am planning to make the following updates in recent days/weeks/months.</p>
+<p><a href="datastructures/#disjointsets"><code>disjointsets</code></a>
+<a href="datastructures/#defaultlist"><code>defaultlist</code></a></p>
 <ul>
-<li>
-<p>Add <code>dicttools.unflatten</code> and <code>jsontools.unflatten</code>.</p>
-</li>
-<li>
-<p>Update <code>seqtools.commonsubseq</code>, <code>seqtools.findallsubseqswithgap</code>, <code>seqtools.commonsubseqwithgap</code>, <code>seqtools.align</code>, and <code>strtools.commonsubstr</code> to support more than two sequences/strings.</p>
-</li>
-<li>
-<p>Add <code>trie</code> and <code>suffixtree</code> (according to <a href="https://en.wikipedia.org/wiki/Generalized_suffix_tree">generalized suffix tree</a>).</p>
-</li>
+<li>CLI Tools:</li>
 </ul>
-<h2 id="installation">Installation</h2>
-<p>This package is available on PyPI. Just use <code>pip3 install -U extratools</code> to install it.</p>
-<h2 id="examples">Examples</h2>
-<p>Here are three examples out of dozens of our tools.</p>
-<ul>
-<li><code>seqtools.compress(data, key=None)</code> compresses the sequence by encoding continuous identical <code>Item</code> to <code>(Item, Count)</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</li>
-</ul>
-<pre><code class="python">list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
-# [(1, 1), (2, 2), (3, 3), (4, 4)]
-</code></pre>
-
-<ul>
-<li><code>rangetools.gaps(covered, whole=(-inf, inf))</code> computes the uncovered ranges of the whole range <code>whole</code>, given the covered ranges <code>covered</code>.</li>
-</ul>
-<pre><code class="python">list(gaps(
-    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
-    (0, 1)
-))
-# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
-</code></pre>
-
-<ul>
-<li><code>jsontools.flatten(data, force=False)</code> flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</li>
-</ul>
-<pre><code class="python">flatten(json.loads(&quot;&quot;&quot;{
-  &quot;name&quot;: &quot;John&quot;,
-  &quot;address&quot;: {
-    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,
-    &quot;city&quot;: &quot;New York&quot;,
-  },
-  &quot;phoneNumbers&quot;: [
-    {
-      &quot;type&quot;: &quot;home&quot;,
-      &quot;number&quot;: &quot;212 555-1234&quot;
-    },
-    {
-      &quot;type&quot;: &quot;office&quot;,
-      &quot;number&quot;: &quot;646 555-4567&quot;
-    }
-  ],
-  &quot;children&quot;: [],
-  &quot;spouse&quot;: null
-}&quot;&quot;&quot;))
-# {'name': 'John',
-#  'address.streetAddress': '21 2nd Street',
-#  'address.city': 'New York',
-#  'phoneNumbers[0].type': 'home',
-#  'phoneNumbers[0].number': '212 555-1234',
-#  'phoneNumbers[1].type': 'office',
-#  'phoneNumbers[1].number': '646 555-4567',
-#  'children': [],
-#  'spouse': None}
-</code></pre>
+<p><a href="cli/"><code>dicttools.remap</code></a>
+<a href="cli/"><code>jsontools.flatten</code></a>
+<a href="cli/"><code>jsontools.teststats</code></a></p>
                 
                   
                 
