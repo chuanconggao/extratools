@@ -7,3 +7,6 @@ pages:
     - Functions: functions.md
     - Data Structures: datastructures.md
     - CLI Tools: cli.md
+
+repo_name: "chuanconggao/extratools"
+repo_url: "https://github.com/chuanconggao/extratools"
