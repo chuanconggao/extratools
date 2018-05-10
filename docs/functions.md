@@ -261,7 +261,7 @@ Tools for transformations over ranges. Note that each range is closed on the lef
 
 - `union(a, b)` computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
 
-- `rangecover(whole, covers, key=len)` solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covers`.
+- `rangecover(whole, covers)` solves the variation of the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covers`.
 
     - This is an approximate algorithm, which means the returned result is not always the best.
 
