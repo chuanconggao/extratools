@@ -11,6 +11,28 @@ def bestsubset(a: Set[T], key: Callable[[Iterable[T]], Any]) -> Set[T]:
     return set(bestsubseqwithgap(list(a), key))
 
 
+def setcover(whole: Iterable[T], covers: Iterable[Set[T]], key: Callable[[Iterable[T]], Any] = len) -> Iterable[Set[T]]:
+    whole = set(whole)
+    covers = set(frozenset(x) for x in covers)
+
+    while len(whole) and len(covers):
+        bestval, best = None, None
+        for curr in covers:
+            currtemp = curr & whole
+            if len(currtemp):
+                currval = key(currtemp)
+                if not bestval or currval > bestval:
+                    bestval, best = currval, curr
+
+        if not best:
+            return
+
+        yield best
+
+        whole -= best
+        covers.remove(best)
+
+
 def addtoset(s: Set[T], x: T) -> bool:
     if x in s:
         return False

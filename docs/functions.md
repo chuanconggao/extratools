@@ -257,6 +257,22 @@ rangequery(
 
 Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.
 
+- `intersect(a, b)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+- `union(a, b)` computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+- `rangecover(whole, covers, key=len)` solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covers`.
+
+    - This is an approximate algorithm, which means the returned result is not always the best.
+
+``` python
+list(rangecover(
+    (0, 1),
+    [(0, 0.4), (0.2, 0.5), (0.5, 0.8), (0.6, 0.9), (0.8, 1)]
+))
+# [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
+```
+
 - `covers(covered)` merges the covered ranges `covered` to resolve any overlap.
 
     - Covered ranges in `covered` are sorted by the left side of each range.
@@ -441,6 +457,20 @@ Tools for matching sets.
 ``` python
 bestsubset({1, -2, 3, -4, 5, -6}, sum)
 # {1, 3, 5}
+```
+
+- `setcover(whole, covers, key=len)` solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe set `whole` as best as possible, using a subset of the covering sets `covers`.
+
+    - In default, the size of each set `len` is used as key function `key` to measure the coverage.
+
+    - This is an approximate algorithm, which means the returned result is not always the best.
+
+``` python
+list(setcover(
+    {1, 2, 3, 4, 5},
+    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
+))
+# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
 ```
 
 Tools for set operations.
