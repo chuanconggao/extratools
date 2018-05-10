@@ -2,29 +2,29 @@
 
 Please check each individual script for more details.
 
-[`dicttools.remap`](functions.md#dicttools)
+[`dicttools.remap`](functions/dicttools.md#)
 
 ``` text
 Usage:
     extratools-remap <mapping>
 ```
 
-[Code](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-remap)
+[Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-remap)
 
-[`jsontools.flatten`](functions.md#jsontools)
+[`jsontools.flatten`](functions/jsontools.md#)
 
 ``` text
 Usage:
     extratools-flatten [--force]
 ```
 
-[Code](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-flatten)
+[Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-flatten)
 
-[`stattools.teststats`](functions.md#stattools)
+[`stattools.teststats`](functions/stattools.md#)
 
 ``` text
 Usage:
     extratools-teststats <truth> <prediction>
 ```
 
-[Code](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-teststats)
+[Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-teststats)

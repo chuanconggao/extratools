@@ -11,9 +11,9 @@ def bestsubset(a: Set[T], key: Callable[[Iterable[T]], Any]) -> Set[T]:
     return set(bestsubseqwithgap(list(a), key))
 
 
-def setcover(whole: Iterable[T], covers: Iterable[Set[T]], key: Callable[[Iterable[T]], Any] = len) -> Iterable[Set[T]]:
+def setcover(whole: Iterable[T], covered: Iterable[Set[T]], key: Callable = len) -> Iterable[FrozenSet[T]]:
     whole = set(whole)
-    covers = set(frozenset(x) for x in covers)
+    covers = set(frozenset(x) for x in covered)
 
     while len(whole) and len(covers):
         bestval, best = None, None

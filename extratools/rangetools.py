@@ -52,9 +52,9 @@ def rangecover(whole: Range, covered: Iterable[Range]) -> Iterable[Range]:
     selected = SortedListWithKey(key=lambda x: x[0])
 
     while len(remainings) and len(covered):
-        bestval, best = 0, None
+        bestval, best = 0.0, None
         for curr in covered:
-            currval = 0
+            currval = 0.0
             for gap in remainings:
                 cover = intersect(gap, curr)
                 if cover:

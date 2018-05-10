@@ -1,23 +1,23 @@
 - Functions:
 
-[`seqtools`](functions.md#seqtools)
-[`sortedtools`](functions.md#sortedtools)
-[`strtools`](functions.md#strtools)
-[`rangetools`](functions.md#rangetools)
-[`dicttools`](functions.md#dicttools)
-[`jsontools`](functions.md#jsontools)
-[`settools`](functions.md#settools)
-[`tabletools`](functions.md#tabletools)
-[`mathtools`](functions.md#mathtools)
-[`stattools`](functions.md#stattools)
-[`misctools`](functions.md#misctools)
-[`printtools`](functions.md#printtools)
-[`debugtools`](functions.md#debugtools)
+[`seqtools`](functions/seqtools.md)
+[`sortedtools`](functions/sortedtools.md)
+[`strtools`](functions/strtools.md)
+[`rangetools`](functions/rangetools.md)
+[`dicttools`](functions/dicttools.md)
+[`jsontools`](functions/jsontools.md)
+[`settools`](functions/settools.md)
+[`tabletools`](functions/tabletools.md)
+[`mathtools`](functions/mathtools.md)
+[`stattools`](functions/stattools.md)
+[`misctools`](functions/misctools.md)
+[`printtools`](functions/printtools.md)
+[`debugtools`](functions/debugtools.md)
 
 - Data Structures:
 
-[`disjointsets`](datastructures.md#disjointsets)
-[`defaultlist`](datastructures.md#defaultlist)
+[`disjointsets`](datastructures/disjointsets.md)
+[`defaultlist`](datastructures/defaultlist.md)
 
 - CLI Tools:
 

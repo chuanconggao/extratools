@@ -32,24 +32,24 @@ Besides other interesting ideas, I am planning to make the following updates in 
 
 - Functions:
 
-[`seqtools`](https://chuanconggao.github.io/extratools/functions#seqtools)
-[`sortedtools`](https://chuanconggao.github.io/extratools/functions#sortedtools)
-[`strtools`](https://chuanconggao.github.io/extratools/functions#strtools)
-[`rangetools`](https://chuanconggao.github.io/extratools/functions#rangetools)
-[`dicttools`](https://chuanconggao.github.io/extratools/functions#dicttools)
-[`jsontools`](https://chuanconggao.github.io/extratools/functions#jsontools)
-[`settools`](https://chuanconggao.github.io/extratools/functions#settools)
-[`tabletools`](https://chuanconggao.github.io/extratools/functions#tabletools)
-[`mathtools`](https://chuanconggao.github.io/extratools/functions#mathtools)
-[`stattools`](https://chuanconggao.github.io/extratools/functions#stattools)
-[`misctools`](https://chuanconggao.github.io/extratools/functions#misctools)
-[`printtools`](https://chuanconggao.github.io/extratools/functions#printtools)
-[`debugtools`](https://chuanconggao.github.io/extratools/functions#debugtools)
+[`seqtools`](https://chuanconggao.github.io/extratools/functions/seqtools)
+[`sortedtools`](https://chuanconggao.github.io/extratools/functions/sortedtools)
+[`strtools`](https://chuanconggao.github.io/extratools/functions/strtools)
+[`rangetools`](https://chuanconggao.github.io/extratools/functions/rangetools)
+[`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
+[`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
+[`settools`](https://chuanconggao.github.io/extratools/functions/settools)
+[`tabletools`](https://chuanconggao.github.io/extratools/functions/tabletools)
+[`mathtools`](https://chuanconggao.github.io/extratools/functions/mathtools)
+[`stattools`](https://chuanconggao.github.io/extratools/functions/stattools)
+[`misctools`](https://chuanconggao.github.io/extratools/functions/misctools)
+[`printtools`](https://chuanconggao.github.io/extratools/functions/printtools)
+[`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 
 - Data Structures:
 
-[`disjointsets`](https://chuanconggao.github.io/extratools/datastructures#disjointsets)
-[`defaultlist`](https://chuanconggao.github.io/extratools/datastructures#defaultlist)
+[`disjointsets`](https://chuanconggao.github.io/extratools/datastructures/disjointsets)
+[`defaultlist`](https://chuanconggao.github.io/extratools/datastructures/defaultlist)
 
 - CLI Tools:
 
