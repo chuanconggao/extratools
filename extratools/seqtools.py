@@ -6,7 +6,7 @@ T = TypeVar('T')
 
 import operator
 import itertools
-from itertools import zip_longest, repeat
+from itertools import chain, zip_longest, repeat
 import math
 from functools import lru_cache
 
@@ -17,7 +17,18 @@ from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
-def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> int:
+def bestsubseq(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
+    return max(
+        chain([[]], (
+            a[i:j]
+            for i in range(len(a))
+            for j in range(i + 1, len(a) + 1)
+        )),
+        key=key
+    )
+
+
+def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[int]:
     x = list(a)
     if len(x) == 0:
         return
@@ -35,7 +46,7 @@ def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
     if len(x) == 0:
         return 0
 
-    return next(findallsubseqs(a, b), -1)
+    return next(iter(findallsubseqs(a, b)), -1)
 
 
 def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
@@ -60,6 +71,24 @@ def commonsubseq(a: List[T], b: List[T]) -> List[T]:
         ),
         key=lambda x: x[1] - x[0]
     ))]
+
+
+def bestsubseqwithgap(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
+    def find(alen):
+        if alen == 0:
+            return (key([]), [])
+
+        prevcost, prevseq = find(alen - 1)
+        currseq = prevseq + [a[alen - 1]]
+
+        return max(
+            (prevcost, prevseq),
+            (key(currseq), currseq),
+            key=lambda x: x[0]
+        )
+
+
+    return find(len(a))[1]
 
 
 def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
@@ -165,7 +194,7 @@ def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
     return cmp(lc, gc)
 
 
-def sortedbyrank(data: Iterable[T], ranks: Iterable[float], reverse: bool = False) -> List[T]:
+def sortedbyrank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False) -> List[T]:
     return [
         v for _, v in sorted(
             zip(ranks, data),

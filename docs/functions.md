@@ -3,7 +3,14 @@
 <a name="seqtools"></a>
 ## [`seqtools`](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
+Tools for matching sequences (including strings), without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
+
+- `bestsubseq(a, key)` finds the best sub-sequence of `a` that maximizes the key function `key`.
+
+``` python
+bestsubseq([1, -2, 3, -4, 5, -6], sum)
+# [5]
+```
 
 - `findallsubseqs(a, b, overlap=False)` returns all the positions where `a` is a sub-sequence of `b`.
 
@@ -23,6 +30,15 @@ commonsubseq(
     [0, 0, 1, 1, 1]
 )
 # [0, 1, 1]
+```
+
+Tools for matching sequences (including strings), with gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
+
+- `bestsubseqwithgap(a, key)` finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
+
+``` python
+bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
+# [1, 3, 5]
 ```
 
 - `findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
@@ -417,6 +433,15 @@ flatten(json.loads("""{
 
 <a name="settools"></a>
 ## [`settools`](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
+
+Tools for matching sets.
+
+- `bestsubset(a, key)` finds the best sub-set of `a` that maximizes the key function `key`.
+
+``` python
+bestsubset({1, -2, 3, -4, 5, -6}, sum)
+# {1, 3, 5}
+```
 
 Tools for set operations.
 

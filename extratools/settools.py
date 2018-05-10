@@ -4,7 +4,12 @@ from typing import *
 
 T = TypeVar('T')
 
+from .seqtools import bestsubseqwithgap
 from .mathtools import safediv
+
+def bestsubset(a: Set[T], key: Callable[[Iterable[T]], Any]) -> Set[T]:
+    return set(bestsubseqwithgap(list(a), key))
+
 
 def addtoset(s: Set[T], x: T) -> bool:
     if x in s:
