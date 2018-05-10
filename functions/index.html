@@ -529,7 +529,14 @@
                 <h1 id="functions">Functions</h1>
 <p><a name="seqtools"></a></p>
 <h2 id="seqtools"><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py"><code>seqtools</code></a></h2>
-<p>Tools for matching sequences (including strings), with or without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<p>Tools for matching sequences (including strings), without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<ul>
+<li><code>bestsubseq(a, key)</code> finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>.</li>
+</ul>
+<pre><code class="python">bestsubseq([1, -2, 3, -4, 5, -6], sum)
+# [5]
+</code></pre>
+
 <ul>
 <li>
 <p><code>findallsubseqs(a, b, overlap=False)</code> returns all the positions where <code>a</code> is a sub-sequence of <code>b</code>.</p>
@@ -557,6 +564,14 @@
     [0, 0, 1, 1, 1]
 )
 # [0, 1, 1]
+</code></pre>
+
+<p>Tools for matching sequences (including strings), with gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<ul>
+<li><code>bestsubseqwithgap(a, key)</code> finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>, where gaps are allowed.</li>
+</ul>
+<pre><code class="python">bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
+# [1, 3, 5]
 </code></pre>
 
 <ul>
@@ -843,6 +858,27 @@ align(
 <p>Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.</p>
 <ul>
 <li>
+<p><code>intersect(a, b)</code> computes the overlapping of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
+</li>
+<li>
+<p><code>union(a, b)</code> computes the merging of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
+</li>
+<li>
+<p><code>rangecover(whole, covers, key=len)</code> solves the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe range <code>whole</code> as best as possible, using a subset of the covering ranges <code>covers</code>.</p>
+<ul>
+<li>This is an approximate algorithm, which means the returned result is not always the best.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python">list(rangecover(
+    (0, 1),
+    [(0, 0.4), (0.2, 0.5), (0.5, 0.8), (0.6, 0.9), (0.8, 1)]
+))
+# [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
+</code></pre>
+
+<ul>
+<li>
 <p><code>covers(covered)</code> merges the covered ranges <code>covered</code> to resolve any overlap.</p>
 <ul>
 <li>Covered ranges in <code>covered</code> are sorted by the left side of each range.</li>
@@ -1051,6 +1087,34 @@ nextentries(data, entries)
 
 <p><a name="settools"></a></p>
 <h2 id="settools"><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py"><code>settools</code></a></h2>
+<p>Tools for matching sets.</p>
+<ul>
+<li><code>bestsubset(a, key)</code> finds the best sub-set of <code>a</code> that maximizes the key function <code>key</code>.</li>
+</ul>
+<pre><code class="python">bestsubset({1, -2, 3, -4, 5, -6}, sum)
+# {1, 3, 5}
+</code></pre>
+
+<ul>
+<li>
+<p><code>setcover(whole, covers, key=len)</code> solves the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe set <code>whole</code> as best as possible, using a subset of the covering sets <code>covers</code>.</p>
+<ul>
+<li>
+<p>In default, the size of each set <code>len</code> is used as key function <code>key</code> to measure the coverage.</p>
+</li>
+<li>
+<p>This is an approximate algorithm, which means the returned result is not always the best.</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python">list(setcover(
+    {1, 2, 3, 4, 5},
+    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
+))
+# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
+</code></pre>
+
 <p>Tools for set operations.</p>
 <ul>
 <li><code>addtoset(s, x)</code> checks whether adding <code>x</code> to set <code>s</code> is successful.</li>
