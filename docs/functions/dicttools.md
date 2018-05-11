@@ -28,7 +28,7 @@ Tools for remapping elements.
 
 ### `remap(data, mapping, key=None)`
 
-Remaps each unique element in `data` according to function `key`.
+Remaps each unique element in `data` to a new value from calling function `key`.
 
 - `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
 
