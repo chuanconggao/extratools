@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#sequence-matching" tabindex="1" class="md-skip">
+      <a href="#sequence-check" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -300,6 +300,26 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
+    Sequence Check
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
+    issorted(a, key=None)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequence-matching" title="Sequence Matching" class="md-nav__link">
     Sequence Matching
   </a>
@@ -335,6 +355,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#matchingfrequenciesseqs-keynone" title="matchingfrequencies(*seqs, key=None)" class="md-nav__link">
+    matchingfrequencies(*seqs, key=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -351,26 +378,6 @@
           <li class="md-nav__item">
   <a href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)" class="md-nav__link">
     sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
-    Sequence Check
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
-    issorted(a, key=None)
   </a>
   
 </li>
@@ -619,6 +626,26 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
+    Sequence Check
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
+    issorted(a, key=None)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequence-matching" title="Sequence Matching" class="md-nav__link">
     Sequence Matching
   </a>
@@ -654,6 +681,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#matchingfrequenciesseqs-keynone" title="matchingfrequencies(*seqs, key=None)" class="md-nav__link">
+    matchingfrequencies(*seqs, key=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -670,26 +704,6 @@
           <li class="md-nav__item">
   <a href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)" class="md-nav__link">
     sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
-    Sequence Check
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
-    issorted(a, key=None)
   </a>
   
 </li>
@@ -721,6 +735,14 @@
                   <h1>sortedtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py">Source</a></p>
+<h2 id="sequence-check">Sequence Check</h2>
+<h3 id="issorteda-keynone"><code>issorted(a, key=None)</code></h3>
+<p>Returns if sequence <code>a</code> is already sorted, optionally according to the key function <code>key</code>.</p>
+<div class="codehilite"><pre><span></span><span class="n">issorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="c1"># True</span>
+</pre></div>
+
+
 <h2 id="sequence-matching">Sequence Matching</h2>
 <p>Tools for matching sorted sequences.</p>
 <h3 id="sortedcommona-b-keynone"><code>sortedcommon(a, b, key=None)</code></h3>
@@ -728,48 +750,74 @@
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) &amp; set(b))</code> but more efficient.</li>
 </ul>
-<pre><code class="python">list(sortedcommon(
-    [1, 2, 2, 3],
-    [   2,    3, 4, 4]
-))
-# [2, 3]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedcommon</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">))</span>
+<span class="c1"># [2, 3]</span>
+</pre></div>
+
 
 <h3 id="sortedalonea-b-keynone"><code>sortedalone(a, b, key=None)</code></h3>
 <p>Returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted((set(a) | set(b)) - (set(a) &amp; set(b)))</code> but more efficient.</li>
 </ul>
-<pre><code class="python">list(sortedalone(
-    [1, 2, 2, 3],
-    [   2,    3, 4, 4]
-))
-# [1, 2, 4, 4]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedalone</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">))</span>
+<span class="c1"># [1, 2, 4, 4]</span>
+</pre></div>
+
 
 <h3 id="sorteddiffa-b-keynone"><code>sorteddiff(a, b, key=None)</code></h3>
 <p>Returns the elements only in <code>a</code> and not in <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) - set(b))</code> but more efficient.</li>
 </ul>
-<pre><code class="python">list(sorteddiff(
-    [1, 2, 2, 3],
-    [   2,    3, 4, 4]
-))
-# [1, 2]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sorteddiff</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">))</span>
+<span class="c1"># [1, 2]</span>
+</pre></div>
+
 
 <h3 id="issubsorteda-b-keynone"><code>issubsorted(a, b, key=None)</code></h3>
 <p>Checks if <code>a</code> is a sorted sub-sequence of <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>set(a) &lt;= set(b)</code> but more efficient.</li>
 </ul>
-<pre><code class="python">list(issubsorted(
-    [1, 2, 2, 3],
-    [1, 2, 2, 3, 4, 4]
-))
-# True
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">issubsorted</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">))</span>
+<span class="c1"># True</span>
+</pre></div>
+
+
+<h3 id="matchingfrequenciesseqs-keynone"><code>matchingfrequencies(*seqs, key=None)</code></h3>
+<p>Returns each item and the respective number of sequences in <code>seqs</code> contains it. <sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></p>
+<ul>
+<li>
+<p>Each sequence in <code>seqs</code> must already be sorted.</p>
+</li>
+<li>
+<p>Optional key function <code>key</code> can be specified.</p>
+</li>
+<li>
+<p>This implementation is space efficient. If there are <script type="math/tex">n</script> sequences, only <script type="math/tex">O(n)</script> space is used.</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">matchingfrequencies</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span>    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span>       <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">))</span>
+<span class="c1"># [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]</span>
+</pre></div>
+
 
 <h2 id="sequence-join">Sequence Join</h2>
 <p>Tools for joining sorted sequences.</p>
@@ -783,29 +831,32 @@
 <p><code>sortedjoin</code> is completely lazy, and more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
 </li>
 </ul>
-<pre><code class="python">list(sortedjoin(
-    [   -1, -1, -2,    -4, -5,    -6],
-    [0,  1,  1,  2, 3,  4,  5, 5],
-    leftkey=abs, leftdefault=None
-))
-# [(None, 0),
-#  (-1, 1),
-#  (-1, 1),
-#  (-1, 1),
-#  (-1, 1),
-#  (-2, 2),
-#  (None, 3),
-#  (-4, 4),
-#  (-5, 5),
-#  (-5, 5)]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedjoin</span><span class="p">(</span>
+    <span class="p">[</span>   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>    <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span>    <span class="o">-</span><span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="n">leftkey</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">leftdefault</span><span class="o">=</span><span class="bp">None</span>
+<span class="p">))</span>
+<span class="c1"># [(None, 0),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-1, 1),</span>
+<span class="c1">#  (-2, 2),</span>
+<span class="c1">#  (None, 3),</span>
+<span class="c1">#  (-4, 4),</span>
+<span class="c1">#  (-5, 5),</span>
+<span class="c1">#  (-5, 5)]</span>
+</pre></div>
 
-<h2 id="sequence-check">Sequence Check</h2>
-<h3 id="issorteda-keynone"><code>issorted(a, key=None)</code></h3>
-<p>Returns if sequence <code>a</code> is already sorted, optionally according to the key function <code>key</code>.</p>
-<pre><code class="python">issorted([1, 2, 2, 3])
-# True
-</code></pre>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:a">
+<p>For the frequency of each item within a single sequence, use <code>toolz.itertoolz.frequencies</code>.&#160;<a class="footnote-backref" href="#fnref:a" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
@@ -894,6 +945,8 @@
       <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
       <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
     
     

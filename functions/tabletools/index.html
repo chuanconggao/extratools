@@ -634,15 +634,16 @@
 <ul>
 <li>Useful to switch table <code>data</code> from row-based to column-based and backwards.</li>
 </ul>
-<pre><code class="python">list(transpose([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]))
-# [[1, 4, 7],
-#  [2, 5, 8],
-#  [3, 6, 9]]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">transpose</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">]))</span>
+<span class="c1"># [[1, 4, 7],</span>
+<span class="c1">#  [2, 5, 8],</span>
+<span class="c1">#  [3, 6, 9]]</span>
+</pre></div>
+
 
 <h3 id="loadcsvpath-delimiter"><code>loadcsv(path, delimiter=',')</code></h3>
 <p>Loads a CSV file, from either a file path or a file object.</p>
@@ -736,6 +737,8 @@
       <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
       <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
     
     

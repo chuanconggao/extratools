@@ -755,12 +755,13 @@
 </ul>
 </li>
 </ul>
-<pre><code class="python">histogram(
-    [   0.1,                0.5,           0.8, 0.9],
-    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-)
-# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">histogram</span><span class="p">(</span>
+    <span class="p">[</span>   <span class="mf">0.1</span><span class="p">,</span>                <span class="mf">0.5</span><span class="p">,</span>           <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}</span>
+</pre></div>
+
 
 <h2 id="range-querying">Range Querying</h2>
 <p>Tools for querying ranges.</p>
@@ -774,47 +775,52 @@
 <p><code>func</code> defines how the best value is computed, and defaults to <code>min</code> for minimum value.</p>
 </li>
 </ul>
-<pre><code class="python">rangequery(
-    {0.1: 1, 0.2: 3, 0.3: 0},
-            (0.2,            0.4)
-)
-# 0
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">rangequery</span><span class="p">(</span>
+    <span class="p">{</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span>            <span class="mf">0.4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># 0</span>
+</pre></div>
+
 
 <h2 id="range-transformation">Range Transformation</h2>
 <p>Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.</p>
 <h3 id="intersecta-b"><code>intersect(a, b)</code></h3>
 <p>Computes the overlapping of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
-<pre><code class="python">intersect((0, 0.6), (0.4, 1))
-# (0.4, 0.6)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">intersect</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># (0.4, 0.6)</span>
+</pre></div>
+
 
 <h3 id="uniona-b"><code>union(a, b)</code></h3>
 <p>Computes the merging of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
-<pre><code class="python">union((0, 0.6), (0.4, 1))
-# (0, 1)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">union</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># (0, 1)</span>
+</pre></div>
+
 
 <h3 id="rangecoverwhole-covered"><code>rangecover(whole, covered)</code></h3>
 <p>Solves the variation of the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe range <code>whole</code> as best as possible, using a subset of the covering ranges <code>covered</code>.</p>
 <ul>
 <li>This is an approximate algorithm, which means the returned result is not always the best.</li>
 </ul>
-<pre><code class="python">list(rangecover(
-     (0,                                                 1),
-    [(0, 0.4), (0.2, 0.5), (0.5, 0.8), (0.6, 0.9), (0.8, 1)]
-))
-# [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">rangecover</span><span class="p">(</span>
+     <span class="p">(</span><span class="mi">0</span><span class="p">,</span>                                                 <span class="mi">1</span><span class="p">),</span>
+    <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="p">))</span>
+<span class="c1"># [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]</span>
+</pre></div>
+
 
 <h3 id="coverscovered"><code>covers(covered)</code></h3>
 <p>Merges the covered ranges <code>covered</code> to resolve any overlap.</p>
 <ul>
 <li>Covered ranges in <code>covered</code> are sorted by the left side of each range.</li>
 </ul>
-<pre><code class="python">list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
-# [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">covers</span><span class="p">([(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)]))</span>
+<span class="c1"># [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]</span>
+</pre></div>
+
 
 <h3 id="gapscovered-whole-inf-inf"><code>gaps(covered, whole=(-inf, inf))</code></h3>
 <p>Computes the uncovered ranges of the whole range <code>whole</code>, given the covered ranges <code>covered</code>.</p>
@@ -826,12 +832,12 @@
 <p>Overlaps among covered ranges <code>covered</code> are resolved, like <code>covers(covered)</code>.</p>
 </li>
 </ul>
-<pre><code class="python">list(gaps(
-    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
-           (0,                                     1)
-))
-# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">gaps</span><span class="p">(</span>
+    <span class="p">[(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)],</span>
+           <span class="p">(</span><span class="mi">0</span><span class="p">,</span>                                     <span class="mi">1</span><span class="p">)</span>
+<span class="p">))</span>
+<span class="c1"># [(0, 0.1), (0.2, 0.5), (0.9, 1)]</span>
+</pre></div>
                 
                   
                 
@@ -920,6 +926,8 @@
       <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
       <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
     
     

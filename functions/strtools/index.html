@@ -711,24 +711,26 @@
 <p>Tools for string matching.</p>
 <h3 id="commonsubstra-b"><code>commonsubstr(a, b)</code></h3>
 <p>Finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-string</a> among two strings <code>a</code> and <code>b</code>.</p>
-<pre><code class="python">commonsubstr(
-     &quot;abbab&quot;,
-    &quot;aabbb&quot;
-)
-# &quot;abb&quot;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">commonsubstr</span><span class="p">(</span>
+     <span class="s2">&quot;abbab&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aabbb&quot;</span>
+<span class="p">)</span>
+<span class="c1"># &quot;abb&quot;</span>
+</pre></div>
+
 
 <h3 id="editdista-b-boundinf"><code>editdist(a, b, bound=inf)</code></h3>
 <p>Computes the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between two strings <code>a</code> and <code>b</code>.</p>
 <ul>
 <li>To speedup the computation, a threshold of maximum cost <code>bound=inf</code> can be specified. When there is no satisfying result, <code>None</code> is returned.</li>
 </ul>
-<pre><code class="python">editdist(
-     &quot;dog&quot;,
-    &quot;frog&quot;
-)
-# 2
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">editdist</span><span class="p">(</span>
+     <span class="s2">&quot;dog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frog&quot;</span>
+<span class="p">)</span>
+<span class="c1"># 2</span>
+</pre></div>
+
 
 <h3 id="tagstatstags-lines-separatornone"><code>tagstats(tags, lines, separator=None)</code></h3>
 <p>Efficiently computes the number of lines containing each tag.</p>
@@ -740,12 +742,13 @@
 <p><code>separator</code> is a regex to tokenize each string. In default when <code>separator</code> is <code>None</code>, each string is not tokenized.</p>
 </li>
 </ul>
-<pre><code class="python">tagstats(
-    [&quot;a b&quot;, &quot;a c&quot;, &quot;b c&quot;],
-    [&quot;a b c&quot;, &quot;b c d&quot;, &quot;c d e&quot;]
-)
-# {'a b': 1, 'a c': 0, 'b c': 2}
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">tagstats</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;a b&quot;</span><span class="p">,</span> <span class="s2">&quot;a c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;a b c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c d&quot;</span><span class="p">,</span> <span class="s2">&quot;c d e&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># {&#39;a b&#39;: 1, &#39;a c&#39;: 0, &#39;b c&#39;: 2}</span>
+</pre></div>
+
 
 <h2 id="string-transformation">String Transformation</h2>
 <p>Tools for string transformations.</p>
@@ -754,17 +757,18 @@
 <ul>
 <li>Optional padding at the start and end can be added by specifying <code>pad</code>. <code>\0</code> is usually a safe choice for <code>pad</code> when not displaying.</li>
 </ul>
-<pre><code class="python">list(str2grams(&quot;str2grams&quot;, 2, pad='#'))
-# ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">str2grams</span><span class="p">(</span><span class="s2">&quot;str2grams&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">))</span>
+<span class="c1"># [&#39;#s&#39;, &#39;st&#39;, &#39;tr&#39;, &#39;r2&#39;, &#39;2g&#39;, &#39;gr&#39;, &#39;ra&#39;, &#39;am&#39;, &#39;ms&#39;, &#39;s#&#39;]</span>
+</pre></div>
+
 
 <h2 id="checksum">Checksum</h2>
 <p>Tools for checksums.</p>
 <h3 id="sha1sumf-sha256sumf-sha512sumf-and-md5sumf"><code>sha1sum(f)</code> , <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, and <code>md5sum(f)</code></h3>
 <p>Compute the respective checksum, accepting string, bytes, text file object, and binary file object.</p>
-<pre><code class="python">sha1sum(&quot;strtools&quot;)
-# 'bb91c4c3457cd1442acda4c11b29b02748679409'
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">sha1sum</span><span class="p">(</span><span class="s2">&quot;strtools&quot;</span><span class="p">)</span>
+<span class="c1"># &#39;bb91c4c3457cd1442acda4c11b29b02748679409&#39;</span>
+</pre></div>
                 
                   
                 
@@ -853,6 +857,8 @@
       <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
       <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
     
     
