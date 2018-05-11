@@ -637,7 +637,12 @@
 <h3 id="iter2strseq-limitnone"><code>iter2str(seq, limit=None)</code><a class="headerlink" href="#iter2strseq-limitnone" title="Permanent link">&para;</a></h3>
 <p>Converts an iterable sequence to string.</p>
 <ul>
-<li>If <code>limit</code> is specified, only print the first <code>limit</code> items. This is useful when <code>seq</code> is an infinite sequence.</li>
+<li>
+<p>If <code>limit</code> is specified, only print the first <code>limit</code> items. This is useful when <code>seq</code> is an infinite sequence.</p>
+</li>
+<li>
+<p>Builtin function <code>repr</code> is used to print each item safely.</p>
+</li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">iter2str(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># &#39;&lt;0, 1, 2, 3, 4&gt;&#39;</span>
