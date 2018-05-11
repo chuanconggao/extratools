@@ -602,7 +602,7 @@
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/segmenttree.py">Source</a></p>
 <p>This data structure solves the <a href="https://en.wikipedia.org/wiki/Range_minimum_query">range minimum query problem</a> of finding the minimal value in a sub-array of an array of comparable objects. Different from the original problem, this data structure also supports updating the values.</p>
-<h3 id="initialization">Initialization</h3>
+<h3 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h3>
 <p>Use <code>SegmentTree()</code> to initialize the tree with a set of keys, in <strong>comparable and hashable</strong> type.</p>
 <ul>
 <li>
@@ -615,24 +615,24 @@
 <p><code>maxChildNum=2</code> specifies the maximum number of children for each node.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">SegmentTree</span><span class="p">(</span>
-    <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
-    <span class="n">func</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxChildNum</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">SegmentTree(</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">},</span>
+    <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">min,</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">maxChildNum</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">)</span>
 </pre></div>
 
 
 <p>The space complexity should be <script type="math/tex">O(n)</script>.</p>
-<h3 id="updating">Updating</h3>
+<h3 id="updating">Updating<a class="headerlink" href="#updating" title="Permanent link">&para;</a></h3>
 <p>You need to use <code>update()</code> to initialize the values, or update the values if necessary, by specifying a dictionary of key/value pairs. Currently, adding new keys is not supported yet.</p>
-<div class="codehilite"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">})</span>
 </pre></div>
 
 
 <p>Given m values updated, the time complexity should be <script type="math/tex">O(m^2)</script>.</p>
-<h3 id="querying">Querying</h3>
+<h3 id="querying">Querying<a class="headerlink" href="#querying" title="Permanent link">&para;</a></h3>
 <p>Use <code>query()</code> to to find the best value of a range of keys. The range is denoted by a tuple <code>(a, b)</code>, representing each key <code>x</code> such that <code>a &lt;= x &lt; b</code>. The range here is closed on the left side and open on the right side, consistent with Python tradition.</p>
-<div class="codehilite"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">query((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">))</span>
 </pre></div>
 
 

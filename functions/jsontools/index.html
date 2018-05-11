@@ -599,9 +599,9 @@
                   <h1>jsontools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py">Source</a></p>
-<h2 id="json-flattenunflatten">JSON Flatten/Unflatten</h2>
+<h2 id="json-flattenunflatten">JSON Flatten/Unflatten<a class="headerlink" href="#json-flattenunflatten" title="Permanent link">&para;</a></h2>
 <p>Tools for flatten/unflatten a JSON object.</p>
-<h3 id="flattendata-forcefalse"><code>flatten(data, force=False)</code></h3>
+<h3 id="flattendata-forcefalse"><code>flatten(data, force=False)</code><a class="headerlink" href="#flattendata-forcefalse" title="Permanent link">&para;</a></h3>
 <p>Flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
 <ul>
 <li>
@@ -611,34 +611,34 @@
 <p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array. Note that an empty array disappears after being flatten.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">flatten</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  &quot;name&quot;: &quot;John&quot;,</span>
-<span class="s2">  &quot;address&quot;: {</span>
-<span class="s2">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
-<span class="s2">    &quot;city&quot;: &quot;New York&quot;,</span>
-<span class="s2">  },</span>
-<span class="s2">  &quot;phoneNumbers&quot;: [</span>
-<span class="s2">    {</span>
-<span class="s2">      &quot;type&quot;: &quot;home&quot;,</span>
-<span class="s2">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
-<span class="s2">    },</span>
-<span class="s2">    {</span>
-<span class="s2">      &quot;type&quot;: &quot;office&quot;,</span>
-<span class="s2">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
-<span class="s2">    }</span>
-<span class="s2">  ],</span>
-<span class="s2">  &quot;children&quot;: [],</span>
-<span class="s2">  &quot;spouse&quot;: null</span>
-<span class="s2">}&quot;&quot;&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;name&#39;: &#39;John&#39;,</span>
-<span class="c1">#  &#39;address.streetAddress&#39;: &#39;21 2nd Street&#39;,</span>
-<span class="c1">#  &#39;address.city&#39;: &#39;New York&#39;,</span>
-<span class="c1">#  &#39;phoneNumbers[0].type&#39;: &#39;home&#39;,</span>
-<span class="c1">#  &#39;phoneNumbers[0].number&#39;: &#39;212 555-1234&#39;,</span>
-<span class="c1">#  &#39;phoneNumbers[1].type&#39;: &#39;office&#39;,</span>
-<span class="c1">#  &#39;phoneNumbers[1].number&#39;: &#39;646 555-4567&#39;,</span>
-<span class="c1">#  &#39;children&#39;: [],</span>
-<span class="c1">#  &#39;spouse&#39;: None}</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">flatten(json</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">loads(</span><span style="color: #e6db74">&quot;&quot;&quot;{</span>
+<span style="color: #e6db74">  &quot;name&quot;: &quot;John&quot;,</span>
+<span style="color: #e6db74">  &quot;address&quot;: {</span>
+<span style="color: #e6db74">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
+<span style="color: #e6db74">    &quot;city&quot;: &quot;New York&quot;,</span>
+<span style="color: #e6db74">  },</span>
+<span style="color: #e6db74">  &quot;phoneNumbers&quot;: [</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">      &quot;type&quot;: &quot;home&quot;,</span>
+<span style="color: #e6db74">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
+<span style="color: #e6db74">    },</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">      &quot;type&quot;: &quot;office&quot;,</span>
+<span style="color: #e6db74">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
+<span style="color: #e6db74">    }</span>
+<span style="color: #e6db74">  ],</span>
+<span style="color: #e6db74">  &quot;children&quot;: [],</span>
+<span style="color: #e6db74">  &quot;spouse&quot;: null</span>
+<span style="color: #e6db74">}&quot;&quot;&quot;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># {&#39;name&#39;: &#39;John&#39;,</span>
+<span style="color: #75715e">#  &#39;address.streetAddress&#39;: &#39;21 2nd Street&#39;,</span>
+<span style="color: #75715e">#  &#39;address.city&#39;: &#39;New York&#39;,</span>
+<span style="color: #75715e">#  &#39;phoneNumbers[0].type&#39;: &#39;home&#39;,</span>
+<span style="color: #75715e">#  &#39;phoneNumbers[0].number&#39;: &#39;212 555-1234&#39;,</span>
+<span style="color: #75715e">#  &#39;phoneNumbers[1].type&#39;: &#39;office&#39;,</span>
+<span style="color: #75715e">#  &#39;phoneNumbers[1].number&#39;: &#39;646 555-4567&#39;,</span>
+<span style="color: #75715e">#  &#39;children&#39;: [],</span>
+<span style="color: #75715e">#  &#39;spouse&#39;: None}</span>
 </pre></div>
                 
                   

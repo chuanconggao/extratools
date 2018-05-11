@@ -735,9 +735,9 @@
                   <h1>rangetools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py">Source</a></p>
-<h2 id="range-statistics">Range Statistics</h2>
+<h2 id="range-statistics">Range Statistics<a class="headerlink" href="#range-statistics" title="Permanent link">&para;</a></h2>
 <p>Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.</p>
-<h3 id="histogramthresholds-data-leftmost-inf"><code>histogram(thresholds, data, leftmost=-inf)</code></h3>
+<h3 id="histogramthresholds-data-leftmost-inf"><code>histogram(thresholds, data, leftmost=-inf)</code><a class="headerlink" href="#histogramthresholds-data-leftmost-inf" title="Permanent link">&para;</a></h3>
 <p>Computes the <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a> over all the floats in <code>data</code>.</p>
 <ul>
 <li>
@@ -755,17 +755,17 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">histogram</span><span class="p">(</span>
-    <span class="p">[</span>   <span class="mf">0.1</span><span class="p">,</span>                <span class="mf">0.5</span><span class="p">,</span>           <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="c1"># {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">histogram(</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span>                <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span>           <span style="color: #ae81ff">0.8</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.9</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.7</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.8</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.9</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}</span>
 </pre></div>
 
 
-<h2 id="range-querying">Range Querying</h2>
+<h2 id="range-querying">Range Querying<a class="headerlink" href="#range-querying" title="Permanent link">&para;</a></h2>
 <p>Tools for querying ranges.</p>
-<h3 id="rangequerykeyvalues-query-funcmin"><code>rangequery(keyvalues, query, func=min)</code></h3>
+<h3 id="rangequerykeyvalues-query-funcmin"><code>rangequery(keyvalues, query, func=min)</code><a class="headerlink" href="#rangequerykeyvalues-query-funcmin" title="Permanent link">&para;</a></h3>
 <p>Efficiently finds the best value from the covered values in <code>keyvalues</code>, if each key in <code>keyvalues</code> is within the query range <code>query</code>.</p>
 <ul>
 <li>
@@ -775,54 +775,54 @@
 <p><code>func</code> defines how the best value is computed, and defaults to <code>min</code> for minimum value.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">rangequery</span><span class="p">(</span>
-    <span class="p">{</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
-            <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span>            <span class="mf">0.4</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="c1"># 0</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">rangequery(</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.3</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">},</span>
+            <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">,</span>            <span style="color: #ae81ff">0.4</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0</span>
 </pre></div>
 
 
-<h2 id="range-transformation">Range Transformation</h2>
+<h2 id="range-transformation">Range Transformation<a class="headerlink" href="#range-transformation" title="Permanent link">&para;</a></h2>
 <p>Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.</p>
-<h3 id="intersecta-b"><code>intersect(a, b)</code></h3>
+<h3 id="intersecta-b"><code>intersect(a, b)</code><a class="headerlink" href="#intersecta-b" title="Permanent link">&para;</a></h3>
 <p>Computes the overlapping of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
-<div class="codehilite"><pre><span></span><span class="n">intersect</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c1"># (0.4, 0.6)</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">intersect((</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># (0.4, 0.6)</span>
 </pre></div>
 
 
-<h3 id="uniona-b"><code>union(a, b)</code></h3>
+<h3 id="uniona-b"><code>union(a, b)</code><a class="headerlink" href="#uniona-b" title="Permanent link">&para;</a></h3>
 <p>Computes the merging of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
-<div class="codehilite"><pre><span></span><span class="n">union</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c1"># (0, 1)</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">union((</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># (0, 1)</span>
 </pre></div>
 
 
-<h3 id="rangecoverwhole-covered"><code>rangecover(whole, covered)</code></h3>
+<h3 id="rangecoverwhole-covered"><code>rangecover(whole, covered)</code><a class="headerlink" href="#rangecoverwhole-covered" title="Permanent link">&para;</a></h3>
 <p>Solves the variation of the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe range <code>whole</code> as best as possible, using a subset of the covering ranges <code>covered</code>.</p>
 <ul>
 <li>This is an approximate algorithm, which means the returned result is not always the best.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">rangecover</span><span class="p">(</span>
-     <span class="p">(</span><span class="mi">0</span><span class="p">,</span>                                                 <span class="mi">1</span><span class="p">),</span>
-    <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="p">))</span>
-<span class="c1"># [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(rangecover(</span>
+     <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>                                                 <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span>
+    <span style="color: #f8f8f2">[(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.4</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.8</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.9</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.8</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]</span>
 </pre></div>
 
 
-<h3 id="coverscovered"><code>covers(covered)</code></h3>
+<h3 id="coverscovered"><code>covers(covered)</code><a class="headerlink" href="#coverscovered" title="Permanent link">&para;</a></h3>
 <p>Merges the covered ranges <code>covered</code> to resolve any overlap.</p>
 <ul>
 <li>Covered ranges in <code>covered</code> are sorted by the left side of each range.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">covers</span><span class="p">([(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)]))</span>
-<span class="c1"># [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(covers([(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">inf,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.7</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.9</span><span style="color: #f8f8f2">)]))</span>
+<span style="color: #75715e"># [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]</span>
 </pre></div>
 
 
-<h3 id="gapscovered-whole-inf-inf"><code>gaps(covered, whole=(-inf, inf))</code></h3>
+<h3 id="gapscovered-whole-inf-inf"><code>gaps(covered, whole=(-inf, inf))</code><a class="headerlink" href="#gapscovered-whole-inf-inf" title="Permanent link">&para;</a></h3>
 <p>Computes the uncovered ranges of the whole range <code>whole</code>, given the covered ranges <code>covered</code>.</p>
 <ul>
 <li>
@@ -832,11 +832,11 @@
 <p>Overlaps among covered ranges <code>covered</code> are resolved, like <code>covers(covered)</code>.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">gaps</span><span class="p">(</span>
-    <span class="p">[(</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)],</span>
-           <span class="p">(</span><span class="mi">0</span><span class="p">,</span>                                     <span class="mi">1</span><span class="p">)</span>
-<span class="p">))</span>
-<span class="c1"># [(0, 0.1), (0.2, 0.5), (0.9, 1)]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(gaps(</span>
+    <span style="color: #f8f8f2">[(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">inf,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.7</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.6</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.9</span><span style="color: #f8f8f2">)],</span>
+           <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>                                     <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(0, 0.1), (0.2, 0.5), (0.9, 1)]</span>
 </pre></div>
                 
                   

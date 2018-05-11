@@ -627,27 +627,27 @@
                   <h1>tabletools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py">Source</a></p>
-<h2 id="table">Table</h2>
+<h2 id="table">Table<a class="headerlink" href="#table" title="Permanent link">&para;</a></h2>
 <p>Tools for tables.</p>
-<h3 id="transposedata"><code>transpose(data)</code></h3>
+<h3 id="transposedata"><code>transpose(data)</code><a class="headerlink" href="#transposedata" title="Permanent link">&para;</a></h3>
 <p>Returns the transpose of table <code>data</code>, i.e., switch rows and columns.</p>
 <ul>
 <li>Useful to switch table <code>data</code> from row-based to column-based and backwards.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">transpose</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="p">]))</span>
-<span class="c1"># [[1, 4, 7],</span>
-<span class="c1">#  [2, 5, 8],</span>
-<span class="c1">#  [3, 6, 9]]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(transpose([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">9</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]))</span>
+<span style="color: #75715e"># [[1, 4, 7],</span>
+<span style="color: #75715e">#  [2, 5, 8],</span>
+<span style="color: #75715e">#  [3, 6, 9]]</span>
 </pre></div>
 
 
-<h3 id="loadcsvpath-delimiter"><code>loadcsv(path, delimiter=',')</code></h3>
+<h3 id="loadcsvpath-delimiter"><code>loadcsv(path, delimiter=',')</code><a class="headerlink" href="#loadcsvpath-delimiter" title="Permanent link">&para;</a></h3>
 <p>Loads a CSV file, from either a file path or a file object.</p>
-<h3 id="dumpcsvpath-data-delimiter"><code>dumpcsv(path, data, delimiter=',')</code></h3>
+<h3 id="dumpcsvpath-data-delimiter"><code>dumpcsv(path, data, delimiter=',')</code><a class="headerlink" href="#dumpcsvpath-data-delimiter" title="Permanent link">&para;</a></h3>
 <p>Dumps a table <code>data</code> in CSV, to either a file path or a file object.</p>
                 
                   

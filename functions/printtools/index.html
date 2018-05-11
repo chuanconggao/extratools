@@ -613,24 +613,24 @@
                   <h1>printtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/printtools.py">Source</a></p>
-<h2 id="printing">Printing</h2>
+<h2 id="printing">Printing<a class="headerlink" href="#printing" title="Permanent link">&para;</a></h2>
 <p>Tools for non-functional but useful printing purposes.</p>
-<h3 id="print2args-kwargs"><code>print2(*args, **kwargs)</code></h3>
+<h3 id="print2args-kwargs"><code>print2(*args, **kwargs)</code><a class="headerlink" href="#print2args-kwargs" title="Permanent link">&para;</a></h3>
 <p>Redirects the output of <code>print</code> to standard error.</p>
 <ul>
 <li>The same parameters are accepted.</li>
 </ul>
-<h3 id="iter2strseq-limitnone"><code>iter2str(seq, limit=None)</code></h3>
+<h3 id="iter2strseq-limitnone"><code>iter2str(seq, limit=None)</code><a class="headerlink" href="#iter2strseq-limitnone" title="Permanent link">&para;</a></h3>
 <p>Converts an iterable sequence to string.</p>
 <ul>
 <li>If <code>limit</code> is specified, only print the first <code>limit</code> items. This is useful when <code>seq</code> is an infinite sequence.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">iter2str</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="c1"># &#39;&lt;0, 1, 2, 3, 4&gt;&#39;</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">iter2str(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># &#39;&lt;0, 1, 2, 3, 4&gt;&#39;</span>
 
-<span class="c1"># Infinity sequence</span>
-<span class="n">iter2str</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="c1"># &#39;&lt;0, 1, 2, 3, 4, ...&gt;&#39;</span>
+<span style="color: #75715e"># Infinity sequence</span>
+<span style="color: #f8f8f2">iter2str(itertools</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">count(),</span> <span style="color: #f8f8f2">limit</span><span style="color: #f92672">=</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># &#39;&lt;0, 1, 2, 3, 4, ...&gt;&#39;</span>
 </pre></div>
                 
                   

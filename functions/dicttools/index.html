@@ -761,26 +761,26 @@
                   <h1>dicttools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py">Source</a></p>
-<h2 id="dictionary-inverting">Dictionary Inverting</h2>
+<h2 id="dictionary-inverting">Dictionary Inverting<a class="headerlink" href="#dictionary-inverting" title="Permanent link">&para;</a></h2>
 <p>Tools for inverting dictionaries.</p>
-<h3 id="invertd"><code>invert(d)</code></h3>
+<h3 id="invertd"><code>invert(d)</code><a class="headerlink" href="#invertd" title="Permanent link">&para;</a></h3>
 <p>Inverts <code>(Key, Value)</code> pairs to <code>(Value, Key)</code>.</p>
 <ul>
 <li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
 </ul>
-<h3 id="invert_multipled"><code>invert_multiple(d)</code></h3>
+<h3 id="invert_multipled"><code>invert_multiple(d)</code><a class="headerlink" href="#invert_multipled" title="Permanent link">&para;</a></h3>
 <p>Inverts <code>(Key, List[Value])</code> pairs to <code>(Value, Key)</code>.</p>
 <ul>
 <li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
 </ul>
-<h3 id="invert_safed"><code>invert_safe(d)</code></h3>
+<h3 id="invert_safed"><code>invert_safe(d)</code><a class="headerlink" href="#invert_safed" title="Permanent link">&para;</a></h3>
 <p>Inverts <code>(Key, Value)</code> pairs to <code>(Value, List[Key])</code>.</p>
 <ul>
 <li>If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.</li>
 </ul>
-<h2 id="remapping">Remapping</h2>
+<h2 id="remapping">Remapping<a class="headerlink" href="#remapping" title="Permanent link">&para;</a></h2>
 <p>Tools for remapping elements.</p>
-<h3 id="remapdata-mapping-keynone"><code>remap(data, mapping, key=None)</code></h3>
+<h3 id="remapdata-mapping-keynone"><code>remap(data, mapping, key=None)</code><a class="headerlink" href="#remapdata-mapping-keynone" title="Permanent link">&para;</a></h3>
 <p>Remaps each unique element in <code>data</code> according to function <code>key</code>.</p>
 <ul>
 <li>
@@ -790,56 +790,56 @@
 <p>In default, <code>key</code> returns integers starting from <code>0</code>.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">wordmap</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">db</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">remap</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">wordmap</span><span class="p">))</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">wordmap</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{}</span>
+<span style="color: #f8f8f2">db</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[list(remap(doc,</span> <span style="color: #f8f8f2">wordmap))</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">doc</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">docs]</span>
 </pre></div>
 
 
-<h2 id="indexing">Indexing</h2>
+<h2 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h2>
 <p>Tools for indexing.</p>
-<h3 id="invertedindexseqs"><code>invertedindex(seqs)</code></h3>
+<h3 id="invertedindexseqs"><code>invertedindex(seqs)</code><a class="headerlink" href="#invertedindexseqs" title="Permanent link">&para;</a></h3>
 <p>Creates an <a href="https://en.wikipedia.org/wiki/Inverted_index">inverted index</a>.</p>
 <ul>
 <li>Each item&rsquo;s index is a list of <code>(ID, position)</code> pairs for all the sequences in <code>seqs</code> containing the item.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span>
-    <span class="s2">&quot;a b c d e&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;b b b d e&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;c b c c a&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;b b b c c&quot;</span>
-<span class="p">]]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+    <span style="color: #e6db74">&quot;a b c d e&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;b b b d e&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;c b c c a&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;b b b c c&quot;</span>
+<span style="color: #f8f8f2">]]</span>
 
-<span class="n">invertedindex</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="c1"># {&#39;a&#39;: [(0, 0), (2, 4)],</span>
-<span class="c1">#  &#39;b&#39;: [(0, 1), (1, 0), (2, 1), (3, 0)],</span>
-<span class="c1">#  &#39;c&#39;: [(0, 2), (2, 0), (3, 3)],</span>
-<span class="c1">#  &#39;d&#39;: [(0, 3), (1, 3)],</span>
-<span class="c1">#  &#39;e&#39;: [(0, 4), (1, 4)]}</span>
+<span style="color: #f8f8f2">invertedindex(data)</span>
+<span style="color: #75715e"># {&#39;a&#39;: [(0, 0), (2, 4)],</span>
+<span style="color: #75715e">#  &#39;b&#39;: [(0, 1), (1, 0), (2, 1), (3, 0)],</span>
+<span style="color: #75715e">#  &#39;c&#39;: [(0, 2), (2, 0), (3, 3)],</span>
+<span style="color: #75715e">#  &#39;d&#39;: [(0, 3), (1, 3)],</span>
+<span style="color: #75715e">#  &#39;e&#39;: [(0, 4), (1, 4)]}</span>
 </pre></div>
 
 
-<h3 id="nextentriesdata-entries"><code>nextentries(data, entries)</code></h3>
+<h3 id="nextentriesdata-entries"><code>nextentries(data, entries)</code><a class="headerlink" href="#nextentriesdata-entries" title="Permanent link">&para;</a></h3>
 <p>Scans the sequences in <code>data</code> from left to right after current entries <code>entries</code>, and returns each item and its respective following entries.</p>
 <ul>
 <li>Each entry is a pair of <code>(ID, Position)</code> denoting the sequence ID and its respective matching position.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="c1"># same data from previous example</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># same data from previous example</span>
 
-<span class="c1"># the first positions of `c` among sequences.</span>
-<span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span style="color: #75715e"># the first positions of `c` among sequences.</span>
+<span style="color: #f8f8f2">entries</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)]</span>
 
-<span class="n">nextentries</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">entries</span><span class="p">)</span>
-<span class="c1"># {&#39;d&#39;: [(0, 3)],</span>
-<span class="c1">#  &#39;e&#39;: [(0, 4)],</span>
-<span class="c1">#  &#39;b&#39;: [(2, 1)],</span>
-<span class="c1">#  &#39;c&#39;: [(2, 2), (3, 4)],</span>
-<span class="c1">#  &#39;a&#39;: [(2, 4)]}</span>
+<span style="color: #f8f8f2">nextentries(data,</span> <span style="color: #f8f8f2">entries)</span>
+<span style="color: #75715e"># {&#39;d&#39;: [(0, 3)],</span>
+<span style="color: #75715e">#  &#39;e&#39;: [(0, 4)],</span>
+<span style="color: #75715e">#  &#39;b&#39;: [(2, 1)],</span>
+<span style="color: #75715e">#  &#39;c&#39;: [(2, 2), (3, 4)],</span>
+<span style="color: #75715e">#  &#39;a&#39;: [(2, 4)]}</span>
 </pre></div>
 
 
-<h2 id="dictionary-flattenunflatten">Dictionary Flatten/Unflatten</h2>
+<h2 id="dictionary-flattenunflatten">Dictionary Flatten/Unflatten<a class="headerlink" href="#dictionary-flattenunflatten" title="Permanent link">&para;</a></h2>
 <p>Tools for flatten/unflatten a dictionary.</p>
-<h3 id="flattend-forcefalse"><code>flatten(d, force=False)</code></h3>
+<h3 id="flattend-forcefalse"><code>flatten(d, force=False)</code><a class="headerlink" href="#flattend-forcefalse" title="Permanent link">&para;</a></h3>
 <p>Flattens a dictionary by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
 <ul>
 <li>
@@ -849,34 +849,34 @@
 <p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array. Note that an empty array disappears after being flatten.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">flatten</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  &quot;name&quot;: &quot;John&quot;,</span>
-<span class="s2">  &quot;address&quot;: {</span>
-<span class="s2">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
-<span class="s2">    &quot;city&quot;: &quot;New York&quot;,</span>
-<span class="s2">  },</span>
-<span class="s2">  &quot;phoneNumbers&quot;: [</span>
-<span class="s2">    {</span>
-<span class="s2">      &quot;type&quot;: &quot;home&quot;,</span>
-<span class="s2">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
-<span class="s2">    },</span>
-<span class="s2">    {</span>
-<span class="s2">      &quot;type&quot;: &quot;office&quot;,</span>
-<span class="s2">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
-<span class="s2">    }</span>
-<span class="s2">  ],</span>
-<span class="s2">  &quot;children&quot;: [],</span>
-<span class="s2">  &quot;spouse&quot;: null</span>
-<span class="s2">}&quot;&quot;&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;name&#39;: &#39;John&#39;,</span>
-<span class="c1">#  (&#39;address&#39;, &#39;streetAddress&#39;): &#39;21 2nd Street&#39;,</span>
-<span class="c1">#  (&#39;address&#39;, &#39;city&#39;): &#39;New York&#39;,</span>
-<span class="c1">#  ((&#39;phoneNumbers&#39;, 0), &#39;type&#39;): &#39;home&#39;,</span>
-<span class="c1">#  ((&#39;phoneNumbers&#39;, 0), &#39;number&#39;): &#39;212 555-1234&#39;,</span>
-<span class="c1">#  ((&#39;phoneNumbers&#39;, 1), &#39;type&#39;): &#39;office&#39;,</span>
-<span class="c1">#  ((&#39;phoneNumbers&#39;, 1), &#39;number&#39;): &#39;646 555-4567&#39;,</span>
-<span class="c1">#  &#39;children&#39;: [],</span>
-<span class="c1">#  &#39;spouse&#39;: None}</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">flatten(json</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">loads(</span><span style="color: #e6db74">&quot;&quot;&quot;{</span>
+<span style="color: #e6db74">  &quot;name&quot;: &quot;John&quot;,</span>
+<span style="color: #e6db74">  &quot;address&quot;: {</span>
+<span style="color: #e6db74">    &quot;streetAddress&quot;: &quot;21 2nd Street&quot;,</span>
+<span style="color: #e6db74">    &quot;city&quot;: &quot;New York&quot;,</span>
+<span style="color: #e6db74">  },</span>
+<span style="color: #e6db74">  &quot;phoneNumbers&quot;: [</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">      &quot;type&quot;: &quot;home&quot;,</span>
+<span style="color: #e6db74">      &quot;number&quot;: &quot;212 555-1234&quot;</span>
+<span style="color: #e6db74">    },</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">      &quot;type&quot;: &quot;office&quot;,</span>
+<span style="color: #e6db74">      &quot;number&quot;: &quot;646 555-4567&quot;</span>
+<span style="color: #e6db74">    }</span>
+<span style="color: #e6db74">  ],</span>
+<span style="color: #e6db74">  &quot;children&quot;: [],</span>
+<span style="color: #e6db74">  &quot;spouse&quot;: null</span>
+<span style="color: #e6db74">}&quot;&quot;&quot;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># {&#39;name&#39;: &#39;John&#39;,</span>
+<span style="color: #75715e">#  (&#39;address&#39;, &#39;streetAddress&#39;): &#39;21 2nd Street&#39;,</span>
+<span style="color: #75715e">#  (&#39;address&#39;, &#39;city&#39;): &#39;New York&#39;,</span>
+<span style="color: #75715e">#  ((&#39;phoneNumbers&#39;, 0), &#39;type&#39;): &#39;home&#39;,</span>
+<span style="color: #75715e">#  ((&#39;phoneNumbers&#39;, 0), &#39;number&#39;): &#39;212 555-1234&#39;,</span>
+<span style="color: #75715e">#  ((&#39;phoneNumbers&#39;, 1), &#39;type&#39;): &#39;office&#39;,</span>
+<span style="color: #75715e">#  ((&#39;phoneNumbers&#39;, 1), &#39;number&#39;): &#39;646 555-4567&#39;,</span>
+<span style="color: #75715e">#  &#39;children&#39;: [],</span>
+<span style="color: #75715e">#  &#39;spouse&#39;: None}</span>
 </pre></div>
                 
                   

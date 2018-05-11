@@ -667,43 +667,43 @@
                   <h1>debugtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py">Source</a></p>
-<h2 id="iterable">Iterable</h2>
+<h2 id="iterable">Iterable<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h2>
 <p>Tools for debugging iterable sequence.</p>
-<h3 id="delayediterseq-delaynone"><code>delayediter(seq, delay=None)</code></h3>
+<h3 id="delayediterseq-delaynone"><code>delayediter(seq, delay=None)</code><a class="headerlink" href="#delayediterseq-delaynone" title="Permanent link">&para;</a></h3>
 <p>Delays the production of each item in <code>seq</code> by <code>delay</code> seconds.</p>
 <ul>
 <li>In default, <code>delay=None</code> is disabled.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">delayediter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">v</span><span class="p">)</span>
-<span class="c1"># 01:11:21.562655 0</span>
-<span class="c1"># 01:11:22.563725 1</span>
-<span class="c1"># 01:11:23.567723 2</span>
-<span class="c1"># 01:11:24.567997 3</span>
-<span class="c1"># 01:11:25.568119 4</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">delayediter(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">delay</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">):</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">now()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">time(),</span> <span style="color: #f8f8f2">v)</span>
+<span style="color: #75715e"># 01:11:21.562655 0</span>
+<span style="color: #75715e"># 01:11:22.563725 1</span>
+<span style="color: #75715e"># 01:11:23.567723 2</span>
+<span style="color: #75715e"># 01:11:24.567997 3</span>
+<span style="color: #75715e"># 01:11:25.568119 4</span>
 </pre></div>
 
 
-<h3 id="timediterseq"><code>timediter(seq)</code></h3>
+<h3 id="timediterseq"><code>timediter(seq)</code><a class="headerlink" href="#timediterseq" title="Permanent link">&para;</a></h3>
 <p>Produces each item in <code>seq</code> and its respective timestamp when encountered.</p>
-<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">timediter</span><span class="p">(</span><span class="n">delayediter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">)):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">v</span><span class="p">)</span>
-<span class="c1"># 01:13:37.181460 0</span>
-<span class="c1"># 01:13:38.182715 1</span>
-<span class="c1"># 01:13:39.188049 2</span>
-<span class="c1"># 01:13:40.193304 3</span>
-<span class="c1"># 01:13:41.197916 4</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">t,</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">timediter(delayediter(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">delay</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)):</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fromtimestamp(t)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">time(),</span> <span style="color: #f8f8f2">v)</span>
+<span style="color: #75715e"># 01:13:37.181460 0</span>
+<span style="color: #75715e"># 01:13:38.182715 1</span>
+<span style="color: #75715e"># 01:13:39.188049 2</span>
+<span style="color: #75715e"># 01:13:40.193304 3</span>
+<span style="color: #75715e"># 01:13:41.197916 4</span>
 </pre></div>
 
 
-<h2 id="system-diagnosis">System Diagnosis</h2>
+<h2 id="system-diagnosis">System Diagnosis<a class="headerlink" href="#system-diagnosis" title="Permanent link">&para;</a></h2>
 <p>Tools for non-functional but useful system diagnosis tools.</p>
-<h3 id="stopwatch"><code>stopwatch()</code></h3>
+<h3 id="stopwatch"><code>stopwatch()</code><a class="headerlink" href="#stopwatch" title="Permanent link">&para;</a></h3>
 <p>Returns both the duration since program start and the duration since last call in seconds.</p>
 <ul>
 <li>Technically, the stopwatch starts when <code>debugtools</code> is imported.</li>
 </ul>
-<h3 id="peakmem"><code>peakmem()</code></h3>
+<h3 id="peakmem"><code>peakmem()</code><a class="headerlink" href="#peakmem" title="Permanent link">&para;</a></h3>
 <p>Returns the peak memory usage since program start.</p>
 <ul>
 <li>In bytes on macOS, and in kilobytes on Linux.</li>

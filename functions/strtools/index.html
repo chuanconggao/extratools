@@ -707,32 +707,32 @@
                   <h1>strtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py">Source</a></p>
-<h2 id="string-matching">String Matching</h2>
+<h2 id="string-matching">String Matching<a class="headerlink" href="#string-matching" title="Permanent link">&para;</a></h2>
 <p>Tools for string matching.</p>
-<h3 id="commonsubstra-b"><code>commonsubstr(a, b)</code></h3>
+<h3 id="commonsubstra-b"><code>commonsubstr(a, b)</code><a class="headerlink" href="#commonsubstra-b" title="Permanent link">&para;</a></h3>
 <p>Finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-string</a> among two strings <code>a</code> and <code>b</code>.</p>
-<div class="codehilite"><pre><span></span><span class="n">commonsubstr</span><span class="p">(</span>
-     <span class="s2">&quot;abbab&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;aabbb&quot;</span>
-<span class="p">)</span>
-<span class="c1"># &quot;abb&quot;</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">commonsubstr(</span>
+     <span style="color: #e6db74">&quot;abbab&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;aabbb&quot;</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># &quot;abb&quot;</span>
 </pre></div>
 
 
-<h3 id="editdista-b-boundinf"><code>editdist(a, b, bound=inf)</code></h3>
+<h3 id="editdista-b-boundinf"><code>editdist(a, b, bound=inf)</code><a class="headerlink" href="#editdista-b-boundinf" title="Permanent link">&para;</a></h3>
 <p>Computes the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between two strings <code>a</code> and <code>b</code>.</p>
 <ul>
 <li>To speedup the computation, a threshold of maximum cost <code>bound=inf</code> can be specified. When there is no satisfying result, <code>None</code> is returned.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">editdist</span><span class="p">(</span>
-     <span class="s2">&quot;dog&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;frog&quot;</span>
-<span class="p">)</span>
-<span class="c1"># 2</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">editdist(</span>
+     <span style="color: #e6db74">&quot;dog&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;frog&quot;</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 2</span>
 </pre></div>
 
 
-<h3 id="tagstatstags-lines-separatornone"><code>tagstats(tags, lines, separator=None)</code></h3>
+<h3 id="tagstatstags-lines-separatornone"><code>tagstats(tags, lines, separator=None)</code><a class="headerlink" href="#tagstatstags-lines-separatornone" title="Permanent link">&para;</a></h3>
 <p>Efficiently computes the number of lines containing each tag.</p>
 <ul>
 <li>
@@ -742,32 +742,32 @@
 <p><code>separator</code> is a regex to tokenize each string. In default when <code>separator</code> is <code>None</code>, each string is not tokenized.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">tagstats</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;a b&quot;</span><span class="p">,</span> <span class="s2">&quot;a c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="s2">&quot;a b c&quot;</span><span class="p">,</span> <span class="s2">&quot;b c d&quot;</span><span class="p">,</span> <span class="s2">&quot;c d e&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="c1"># {&#39;a b&#39;: 1, &#39;a c&#39;: 0, &#39;b c&#39;: 2}</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tagstats(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a b&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;a c&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b c&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a b c&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b c d&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c d e&quot;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># {&#39;a b&#39;: 1, &#39;a c&#39;: 0, &#39;b c&#39;: 2}</span>
 </pre></div>
 
 
-<h2 id="string-transformation">String Transformation</h2>
+<h2 id="string-transformation">String Transformation<a class="headerlink" href="#string-transformation" title="Permanent link">&para;</a></h2>
 <p>Tools for string transformations.</p>
-<h3 id="str2gramss-n-padnone"><code>str2grams(s, n, pad=None)</code></h3>
+<h3 id="str2gramss-n-padnone"><code>str2grams(s, n, pad=None)</code><a class="headerlink" href="#str2gramss-n-padnone" title="Permanent link">&para;</a></h3>
 <p>Returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of string <code>s</code>.</p>
 <ul>
 <li>Optional padding at the start and end can be added by specifying <code>pad</code>. <code>\0</code> is usually a safe choice for <code>pad</code> when not displaying.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">str2grams</span><span class="p">(</span><span class="s2">&quot;str2grams&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">))</span>
-<span class="c1"># [&#39;#s&#39;, &#39;st&#39;, &#39;tr&#39;, &#39;r2&#39;, &#39;2g&#39;, &#39;gr&#39;, &#39;ra&#39;, &#39;am&#39;, &#39;ms&#39;, &#39;s#&#39;]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(str2grams(</span><span style="color: #e6db74">&quot;str2grams&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">pad</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;#&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [&#39;#s&#39;, &#39;st&#39;, &#39;tr&#39;, &#39;r2&#39;, &#39;2g&#39;, &#39;gr&#39;, &#39;ra&#39;, &#39;am&#39;, &#39;ms&#39;, &#39;s#&#39;]</span>
 </pre></div>
 
 
-<h2 id="checksum">Checksum</h2>
+<h2 id="checksum">Checksum<a class="headerlink" href="#checksum" title="Permanent link">&para;</a></h2>
 <p>Tools for checksums.</p>
-<h3 id="sha1sumf-sha256sumf-sha512sumf-and-md5sumf"><code>sha1sum(f)</code> , <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, and <code>md5sum(f)</code></h3>
+<h3 id="sha1sumf-sha256sumf-sha512sumf-and-md5sumf"><code>sha1sum(f)</code> , <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, and <code>md5sum(f)</code><a class="headerlink" href="#sha1sumf-sha256sumf-sha512sumf-and-md5sumf" title="Permanent link">&para;</a></h3>
 <p>Compute the respective checksum, accepting string, bytes, text file object, and binary file object.</p>
-<div class="codehilite"><pre><span></span><span class="n">sha1sum</span><span class="p">(</span><span class="s2">&quot;strtools&quot;</span><span class="p">)</span>
-<span class="c1"># &#39;bb91c4c3457cd1442acda4c11b29b02748679409&#39;</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">sha1sum(</span><span style="color: #e6db74">&quot;strtools&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># &#39;bb91c4c3457cd1442acda4c11b29b02748679409&#39;</span>
 </pre></div>
                 
                   

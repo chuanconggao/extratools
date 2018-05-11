@@ -735,69 +735,69 @@
                   <h1>sortedtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py">Source</a></p>
-<h2 id="sequence-check">Sequence Check</h2>
-<h3 id="issorteda-keynone"><code>issorted(a, key=None)</code></h3>
+<h2 id="sequence-check">Sequence Check<a class="headerlink" href="#sequence-check" title="Permanent link">&para;</a></h2>
+<h3 id="issorteda-keynone"><code>issorted(a, key=None)</code><a class="headerlink" href="#issorteda-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns if sequence <code>a</code> is already sorted, optionally according to the key function <code>key</code>.</p>
-<div class="codehilite"><pre><span></span><span class="n">issorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="c1"># True</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">issorted([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">])</span>
+<span style="color: #75715e"># True</span>
 </pre></div>
 
 
-<h2 id="sequence-matching">Sequence Matching</h2>
+<h2 id="sequence-matching">Sequence Matching<a class="headerlink" href="#sequence-matching" title="Permanent link">&para;</a></h2>
 <p>Tools for matching sorted sequences.</p>
-<h3 id="sortedcommona-b-keynone"><code>sortedcommon(a, b, key=None)</code></h3>
+<h3 id="sortedcommona-b-keynone"><code>sortedcommon(a, b, key=None)</code><a class="headerlink" href="#sortedcommona-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the common elements between <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) &amp; set(b))</code> but more efficient.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedcommon</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">))</span>
-<span class="c1"># [2, 3]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedcommon(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [2, 3]</span>
 </pre></div>
 
 
-<h3 id="sortedalonea-b-keynone"><code>sortedalone(a, b, key=None)</code></h3>
+<h3 id="sortedalonea-b-keynone"><code>sortedalone(a, b, key=None)</code><a class="headerlink" href="#sortedalonea-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted((set(a) | set(b)) - (set(a) &amp; set(b)))</code> but more efficient.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedalone</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">))</span>
-<span class="c1"># [1, 2, 4, 4]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedalone(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [1, 2, 4, 4]</span>
 </pre></div>
 
 
-<h3 id="sorteddiffa-b-keynone"><code>sorteddiff(a, b, key=None)</code></h3>
+<h3 id="sorteddiffa-b-keynone"><code>sorteddiff(a, b, key=None)</code><a class="headerlink" href="#sorteddiffa-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the elements only in <code>a</code> and not in <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) - set(b))</code> but more efficient.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sorteddiff</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">))</span>
-<span class="c1"># [1, 2]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sorteddiff(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [1, 2]</span>
 </pre></div>
 
 
-<h3 id="issubsorteda-b-keynone"><code>issubsorted(a, b, key=None)</code></h3>
+<h3 id="issubsorteda-b-keynone"><code>issubsorted(a, b, key=None)</code><a class="headerlink" href="#issubsorteda-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Checks if <code>a</code> is a sorted sub-sequence of <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>set(a) &lt;= set(b)</code> but more efficient.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">issubsorted</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">))</span>
-<span class="c1"># True</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(issubsorted(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># True</span>
 </pre></div>
 
 
-<h3 id="matchingfrequenciesseqs-keynone"><code>matchingfrequencies(*seqs, key=None)</code></h3>
+<h3 id="matchingfrequenciesseqs-keynone"><code>matchingfrequencies(*seqs, key=None)</code><a class="headerlink" href="#matchingfrequenciesseqs-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns each item and the respective number of sequences in <code>seqs</code> contains it. <sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></p>
 <ul>
 <li>
@@ -810,18 +810,18 @@
 <p>This implementation is space efficient. If there are <script type="math/tex">n</script> sequences, only <script type="math/tex">O(n)</script> space is used.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">matchingfrequencies</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span>   <span class="mi">2</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span>    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span>       <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">))</span>
-<span class="c1"># [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(matchingfrequencies(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>       <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]</span>
 </pre></div>
 
 
-<h2 id="sequence-join">Sequence Join</h2>
+<h2 id="sequence-join">Sequence Join<a class="headerlink" href="#sequence-join" title="Permanent link">&para;</a></h2>
 <p>Tools for joining sorted sequences.</p>
-<h3 id="sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default"><code>sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)</code></h3>
+<h3 id="sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default"><code>sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)</code><a class="headerlink" href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="Permanent link">&para;</a></h3>
 <p>Joins two sequences, optionally according to <code>leftkey</code> and <code>rightkey</code>, respectively. Outer join is also supported.</p>
 <ul>
 <li>
@@ -831,21 +831,21 @@
 <p><code>sortedjoin</code> is completely lazy, and more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">sortedjoin</span><span class="p">(</span>
-    <span class="p">[</span>   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>    <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span>    <span class="o">-</span><span class="mi">6</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-    <span class="n">leftkey</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">leftdefault</span><span class="o">=</span><span class="bp">None</span>
-<span class="p">))</span>
-<span class="c1"># [(None, 0),</span>
-<span class="c1">#  (-1, 1),</span>
-<span class="c1">#  (-1, 1),</span>
-<span class="c1">#  (-1, 1),</span>
-<span class="c1">#  (-1, 1),</span>
-<span class="c1">#  (-2, 2),</span>
-<span class="c1">#  (None, 3),</span>
-<span class="c1">#  (-4, 4),</span>
-<span class="c1">#  (-5, 5),</span>
-<span class="c1">#  (-5, 5)]</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedjoin(</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">leftkey</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">abs,</span> <span style="color: #f8f8f2">leftdefault</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">None</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(None, 0),</span>
+<span style="color: #75715e">#  (-1, 1),</span>
+<span style="color: #75715e">#  (-1, 1),</span>
+<span style="color: #75715e">#  (-1, 1),</span>
+<span style="color: #75715e">#  (-1, 1),</span>
+<span style="color: #75715e">#  (-2, 2),</span>
+<span style="color: #75715e">#  (None, 3),</span>
+<span style="color: #75715e">#  (-4, 4),</span>
+<span style="color: #75715e">#  (-5, 5),</span>
+<span style="color: #75715e">#  (-5, 5)]</span>
 </pre></div>
 
 
