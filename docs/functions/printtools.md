@@ -25,35 +25,48 @@ iter2str(itertools.count(), limit=5)
 # '<0, 1, 2, 3, 4, ...>'
 ```
 
-### `alignment2str(a, b, default=None)`
+### `alignment2str(*seqs, default=None)` and `table2str(data, default=None)`
 
-Prints the alignment between two sequences `a` and `b`. `default=None` is used for labelling missing value from each sequences.
+Prints the alignment between sequences `seq`. `default=None` is used for labelling missing value from each sequences.
 
-- If unknown, `seqtools.align` can compute the alignment between `a` and `b`.
+- `table2str` is a thin wrapper of `alignment2str` to print a row-based table.
+
+- If unknown, `seqtools.align` can compute the alignment between two sequences.
 
 - Builtin function `repr` is used to print each item safely.
 
-- If `a` and `b` have different lengths, the extra trailing items are also printed as not matching.
+- If sequences have different lengths, the extra trailing items are also printed as not matching.
 
 ``` python
 print(alignment2str(
-    [1, 10,  100, 1000],
-    [1, 10, None, 1000]
+    [1, 10,  100, "New York"],
+    [1, 10, None, "New York"]
 ))
-1 10 100 1000
-1 10     1000
+1 10 100 'New York'
+1 10     'New York'
 
 print(alignment2str(*align(
-    [1, 10, 100, 1000],
-    [1, 10,      1000]
+    [1, 10, 100, "New York"],
+    [1, 10,      "New York"]
 )[1]))
-1 10 100 1000
-1 10     1000
+1 10 100 'New York'
+1 10     'New York'
 
 print(alignment2str(
-    [1, 10, 100, 1000],
+    [1, 10, 100, "New York"],
     [1, 10, 100]
 ))
-1 10 100 1000
+1 10 100 'New York'
 1 10 100     
+
+print(table2str([
+    [1,   10,  100, "New York"],
+    [1,   10, None, "New York"],
+    [1, None,  100, "New York"],
+    [1,   10,  100, "New York"]
+]))
+1 10 100 'New York'
+1 10     'New York'
+1    100 'New York'
+1 10 100 'New York'
 ```

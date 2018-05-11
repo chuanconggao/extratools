@@ -27,7 +27,7 @@ def iter2str(seq: Iterable[T], limit=None) -> str:
             s.write('>')
             return s.getvalue()
 
-        s.write(f", {v}" if c else f"{v}")
+        s.write(", {}".format(repr(v)) if c else repr(v))
 
         c += 1
         if limit and c >= limit:
@@ -35,25 +35,26 @@ def iter2str(seq: Iterable[T], limit=None) -> str:
             return s.getvalue()
 
 
-def alignment2str(a: Iterable, b: Iterable, default: Any = None) -> str:
-    astr = StringIO()
-    bstr = StringIO()
+def alignment2str(*seqs: Iterable, default: Any = None) -> str:
+    strs = []
 
-    for i, (x, y) in enumerate(zip_longest(a, b, fillvalue=default)):
-        if i > 0:
-            astr.write(' ')
-            bstr.write(' ')
+    for i, col in enumerate(zip_longest(*seqs, fillvalue=default)):
+        if i == 0:
+            strs = [StringIO() for _ in col]
+        else:
+            for s in strs:
+                s.write(' ')
 
-        aval = '' if x is default else repr(x)
-        bval = '' if y is default else repr(y)
+        vals = ['' if v is default else repr(v) for v in col]
+        maxlen = max(len(val) for val in vals)
+        pads = [(maxlen - len(val)) * ' ' for val in vals]
 
-        apadding = (len(bval) - len(aval)) * ' '
-        bpadding = (len(aval) - len(bval)) * ' '
+        for s, pad, val in zip(strs, pads, vals):
+            s.write(pad)
+            s.write(val)
 
-        astr.write(apadding)
-        astr.write(aval)
+    return '\n'.join([s.getvalue() for s in strs])
 
-        bstr.write(bpadding)
-        bstr.write(bval)
 
-    return '\n'.join([astr.getvalue(), bstr.getvalue()])
+def table2str(data: List[List], default: Any = None) -> str:
+    return alignment2str(*data, default=default)
