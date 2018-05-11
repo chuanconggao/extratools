@@ -442,8 +442,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alignment2stra-b-defaultnone" title="alignment2str(a, b, default=None)" class="md-nav__link">
-    alignment2str(a, b, default=None)
+  <a href="#alignment2strseqs-defaultnone-and-table2strdata-defaultnone" title="alignment2str(*seqs, default=None) and table2str(data, default=None)" class="md-nav__link">
+    alignment2str(*seqs, default=None) and table2str(data, default=None)
   </a>
   
 </li>
@@ -594,8 +594,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alignment2stra-b-defaultnone" title="alignment2str(a, b, default=None)" class="md-nav__link">
-    alignment2str(a, b, default=None)
+  <a href="#alignment2strseqs-defaultnone-and-table2strdata-defaultnone" title="alignment2str(*seqs, default=None) and table2str(data, default=None)" class="md-nav__link">
+    alignment2str(*seqs, default=None) and table2str(data, default=None)
   </a>
   
 </li>
@@ -648,39 +648,53 @@
 </pre></div>
 
 
-<h3 id="alignment2stra-b-defaultnone"><code>alignment2str(a, b, default=None)</code><a class="headerlink" href="#alignment2stra-b-defaultnone" title="Permanent link">&para;</a></h3>
-<p>Prints the alignment between two sequences <code>a</code> and <code>b</code>. <code>default=None</code> is used for labelling missing value from each sequences.</p>
+<h3 id="alignment2strseqs-defaultnone-and-table2strdata-defaultnone"><code>alignment2str(*seqs, default=None)</code> and <code>table2str(data, default=None)</code><a class="headerlink" href="#alignment2strseqs-defaultnone-and-table2strdata-defaultnone" title="Permanent link">&para;</a></h3>
+<p>Prints the alignment between sequences <code>seq</code>. <code>default=None</code> is used for labelling missing value from each sequences.</p>
 <ul>
 <li>
-<p>If unknown, <code>seqtools.align</code> can compute the alignment between <code>a</code> and <code>b</code>.</p>
+<p><code>table2str</code> is a thin wrapper of <code>alignment2str</code> to print a row-based table.</p>
+</li>
+<li>
+<p>If unknown, <code>seqtools.align</code> can compute the alignment between two sequences.</p>
 </li>
 <li>
 <p>Builtin function <code>repr</code> is used to print each item safely.</p>
 </li>
 <li>
-<p>If <code>a</code> and <code>b</code> have different lengths, the extra trailing items are also printed as not matching.</p>
+<p>If sequences have different lengths, the extra trailing items are also printed as not matching.</p>
 </li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">))</span>
-<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
-<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #e6db74">&#39;New York&#39;</span>
 
 <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">align(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>      <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>      <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]))</span>
-<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
-<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #e6db74">&#39;New York&#39;</span>
 
 <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">))</span>
-<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
 <span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span>     
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(table2str([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>   <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>   <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>   <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]))</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #e6db74">&#39;New York&#39;</span>
+<span style="color: #ae81ff">1</span>    <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #e6db74">&#39;New York&#39;</span>
 </pre></div>
                 
                   
