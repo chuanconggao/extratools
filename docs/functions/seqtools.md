@@ -258,8 +258,8 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 
 ``` python
 list(join(
-    [-1, -1, -2, -4, -5, -6],
-    [0, 1, 1, 2, 3, 4, 5, 5],
+    [   -1, -1, -2,    -4, -5,    -6],
+    [0,  1,  1,  2, 3,  4,  5, 5],
     leftkey=abs, leftdefault=None
 ))
 # [(None, 0),

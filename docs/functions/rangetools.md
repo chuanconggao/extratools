@@ -18,7 +18,7 @@ Computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the f
 
 ``` python
 histogram(
-    [0.1, 0.5, 0.8, 0.9],
+    [   0.1,                0.5,           0.8, 0.9],
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 )
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
@@ -39,7 +39,7 @@ Efficiently finds the best value from the covered values in `keyvalues`, if each
 ``` python
 rangequery(
     {0.1: 1, 0.2: 3, 0.3: 0},
-    (0.2, 0.4)
+            (0.2,            0.4)
 )
 # 0
 ```
@@ -52,9 +52,19 @@ Tools for transformations over ranges. Note that each range is closed on the lef
 
 Computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
 
+``` python
+intersect((0, 0.6), (0.4, 1))
+# (0.4, 0.6)
+```
+
 ### `union(a, b)`
 
 Computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+``` python
+union((0, 0.6), (0.4, 1))
+# (0, 1)
+```
 
 ### `rangecover(whole, covered)`
 
@@ -64,7 +74,7 @@ Solves the variation of the [set cover problem](https://en.wikipedia.org/wiki/Se
 
 ``` python
 list(rangecover(
-    (0, 1),
+     (0,                                                 1),
     [(0, 0.4), (0.2, 0.5), (0.5, 0.8), (0.6, 0.9), (0.8, 1)]
 ))
 # [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
@@ -92,7 +102,7 @@ Computes the uncovered ranges of the whole range `whole`, given the covered rang
 ``` python
 list(gaps(
     [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
-    (0, 1)
+           (0,                                     1)
 ))
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```

@@ -10,7 +10,7 @@ Finds the [longest common sub-string](https://en.wikipedia.org/wiki/Longest_comm
 
 ``` python
 commonsubstr(
-    "abbab",
+     "abbab",
     "aabbb"
 )
 # "abb"
@@ -23,7 +23,10 @@ Computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) betwee
 - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
 
 ``` python
-editdist("dog", "frog")
+editdist(
+     "dog",
+    "frog"
+)
 # 2
 ```
 
@@ -53,6 +56,11 @@ Returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string 
 
 - Optional padding at the start and end can be added by specifying `pad`. `\0` is usually a safe choice for `pad` when not displaying.
 
+``` python
+list(str2grams("str2grams", 2, pad='#'))
+# ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']
+```
+
 ## Checksum
 
 Tools for checksums.
@@ -60,3 +68,8 @@ Tools for checksums.
 ### `sha1sum(f)` , `sha256sum(f)`, `sha512sum(f)`, and `md5sum(f)`
 
 Compute the respective checksum, accepting string, bytes, text file object, and binary file object.
+
+``` python
+sha1sum("strtools")
+# 'bb91c4c3457cd1442acda4c11b29b02748679409'
+```
