@@ -24,3 +24,36 @@ iter2str(range(5))
 iter2str(itertools.count(), limit=5)
 # '<0, 1, 2, 3, 4, ...>'
 ```
+
+### `alignment2str(a, b, default=None)`
+
+Prints the alignment between two sequences `a` and `b`. `default=None` is used for labelling missing value from each sequences.
+
+- If unknown, `seqtools.align` can compute the alignment between `a` and `b`.
+
+- Builtin function `repr` is used to print each item safely.
+
+- If `a` and `b` have different lengths, the extra trailing items are also printed as not matching.
+
+``` python
+print(alignment2str(
+    [1, 10,  100, 1000],
+    [1, 10, None, 1000]
+))
+1 10 100 1000
+1 10     1000
+
+print(alignment2str(*align(
+    [1, 10, 100, 1000],
+    [1, 10,      1000]
+)[1]))
+1 10 100 1000
+1 10     1000
+
+print(alignment2str(
+    [1, 10, 100, 1000],
+    [1, 10, 100]
+))
+1 10 100 1000
+1 10 100     
+```
