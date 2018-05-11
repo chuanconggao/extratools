@@ -24,7 +24,7 @@ Tools for querying ranges.
 
 - `rangequery(keyvalues, query, func=min)` efficiently finds the best value from the covered values in `keyvalues`, if each key in `keyvalues` is within the query range `query`.
 
-    - Implemented by [SegmentTree](datastructures.md#segmenttree) to solve the [range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) problem.
+    - Implemented by [SegmentTree](/datastructures/segmenttree.md) to solve the [range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) problem.
 
     - `func` defines how the best value is computed, and defaults to `min` for minimum value.
 

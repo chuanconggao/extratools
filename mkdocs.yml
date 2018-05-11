@@ -1,9 +1,27 @@
 site_name: extratools APIs
 
-theme: material
+repo_name: chuanconggao/extratools
+repo_url: https://github.com/chuanconggao/extratools
+
+copyright: "Copyright © Chuancong Gao"
+
+extra:
+    social:
+        - type: github
+          link: https://github.com/chuanconggao
+
+        - type: twitter
+          link: https://twitter.com/chuancong
+
+theme:
+    name: material
+    language: en
+    logo: favicon.jpg
+    favicon: favicon.jpg
 
 pages:
     - Index: index.md
+
     - Functions:
         - seqtools: functions/seqtools.md
         - sortedtools: functions/sortedtools.md
@@ -18,11 +36,10 @@ pages:
         - misctools: functions/misctools.md
         - printtools: functions/printtools.md
         - debugtools: functions/debugtools.md
+
     - Data Structures:
         - disjointsets.DisjointSets: datastructures/disjointsets.md
         - defaultlist.DefaultList: datastructures/defaultlist.md
         - segmenttree.SegmentTree: datastructures/segmenttree.md
-    - CLI Tools: cli.md
 
-repo_name: "chuanconggao/extratools"
-repo_url: "https://github.com/chuanconggao/extratools"
+    - CLI Tools: cli.md
