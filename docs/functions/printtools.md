@@ -16,6 +16,8 @@ Converts an iterable sequence to string.
 
 - If `limit` is specified, only print the first `limit` items. This is useful when `seq` is an infinite sequence.
 
+- Builtin function `repr` is used to print each item safely.
+
 ``` python
 iter2str(range(5))
 # '<0, 1, 2, 3, 4>'
