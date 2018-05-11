@@ -89,6 +89,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
+      <a href="#json-flattenunflatten" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -327,9 +331,49 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        jsontools
+      </label>
+    
     <a href="./" title="jsontools" class="md-nav__link md-nav__link--active">
       jsontools
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#json-flattenunflatten" title="JSON Flatten/Unflatten" class="md-nav__link">
+    JSON Flatten/Unflatten
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flattendata-forcefalse" title="flatten(data, force=False)" class="md-nav__link">
+    flatten(data, force=False)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -502,6 +546,48 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#json-flattenunflatten" title="JSON Flatten/Unflatten" class="md-nav__link">
+    JSON Flatten/Unflatten
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flattendata-forcefalse" title="flatten(data, force=False)" class="md-nav__link">
+    flatten(data, force=False)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -513,18 +599,16 @@
                   <h1>jsontools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py">Source</a></p>
+<h2 id="json-flattenunflatten">JSON Flatten/Unflatten</h2>
 <p>Tools for flatten/unflatten a JSON object.</p>
-<ul>
-<li>
-<p><code>flatten(data, force=False)</code> flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
+<h3 id="flattendata-forcefalse"><code>flatten(data, force=False)</code></h3>
+<p>Flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
 <ul>
 <li>
 <p>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</p>
 </li>
 <li>
-<p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.</p>
-</li>
-</ul>
+<p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array. Note that an empty array disappears after being flatten.</p>
 </li>
 </ul>
 <pre><code class="python">flatten(json.loads(&quot;&quot;&quot;{

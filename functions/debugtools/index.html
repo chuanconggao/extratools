@@ -89,6 +89,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
+      <a href="#debugging" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -411,9 +415,56 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        debugtools
+      </label>
+    
     <a href="./" title="debugtools" class="md-nav__link md-nav__link--active">
       debugtools
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" title="Debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopwatch" title="stopwatch()" class="md-nav__link">
+    stopwatch()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peakmem" title="peakmem()" class="md-nav__link">
+    peakmem()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -502,6 +553,55 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" title="Debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopwatch" title="stopwatch()" class="md-nav__link">
+    stopwatch()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peakmem" title="peakmem()" class="md-nav__link">
+    peakmem()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -513,20 +613,17 @@
                   <h1>debugtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py">Source</a></p>
+<h2 id="debugging">Debugging</h2>
 <p>Tools for non-functional but useful debugging purposes.</p>
-<ul>
-<li>
-<p><code>stopwatch()</code> returns both the duration since program start and the duration since last call in seconds.</p>
+<h3 id="stopwatch"><code>stopwatch()</code></h3>
+<p>Returns both the duration since program start and the duration since last call in seconds.</p>
 <ul>
 <li>Technically, the stopwatch starts when <code>debugtools</code> is imported.</li>
 </ul>
-</li>
-<li>
-<p><code>peakmem()</code> returns the peak memory usage since program start.</p>
+<h3 id="peakmem"><code>peakmem()</code></h3>
+<p>Returns the peak memory usage since program start.</p>
 <ul>
 <li>In bytes on macOS, and in kilobytes on Linux.</li>
-</ul>
-</li>
 </ul>
                 
                   
