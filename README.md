@@ -24,7 +24,7 @@ Besides other interesting ideas, I am planning to make the following updates in 
 
 - Add `dicttools.unflatten` and `jsontools.unflatten`.
 
-- Update `seqtools.commonsubseq`, `seqtools.findallsubseqswithgap`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
+- Update `seqtools.commonsubseq`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
 
 - Add `trie` and `suffixtree` (according to [generalized suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)).
 
