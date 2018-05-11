@@ -360,6 +360,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
+    Sequence Check
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
+    issorted(a, key=None)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -659,6 +679,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sequence-check" title="Sequence Check" class="md-nav__link">
+    Sequence Check
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issorteda-keynone" title="issorted(a, key=None)" class="md-nav__link">
+    issorted(a, key=None)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -684,25 +724,53 @@
 <h2 id="sequence-matching">Sequence Matching</h2>
 <p>Tools for matching sorted sequences.</p>
 <h3 id="sortedcommona-b-keynone"><code>sortedcommon(a, b, key=None)</code></h3>
-<p>Returns the common elements between <code>a</code> and <code>b</code>.</p>
+<p>Returns the common elements between <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) &amp; set(b))</code> but more efficient.</li>
 </ul>
+<pre><code class="python">list(sortedcommon(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [2, 3]
+</code></pre>
+
 <h3 id="sortedalonea-b-keynone"><code>sortedalone(a, b, key=None)</code></h3>
-<p>Returns the elements not in both <code>a</code> and <code>b</code>.</p>
+<p>Returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted((set(a) | set(b)) - (set(a) &amp; set(b)))</code> but more efficient.</li>
 </ul>
+<pre><code class="python">list(sortedalone(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2, 4, 4]
+</code></pre>
+
 <h3 id="sorteddiffa-b-keynone"><code>sorteddiff(a, b, key=None)</code></h3>
-<p>Returns the elements only in <code>a</code> and not in <code>b</code>.</p>
+<p>Returns the elements only in <code>a</code> and not in <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) - set(b))</code> but more efficient.</li>
 </ul>
+<pre><code class="python">list(sorteddiff(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2]
+</code></pre>
+
 <h3 id="issubsorteda-b-keynone"><code>issubsorted(a, b, key=None)</code></h3>
-<p>Checks if <code>a</code> is a sorted sub-sequence of <code>b</code>.</p>
+<p>Checks if <code>a</code> is a sorted sub-sequence of <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <ul>
 <li>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>set(a) &lt;= set(b)</code> but more efficient.</li>
 </ul>
+<pre><code class="python">list(issubsorted(
+    [1, 2, 2, 3],
+    [1, 2, 2, 3, 4, 4]
+))
+# True
+</code></pre>
+
 <h2 id="sequence-join">Sequence Join</h2>
 <p>Tools for joining sorted sequences.</p>
 <h3 id="sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default"><code>sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)</code></h3>
@@ -716,8 +784,8 @@
 </li>
 </ul>
 <pre><code class="python">list(sortedjoin(
-    [-1, -1, -2, -4, -5, -6],
-    [0, 1, 1, 2, 3, 4, 5, 5],
+    [   -1, -1, -2,    -4, -5,    -6],
+    [0,  1,  1,  2, 3,  4,  5, 5],
     leftkey=abs, leftdefault=None
 ))
 # [(None, 0),
@@ -730,6 +798,13 @@
 #  (-4, 4),
 #  (-5, 5),
 #  (-5, 5)]
+</code></pre>
+
+<h2 id="sequence-check">Sequence Check</h2>
+<h3 id="issorteda-keynone"><code>issorted(a, key=None)</code></h3>
+<p>Returns if sequence <code>a</code> is already sorted, optionally according to the key function <code>key</code>.</p>
+<pre><code class="python">issorted([1, 2, 2, 3])
+# True
 </code></pre>
                 
                   

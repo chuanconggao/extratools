@@ -756,7 +756,7 @@
 </li>
 </ul>
 <pre><code class="python">histogram(
-    [0.1, 0.5, 0.8, 0.9],
+    [   0.1,                0.5,           0.8, 0.9],
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 )
 # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}
@@ -776,7 +776,7 @@
 </ul>
 <pre><code class="python">rangequery(
     {0.1: 1, 0.2: 3, 0.3: 0},
-    (0.2, 0.4)
+            (0.2,            0.4)
 )
 # 0
 </code></pre>
@@ -785,15 +785,23 @@
 <p>Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.</p>
 <h3 id="intersecta-b"><code>intersect(a, b)</code></h3>
 <p>Computes the overlapping of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
+<pre><code class="python">intersect((0, 0.6), (0.4, 1))
+# (0.4, 0.6)
+</code></pre>
+
 <h3 id="uniona-b"><code>union(a, b)</code></h3>
 <p>Computes the merging of two ranges <code>a</code> and <code>b</code>. Returns <code>None</code> if there is no overlapping.</p>
+<pre><code class="python">union((0, 0.6), (0.4, 1))
+# (0, 1)
+</code></pre>
+
 <h3 id="rangecoverwhole-covered"><code>rangecover(whole, covered)</code></h3>
 <p>Solves the variation of the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe range <code>whole</code> as best as possible, using a subset of the covering ranges <code>covered</code>.</p>
 <ul>
 <li>This is an approximate algorithm, which means the returned result is not always the best.</li>
 </ul>
 <pre><code class="python">list(rangecover(
-    (0, 1),
+     (0,                                                 1),
     [(0, 0.4), (0.2, 0.5), (0.5, 0.8), (0.6, 0.9), (0.8, 1)]
 ))
 # [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
@@ -820,7 +828,7 @@
 </ul>
 <pre><code class="python">list(gaps(
     [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
-    (0, 1)
+           (0,                                     1)
 ))
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 </code></pre>

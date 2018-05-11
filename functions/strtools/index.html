@@ -712,7 +712,7 @@
 <h3 id="commonsubstra-b"><code>commonsubstr(a, b)</code></h3>
 <p>Finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-string</a> among two strings <code>a</code> and <code>b</code>.</p>
 <pre><code class="python">commonsubstr(
-    &quot;abbab&quot;,
+     &quot;abbab&quot;,
     &quot;aabbb&quot;
 )
 # &quot;abb&quot;
@@ -723,7 +723,10 @@
 <ul>
 <li>To speedup the computation, a threshold of maximum cost <code>bound=inf</code> can be specified. When there is no satisfying result, <code>None</code> is returned.</li>
 </ul>
-<pre><code class="python">editdist(&quot;dog&quot;, &quot;frog&quot;)
+<pre><code class="python">editdist(
+     &quot;dog&quot;,
+    &quot;frog&quot;
+)
 # 2
 </code></pre>
 
@@ -751,10 +754,17 @@
 <ul>
 <li>Optional padding at the start and end can be added by specifying <code>pad</code>. <code>\0</code> is usually a safe choice for <code>pad</code> when not displaying.</li>
 </ul>
+<pre><code class="python">list(str2grams(&quot;str2grams&quot;, 2, pad='#'))
+# ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']
+</code></pre>
+
 <h2 id="checksum">Checksum</h2>
 <p>Tools for checksums.</p>
 <h3 id="sha1sumf-sha256sumf-sha512sumf-and-md5sumf"><code>sha1sum(f)</code> , <code>sha256sum(f)</code>, <code>sha512sum(f)</code>, and <code>md5sum(f)</code></h3>
 <p>Compute the respective checksum, accepting string, bytes, text file object, and binary file object.</p>
+<pre><code class="python">sha1sum(&quot;strtools&quot;)
+# 'bb91c4c3457cd1442acda4c11b29b02748679409'
+</code></pre>
                 
                   
                 
