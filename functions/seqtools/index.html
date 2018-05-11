@@ -1045,7 +1045,7 @@
 <p>Returns all the positions where <code>a</code> is a sub-sequence of <code>b</code>.</p>
 <ul>
 <li>
-<p>No overlapping is allowed. Unlike <code>findallsubseq</code>, you cannot change this behavior.</p>
+<p>In default, no overlapping is allowed. You can change this behavior by specify <code>overlap</code>.</p>
 </li>
 <li>
 <p>Unlike other function in <code>seqtools</code>, empty list is returned when <code>a</code> is empty.</p>
@@ -1057,6 +1057,32 @@
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># [[0, 2, 4], [1, 6, 7]]</span>
+
+<span style="color: #75715e"># Enumerates all the possible matchings.</span>
+<span style="color: #f8f8f2">list(findallsubseqswithgap(</span>
+   <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
+ <span style="color: #75715e"># [0,    1,          1],</span>
+ <span style="color: #75715e"># ...</span>
+ <span style="color: #75715e"># [               0, 1, 1],</span>
+   <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
+   <span style="color: #f8f8f2">overlap</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># [[0, 2, 4],</span>
+<span style="color: #75715e">#  [0, 2, 6],</span>
+<span style="color: #75715e">#  [0, 2, 7],</span>
+<span style="color: #75715e">#  [0, 4, 6],</span>
+<span style="color: #75715e">#  [0, 4, 7],</span>
+<span style="color: #75715e">#  [0, 6, 7],</span>
+<span style="color: #75715e">#  [1, 2, 4],</span>
+<span style="color: #75715e">#  [1, 2, 6],</span>
+<span style="color: #75715e">#  [1, 2, 7],</span>
+<span style="color: #75715e">#  [1, 4, 6],</span>
+<span style="color: #75715e">#  [1, 4, 7],</span>
+<span style="color: #75715e">#  [1, 6, 7],</span>
+<span style="color: #75715e">#  [3, 4, 6],</span>
+<span style="color: #75715e">#  [3, 4, 7],</span>
+<span style="color: #75715e">#  [3, 6, 7],</span>
+<span style="color: #75715e">#  [5, 6, 7]]</span>
 </pre></div>
 
 
