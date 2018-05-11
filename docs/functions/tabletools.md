@@ -1,10 +1,14 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
+## Table
+
 Tools for tables.
 
-- `transpose(data)` returns the transpose of table `data`, i.e., switch rows and columns.
+### `transpose(data)`
 
-    - Useful to switch table `data` from row-based to column-based and backwards.
+Returns the transpose of table `data`, i.e., switch rows and columns.
+
+- Useful to switch table `data` from row-based to column-based and backwards.
 
 ``` python
 list(transpose([
@@ -17,6 +21,10 @@ list(transpose([
 #  [3, 6, 9]]
 ```
 
-- `loadcsv(path, delimiter=',')` loads a CSV file, from either a file path or a file object.
+### `loadcsv(path, delimiter=',')`
 
-- `dumpcsv(path, data, delimiter=',')` dumps a table `data` in CSV, to either a file path or a file object.
+Loads a CSV file, from either a file path or a file object.
+
+### `dumpcsv(path, data, delimiter=',')`
+
+Dumps a table `data` in CSV, to either a file path or a file object.

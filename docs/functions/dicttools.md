@@ -1,37 +1,53 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
+## Dictionary Inverting
+
 Tools for inverting dictionaries.
 
-- `invert(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
+### `invert(d)`
 
-    - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+Inverts `(Key, Value)` pairs to `(Value, Key)`.
 
-- `invert_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
-    - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+### `invert_multiple(d)`
 
-- `invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+Inverts `(Key, List[Value])` pairs to `(Value, Key)`.
 
-    - If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+### `invert_safe(d)`
+
+Inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+
+- If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
+
+## Remapping
 
 Tools for remapping elements.
 
-- `remap(data, mapping, key=None)` remaps each unique element in `data` according to function `key`.
+### `remap(data, mapping, key=None)`
 
-    - `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
+Remaps each unique element in `data` according to function `key`.
 
-    - In default, `key` returns integers starting from `0`.
+- `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
+
+- In default, `key` returns integers starting from `0`.
 
 ``` python
 wordmap = {}
 db = [list(remap(doc, wordmap)) for doc in docs]
 ```
 
+## Indexing
+
 Tools for indexing.
 
-- `invertedindex(seqs)` creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
+### `invertedindex(seqs)`
 
-    - Each item's index is a list of `(ID, position)` pairs for all the sequences in `seqs` containing the item.
+Creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
+
+- Each item's index is a list of `(ID, position)` pairs for all the sequences in `seqs` containing the item.
 
 ``` python
 data = [s.split() for s in [
@@ -49,9 +65,11 @@ invertedindex(data)
 #  'e': [(0, 4), (1, 4)]}
 ```
 
-- `nextentries(data, entries)` scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
+### `nextentries(data, entries)`
 
-    - Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
+Scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
+
+- Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
 
 ``` python
 # same data from previous example
@@ -67,13 +85,17 @@ nextentries(data, entries)
 #  'a': [(2, 4)]}
 ```
 
+## Dictionary Flatten/Unflatten
+
 Tools for flatten/unflatten a dictionary.
 
-- `flatten(d, force=False)` flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+### `flatten(d, force=False)`
 
-    - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
+Flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
-    - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.
+- For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
+
+- In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array disappears after being flatten.
 
 ``` python
 flatten(json.loads("""{

@@ -1,15 +1,51 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
+## Sequence Matching
+
+Tools for matching sorted sequences.
+
+### `sortedcommon(a, b, key=None)`
+
+Returns the common elements between `a` and `b`.
+
+- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
+
+### `sortedalone(a, b, key=None)`
+
+Returns the elements not in both `a` and `b`.
+
+- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
+
+### `sorteddiff(a, b, key=None)`
+
+Returns the elements only in `a` and not in `b`.
+
+- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
+
+### `issubsorted(a, b, key=None)`
+
+Checks if `a` is a sorted sub-sequence of `b`.
+
+- When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
+
+## Sequence Join
+
 Tools for joining sorted sequences.
 
-- `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+### `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
 
-    - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
+Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
-    - `sortedjoin` is completely lazy, and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+- Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
+
+- `sortedjoin` is completely lazy, and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
 
 ``` python
-list(sortedjoin([-1, -1, -2, -4, -5, -6], [0, 1, 1, 2, 3, 4, 5, 5], leftkey=abs, leftdefault=None))
+list(sortedjoin(
+    [-1, -1, -2, -4, -5, -6],
+    [0, 1, 1, 2, 3, 4, 5, 5],
+    leftkey=abs, leftdefault=None
+))
 # [(None, 0),
 #  (-1, 1),
 #  (-1, 1),
@@ -21,22 +57,3 @@ list(sortedjoin([-1, -1, -2, -4, -5, -6], [0, 1, 1, 2, 3, 4, 5, 5], leftkey=abs,
 #  (-5, 5),
 #  (-5, 5)]
 ```
-
-Tools for matching sorted sequences.
-
-- `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`.
-
-    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
-
-- `sortedalone(a, b, key=None)` returns the elements not in both `a` and `b`.
-
-    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
-
-- `sorteddiff(a, b, key=None)` returns the elements only in `a` and not in `b`.
-
-    - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
-
-- `issubsorted(a, b, key=None)` checks if `a` is a sorted sub-sequence of `b`.
-
-    - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
-

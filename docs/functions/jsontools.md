@@ -1,12 +1,16 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/jsontools.py)
 
+## JSON Flatten/Unflatten
+
 Tools for flatten/unflatten a JSON object.
 
-- `flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+### `flatten(data, force=False)`
 
-    - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
+Flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
-    - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array contains no child and disappears after being flatten.
+- For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
+
+- In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array disappears after being flatten.
 
 ``` python
 flatten(json.loads("""{
