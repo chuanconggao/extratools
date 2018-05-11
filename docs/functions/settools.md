@@ -10,7 +10,7 @@ Finds the best sub-set of `a` that maximizes the key function `key`.
 
 ``` python
 bestsubset({1, -2, 3, -4, 5, -6}, sum)
-# {1, 3, 5}
+#          {1,     3,     5}
 ```
 
 ### `setcover(whole, covered, key=len)`
@@ -23,7 +23,7 @@ Solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) 
 
 ``` python
 list(setcover(
-    {1, 2, 3, 4, 5},
+    { 1, 2, 3,         4,         5},
     [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
 ))
 # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
