@@ -434,6 +434,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#iter2strseq-limitnone" title="iter2str(seq, limit=None)" class="md-nav__link">
+    iter2str(seq, limit=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -572,6 +579,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#iter2strseq-limitnone" title="iter2str(seq, limit=None)" class="md-nav__link">
+    iter2str(seq, limit=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -606,6 +620,18 @@
 <ul>
 <li>The same parameters are accepted.</li>
 </ul>
+<h3 id="iter2strseq-limitnone"><code>iter2str(seq, limit=None)</code></h3>
+<p>Converts an iterable sequence to string.</p>
+<ul>
+<li>If <code>limit</code> is specified, only print the first <code>limit</code> items. This is useful when <code>seq</code> is an infinite sequence.</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">iter2str</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># &#39;&lt;0, 1, 2, 3, 4&gt;&#39;</span>
+
+<span class="c1"># Infinity sequence</span>
+<span class="n">iter2str</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># &#39;&lt;0, 1, 2, 3, 4, ...&gt;&#39;</span>
+</pre></div>
                 
                   
                 

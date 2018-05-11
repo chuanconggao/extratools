@@ -532,7 +532,7 @@
         },
         {
             "location": "/functions/printtools/",
-            "text": "Source\n\n\nPrinting\n\n\nTools for non-functional but useful printing purposes.\n\n\nprint2(*args, **kwargs)\n\n\nRedirects the output of \nprint\n to standard error.\n\n\n\n\nThe same parameters are accepted.",
+            "text": "Source\n\n\nPrinting\n\n\nTools for non-functional but useful printing purposes.\n\n\nprint2(*args, **kwargs)\n\n\nRedirects the output of \nprint\n to standard error.\n\n\n\n\nThe same parameters are accepted.\n\n\n\n\niter2str(seq, limit=None)\n\n\nConverts an iterable sequence to string.\n\n\n\n\nIf \nlimit\n is specified, only print the first \nlimit\n items. This is useful when \nseq\n is an infinite sequence.\n\n\n\n\niter2str\n(\nrange\n(\n5\n))\n\n\n# '<0, 1, 2, 3, 4>'\n\n\n\n# Infinity sequence\n\n\niter2str\n(\nitertools\n.\ncount\n(),\n \nlimit\n=\n5\n)\n\n\n# '<0, 1, 2, 3, 4, ...>'",
             "title": "printtools"
         },
         {
@@ -546,14 +546,34 @@
             "title": "print2(*args, **kwargs)"
         },
         {
+            "location": "/functions/printtools/#iter2strseq-limitnone",
+            "text": "Converts an iterable sequence to string.   If  limit  is specified, only print the first  limit  items. This is useful when  seq  is an infinite sequence.   iter2str ( range ( 5 ))  # '<0, 1, 2, 3, 4>'  # Infinity sequence  iter2str ( itertools . count (),   limit = 5 )  # '<0, 1, 2, 3, 4, ...>'",
+            "title": "iter2str(seq, limit=None)"
+        },
+        {
             "location": "/functions/debugtools/",
-            "text": "Source\n\n\nDebugging\n\n\nTools for non-functional but useful debugging purposes.\n\n\nstopwatch()\n\n\nReturns both the duration since program start and the duration since last call in seconds.\n\n\n\n\nTechnically, the stopwatch starts when \ndebugtools\n is imported.\n\n\n\n\npeakmem()\n\n\nReturns the peak memory usage since program start.\n\n\n\n\nIn bytes on macOS, and in kilobytes on Linux.",
+            "text": "Source\n\n\nIterable\n\n\nTools for debugging iterable sequence.\n\n\ndelayediter(seq, delay=None)\n\n\nDelays the production of each item in \nseq\n by \ndelay\n seconds.\n\n\n\n\nIn default, \ndelay=None\n is disabled.\n\n\n\n\nfor\n \nv\n \nin\n \ndelayediter\n(\nrange\n(\n5\n),\n \ndelay\n=\n1\n):\n\n    \nprint\n(\ndatetime\n.\ndatetime\n.\nnow\n()\n.\ntime\n(),\n \nv\n)\n\n\n# 01:11:21.562655 0\n\n\n# 01:11:22.563725 1\n\n\n# 01:11:23.567723 2\n\n\n# 01:11:24.567997 3\n\n\n# 01:11:25.568119 4\n\n\n\n\n\n\ntimediter(seq)\n\n\nProduces each item in \nseq\n and its respective timestamp when encountered.\n\n\nfor\n \nt\n,\n \nv\n \nin\n \ntimediter\n(\ndelayediter\n(\nrange\n(\n5\n),\n \ndelay\n=\n1\n)):\n\n    \nprint\n(\ndatetime\n.\ndatetime\n.\nfromtimestamp\n(\nt\n)\n.\ntime\n(),\n \nv\n)\n\n\n# 01:13:37.181460 0\n\n\n# 01:13:38.182715 1\n\n\n# 01:13:39.188049 2\n\n\n# 01:13:40.193304 3\n\n\n# 01:13:41.197916 4\n\n\n\n\n\n\nSystem Diagnosis\n\n\nTools for non-functional but useful system diagnosis tools.\n\n\nstopwatch()\n\n\nReturns both the duration since program start and the duration since last call in seconds.\n\n\n\n\nTechnically, the stopwatch starts when \ndebugtools\n is imported.\n\n\n\n\npeakmem()\n\n\nReturns the peak memory usage since program start.\n\n\n\n\nIn bytes on macOS, and in kilobytes on Linux.",
             "title": "debugtools"
         },
         {
-            "location": "/functions/debugtools/#debugging",
-            "text": "Tools for non-functional but useful debugging purposes.",
-            "title": "Debugging"
+            "location": "/functions/debugtools/#iterable",
+            "text": "Tools for debugging iterable sequence.",
+            "title": "Iterable"
+        },
+        {
+            "location": "/functions/debugtools/#delayediterseq-delaynone",
+            "text": "Delays the production of each item in  seq  by  delay  seconds.   In default,  delay=None  is disabled.   for   v   in   delayediter ( range ( 5 ),   delay = 1 ): \n     print ( datetime . datetime . now () . time (),   v )  # 01:11:21.562655 0  # 01:11:22.563725 1  # 01:11:23.567723 2  # 01:11:24.567997 3  # 01:11:25.568119 4",
+            "title": "delayediter(seq, delay=None)"
+        },
+        {
+            "location": "/functions/debugtools/#timediterseq",
+            "text": "Produces each item in  seq  and its respective timestamp when encountered.  for   t ,   v   in   timediter ( delayediter ( range ( 5 ),   delay = 1 )): \n     print ( datetime . datetime . fromtimestamp ( t ) . time (),   v )  # 01:13:37.181460 0  # 01:13:38.182715 1  # 01:13:39.188049 2  # 01:13:40.193304 3  # 01:13:41.197916 4",
+            "title": "timediter(seq)"
+        },
+        {
+            "location": "/functions/debugtools/#system-diagnosis",
+            "text": "Tools for non-functional but useful system diagnosis tools.",
+            "title": "System Diagnosis"
         },
         {
             "location": "/functions/debugtools/#stopwatch",

@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#debugging" tabindex="1" class="md-skip">
+      <a href="#iterable" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -432,8 +432,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debugging" title="Debugging" class="md-nav__link">
-    Debugging
+  <a href="#iterable" title="Iterable" class="md-nav__link">
+    Iterable
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delayediterseq-delaynone" title="delayediter(seq, delay=None)" class="md-nav__link">
+    delayediter(seq, delay=None)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timediterseq" title="timediter(seq)" class="md-nav__link">
+    timediter(seq)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-diagnosis" title="System Diagnosis" class="md-nav__link">
+    System Diagnosis
   </a>
   
     <nav class="md-nav">
@@ -565,8 +592,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debugging" title="Debugging" class="md-nav__link">
-    Debugging
+  <a href="#iterable" title="Iterable" class="md-nav__link">
+    Iterable
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delayediterseq-delaynone" title="delayediter(seq, delay=None)" class="md-nav__link">
+    delayediter(seq, delay=None)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timediterseq" title="timediter(seq)" class="md-nav__link">
+    timediter(seq)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-diagnosis" title="System Diagnosis" class="md-nav__link">
+    System Diagnosis
   </a>
   
     <nav class="md-nav">
@@ -613,8 +667,37 @@
                   <h1>debugtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py">Source</a></p>
-<h2 id="debugging">Debugging</h2>
-<p>Tools for non-functional but useful debugging purposes.</p>
+<h2 id="iterable">Iterable</h2>
+<p>Tools for debugging iterable sequence.</p>
+<h3 id="delayediterseq-delaynone"><code>delayediter(seq, delay=None)</code></h3>
+<p>Delays the production of each item in <code>seq</code> by <code>delay</code> seconds.</p>
+<ul>
+<li>In default, <code>delay=None</code> is disabled.</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">delayediter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># 01:11:21.562655 0</span>
+<span class="c1"># 01:11:22.563725 1</span>
+<span class="c1"># 01:11:23.567723 2</span>
+<span class="c1"># 01:11:24.567997 3</span>
+<span class="c1"># 01:11:25.568119 4</span>
+</pre></div>
+
+
+<h3 id="timediterseq"><code>timediter(seq)</code></h3>
+<p>Produces each item in <code>seq</code> and its respective timestamp when encountered.</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">timediter</span><span class="p">(</span><span class="n">delayediter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># 01:13:37.181460 0</span>
+<span class="c1"># 01:13:38.182715 1</span>
+<span class="c1"># 01:13:39.188049 2</span>
+<span class="c1"># 01:13:40.193304 3</span>
+<span class="c1"># 01:13:41.197916 4</span>
+</pre></div>
+
+
+<h2 id="system-diagnosis">System Diagnosis</h2>
+<p>Tools for non-functional but useful system diagnosis tools.</p>
 <h3 id="stopwatch"><code>stopwatch()</code></h3>
 <p>Returns both the duration since program start and the duration since last call in seconds.</p>
 <ul>
