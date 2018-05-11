@@ -2,8 +2,22 @@
 
 from typing import *
 
+T = TypeVar('T')
+
 import time
 import resource
+
+def delayediter(seq: Iterable[T], delay=None) -> Iterable[T]:
+    for v in seq:
+        if delay:
+            time.sleep(delay)
+        yield v
+
+
+def timediter(seq: Iterable[T]) -> Iterable[Tuple[float, T]]:
+    for v in seq:
+        yield (time.time(), v)
+
 
 starttime = lasttime = time.perf_counter()
 
