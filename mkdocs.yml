@@ -20,12 +20,17 @@ theme:
     favicon: favicon.jpg
 
 markdown_extensions:
-    - codehilite
+    - codehilite:
+        use_pygments: true
+        pygments_style: monokai
+        noclasses: true
     - footnotes
     - nl2br
     - smarty
     - mdx_math:
-        enable_dollar_delimiter: True
+        enable_dollar_delimiter: true
+    - toc:
+        permalink: true
 
 extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"]
 
