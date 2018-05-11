@@ -372,7 +372,7 @@
         },
         {
             "location": "/functions/settools/",
-            "text": "Source\n\n\nSet Matching\n\n\nTools for matching sets.\n\n\nbestsubset(a, key)\n\n\nFinds the best sub-set of \na\n that maximizes the key function \nkey\n.\n\n\nbestsubset({1, -2, 3, -4, 5, -6}, sum)\n# {1, 3, 5}\n\n\n\n\nsetcover(whole, covered, key=len)\n\n\nSolves the \nset cover problem\n by covering the universe set \nwhole\n as best as possible, using a subset of the covering sets \ncovered\n.\n\n\n\n\n\n\nIn default, the size of each set \nlen\n is used as key function \nkey\n to measure the coverage.\n\n\n\n\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\n\n\nlist(setcover(\n    {1, 2, 3, 4, 5},\n    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]\n))\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]\n\n\n\n\nSet Operation\n\n\nTools for set operations.\n\n\naddtoset(s, x)\n\n\nChecks whether adding \nx\n to set \ns\n is successful.\n\n\nSet Similarity\n\n\nTools for set similarities.\n\n\njaccard(a, b)\n\n\nComputes the \nJaccard similarity\n between two sets \na\n and \nb\n.\n\n\nmultisetjaccard(a, b)\n\n\nComputes the \nJaccard similarity\n between two multi-sets (Counters) \na\n and \nb\n.\n\n\nweightedjaccard(a, b, key=sum)\n\n\nComputes the weighted \nJaccard similarity\n between two sets \na\n and \nb\n, using function \nkey\n to compute the total weight of the elements within a set.",
+            "text": "Source\n\n\nSet Matching\n\n\nTools for matching sets.\n\n\nbestsubset(a, key)\n\n\nFinds the best sub-set of \na\n that maximizes the key function \nkey\n.\n\n\nbestsubset({1, -2, 3, -4, 5, -6}, sum)\n#          {1,     3,     5}\n\n\n\n\nsetcover(whole, covered, key=len)\n\n\nSolves the \nset cover problem\n by covering the universe set \nwhole\n as best as possible, using a subset of the covering sets \ncovered\n.\n\n\n\n\n\n\nIn default, the size of each set \nlen\n is used as key function \nkey\n to measure the coverage.\n\n\n\n\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\n\n\nlist(setcover(\n    { 1, 2, 3,         4,         5},\n    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]\n))\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]\n\n\n\n\nSet Operation\n\n\nTools for set operations.\n\n\naddtoset(s, x)\n\n\nChecks whether adding \nx\n to set \ns\n is successful.\n\n\nSet Similarity\n\n\nTools for set similarities.\n\n\njaccard(a, b)\n\n\nComputes the \nJaccard similarity\n between two sets \na\n and \nb\n.\n\n\nmultisetjaccard(a, b)\n\n\nComputes the \nJaccard similarity\n between two multi-sets (Counters) \na\n and \nb\n.\n\n\nweightedjaccard(a, b, key=sum)\n\n\nComputes the weighted \nJaccard similarity\n between two sets \na\n and \nb\n, using function \nkey\n to compute the total weight of the elements within a set.",
             "title": "settools"
         },
         {
@@ -382,12 +382,12 @@
         },
         {
             "location": "/functions/settools/#bestsubseta-key",
-            "text": "Finds the best sub-set of  a  that maximizes the key function  key .  bestsubset({1, -2, 3, -4, 5, -6}, sum)\n# {1, 3, 5}",
+            "text": "Finds the best sub-set of  a  that maximizes the key function  key .  bestsubset({1, -2, 3, -4, 5, -6}, sum)\n#          {1,     3,     5}",
             "title": "bestsubset(a, key)"
         },
         {
             "location": "/functions/settools/#setcoverwhole-covered-keylen",
-            "text": "Solves the  set cover problem  by covering the universe set  whole  as best as possible, using a subset of the covering sets  covered .    In default, the size of each set  len  is used as key function  key  to measure the coverage.    This is an approximate algorithm, which means the returned result is not always the best.    list(setcover(\n    {1, 2, 3, 4, 5},\n    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]\n))\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]",
+            "text": "Solves the  set cover problem  by covering the universe set  whole  as best as possible, using a subset of the covering sets  covered .    In default, the size of each set  len  is used as key function  key  to measure the coverage.    This is an approximate algorithm, which means the returned result is not always the best.    list(setcover(\n    { 1, 2, 3,         4,         5},\n    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]\n))\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]",
             "title": "setcover(whole, covered, key=len)"
         },
         {
