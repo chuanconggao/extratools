@@ -6,27 +6,59 @@ Tools for matching sorted sequences.
 
 ### `sortedcommon(a, b, key=None)`
 
-Returns the common elements between `a` and `b`.
+Returns the common elements between `a` and `b`, optionally according to the key function `key`.
 
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
 
+``` python
+list(sortedcommon(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [2, 3]
+```
+
 ### `sortedalone(a, b, key=None)`
 
-Returns the elements not in both `a` and `b`.
+Returns the elements not in both `a` and `b`, optionally according to the key function `key`.
 
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
 
+``` python
+list(sortedalone(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2, 4, 4]
+```
+
 ### `sorteddiff(a, b, key=None)`
 
-Returns the elements only in `a` and not in `b`.
+Returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
 
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
 
+``` python
+list(sorteddiff(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2]
+```
+
 ### `issubsorted(a, b, key=None)`
 
-Checks if `a` is a sorted sub-sequence of `b`.
+Checks if `a` is a sorted sub-sequence of `b`, optionally according to the key function `key`.
 
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
+
+``` python
+list(issubsorted(
+    [1, 2, 2, 3],
+    [1, 2, 2, 3, 4, 4]
+))
+# True
+```
 
 ## Sequence Join
 
@@ -56,4 +88,15 @@ list(sortedjoin(
 #  (-4, 4),
 #  (-5, 5),
 #  (-5, 5)]
+```
+
+## Sequence Check
+
+### `issorted(a, key=None)`
+
+Returns if sequence `a` is already sorted, optionally according to the key function `key`.
+
+``` python
+issorted([1, 2, 2, 3])
+# True
 ```

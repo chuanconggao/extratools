@@ -82,3 +82,27 @@ def issubsorted(
     sentinel = object()
 
     return next(iter(sorteddiff(a, b, key=key)), sentinel) is sentinel
+
+
+def issorted(
+        a: Iterable[T],
+        key: Callable[[T], Any] = None
+    ) -> bool:
+    if key is None:
+        key = lambda v: v
+
+    sentinel = object()
+
+    seq = iter(a)
+
+    prev = sentinel
+
+    while True:
+        curr = next(seq, sentinel)
+        if curr is sentinel:
+            return True
+
+        if prev is not sentinel and key(prev) > key(curr):
+            return False
+
+        prev = curr

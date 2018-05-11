@@ -96,7 +96,7 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T]) -> Iterable[Optional[L
     if len(x) == 0:
         return
 
-    y = list(b)
+    y: Any = list(b)
 
     sentinel = object()
 
