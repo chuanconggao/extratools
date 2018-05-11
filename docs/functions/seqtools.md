@@ -86,7 +86,7 @@ bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
 # [1, 3, 5]
 ```
 
-### `findallsubseqswithgap(a, b)`
+### `findallsubseqswithgap(a, b, overlap=False)`
 
 Returns all the positions where `a` is a sub-sequence of `b`.
 
