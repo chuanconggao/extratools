@@ -1,5 +1,16 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
+## Sequence Check
+
+### `issorted(a, key=None)`
+
+Returns if sequence `a` is already sorted, optionally according to the key function `key`.
+
+``` python
+issorted([1, 2, 2, 3])
+# True
+```
+
 ## Sequence Matching
 
 Tools for matching sorted sequences.
@@ -60,6 +71,27 @@ list(issubsorted(
 # True
 ```
 
+### `matchingfrequencies(*seqs, key=None)`
+
+Returns each item and the respective number of sequences in `seqs` contains it. [^a]
+
+- Each sequence in `seqs` must already be sorted.
+
+- Optional key function `key` can be specified.
+
+- This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
+
+``` python
+list(matchingfrequencies(
+    [1, 2, 2, 3],
+    [   2,    3,    4, 5],
+    [1,       3, 3, 4]
+))
+# [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]
+```
+
+[^a]: For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
+
 ## Sequence Join
 
 Tools for joining sorted sequences.
@@ -88,15 +120,4 @@ list(sortedjoin(
 #  (-4, 4),
 #  (-5, 5),
 #  (-5, 5)]
-```
-
-## Sequence Check
-
-### `issorted(a, key=None)`
-
-Returns if sequence `a` is already sorted, optionally according to the key function `key`.
-
-``` python
-issorted([1, 2, 2, 3])
-# True
 ```

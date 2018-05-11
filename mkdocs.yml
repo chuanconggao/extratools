@@ -19,6 +19,16 @@ theme:
     logo: favicon.jpg
     favicon: favicon.jpg
 
+markdown_extensions:
+    - codehilite
+    - footnotes
+    - nl2br
+    - smarty
+    - mdx_math:
+        enable_dollar_delimiter: True
+
+extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"]
+
 pages:
     - Index: index.md
 

@@ -4,6 +4,11 @@ from typing import *
 
 T = TypeVar('T')
 
+from heapq import merge
+from itertools import groupby
+
+from toolz.itertoolz import count, unique
+
 from .__join import sortedjoin
 
 def __sortedscan(
@@ -106,3 +111,8 @@ def issorted(
             return False
 
         prev = curr
+
+
+def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
+    for k, g in groupby(merge(*[unique(seq, key=key) for seq in seqs], key=key)):
+        yield (k, count(g))
