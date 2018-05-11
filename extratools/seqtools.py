@@ -91,12 +91,31 @@ def bestsubseqwithgap(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
     return find(len(a))[1]
 
 
-def findallsubseqswithgap(a: Iterable[T], b: Iterable[T]) -> Iterable[Optional[List[int]]]:
+def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[List[int]]:
+    def findallsubseqswithgap_overlap(prefixposs: List[int]) -> Iterable[List[int]]:
+        if len(prefixposs) == len(x):
+            yield prefixposs
+
+            return
+
+        first = x[len(prefixposs)]
+
+        for i in range(prefixposs[-1] + 1 if len(prefixposs) else 0, len(y)):
+            if y[i] != first:
+                continue
+
+            yield from findallsubseqswithgap_overlap(prefixposs + [i])
+
+
     x = list(a)
     if len(x) == 0:
         return
 
     y: Any = list(b)
+
+    if overlap:
+        yield from findallsubseqswithgap_overlap([])
+        return
 
     sentinel = object()
 

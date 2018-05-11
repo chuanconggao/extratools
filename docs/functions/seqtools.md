@@ -90,7 +90,7 @@ bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
 
 Returns all the positions where `a` is a sub-sequence of `b`.
 
-- No overlapping is allowed. Unlike `findallsubseq`, you cannot change this behavior.
+- In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
 - Unlike other function in `seqtools`, empty list is returned when `a` is empty.
 
@@ -101,6 +101,32 @@ list(findallsubseqswithgap(
     [0, 0, 1, 0, 1, 0, 1, 1]
 ))
 # [[0, 2, 4], [1, 6, 7]]
+
+# Enumerates all the possible matchings.
+list(findallsubseqswithgap(
+   [0,    1,    1],
+ # [0,    1,          1],
+ # ...
+ # [               0, 1, 1],
+   [0, 0, 1, 0, 1, 0, 1, 1],
+   overlap=True
+)
+# [[0, 2, 4],
+#  [0, 2, 6],
+#  [0, 2, 7],
+#  [0, 4, 6],
+#  [0, 4, 7],
+#  [0, 6, 7],
+#  [1, 2, 4],
+#  [1, 2, 6],
+#  [1, 2, 7],
+#  [1, 4, 6],
+#  [1, 4, 7],
+#  [1, 6, 7],
+#  [3, 4, 6],
+#  [3, 4, 7],
+#  [3, 6, 7],
+#  [5, 6, 7]]
 ```
 
 ### `findsubseqwithgap(a, b)`
