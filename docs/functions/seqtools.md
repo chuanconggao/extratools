@@ -17,17 +17,49 @@ bestsubseq([1, -2, 3, -4, 5, -6], sum)
 
 Returns all the positions where `a` is a sub-sequence of `b`.
 
-- In default, no overlapping is allowed. You can change the behavior by specify `overlap`.
+- In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
-- Unlike other function in `seqtools`, nothing is returned when `a` is empty.
+- Unlike other function in `seqtools`, empty list is returned when `a` is empty.
+
+``` python
+list(findallsubseqs(
+    [   0, 1, 0],
+    [0, 0, 1, 0, 1, 0]
+))
+# [1]
+
+list(findallsubseqs(
+    [   0, 1, 0],
+  # [         0, 1, 0],
+    [0, 0, 1, 0, 1, 0],
+    overlap=True
+))
+# [1, 3]
+```
 
 ### `findsubseq(a, b)`
 
 Returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
+``` python
+findsubseq(
+    [   0, 1, 0],
+    [0, 0, 1, 0, 1, 0]
+)
+# 1
+```
+
 ### `issubseq(a, b)`
 
 Checks if `a` is a sub-sequence of `b`.
+
+``` python
+issubseq(
+    [   0, 1, 0],
+    [0, 0, 1, 0, 1, 0]
+)
+# True
+```
 
 ### `commonsubseq(a, b)`
 
@@ -35,7 +67,7 @@ Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_co
 
 ``` python
 commonsubseq(
-    [0, 1, 1, 0, 1],
+    [   0, 1, 1,   0, 1],
     [0, 0, 1, 1, 1]
 )
 # [0, 1, 1]
@@ -54,13 +86,46 @@ bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
 # [1, 3, 5]
 ```
 
+### `findallsubseqswithgap(a, b)`
+
+Returns all the positions where `a` is a sub-sequence of `b`.
+
+- No overlapping is allowed. Unlike `findallsubseq`, you cannot change this behavior.
+
+- Unlike other function in `seqtools`, empty list is returned when `a` is empty.
+
+``` python
+list(findallsubseqswithgap(
+    [0,    1,    1],
+  # [   0,             1, 1],
+    [0, 0, 1, 0, 1, 0, 1, 1]
+))
+# [[0, 2, 4], [1, 6, 7]]
+```
+
 ### `findsubseqwithgap(a, b)`
 
 Returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
 
+``` python
+list(findsubseqwithgap(
+    [0,    1,    1],
+    [0, 0, 1, 0, 1, 0]
+))
+# [0, 2, 4]
+```
+
 ### `issubseqwithgap(a, b)`
 
 Checks if `a` is a sub-sequence of `b`, where gaps are allowed.
+
+``` python
+list(issubseqwithgap(
+    [0,    1,    1],
+    [0, 0, 1, 0, 1, 0]
+))
+# True
+```
 
 ### `commonsubseqwithgap(a, b)`
 
@@ -68,8 +133,8 @@ Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_co
 
 ``` python
 commonsubseqwithgap(
-    [0, 1, 1, 0, 1],
-    [0, 0, 1, 1, 1]
+    [0,    1, 1, 0, 1],
+    [0, 0, 1, 1,    1]
 )
 # [0, 1, 1, 1]
 ```
@@ -88,15 +153,15 @@ commonsubseqwithgap(
 
 ``` python
 align(
-    [0, 1, 1, 0, 1],
-    [0, 0, 1, 1, 1]
+    [0,    1, 1, 0, 1],
+    [0, 0, 1, 1,    1]
 )
 # (2, ([0, None, 1, 1, 0,    1],
 #      [0, 0,    1, 1, None, 1]))
 
 align(
-    [0, 1, 1, 0, 1],
-    [0, 0, 1, 1, 1],
+    [0,    1, 1, 0, 1],
+    [0, 0, 1, 1,    1],
     bound=1
 )
 # None
@@ -112,6 +177,14 @@ Compares two sequences `x` and `y` with equal length according to [product order
 
 - Throw exception if `x` and `y` have different lengths.
 
+``` python
+productcmp([1, 2, 3], [4, 5, 6])
+# 1
+
+productcmp([1, 2, 3], [4, 3, 2])
+# None
+```
+
 ## Sequence Sorting
 
 Tools for sorting sequences.
@@ -119,6 +192,11 @@ Tools for sorting sequences.
 ### `sortedbyrank(data, ranks, reverse=False)`
 
 Returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+
+``` python
+sortedbyrank(['a', 'b', 'c'], [3, 2, 1])
+# ['c', 'b', 'a']
+```
 
 ## Sequence Encoding/Decoding
 
@@ -139,6 +217,11 @@ list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 
 Decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
+``` python
+list(decompress([(1, 1), (2, 2), (3, 3), (4, 4)]))
+# [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+```
+
 ### `todeltas(data, op=operator.sub)`
 
 Compresses the sequence by encoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
@@ -156,6 +239,11 @@ Decompresses the sequence by decoding the difference between previous and curren
 
 - For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
 
+``` python
+list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
+# [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+```
+
 ## Sequence Join
 
 Tools for joining sequences.
@@ -167,3 +255,21 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 - If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
 
 - Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
+
+``` python
+list(join(
+    [-1, -1, -2, -4, -5, -6],
+    [0, 1, 1, 2, 3, 4, 5, 5],
+    leftkey=abs, leftdefault=None
+))
+# [(None, 0),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-2, 2),
+#  (None, 3),
+#  (-4, 4),
+#  (-5, 5),
+#  (-5, 5)]
+```

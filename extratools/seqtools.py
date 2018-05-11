@@ -91,6 +91,26 @@ def bestsubseqwithgap(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
     return find(len(a))[1]
 
 
+def findallsubseqswithgap(a: Iterable[T], b: Iterable[T]) -> Iterable[Optional[List[int]]]:
+    x = list(a)
+    if len(x) == 0:
+        return
+
+    y = list(b)
+
+    sentinel = object()
+
+    while True:
+        poss = findsubseqwithgap(x, y)
+        if poss is None:
+            return
+
+        yield poss
+
+        for pos in poss:
+            y[pos] = sentinel
+
+
 def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
     sentinel = object()
 
