@@ -441,6 +441,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#alignment2stra-b-defaultnone" title="alignment2str(a, b, default=None)" class="md-nav__link">
+    alignment2str(a, b, default=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -586,6 +593,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#alignment2stra-b-defaultnone" title="alignment2str(a, b, default=None)" class="md-nav__link">
+    alignment2str(a, b, default=None)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -631,6 +645,42 @@
 <span style="color: #75715e"># Infinity sequence</span>
 <span style="color: #f8f8f2">iter2str(itertools</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">count(),</span> <span style="color: #f8f8f2">limit</span><span style="color: #f92672">=</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># &#39;&lt;0, 1, 2, 3, 4, ...&gt;&#39;</span>
+</pre></div>
+
+
+<h3 id="alignment2stra-b-defaultnone"><code>alignment2str(a, b, default=None)</code><a class="headerlink" href="#alignment2stra-b-defaultnone" title="Permanent link">&para;</a></h3>
+<p>Prints the alignment between two sequences <code>a</code> and <code>b</code>. <code>default=None</code> is used for labelling missing value from each sequences.</p>
+<ul>
+<li>
+<p>If unknown, <code>seqtools.align</code> can compute the alignment between <code>a</code> and <code>b</code>.</p>
+</li>
+<li>
+<p>Builtin function <code>repr</code> is used to print each item safely.</p>
+</li>
+<li>
+<p>If <code>a</code> and <code>b</code> have different lengths, the extra trailing items are also printed as not matching.</p>
+</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #ae81ff">1000</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">align(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span>      <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]))</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span>     <span style="color: #ae81ff">1000</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(alignment2str(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">100</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span> <span style="color: #ae81ff">1000</span>
+<span style="color: #ae81ff">1</span> <span style="color: #ae81ff">10</span> <span style="color: #ae81ff">100</span>     
 </pre></div>
                 
                   
