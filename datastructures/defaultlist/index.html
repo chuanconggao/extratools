@@ -515,13 +515,12 @@
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/defaultlist.py">Source</a></p>
 <p>A sub-class of <code>list</code> that automatically grows when setting an index beyond the list size.</p>
 <ul>
-<li>
-<p>When creating a list, use <code>DefaultList(default, ...)</code> to specify a function that returns default value when visiting an unassigned index.</p>
-</li>
-<li>
-<p>This library is designed to be highly similar to <code>collections.defaultdict</code> in standard library.</p>
-</li>
+<li>When creating a list, use <code>DefaultList(default, ...)</code> to specify a function that returns default value when visiting an unassigned index.</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This library is designed to be highly similar to <code>collections.defaultdict</code> in standard library.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">l</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">DefaultList(</span><span style="color: #66d9ef">lambda</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">None,</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">))</span>
 
 <span style="color: #f8f8f2">l[</span><span style="color: #ae81ff">11</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">11</span>

@@ -701,18 +701,20 @@
 <p>Computes the <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a> of a list of floats.</p>
 <h3 id="entropydata"><code>entropy(data)</code><a class="headerlink" href="#entropydata" title="Permanent link">&para;</a></h3>
 <p>Computes the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> of a list of any items.</p>
-<ul>
-<li>You can also pass a dictionary of <code>(item, frequency)</code> as frequency distribution to <code>data</code>.</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also pass a dictionary of <code>(item, frequency)</code> as known frequency distribution to <code>data</code>.</p>
+</div>
 <h2 id="binary-classification">Binary Classification<a class="headerlink" href="#binary-classification" title="Permanent link">&para;</a></h2>
 <p>Tools for binary classification.</p>
 <h3 id="teststatstruths-predictions"><code>teststats(truths, predictions)</code><a class="headerlink" href="#teststatstruths-predictions" title="Permanent link">&para;</a></h3>
 <p>Matches the truth labels and the prediction labels. Return a tuples of <code>(tp, fp, tn, fn)</code> as <a href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">true positive, false positive, true negative, and false negative</a>.</p>
 <h3 id="accuracytp-fp-tn-fn"><code>accuracy(tp, fp, tn, fn)</code><a class="headerlink" href="#accuracytp-fp-tn-fn" title="Permanent link">&para;</a></h3>
 <p>Returns the <a href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">accuracy</a>.</p>
-<ul>
-<li>Note that you can simply call <code>accuracy(*teststats(truths, predictions))</code>.</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can simply call <code>accuracy(*teststats(truths, predictions))</code>.</p>
+</div>
 <h3 id="precisiontp-fp-tn-fn-and-recalltp-fp-tn-fn"><code>precision(tp, fp, tn, fn)</code> and <code>recall(tp, fp, tn, fn)</code><a class="headerlink" href="#precisiontp-fp-tn-fn-and-recalltp-fp-tn-fn" title="Permanent link">&para;</a></h3>
 <p>Return the <a href="https://en.wikipedia.org/wiki/Precision_and_recall">precision and recall</a>.</p>
 <h3 id="f1tp-fp-tn-fn-beta1"><code>f1(tp, fp, tn, fn, beta=1)</code><a class="headerlink" href="#f1tp-fp-tn-fn-beta1" title="Permanent link">&para;</a></h3>

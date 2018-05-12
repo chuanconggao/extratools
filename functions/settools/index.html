@@ -733,13 +733,12 @@
 <h3 id="setcoverwhole-covered-keylen"><code>setcover(whole, covered, key=len)</code><a class="headerlink" href="#setcoverwhole-covered-keylen" title="Permanent link">&para;</a></h3>
 <p>Solves the <a href="https://en.wikipedia.org/wiki/Set_cover_problem">set cover problem</a> by covering the universe set <code>whole</code> as best as possible, using a subset of the covering sets <code>covered</code>.</p>
 <ul>
-<li>
-<p>In default, the size of each set <code>len</code> is used as key function <code>key</code> to measure the coverage.</p>
-</li>
-<li>
-<p>This is an approximate algorithm, which means the returned result is not always the best.</p>
-</li>
+<li>In default, the size of each set <code>len</code> is used as key function <code>key</code> to measure the coverage.</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an approximate algorithm, which means the returned result is not always the best.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(setcover(</span>
     <span style="color: #f8f8f2">{</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span>         <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>         <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">},</span>
     <span style="color: #f8f8f2">[{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">}]</span>

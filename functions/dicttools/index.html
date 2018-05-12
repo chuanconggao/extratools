@@ -846,9 +846,17 @@
 <p>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</p>
 </li>
 <li>
-<p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array. Note that an empty array disappears after being flatten.</p>
+<p>In default, only an array with nested dictionary is flatten. Instead, parameter <code>force</code> can be specified to flatten any array.</p>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Different from <code>jsontools.flatten</code>, this function accepts only dictionary.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An empty array disappears after being flatten.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">flatten(json</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">loads(</span><span style="color: #e6db74">&quot;&quot;&quot;{</span>
 <span style="color: #e6db74">  &quot;name&quot;: &quot;John&quot;,</span>
 <span style="color: #e6db74">  &quot;address&quot;: {</span>

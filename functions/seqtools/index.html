@@ -982,7 +982,11 @@
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py">Source</a></p>
 <h2 id="sequence-matching">Sequence Matching<a class="headerlink" href="#sequence-matching" title="Permanent link">&para;</a></h2>
-<p>Tools for matching sequences (including strings), without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<p>Tools for matching sequences (including strings), without gaps allowed between matching items.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Empty sequence is always a sub-sequence of any other sequence.</p>
+</div>
 <h3 id="bestsubseqa-key"><code>bestsubseq(a, key)</code><a class="headerlink" href="#bestsubseqa-key" title="Permanent link">&para;</a></h3>
 <p>Finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">bestsubseq([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">sum)</span>
@@ -1047,7 +1051,11 @@
 
 
 <h2 id="sequence-matching-with-gap">Sequence Matching with Gap<a class="headerlink" href="#sequence-matching-with-gap" title="Permanent link">&para;</a></h2>
-<p>Tools for matching sequences (including strings), with gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.</p>
+<p>Tools for matching sequences (including strings), with gaps allowed between matching items.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Empty sequence is always a sub-sequence of any other sequence.</p>
+</div>
 <h3 id="bestsubseqwithgapa-key"><code>bestsubseqwithgap(a, key)</code><a class="headerlink" href="#bestsubseqwithgapa-key" title="Permanent link">&para;</a></h3>
 <p>Finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>, where gaps are allowed.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">bestsubseqwithgap([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">sum)</span>
@@ -1187,14 +1195,14 @@
 
 <h3 id="joinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default"><code>join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)</code><a class="headerlink" href="#joinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="Permanent link">&para;</a></h3>
 <p>Joins two sequences, optionally according to <code>leftkey</code> and <code>rightkey</code>, respectively. Outer join is also supported.</p>
-<ul>
-<li>
-<p>If both two sequences are sorted according to <code>leftkey</code> and <code>rightkey</code>, respectively, then optimized <code>sortedtools.join</code> with the same API should be used for better efficiency.</p>
-</li>
-<li>
-<p>Unlike <code>sortedtools.join</code>, <code>join</code> is just a wrapper of <code>toolz.itertools.join</code> with a slightly more friendly API.</p>
-</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If both two sequences are sorted according to <code>leftkey</code> and <code>rightkey</code>, respectively, then optimized <code>sortedtools.sortedjoin</code> with the same API should be used for better efficiency.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>join</code> is just a wrapper of <code>toolz.itertools.join</code> with the same more friendly API of <code>sortedtools.sortedjoin</code>.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(join(</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>  <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">],</span>

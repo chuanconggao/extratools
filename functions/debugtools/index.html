@@ -700,14 +700,16 @@
 <p>Tools for non-functional but useful system diagnosis tools.</p>
 <h3 id="stopwatch"><code>stopwatch()</code><a class="headerlink" href="#stopwatch" title="Permanent link">&para;</a></h3>
 <p>Returns both the duration since program start and the duration since last call in seconds.</p>
-<ul>
-<li>Technically, the stopwatch starts when <code>debugtools</code> is imported.</li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The stopwatch only starts after <code>debugtools</code> is imported.</p>
+</div>
 <h3 id="peakmem"><code>peakmem()</code><a class="headerlink" href="#peakmem" title="Permanent link">&para;</a></h3>
 <p>Returns the peak memory usage since program start.</p>
-<ul>
-<li>In bytes on macOS, and in kilobytes on Linux.</li>
-</ul>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>In bytes on macOS, and in kilobytes on Linux.</p>
+</div>
                 
                   
                 
