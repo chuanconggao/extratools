@@ -46,22 +46,22 @@ print(alignment2str(
     [1, 10,  100, "New York"],
     [1, 10, None, "New York"]
 ))
-1 10 100 'New York'
-1 10     'New York'
+# 1 10 100 'New York'
+# 1 10     'New York'
 
 print(alignment2str(*align(
     [1, 10, 100, "New York"],
     [1, 10,      "New York"]
 )[1]))
-1 10 100 'New York'
-1 10     'New York'
+# 1 10 100 'New York'
+# 1 10     'New York'
 
 print(alignment2str(
     [1, 10, 100, "New York"],
     [1, 10, 100]
 ))
-1 10 100 'New York'
-1 10 100     
+# 1 10 100 'New York'
+# 1 10 100     
 ```
 
 ### `table2str(data, default=None, separator=" | ")`
@@ -75,10 +75,10 @@ print(table2str([
     [1, None,  100, "New York"],
     [1,   10,  100, "New York"]
 ]))
-1 | 10 | 100 | 'New York'
-1 | 10 |     | 'New York'
-1 |    | 100 | 'New York'
-1 | 10 | 100 | 'New York'
+# 1 | 10 | 100 | 'New York'
+# 1 | 10 |     | 'New York'
+# 1 |    | 100 | 'New York'
+# 1 | 10 | 100 | 'New York'
 ```
 
 ### `range2str(r)`
