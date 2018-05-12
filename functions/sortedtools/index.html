@@ -368,12 +368,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-join" title="Sequence Join" class="md-nav__link">
-    Sequence Join
+  <a href="#sequence-alignment-and-join" title="Sequence Alignment and Join" class="md-nav__link">
+    Sequence Alignment and Join
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sortedmatcha-b-defaultnone" title="sortedmatch(a, b, default=None)" class="md-nav__link">
+    sortedmatch(a, b, default=None)
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)" class="md-nav__link">
@@ -694,12 +701,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-join" title="Sequence Join" class="md-nav__link">
-    Sequence Join
+  <a href="#sequence-alignment-and-join" title="Sequence Alignment and Join" class="md-nav__link">
+    Sequence Alignment and Join
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sortedmatcha-b-defaultnone" title="sortedmatch(a, b, default=None)" class="md-nav__link">
+    sortedmatch(a, b, default=None)
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)" class="md-nav__link">
@@ -819,8 +833,31 @@
 </pre></div>
 
 
-<h2 id="sequence-join">Sequence Join<a class="headerlink" href="#sequence-join" title="Permanent link">&para;</a></h2>
-<p>Tools for joining sorted sequences.</p>
+<h2 id="sequence-alignment-and-join">Sequence Alignment and Join<a class="headerlink" href="#sequence-alignment-and-join" title="Permanent link">&para;</a></h2>
+<p>Tools for aligning and joining sorted sequences.</p>
+<h3 id="sortedmatcha-b-defaultnone"><code>sortedmatch(a, b, default=None)</code><a class="headerlink" href="#sortedmatcha-b-defaultnone" title="Permanent link">&para;</a></h3>
+<p>Matches two sorted sequences <code>a</code> and <code>b</code> in pairs, such that the total number of matching pairs is maximized.</p>
+<ul>
+<li>
+<p>If there are multiple alignments having the same number, the leftmost one is returned.</p>
+</li>
+<li>
+<p><code>sortedmatch</code> is lazy and more efficient than <code>seqtools.match</code>.</p>
+</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedmatch(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(1, None),</span>
+<span style="color: #75715e">#  (2, 2),</span>
+<span style="color: #75715e">#  (2, None),</span>
+<span style="color: #75715e">#  (3, 3),</span>
+<span style="color: #75715e">#  (None, 4),</span>
+<span style="color: #75715e">#  (None, 4)]</span>
+</pre></div>
+
+
 <h3 id="sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default"><code>sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)</code><a class="headerlink" href="#sortedjoinleftseq-rightseq-leftkeynone-rightkeynone-leftdefaultno_default-rightdefaultno_default" title="Permanent link">&para;</a></h3>
 <p>Joins two sequences, optionally according to <code>leftkey</code> and <code>rightkey</code>, respectively. Outer join is also supported.</p>
 <ul>
@@ -828,7 +865,7 @@
 <p>Two sequences must be already sorted according to <code>leftkey</code> and <code>rightkey</code>, respectively.</p>
 </li>
 <li>
-<p><code>sortedjoin</code> is completely lazy, and more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
+<p><code>sortedjoin</code> is lazy and more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
 </li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedjoin(</span>
