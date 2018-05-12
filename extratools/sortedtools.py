@@ -19,7 +19,7 @@ def sortedcommon(
             a, b,
             leftkey=key, rightkey=key
         ):
-        yield from min(m, n, key=len)
+        yield from (v for v, _ in zip(m, n))
 
 
 def sortedalone(
@@ -33,15 +33,11 @@ def sortedalone(
             leftkey=key, rightkey=key,
             leftdefault=sentinel, rightdefault=sentinel
         ):
-        if m[0] is sentinel:
-            yield from n
-        elif n[0] is sentinel:
-            yield from m
-        else:
-            if len(m) > len(n):
-                yield from m[len(n):]
-            elif len(m) < len(n):
-                yield from n[len(m):]
+        yield from (
+            v if w is sentinel else w
+            for v, w in zip_longest(m, n, fillvalue=sentinel)
+            if v != w
+        )
 
 
 def sorteddiff(
@@ -55,11 +51,10 @@ def sorteddiff(
             leftkey=key, rightkey=key,
             rightdefault=sentinel
         ):
-        if n[0] is sentinel:
-            yield from m
-        else:
-            if len(m) > len(n):
-                yield from m[len(n):]
+        yield from (
+            v for v, w in zip_longest(m, n, fillvalue=sentinel)
+            if w is sentinel
+        )
 
 
 def issubsorted(
@@ -75,21 +70,11 @@ def sortedmatch(
         a: List[T], b: List[T],
         default: T = None
     ) -> Tuple[List[T], List[T]]:
-    sentinel = object()
-
     for m, n in __sortedjoin(
             a, b,
-            leftdefault=sentinel, rightdefault=sentinel
+            leftdefault=default, rightdefault=default
         ):
-        if m[0] is sentinel:
-            for v in n:
-                yield (default, v)
-        elif n[0] is sentinel:
-            for v in m:
-                yield (v, default)
-        else:
-            for v, w in zip_longest(m, n, fillvalue=default):
-                yield (v, w)
+        yield from zip_longest(m, n, fillvalue=default)
 
 
 def issorted(

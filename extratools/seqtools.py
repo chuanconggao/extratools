@@ -217,7 +217,7 @@ def match(
         a: List[T], b: List[T],
         default: T = None
     ) -> Iterable[Tuple[T, T]]:
-    yield from zip(*align(a, b, default=default)[1])
+    return zip(*align(a, b, default=default)[1])
 
 
 def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:

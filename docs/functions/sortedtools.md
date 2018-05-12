@@ -64,10 +64,10 @@ Checks if `a` is a sorted sub-sequence of `b`, optionally according to the key f
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
 ``` python
-list(issubsorted(
+issubsorted(
     [1, 2, 2, 3],
     [1, 2, 2, 3, 4, 4]
-))
+)
 # True
 ```
 

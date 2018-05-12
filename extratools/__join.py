@@ -48,28 +48,28 @@ def __sortedjoin(
 
         if leftkey(m[0]) < rightkey(n[0]):
             if rightdefault is not no_default:
-                yield (list(m[1]), [rightdefault])
+                yield (m[1], [rightdefault])
 
             m = sentinel
         elif leftkey(m[0]) > rightkey(n[0]):
             if leftdefault is not no_default:
-                yield ([leftdefault], list(n[1]))
+                yield ([leftdefault], n[1])
 
             n = sentinel
         else:
-            yield (list(m[1]), list(n[1]))
+            yield (m[1], n[1])
 
             m = n = sentinel
 
     if rightdefault is not no_default:
         while m is not sentinel:
-            yield (list(m[1]), [rightdefault])
+            yield (m[1], [rightdefault])
 
             m = next(x, sentinel)
 
     if leftdefault is not no_default:
         while n is not sentinel:
-            yield ([leftdefault], list(n[1]))
+            yield ([leftdefault], n[1])
 
             n = next(y, sentinel)
 
