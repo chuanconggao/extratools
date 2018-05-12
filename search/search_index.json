@@ -437,18 +437,23 @@
         },
         {
             "location": "/functions/tabletools/",
-            "text": "Source\n\n\nTable\n\u00b6\n\n\nTools for tables.\n\n\ntranspose(data)\n\u00b6\n\n\nReturns the transpose of table \ndata\n, i.e., switch rows and columns.\n\n\n\n\nUseful to switch table \ndata\n from row-based to column-based and backwards.\n\n\n\n\nlist(transpose([\n\n    \n[\n1\n,\n \n2\n,\n \n3\n],\n\n    \n[\n4\n,\n \n5\n,\n \n6\n],\n\n    \n[\n7\n,\n \n8\n,\n \n9\n]\n\n\n]))\n\n\n# [[1, 4, 7],\n\n\n#  [2, 5, 8],\n\n\n#  [3, 6, 9]]\n\n\n\n\n\n\nloadcsv(path, delimiter=',')\n\u00b6\n\n\nLoads a CSV file, from either a file path or a file object.\n\n\ndumpcsv(path, data, delimiter=',')\n\u00b6\n\n\nDumps a table \ndata\n in CSV, to either a file path or a file object.",
+            "text": "Source\n\n\nTable Transformation\n\u00b6\n\n\nTools for table transformations.\n\n\ntranspose(data)\n\u00b6\n\n\nReturns the transpose of table \ndata\n, i.e., switch rows and columns.\n\n\n\n\nUseful to switch table \ndata\n from row-based to column-based and backwards.\n\n\n\n\nlist(transpose([\n\n    \n[\n1\n,\n \n2\n,\n \n3\n],\n\n    \n[\n4\n,\n \n5\n,\n \n6\n],\n\n    \n[\n7\n,\n \n8\n,\n \n9\n]\n\n\n]))\n\n\n# [[1, 4, 7],\n\n\n#  [2, 5, 8],\n\n\n#  [3, 6, 9]]\n\n\n\n\n\n\nCSV\n\u00b6\n\n\nTools for processing CSV.\n\n\nloadcsv(path, delimiter=',')\n\u00b6\n\n\nLoads a CSV file, from either a file path or a file object.\n\n\ndumpcsv(path, data, delimiter=',')\n\u00b6\n\n\nDumps a table \ndata\n in CSV, to either a file path or a file object.",
             "title": "tabletools"
         },
         {
-            "location": "/functions/tabletools/#table",
-            "text": "Tools for tables.",
-            "title": "Table"
+            "location": "/functions/tabletools/#table-transformation",
+            "text": "Tools for table transformations.",
+            "title": "Table Transformation"
         },
         {
             "location": "/functions/tabletools/#transposedata",
             "text": "Returns the transpose of table  data , i.e., switch rows and columns.   Useful to switch table  data  from row-based to column-based and backwards.   list(transpose([ \n     [ 1 ,   2 ,   3 ], \n     [ 4 ,   5 ,   6 ], \n     [ 7 ,   8 ,   9 ]  ]))  # [[1, 4, 7],  #  [2, 5, 8],  #  [3, 6, 9]]",
             "title": "transpose(data)"
+        },
+        {
+            "location": "/functions/tabletools/#csv",
+            "text": "Tools for processing CSV.",
+            "title": "CSV"
         },
         {
             "location": "/functions/tabletools/#loadcsvpath-delimiter",
