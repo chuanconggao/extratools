@@ -96,11 +96,10 @@ def issorted(
     if key is None:
         key = lambda v: v
 
-    for prev, curr in sliding_window(2, seq):
-        if key(prev) > key(curr):
-            return False
-
-    return True
+    return all(
+        key(prev) <= key(curr)
+        for prev, curr in sliding_window(2, seq)
+    )
 
 
 def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
