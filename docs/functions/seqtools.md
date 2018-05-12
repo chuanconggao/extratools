@@ -165,17 +165,23 @@ commonsubseqwithgap(
 # [0, 1, 1, 1]
 ```
 
+## Sequence Alignment and Join
+
+Tools for aligning and joining sequences.
+
 ### `align(a, b, cost=None, bound=inf, default=None)`
 
 [Aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
-- Assume the aligned sequences are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
+- Assume the sequences after alignment are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
 
 - Both the minimum total cost and the respective aligned sequences are returned as a tuple.
 
-- In default, the cost function `cost(x, y)` returns `1` when `x == y` and `0` when not. This is equal to the [edit distance](https://en.wikipedia.org/wiki/Edit_distance).
+- In default, the cost function `cost(x, y)` returns `0` when `x == y` and `1` when not. This is equal to the [edit distance](https://en.wikipedia.org/wiki/Edit_distance).
 
 - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
+
+- If there are multiple alignments having the same cost, the leftmost one is returned.
 
 ``` python
 align(
@@ -191,6 +197,51 @@ align(
     bound=1
 )
 # None
+```
+
+### `match(a, b, default=None)`
+
+Matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
+
+- If there are multiple alignments having the same number, the leftmost one is returned.
+
+``` python
+list(match(
+    [0,    1, 1, 0, 1],
+    [0, 0, 1, 1,    1]
+))
+# [(0, 0),
+#  (None, 0),
+#  (1, 1),
+#  (1, 1),
+#  (0, None),
+#  (1, 1)]
+```
+
+### `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
+
+Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+
+- If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
+
+- Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
+
+``` python
+list(join(
+    [   -1, -1, -2,    -4, -5,    -6],
+    [0,  1,  1,  2, 3,  4,  5, 5],
+    leftkey=abs, leftdefault=None
+))
+# [(None, 0),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-1, 1),
+#  (-2, 2),
+#  (None, 3),
+#  (-4, 4),
+#  (-5, 5),
+#  (-5, 5)]
 ```
 
 ## Sequence Comparison
@@ -270,32 +321,3 @@ list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
 # [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 ```
 
-## Sequence Join
-
-Tools for joining sequences.
-
-### `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
-
-Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
-
-- If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
-
-- Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
-
-``` python
-list(join(
-    [   -1, -1, -2,    -4, -5,    -6],
-    [0,  1,  1,  2, 3,  4,  5, 5],
-    leftkey=abs, leftdefault=None
-))
-# [(None, 0),
-#  (-1, 1),
-#  (-1, 1),
-#  (-1, 1),
-#  (-1, 1),
-#  (-2, 2),
-#  (None, 3),
-#  (-4, 4),
-#  (-5, 5),
-#  (-5, 5)]
-```

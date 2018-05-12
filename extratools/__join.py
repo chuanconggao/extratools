@@ -2,7 +2,7 @@
 
 from typing import *
 
-from itertools import groupby
+from itertools import groupby, product
 
 from toolz import itertoolz
 from toolz.utils import no_default
@@ -20,7 +20,7 @@ def join(
     return itertoolz.join(leftkey, leftseq, rightkey, rightseq, leftdefault, rightdefault)
 
 
-def sortedjoin(
+def __sortedjoin(
         leftseq, rightseq,
         leftkey=None, rightkey=None,
         leftdefault=no_default, rightdefault=no_default
@@ -48,31 +48,40 @@ def sortedjoin(
 
         if leftkey(m[0]) < rightkey(n[0]):
             if rightdefault is not no_default:
-                for v in m[1]:
-                    yield (v, rightdefault)
+                yield (list(m[1]), [rightdefault])
+
             m = sentinel
         elif leftkey(m[0]) > rightkey(n[0]):
             if leftdefault is not no_default:
-                for v in n[1]:
-                    yield (leftdefault, v)
+                yield ([leftdefault], list(n[1]))
+
             n = sentinel
         else:
-            nl = list(n[1])
-            for u in m[1]:
-                for v in nl:
-                    yield (u, v)
+            yield (list(m[1]), list(n[1]))
+
             m = n = sentinel
 
     if rightdefault is not no_default:
         while m is not sentinel:
-            for v in m[1]:
-                yield (v, rightdefault)
+            yield (list(m[1]), [rightdefault])
 
             m = next(x, sentinel)
 
     if leftdefault is not no_default:
         while n is not sentinel:
-            for v in n[1]:
-                yield (leftdefault, v)
+            yield ([leftdefault], list(n[1]))
 
             n = next(y, sentinel)
+
+
+def sortedjoin(
+        leftseq, rightseq,
+        leftkey=None, rightkey=None,
+        leftdefault=no_default, rightdefault=no_default
+    ):
+    for m, n in __sortedjoin(
+            leftseq, rightseq,
+            leftkey=leftkey, rightkey=rightkey,
+            leftdefault=leftdefault, rightdefault=rightdefault
+        ):
+        yield from product(m, n)

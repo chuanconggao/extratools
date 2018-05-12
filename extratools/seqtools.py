@@ -213,6 +213,13 @@ def align(
     return align_rec(len(a), len(b))
 
 
+def match(
+        a: List[T], b: List[T],
+        default: T = None
+    ) -> Iterable[Tuple[T, T]]:
+    yield from zip(*align(a, b, default=default)[1])
+
+
 def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
     lc, gc = 0, 0
 

@@ -92,9 +92,30 @@ list(matchingfrequencies(
 
 [^a]: For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
 
-## Sequence Join
+## Sequence Alignment and Join
 
-Tools for joining sorted sequences.
+Tools for aligning and joining sorted sequences.
+
+### `sortedmatch(a, b, default=None)`
+
+Matches two sorted sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
+
+- If there are multiple alignments having the same number, the leftmost one is returned.
+
+- `sortedmatch` is lazy and more efficient than `seqtools.match`.
+
+``` python
+list(sortedmatch(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [(1, None),
+#  (2, 2),
+#  (2, None),
+#  (3, 3),
+#  (None, 4),
+#  (None, 4)]
+```
 
 ### `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
 
@@ -102,7 +123,7 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 
-- `sortedjoin` is completely lazy, and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+- `sortedjoin` is lazy and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
 
 ``` python
 list(sortedjoin(

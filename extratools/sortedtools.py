@@ -5,79 +5,61 @@ from typing import *
 T = TypeVar('T')
 
 from heapq import merge
-from itertools import groupby
+from itertools import groupby, zip_longest
 
 from toolz.itertoolz import count, unique, sliding_window
 
-from .__join import sortedjoin
-
-def __sortedscan(
-        adiff: bool, bdiff: bool,
-        a: Iterable[T], b: Iterable[T],
-        key: Callable[[T], Any] = None
-    ) -> Iterable[T]:
-    if key is None:
-        key = lambda v: v
-
-    sentinel = object()
-
-    x, y = iter(a), iter(b)
-
-    m: Any = sentinel
-    n: Any = sentinel
-
-    while True:
-        m = next(x, sentinel) if m is sentinel else m
-        n = next(y, sentinel) if n is sentinel else n
-
-        if m is sentinel or n is sentinel:
-            break
-
-        if key(m) < key(n):
-            if adiff:
-                yield m
-            m = sentinel
-        elif key(m) > key(n):
-            if bdiff:
-                yield n
-            n = sentinel
-        else:
-            if not adiff and not bdiff:
-                yield m
-            m = n = sentinel
-
-    if adiff:
-        while m is not sentinel:
-            yield m
-
-            m = next(x, sentinel)
-
-    if bdiff:
-        while n is not sentinel:
-            yield n
-
-            n = next(y, sentinel)
-
+from .__join import __sortedjoin, sortedjoin
 
 def sortedcommon(
         a: Iterable[T], b: Iterable[T],
         key: Callable[[T], Any] = None
     ) -> Iterable[T]:
-    return __sortedscan(False, False, a, b, key=key)
+    for m, n in __sortedjoin(
+            a, b,
+            leftkey=key, rightkey=key
+        ):
+        yield from min(m, n, key=len)
 
 
 def sortedalone(
         a: Iterable[T], b: Iterable[T],
         key: Callable[[T], Any] = None
     ) -> Iterable[T]:
-    return __sortedscan(True, True, a, b, key=key)
+    sentinel = object()
+
+    for m, n in __sortedjoin(
+            a, b,
+            leftkey=key, rightkey=key,
+            leftdefault=sentinel, rightdefault=sentinel
+        ):
+        if m[0] is sentinel:
+            yield from n
+        elif n[0] is sentinel:
+            yield from m
+        else:
+            if len(m) > len(n):
+                yield from m[len(n):]
+            elif len(m) < len(n):
+                yield from n[len(m):]
 
 
 def sorteddiff(
         a: Iterable[T], b: Iterable[T],
         key: Callable[[T], Any] = None
     ) -> Iterable[T]:
-    return __sortedscan(True, False, a, b, key=key)
+    sentinel = object()
+
+    for m, n in __sortedjoin(
+            a, b,
+            leftkey=key, rightkey=key,
+            rightdefault=sentinel
+        ):
+        if n[0] is sentinel:
+            yield from m
+        else:
+            if len(m) > len(n):
+                yield from m[len(n):]
 
 
 def issubsorted(
@@ -87,6 +69,27 @@ def issubsorted(
     sentinel = object()
 
     return next(iter(sorteddiff(a, b, key=key)), sentinel) is sentinel
+
+
+def sortedmatch(
+        a: List[T], b: List[T],
+        default: T = None
+    ) -> Tuple[List[T], List[T]]:
+    sentinel = object()
+
+    for m, n in __sortedjoin(
+            a, b,
+            leftdefault=sentinel, rightdefault=sentinel
+        ):
+        if m[0] is sentinel:
+            for v in n:
+                yield (default, v)
+        elif n[0] is sentinel:
+            for v in m:
+                yield (v, default)
+        else:
+            for v, w in zip_longest(m, n, fillvalue=default):
+                yield (v, w)
 
 
 def issorted(
@@ -103,5 +106,8 @@ def issorted(
 
 
 def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
-    for k, g in groupby(merge(*[unique(seq, key=key) for seq in seqs], key=key)):
+    for k, g in groupby(merge(
+            *[unique(seq, key=key) for seq in seqs],
+            key=key
+        )):
         yield (k, count(g))
