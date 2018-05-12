@@ -9,6 +9,11 @@ from itertools import zip_longest
 import sys
 from io import StringIO
 
+from toolz.itertoolz import sliding_window
+
+from .tabletools import Table
+from .rangetools import Range
+
 print2 = partial(print, file=sys.stderr)
 
 def iter2str(seq: Iterable[T], limit=None) -> str:
@@ -35,15 +40,15 @@ def iter2str(seq: Iterable[T], limit=None) -> str:
             return s.getvalue()
 
 
-def alignment2str(*seqs: Iterable, default: Any = None) -> str:
-    strs = []
+def alignment2str(*seqs: Iterable, default: Any = None, separator=' ') -> str:
+    strs: List[StringIO] = []
 
     for i, col in enumerate(zip_longest(*seqs, fillvalue=default)):
         if i == 0:
             strs = [StringIO() for _ in col]
         else:
             for s in strs:
-                s.write(' ')
+                s.write(separator)
 
         vals = ['' if v is default else repr(v) for v in col]
         maxlen = max(len(val) for val in vals)
@@ -56,5 +61,33 @@ def alignment2str(*seqs: Iterable, default: Any = None) -> str:
     return '\n'.join([s.getvalue() for s in strs])
 
 
-def table2str(data: List[List], default: Any = None) -> str:
-    return alignment2str(*data, default=default)
+def table2str(data: Table, default: Any = None, separator=" | ") -> str:
+    return alignment2str(*data, default=default, separator=separator)
+
+
+def range2str(r: Range) -> str:
+    s, e = r
+
+    return "[{}, {})".format(repr(s), repr(e))
+
+
+def sorted2str(
+        seq: Iterable[T],
+        key: Callable[[T], Any] = None
+    ) -> str:
+    if key is None:
+        key = lambda v: v
+
+    s = StringIO()
+
+    first = True
+
+    for prev, curr in sliding_window(2, seq):
+        if first:
+            s.write(repr(prev))
+            first = False
+
+        s.write(" == " if key(prev) == key(curr) else " <= ")
+        s.write(repr(curr))
+
+    return s.getvalue()

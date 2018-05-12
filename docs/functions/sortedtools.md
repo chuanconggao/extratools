@@ -2,9 +2,9 @@
 
 ## Sequence Check
 
-### `issorted(a, key=None)`
+### `issorted(seq, key=None)`
 
-Returns if sequence `a` is already sorted, optionally according to the key function `key`.
+Returns if sequence `seq` is already sorted, optionally according to the key function `key`.
 
 ``` python
 issorted([1, 2, 2, 3])

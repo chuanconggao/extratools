@@ -7,7 +7,7 @@ T = TypeVar('T')
 from heapq import merge
 from itertools import groupby
 
-from toolz.itertoolz import count, unique
+from toolz.itertoolz import count, unique, sliding_window
 
 from .__join import sortedjoin
 
@@ -90,27 +90,17 @@ def issubsorted(
 
 
 def issorted(
-        a: Iterable[T],
+        seq: Iterable[T],
         key: Callable[[T], Any] = None
     ) -> bool:
     if key is None:
         key = lambda v: v
 
-    sentinel = object()
-
-    seq = iter(a)
-
-    prev = sentinel
-
-    while True:
-        curr = next(seq, sentinel)
-        if curr is sentinel:
-            return True
-
-        if prev is not sentinel and key(prev) > key(curr):
+    for prev, curr in sliding_window(2, seq):
+        if key(prev) > key(curr):
             return False
 
-        prev = curr
+    return True
 
 
 def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
