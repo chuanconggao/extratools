@@ -1,8 +1,8 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
-## Table
+## Table Transformation
 
-Tools for tables.
+Tools for table transformations.
 
 ### `transpose(data)`
 
@@ -20,6 +20,10 @@ list(transpose([
 #  [2, 5, 8],
 #  [3, 6, 9]]
 ```
+
+## CSV
+
+Tools for processing CSV.
 
 ### `loadcsv(path, delimiter=',')`
 
