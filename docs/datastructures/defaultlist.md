@@ -4,7 +4,8 @@ A sub-class of `list` that automatically grows when setting an index beyond the 
 
 - When creating a list, use `DefaultList(default, ...)` to specify a function that returns default value when visiting an unassigned index.
 
-- This library is designed to be highly similar to `collections.defaultdict` in standard library.
+!!! tip
+    This library is designed to be highly similar to `collections.defaultdict` in standard library.
 
 ``` python
 l = DefaultList(lambda: None, range(10))

@@ -20,6 +20,7 @@ theme:
     favicon: favicon.jpg
 
 markdown_extensions:
+    - admonition
     - codehilite:
         use_pygments: true
         pygments_style: monokai

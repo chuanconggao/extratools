@@ -1,5 +1,11 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
+!!! info
+    As each sorted sequence is a sequence, tools in `seqtools` can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
+
+!!! danger
+    For most tools here except `issorted`, each sequence must already be sorted.
+
 ## Sequence Check
 
 ### `issorted(seq, key=None)`
@@ -19,7 +25,8 @@ Tools for matching sorted sequences.
 
 Returns the common elements between `a` and `b`, optionally according to the key function `key`.
 
-- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
+!!! info
+    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
 
 ``` python
 list(sortedcommon(
@@ -33,7 +40,8 @@ list(sortedcommon(
 
 Returns the elements not in both `a` and `b`, optionally according to the key function `key`.
 
-- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
+!!! info
+    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
 
 ``` python
 list(sortedalone(
@@ -47,7 +55,8 @@ list(sortedalone(
 
 Returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
 
-- When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
+!!! info
+    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
 
 ``` python
 list(sorteddiff(
@@ -73,13 +82,15 @@ issubsorted(
 
 ### `matchingfrequencies(*seqs, key=None)`
 
-Returns each item and the respective number of sequences in `seqs` contains it. [^a]
-
-- Each sequence in `seqs` must already be sorted.
+Returns each item and the respective number of sequences in `seqs` contains it.
 
 - Optional key function `key` can be specified.
 
-- This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
+!!! success
+    This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
+
+!!! tip
+    For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
 
 ``` python
 list(matchingfrequencies(
@@ -89,8 +100,6 @@ list(matchingfrequencies(
 ))
 # [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]
 ```
-
-[^a]: For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
 
 ## Sequence Alignment and Join
 
@@ -102,7 +111,8 @@ Matches two sorted sequences `a` and `b` in pairs, such that the total number of
 
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
-- `sortedmatch` is lazy and more efficient than `seqtools.match`.
+!!! success
+    `sortedmatch` is lazy and more efficient than `seqtools.match`.
 
 ``` python
 list(sortedmatch(
@@ -123,7 +133,8 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 
-- `sortedjoin` is lazy and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+!!! success
+    `sortedjoin` is lazy and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
 
 ``` python
 list(sortedjoin(

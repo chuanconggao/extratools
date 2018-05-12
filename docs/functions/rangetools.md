@@ -1,8 +1,11 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
 
+!!! warning
+    Each range is closed on the left side, and open on the right side.
+
 ## Range Statistics
 
-Tools for statistics over ranges. Note that each range is closed on the left side, and open on the right side.
+Tools for statistics over ranges.
 
 ### `histogram(thresholds, data, leftmost=-inf)`
 
@@ -32,9 +35,10 @@ Tools for querying ranges.
 
 Efficiently finds the best value from the covered values in `keyvalues`, if each key in `keyvalues` is within the query range `query`.
 
-- Implemented by [SegmentTree](/datastructures/segmenttree.md) to solve the [range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) problem.
-
 - `func` defines how the best value is computed, and defaults to `min` for minimum value.
+
+!!! info
+    Implemented by [SegmentTree](/datastructures/segmenttree.md) to solve the [range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) problem.
 
 ``` python
 rangequery(
@@ -46,7 +50,7 @@ rangequery(
 
 ## Range Transformation
 
-Tools for transformations over ranges. Note that each range is closed on the left side, and open on the right side.
+Tools for transformations over ranges.
 
 ### `intersect(a, b)`
 
@@ -70,7 +74,8 @@ union((0, 0.6), (0.4, 1))
 
 Solves the variation of the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covered`.
 
-- This is an approximate algorithm, which means the returned result is not always the best.
+!!! warning
+    This is an approximate algorithm, which means the returned result is not always the best.
 
 ``` python
 list(rangecover(
@@ -84,7 +89,8 @@ list(rangecover(
 
 Merges the covered ranges `covered` to resolve any overlap.
 
-- Covered ranges in `covered` are sorted by the left side of each range.
+!!! danger
+    Covered ranges in `covered` must be sorted by the left side of each range.
 
 ``` python
 list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
@@ -95,9 +101,11 @@ list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
 
 Computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
-- Covered ranges in `covered` are sorted by the left side of each range.
+!!! danger
+    Covered ranges in `covered` must be sorted by the left side of each range.
 
-- Overlaps among covered ranges `covered` are resolved, like `covers(covered)`.
+!!! info
+    Overlaps among covered ranges `covered` are resolved, like `covers(covered)`.
 
 ``` python
 list(gaps(

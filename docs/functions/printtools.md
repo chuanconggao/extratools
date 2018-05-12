@@ -8,13 +8,16 @@ Tools for controlling printing destination.
 
 Redirects the output of `print` to standard error.
 
-- The same parameters are accepted.
+!!! tip
+    The same parameters of builtin `print` are accepted.
 
 ## To String
 
 Tools for generating the intuitive string representation.
 
-- Builtin function `repr` is used to print each item safely.
+!!! info
+    Builtin function `repr` is used to print each item safely.
+
 
 ### `iter2str(seq, limit=None)`
 
@@ -35,11 +38,12 @@ iter2str(itertools.count(), limit=5)
 
 Prints the alignment between sequences `seq`. `default=None` is used for labelling missing value from each sequences.
 
-- If unknown, `seqtools.align` can compute the alignment between two sequences.
-
 - `separator` can be specified to separate every two values.
 
 - If sequences have different lengths, the extra trailing items are also printed as not matching.
+
+!!! tip
+    `seqtools.align` can compute the alignment between two sequences.
 
 ``` python
 print(alignment2str(
@@ -67,6 +71,9 @@ print(alignment2str(
 ### `table2str(data, default=None, separator=" | ")`
 
 A thin wrapper of `alignment2str` to print a row-based table.
+
+!!! tip
+    The default output format is compatible to Markdown format.
 
 ``` python
 print(table2str([

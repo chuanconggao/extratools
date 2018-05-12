@@ -12,7 +12,8 @@ Computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_ab
 
 Computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
 
-- You can also pass a dictionary of `(item, frequency)` as frequency distribution to `data`.
+!!! tip
+    You can also pass a dictionary of `(item, frequency)` as known frequency distribution to `data`.
 
 ## Binary Classification
 
@@ -26,7 +27,8 @@ Matches the truth labels and the prediction labels. Return a tuples of `(tp, fp,
 
 Returns the [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
 
-- Note that you can simply call `accuracy(*teststats(truths, predictions))`.
+!!! tip
+    You can simply call `accuracy(*teststats(truths, predictions))`.
 
 ### `precision(tp, fp, tn, fn)` and `recall(tp, fp, tn, fn)`
 

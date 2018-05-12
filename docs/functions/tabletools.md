@@ -8,7 +8,8 @@ Tools for table transformations.
 
 Returns the transpose of table `data`, i.e., switch rows and columns.
 
-- Useful to switch table `data` from row-based to column-based and backwards.
+!!! tip
+    Useful to switch table `data` from row-based to column-based and backwards.
 
 ``` python
 list(transpose([

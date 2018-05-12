@@ -2,7 +2,10 @@
 
 ## Sequence Matching
 
-Tools for matching sequences (including strings), without gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
+Tools for matching sequences (including strings), without gaps allowed between matching items.
+
+!!! info
+    Empty sequence is always a sub-sequence of any other sequence.
 
 ### `bestsubseq(a, key)`
 
@@ -75,7 +78,10 @@ commonsubseq(
 
 ## Sequence Matching with Gap
 
-Tools for matching sequences (including strings), with gaps allowed between matching items. Note that empty sequence is always a sub-sequence of any other sequence.
+Tools for matching sequences (including strings), with gaps allowed between matching items.
+
+!!! info
+    Empty sequence is always a sub-sequence of any other sequence.
 
 ### `bestsubseqwithgap(a, key)`
 
@@ -222,9 +228,11 @@ list(match(
 
 Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
-- If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.join` with the same API should be used for better efficiency.
+!!! tip
+    If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.sortedjoin` with the same API should be used for better efficiency.
 
-- Unlike `sortedtools.join`, `join` is just a wrapper of `toolz.itertools.join` with a slightly more friendly API.
+!!! info
+    `join` is just a wrapper of `toolz.itertools.join` with the same more friendly API of `sortedtools.sortedjoin`.
 
 ``` python
 list(join(

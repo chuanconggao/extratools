@@ -19,7 +19,8 @@ Solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) 
 
 - In default, the size of each set `len` is used as key function `key` to measure the coverage.
 
-- This is an approximate algorithm, which means the returned result is not always the best.
+!!! warning
+    This is an approximate algorithm, which means the returned result is not always the best.
 
 ``` python
 list(setcover(

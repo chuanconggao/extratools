@@ -10,7 +10,13 @@ Flattens a JSON object by returning `(Path, Value`) tuples with each path `Path`
 
 - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
 
-- In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array. Note that an empty array disappears after being flatten.
+- In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array.
+
+!!! info
+    Different from `dicttools.flatten`, this function accepts any JSON object not limited to dictionary.
+
+!!! warning
+    An empty array disappears after being flatten.
 
 ``` python
 flatten(json.loads("""{
