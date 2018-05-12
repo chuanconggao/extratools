@@ -34,6 +34,8 @@ markdown_extensions:
 
 extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"]
 
+google_analytics: ["UA-119119396-1", "www.chuancong.site"]
+
 pages:
     - Index: index.md
 
