@@ -1,13 +1,10 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
-!!! info
-    As each sorted sequence is a sequence, tools in `seqtools` can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
-
-!!! success
-    A sequence means not only a list, but any iterable.
-
 !!! danger
     For most tools here except `issorted`, each sequence must already be sorted.
+
+!!! info
+    Tools in `seqtools` can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
 
 ## Sequence Check
 
@@ -28,7 +25,7 @@ Tools for matching sorted sequences.
 
 Returns the common elements between `a` and `b`, optionally according to the key function `key`.
 
-!!! info
+!!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
 
 ``` python
@@ -43,7 +40,7 @@ list(sortedcommon(
 
 Returns the elements not in both `a` and `b`, optionally according to the key function `key`.
 
-!!! info
+!!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
 
 ``` python
@@ -58,7 +55,7 @@ list(sortedalone(
 
 Returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
 
-!!! info
+!!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
 
 ``` python
@@ -115,7 +112,7 @@ Matches two sorted sequences `a` and `b` in pairs, such that the total number of
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
 !!! success
-    `sortedmatch` is lazy and more efficient than `seqtools.match`.
+    `sortedmatch` accepts iterable and is more efficient than `seqtools.match`.
 
 ``` python
 list(sortedmatch(
@@ -137,7 +134,7 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 
 !!! success
-    `sortedjoin` is lazy and more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+    `sortedjoin` accepts iterable and is more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
 
 ``` python
 list(sortedjoin(

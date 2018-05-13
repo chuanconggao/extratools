@@ -1,7 +1,7 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 !!! info
-    As each string is a sequence, tools in `seqtools` can also be applied here. `strtools` only contains tools that are unique to the concept of string.
+    Tools in `seqtools` can also be applied here. `strtools` only contains tools that are unique to the concept of string.
 
 ## String Matching
 
@@ -39,7 +39,7 @@ Efficiently computes the number of lines containing each tag.
 
 - `separator` is a regex to tokenize each string. In default when `separator` is `None`, each string is not tokenized.
 
-!!! info
+!!! success
     [TagStats](https://github.com/chuanconggao/TagStats) is used to compute efficiently, where the common prefixes among tags are matched only once.
 
 ``` python

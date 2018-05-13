@@ -6,11 +6,11 @@ Tools for statistics.
 
 ### `medianabsdev(data)`
 
-Computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation) of a list of floats.
+Computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation) of a sequence of floats.
 
 ### `entropy(data)`
 
-Computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a list of any items.
+Computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a sequence of any items.
 
 !!! tip
     You can also pass a dictionary of `(item, frequency)` as known frequency distribution to `data`.

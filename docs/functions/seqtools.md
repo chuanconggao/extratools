@@ -1,11 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-!!! info
-    Empty sequence is always a sub-sequence of any other sequence.
-
-!!! success
-    If not explicitly noted, a sequence means not only a list, but any iterable.
-
 ## Sequence Matching
 
 Tools for matching sequences (including strings), without gaps allowed between matching items.

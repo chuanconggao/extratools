@@ -1,3 +1,12 @@
+!!! success
+    If not explicitly noted, a sequence means not only a list or string, but any iterable.
+
+!!! success
+    If not explicitly noted, a function is lazy and returns a generator as a sequence.
+
+!!! info
+    Empty sequence is always a sub-sequence of any other sequence.
+
 ## Functions
 
 [`seqtools`](functions/seqtools.md)
