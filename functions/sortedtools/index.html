@@ -749,17 +749,13 @@
                   <h1>sortedtools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py">Source</a></p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>As each sorted sequence is a sequence, tools in <code>seqtools</code> can also be applied here. <code>sortedtools</code> only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.</p>
-</div>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>A sequence means not only a list, but any iterable.</p>
-</div>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>For most tools here except <code>issorted</code>, each sequence must already be sorted.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Tools in <code>seqtools</code> can also be applied here. <code>sortedtools</code> only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.</p>
 </div>
 <h2 id="sequence-check">Sequence Check<a class="headerlink" href="#sequence-check" title="Permanent link">&para;</a></h2>
 <h3 id="issortedseq-keynone"><code>issorted(seq, key=None)</code><a class="headerlink" href="#issortedseq-keynone" title="Permanent link">&para;</a></h3>
@@ -773,8 +769,8 @@
 <p>Tools for matching sorted sequences.</p>
 <h3 id="sortedcommona-b-keynone"><code>sortedcommon(a, b, key=None)</code><a class="headerlink" href="#sortedcommona-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the common elements between <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) &amp; set(b))</code> but more efficient.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedcommon(</span>
@@ -787,8 +783,8 @@
 
 <h3 id="sortedalonea-b-keynone"><code>sortedalone(a, b, key=None)</code><a class="headerlink" href="#sortedalonea-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted((set(a) | set(b)) - (set(a) &amp; set(b)))</code> but more efficient.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedalone(</span>
@@ -801,8 +797,8 @@
 
 <h3 id="sorteddiffa-b-keynone"><code>sorteddiff(a, b, key=None)</code><a class="headerlink" href="#sorteddiffa-b-keynone" title="Permanent link">&para;</a></h3>
 <p>Returns the elements only in <code>a</code> and not in <code>b</code>, optionally according to the key function <code>key</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) - set(b))</code> but more efficient.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sorteddiff(</span>
@@ -857,7 +853,7 @@
 </ul>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>sortedmatch</code> is lazy and more efficient than <code>seqtools.match</code>.</p>
+<p><code>sortedmatch</code> accepts iterable and is more efficient than <code>seqtools.match</code>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedmatch(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
@@ -879,7 +875,7 @@
 </ul>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>sortedjoin</code> is lazy and more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
+<p><code>sortedjoin</code> accepts iterable and is more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedjoin(</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
