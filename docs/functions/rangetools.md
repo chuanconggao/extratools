@@ -19,6 +19,9 @@ Computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the f
 
     - The first bin is labelled by `leftmost`, which is `-inf` in default.
 
+!!! warning
+    `thresholds` must be a list.
+
 ``` python
 histogram(
     [   0.1,                0.5,           0.8, 0.9],

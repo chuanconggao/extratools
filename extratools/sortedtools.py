@@ -67,9 +67,9 @@ def issubsorted(
 
 
 def sortedmatch(
-        a: List[T], b: List[T],
+        a: Iterable[T], b: Iterable[T],
         default: T = None
-    ) -> Tuple[List[T], List[T]]:
+    ) -> Iterable[Tuple[T, T]]:
     for m, n in __sortedjoin(
             a, b,
             leftdefault=default, rightdefault=default

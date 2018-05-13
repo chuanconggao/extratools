@@ -1,15 +1,21 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
+!!! info
+    Empty sequence is always a sub-sequence of any other sequence.
+
+!!! success
+    If not explicitly noted, a sequence means not only a list, but any iterable.
+
 ## Sequence Matching
 
 Tools for matching sequences (including strings), without gaps allowed between matching items.
 
-!!! info
-    Empty sequence is always a sub-sequence of any other sequence.
-
 ### `bestsubseq(a, key)`
 
 Finds the best sub-sequence of `a` that maximizes the key function `key`.
+
+!!! warning
+    Only accept and return list.
 
 ``` python
 bestsubseq([1, -2, 3, -4, 5, -6], sum)
@@ -68,6 +74,9 @@ issubseq(
 
 Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two sequences `a` and `b`.
 
+!!! warning
+    Only accept and return list.
+
 ``` python
 commonsubseq(
     [   0, 1, 1,   0, 1],
@@ -80,12 +89,12 @@ commonsubseq(
 
 Tools for matching sequences (including strings), with gaps allowed between matching items.
 
-!!! info
-    Empty sequence is always a sub-sequence of any other sequence.
-
 ### `bestsubseqwithgap(a, key)`
 
 Finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
+
+!!! warning
+    Only accept and return list.
 
 ``` python
 bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
@@ -163,6 +172,9 @@ list(issubseqwithgap(
 
 Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
 
+!!! warning
+    Only accept and return list.
+
 ``` python
 commonsubseqwithgap(
     [0,    1, 1, 0, 1],
@@ -189,6 +201,9 @@ Tools for aligning and joining sequences.
 
 - If there are multiple alignments having the same cost, the leftmost one is returned.
 
+!!! warning
+    Only accept and return list.
+
 ``` python
 align(
     [0,    1, 1, 0, 1],
@@ -210,6 +225,9 @@ align(
 Matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
 
 - If there are multiple alignments having the same number, the leftmost one is returned.
+
+!!! warning
+    Only accept list.
 
 ``` python
 list(match(
@@ -263,10 +281,16 @@ Compares two sequences `x` and `y` with equal length according to [product order
 - Throw exception if `x` and `y` have different lengths.
 
 ``` python
-productcmp([1, 2, 3], [4, 5, 6])
+productcmp(
+    [1, 2, 3],
+    [4, 5, 6]
+)
 # 1
 
-productcmp([1, 2, 3], [4, 3, 2])
+productcmp(
+    [1, 2, 3],
+    [4, 3, 2]
+)
 # None
 ```
 
@@ -279,7 +303,10 @@ Tools for sorting sequences.
 Returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
 
 ``` python
-sortedbyrank(['a', 'b', 'c'], [3, 2, 1])
+sortedbyrank(
+    ['a', 'b', 'c'],
+    [  3,   2,   1]
+)
 # ['c', 'b', 'a']
 ```
 

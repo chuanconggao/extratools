@@ -3,6 +3,9 @@
 !!! info
     As each sorted sequence is a sequence, tools in `seqtools` can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
 
+!!! success
+    A sequence means not only a list, but any iterable.
+
 !!! danger
     For most tools here except `issorted`, each sequence must already be sorted.
 
