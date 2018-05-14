@@ -2,7 +2,7 @@
     If not explicitly noted, a sequence means not only a list or string, but any iterable.
 
 !!! success
-    If not explicitly noted, a function is lazy and returns a generator as a sequence.
+    If not explicitly noted, a function that returns a sequence is lazy and returns a generator.
 
 !!! info
     Empty sequence is always a sub-sequence of any other sequence.

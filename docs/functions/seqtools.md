@@ -9,7 +9,7 @@ Tools for matching sequences (including strings), without gaps allowed between m
 Finds the best sub-sequence of `a` that maximizes the key function `key`.
 
 !!! warning
-    Only accept and return list.
+    This function reads the sequence at once.
 
 ``` python
 bestsubseq([1, -2, 3, -4, 5, -6], sum)
@@ -23,6 +23,9 @@ Returns all the positions where `a` is a sub-sequence of `b`.
 - In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
 - Unlike other function in `seqtools`, empty list is returned when `a` is empty.
+
+!!! warning
+    This function reads the first sequence at once.
 
 ``` python
 list(findallsubseqs(
@@ -44,6 +47,9 @@ list(findallsubseqs(
 
 Returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
 
+!!! warning
+    This function reads the first sequence at once.
+
 ``` python
 findsubseq(
     [   0, 1, 0],
@@ -55,6 +61,9 @@ findsubseq(
 ### `issubseq(a, b)`
 
 Checks if `a` is a sub-sequence of `b`.
+
+!!! warning
+    This function reads the first sequence at once.
 
 ``` python
 issubseq(
@@ -69,13 +78,13 @@ issubseq(
 Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two sequences `a` and `b`.
 
 !!! warning
-    Only accept and return list.
+    This function reads all sequences at once.
 
 ``` python
-commonsubseq(
+list(commonsubseq(
     [   0, 1, 1,   0, 1],
     [0, 0, 1, 1, 1]
-)
+))
 # [0, 1, 1]
 ```
 
@@ -88,7 +97,7 @@ Tools for matching sequences (including strings), with gaps allowed between matc
 Finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
 
 !!! warning
-    Only accept and return list.
+    This function reads the sequence at once.
 
 ``` python
 bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
@@ -102,6 +111,9 @@ Returns all the positions where `a` is a sub-sequence of `b`.
 - In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
 - Unlike other function in `seqtools`, empty list is returned when `a` is empty.
+
+!!! warning
+    This function reads all sequences at once.
 
 ``` python
 list(findallsubseqswithgap(
@@ -167,13 +179,13 @@ list(issubseqwithgap(
 Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
 
 !!! warning
-    Only accept and return list.
+    This function reads all sequences at once.
 
 ``` python
-commonsubseqwithgap(
+list(commonsubseqwithgap(
     [0,    1, 1, 0, 1],
     [0, 0, 1, 1,    1]
-)
+))
 # [0, 1, 1, 1]
 ```
 
@@ -196,7 +208,7 @@ Tools for aligning and joining sequences.
 - If there are multiple alignments having the same cost, the leftmost one is returned.
 
 !!! warning
-    Only accept and return list.
+    This function reads all sequences at once.
 
 ``` python
 align(
@@ -221,7 +233,7 @@ Matches two sequences `a` and `b` in pairs, such that the total number of matchi
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
 !!! warning
-    Only accept list.
+    This function reads all sequences at once.
 
 ``` python
 list(match(
@@ -239,6 +251,9 @@ list(match(
 ### `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
 
 Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+
+!!! warning
+    This function reads the first sequence at once.
 
 !!! tip
     If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.sortedjoin` with the same API should be used for better efficiency.

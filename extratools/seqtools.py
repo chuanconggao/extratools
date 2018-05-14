@@ -17,7 +17,9 @@ from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
-def bestsubseq(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
+def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
+    a = list(a)
+
     return max(
         chain([[]], (
             a[i:j]
@@ -53,7 +55,7 @@ def issubseq(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseq(a, b) >= 0
 
 
-def commonsubseq(a: List[T], b: List[T]) -> List[T]:
+def commonsubseq(a: Iterable[T], b: Iterable[T]) -> Iterable[T]:
     @lru_cache(maxsize=None)
     # Find the start pos in list `a`
     def align_rec(alen, blen):
@@ -62,18 +64,21 @@ def commonsubseq(a: List[T], b: List[T]) -> List[T]:
 
         return align_rec(alen - 1, blen - 1)
 
+    a = list(a)
+    b = list(b)
 
-    return a[slice(*max(
-        (
-            (align_rec(i, j), i)
-            for i in range(0, len(a) + 1)
-            for j in range(0, len(b) + 1)
-        ),
-        key=lambda x: x[1] - x[0]
-    ))]
+    for k in range(*max(
+            (
+                (align_rec(i, j), i)
+                for i in range(0, len(a) + 1)
+                for j in range(0, len(b) + 1)
+            ),
+            key=lambda x: x[1] - x[0]
+        )):
+        yield a[k]
 
 
-def bestsubseqwithgap(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
+def bestsubseqwithgap(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
     def find(alen):
         if alen == 0:
             return (key([]), [])
@@ -87,6 +92,8 @@ def bestsubseqwithgap(a: List[T], key: Callable[[Iterable[T]], Any]) -> List[T]:
             key=lambda x: x[0]
         )
 
+
+    a = list(a)
 
     return find(len(a))[1]
 
@@ -159,15 +166,15 @@ def issubseqwithgap(a: Iterable[T], b: Iterable[T]) -> bool:
     return findsubseqwithgap(a, b) is not None
 
 
-def commonsubseqwithgap(a: List[T], b: List[T]) -> List[T]:
-    return [x for x, y in zip(*(align(a, b)[1])) if x == y]
+def commonsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Iterable[T]:
+    return (x for x, y in zip(*(align(a, b)[1])) if x == y)
 
 
 def align(
-        a: List[T], b: List[T],
+        a: Iterable[T], b: Iterable[T],
         cost: Callable[[T, T], float] = None, bound: float = math.inf,
         default: T = None
-    ) -> Tuple[float, Tuple[List[T], List[T]]]:
+    ) -> Tuple[float, Tuple[Iterable[T], Iterable[T]]]:
     def merge(prev, curr):
         if not prev:
             return None
@@ -207,6 +214,9 @@ def align(
         )
 
 
+    a = list(a)
+    b = list(b)
+
     if not cost:
         cost = lambda x, y: 0 if x == y else 1
 
@@ -214,7 +224,7 @@ def align(
 
 
 def match(
-        a: List[T], b: List[T],
+        a: Iterable[T], b: Iterable[T],
         default: T = None
     ) -> Iterable[Tuple[T, T]]:
     return zip(*align(a, b, default=default)[1])
@@ -240,7 +250,7 @@ def productcmp(x: Iterable[T], y: Iterable[T]) -> Optional[int]:
     return cmp(lc, gc)
 
 
-def sortedbyrank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False) -> List[T]:
+def sortedbyrank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False) -> Iterable[T]:
     return [
         v for _, v in sorted(
             zip(ranks, data),
