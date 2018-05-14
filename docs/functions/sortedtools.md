@@ -89,7 +89,6 @@ Returns each item and the respective number of sequences in `seqs` contains it.
 !!! success
     This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
 
-!!! success
     `sortedtools.matchingfrequencies` is more efficient than `seqtools.matchingfrequencies`.
 
 !!! tip
