@@ -1,7 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py)
 
-## Miscellaneous
-
 Tools for miscellaneous purposes.
 
 ### `cmp(a, b)`

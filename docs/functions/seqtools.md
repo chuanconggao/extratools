@@ -1,10 +1,20 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-!!! info
+!!! warning
     For tools specific to sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap.md).
 
-!!! info
     For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap.md).
+
+!!! success
+    If not explicitly noted, a sequence means not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
+
+    If not explicitly noted, a function that returns a sequence is lazy and returns a generator.
+
+!!! info
+    Empty sequence is always a sub-sequence of any other sequence.
+
+    A sequence is always a sub-sequence of itself.
+
 
 ## Sequence Matching
 
@@ -17,7 +27,6 @@ Returns each item and the respective number of sequences in `seqs` contains it.
 !!! tip
     If each sequence is sorted, then optimized `sortedtools.matchingfrequencies` with the same API should be used for better efficiency.
 
-!!! tip
     For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
 
 ``` python

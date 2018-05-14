@@ -1,7 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/mathtools.py)
 
-## Math
-
 Tools for math.
 
 ### `safediv(a, b)`

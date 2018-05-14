@@ -100,7 +100,6 @@ Flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` 
 !!! warning
     Different from `jsontools.flatten`, this function accepts only dictionary.
 
-!!! warning
     An empty array disappears after being flatten.
 
 ``` python
