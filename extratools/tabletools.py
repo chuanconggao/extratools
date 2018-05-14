@@ -6,8 +6,9 @@ T = TypeVar('T')
 
 import csv
 from io import TextIOBase
+import regex as re
 
-Table = Iterable[List[T]]
+Table = Iterable[Union[List[T], Tuple[T]]]
 
 def transpose(data: Table) -> Table:
     for col in zip(*data):
@@ -42,3 +43,15 @@ def mergecols(cols: Table, default=None) -> Optional[List[T]]:
         mergedcol.append(mergedvals[0] if mergedvals else default)
 
     return mergedcol
+
+
+def parse(lines: Iterable[str], sep=None) -> Table:
+    for line in lines:
+        yield line.split(sep)
+
+
+def parsebyregex(lines: Iterable[str], regex: Any) -> Table:
+    r = re.compile(regex) if isinstance(regex, str) else regex
+
+    for line in lines:
+        yield r.fullmatch(line).groups(default="")
