@@ -19,7 +19,7 @@ from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
-def __indexable(a: Iterable[T], target=tuple) -> Sequence[T]:
+def iter2seq(a: Iterable[T], target=tuple) -> Sequence[T]:
     if isinstance(a, (list, str, tuple, array)):
         return a
 
@@ -27,7 +27,7 @@ def __indexable(a: Iterable[T], target=tuple) -> Sequence[T]:
 
 
 def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
-    a = __indexable(a)
+    a = iter2seq(a)
 
     return max(
         chain([[]], (
@@ -40,7 +40,7 @@ def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]
 
 
 def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[int]:
-    x = __indexable(a)
+    x = iter2seq(a)
     if len(x) == 0:
         return
 
@@ -53,7 +53,7 @@ def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Ite
 
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
-    x = __indexable(a)
+    x = iter2seq(a)
     if len(x) == 0:
         return 0
 
@@ -73,8 +73,8 @@ def commonsubseq(a: Iterable[T], b: Iterable[T]) -> Iterable[T]:
 
         return align_rec(alen - 1, blen - 1)
 
-    a = __indexable(a)
-    b = __indexable(b)
+    a = iter2seq(a)
+    b = iter2seq(b)
 
     for k in range(*max(
             (
@@ -102,7 +102,7 @@ def bestsubseqwithgap(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iter
         )
 
 
-    a = __indexable(a)
+    a = iter2seq(a)
 
     return find(len(a))[1]
 
@@ -123,11 +123,11 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False)
             yield from findallsubseqswithgap_overlap(prefixposs + [i])
 
 
-    x = __indexable(a)
+    x = iter2seq(a)
     if len(x) == 0:
         return
 
-    y = cast(List, __indexable(b, target=list))
+    y = cast(List, iter2seq(b, target=list))
 
     if overlap:
         yield from findallsubseqswithgap_overlap([])
@@ -223,8 +223,8 @@ def align(
         )
 
 
-    a = __indexable(a)
-    b = __indexable(b)
+    a = iter2seq(a)
+    b = iter2seq(b)
 
     if not cost:
         cost = lambda x, y: 0 if x == y else 1
@@ -326,7 +326,7 @@ def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]
 
 
 def enumeratesubseqs(seq: Iterable[T]) -> Iterable[Iterable[T]]:
-    seq = __indexable(seq)
+    seq = iter2seq(seq)
     l = len(seq)
 
     for i in range(l):
@@ -335,14 +335,14 @@ def enumeratesubseqs(seq: Iterable[T]) -> Iterable[Iterable[T]]:
 
 
 def enumeratesubseqswithgap(seq: Iterable[T]) -> Iterable[Iterable[T]]:
-    seq = __indexable(seq)
+    seq = iter2seq(seq)
 
     for i in range(1, len(seq)):
         yield from combinations(seq, i)
 
 
 def nonsharingsubseqs(*seqs: Iterable[T], closed: bool = True) -> Mapping[Tuple[T, ...], int]:
-    safeseqs = __indexable(__indexable(seq) for seq in seqs)
+    safeseqs = iter2seq(iter2seq(seq) for seq in seqs)
     freqs = dict(matchingfrequencies(*safeseqs))
 
     res: Dict[Tuple[T, ...], Set[int]] = defaultdict(set)
@@ -375,8 +375,8 @@ def nonsharingsubseqs(*seqs: Iterable[T], closed: bool = True) -> Mapping[Tuple[
 
 
 def partitionbysubseqs(subseqs: Iterable[Iterable[T]], seq: Iterable[T]) -> Iterable[Iterable[T]]:
-    subseqs = set(__indexable(seq) for seq in subseqs)
-    seq = __indexable(seq)
+    subseqs = set(iter2seq(seq) for seq in subseqs)
+    seq = iter2seq(seq)
 
     lastj = 0
     i = 0

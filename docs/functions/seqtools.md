@@ -6,15 +6,14 @@
     For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap.md).
 
 !!! success
-    If not explicitly noted, a sequence means not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
+    If not explicitly noted, a sequence refers to not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
 
-    If not explicitly noted, a function that returns a sequence is lazy and returns a generator.
+    If not explicitly noted, a function is lazy, where each sequence is processed incrmentally only when necessary and returned incrmentally as a generator.
 
 !!! info
     Empty sequence is always a sub-sequence of any other sequence.
 
     A sequence is always a sub-sequence of itself.
-
 
 ## Sequence Matching
 
@@ -218,3 +217,16 @@ list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
 # [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 ```
 
+## Sequence Conversion
+
+Tools for converting the type of sequence.
+
+### `iter2seq(iterable, target=tuple)`
+
+Converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
+
+!!! warning
+    This function reads the sequence at once.
+
+!!! tip
+    Useful if you need to scan the sequence more than once.
