@@ -22,6 +22,34 @@ list(transpose([
 #  [3, 6, 9]]
 ```
 
+### `mergecols(cols, default=None)`
+
+Merges the columns in `cols` into a single column. Return `None` if there is conflict in any row.
+
+- A row has conflict if there are more than one valid values, where each valid value is not `None` or empty string.
+
+- `default` is a place holder when there are no valid value in one row.
+
+``` python
+cols = list(transpose([
+    [   0, None,    2],
+    [   0,    1, None],
+    [None,    1, None]
+    [0,    None, None]
+]))
+
+# Merge the last two columns.
+mergecols(cols[1:])
+# [2,
+   1,
+   1,
+   None]
+
+# Merge all three columns.
+mergecols(cols)
+# None
+```
+
 ## CSV
 
 Tools for processing CSV.

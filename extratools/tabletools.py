@@ -26,3 +26,19 @@ def dumpcsv(path: Union[str, TextIOBase], data: Table, delimiter: str = ',') -> 
     writer = csv.writer(f, delimiter=delimiter)
     for row in data:
         writer.writerow(row)
+
+
+def mergecols(cols: Table, default=None) -> Optional[List[T]]:
+    mergedcol = []
+
+    for vals in zip(*cols):
+        mergedvals = [
+            val for val in vals
+            if val is not None and val != ""
+        ]
+        if len(mergedvals) > 1:
+            return None
+
+        mergedcol.append(mergedvals[0] if mergedvals else default)
+
+    return mergedcol
