@@ -2,7 +2,7 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 
-Extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+Almost 100 extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
@@ -24,38 +24,39 @@ Besides other interesting ideas, I am planning to make the following updates in 
 
 - Add `dicttools.unflatten` and `jsontools.unflatten`.
 
-- Update `seqtools.commonsubseq`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
-
 - Add `trie` and `suffixtree` (according to [generalized suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)).
+
+- Update `seqtools.commonsubseq`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
 
 ## Index of Available Tools
 
 - Functions:
 
-[`seqtools`](https://chuanconggao.github.io/extratools/functions/seqtools)
-[`sortedtools`](https://chuanconggao.github.io/extratools/functions/sortedtools)
-[`strtools`](https://chuanconggao.github.io/extratools/functions/strtools)
-[`rangetools`](https://chuanconggao.github.io/extratools/functions/rangetools)
+[`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
 [`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
-[`settools`](https://chuanconggao.github.io/extratools/functions/settools)
-[`tabletools`](https://chuanconggao.github.io/extratools/functions/tabletools)
 [`mathtools`](https://chuanconggao.github.io/extratools/functions/mathtools)
-[`stattools`](https://chuanconggao.github.io/extratools/functions/stattools)
 [`misctools`](https://chuanconggao.github.io/extratools/functions/misctools)
 [`printtools`](https://chuanconggao.github.io/extratools/functions/printtools)
-[`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
+[`rangetools`](https://chuanconggao.github.io/extratools/functions/rangetools)
+[`seqtools`](https://chuanconggao.github.io/extratools/functions/seqtools)
+[`settools`](https://chuanconggao.github.io/extratools/functions/settools)
+[`sortedtools`](https://chuanconggao.github.io/extratools/functions/sortedtools)
+[`stattools`](https://chuanconggao.github.io/extratools/functions/stattools)
+[`strtools`](https://chuanconggao.github.io/extratools/functions/strtools)
+[`tabletools`](https://chuanconggao.github.io/extratools/functions/tabletools)
 
 - Data Structures:
 
-[`disjointsets`](https://chuanconggao.github.io/extratools/datastructures/disjointsets)
 [`defaultlist`](https://chuanconggao.github.io/extratools/datastructures/defaultlist)
+[`disjointsets`](https://chuanconggao.github.io/extratools/datastructures/disjointsets)
+[`segmenttree`](https://chuanconggao.github.io/extratools/datastructures/segmenttree)
 
 - CLI Tools:
 
 [`dicttools.remap`](https://chuanconggao.github.io/extratools/cli)
 [`jsontools.flatten`](https://chuanconggao.github.io/extratools/cli)
-[`jsontools.teststats`](https://chuanconggao.github.io/extratools/cli)
+[`stattools.teststats`](https://chuanconggao.github.io/extratools/cli)
 
 ## Examples
 
