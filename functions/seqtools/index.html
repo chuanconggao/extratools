@@ -527,6 +527,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sequence-conversion" title="Sequence Conversion" class="md-nav__link">
+    Sequence Conversion
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iter2seqiterable-targettuple" title="iter2seq(iterable, target=tuple)" class="md-nav__link">
+    iter2seq(iterable, target=tuple)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -857,6 +877,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sequence-conversion" title="Sequence Conversion" class="md-nav__link">
+    Sequence Conversion
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iter2seqiterable-targettuple" title="iter2seq(iterable, target=tuple)" class="md-nav__link">
+    iter2seq(iterable, target=tuple)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -886,8 +926,8 @@
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>If not explicitly noted, a sequence means not only list, tuple, string, or <a href="https://docs.python.org/3/library/array.html">array</a>, but any iterable.</p>
-<p>If not explicitly noted, a function that returns a sequence is lazy and returns a generator.</p>
+<p>If not explicitly noted, a sequence refers to not only list, tuple, string, or <a href="https://docs.python.org/3/library/array.html">array</a>, but any iterable.</p>
+<p>If not explicitly noted, a function is lazy, where each sequence is processed incrmentally only when necessary and returned incrmentally as a generator.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1084,6 +1124,20 @@
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(fromdeltas([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]))</span>
 <span style="color: #75715e"># [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]</span>
 </pre></div>
+
+
+<h2 id="sequence-conversion">Sequence Conversion<a class="headerlink" href="#sequence-conversion" title="Permanent link">&para;</a></h2>
+<p>Tools for converting the type of sequence.</p>
+<h3 id="iter2seqiterable-targettuple"><code>iter2seq(iterable, target=tuple)</code><a class="headerlink" href="#iter2seqiterable-targettuple" title="Permanent link">&para;</a></h3>
+<p>Converts any iterable sequence <code>iterable</code> to an indexable and sizable sequence with type <code>target=tuple</code> if necessary, defaults to tuple.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function reads the sequence at once.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Useful if you need to scan the sequence more than once.</p>
+</div>
                 
                   
                 
