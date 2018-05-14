@@ -6,6 +6,7 @@ T = TypeVar('T')
 
 from heapq import merge
 from itertools import groupby, zip_longest
+import operator
 
 from toolz.itertoolz import count, unique, sliding_window
 
@@ -85,7 +86,7 @@ def issorted(
         key = lambda v: v
 
     return all(
-        key(prev) <= key(curr)
+        operator.le(key(prev), key(curr))
         for prev, curr in sliding_window(2, seq)
     )
 

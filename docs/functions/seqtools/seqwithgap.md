@@ -41,7 +41,7 @@ list(findallsubseqswithgap(
  # [               0, 1, 1],
    [0, 0, 1, 0, 1, 0, 1, 1],
    overlap=True
-)
+))
 # [[0, 2, 4],
 #  [0, 2, 6],
 #  [0, 2, 7],

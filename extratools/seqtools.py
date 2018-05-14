@@ -19,11 +19,11 @@ from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
-def __indexable(a: Iterable) -> Tuple:
+def __indexable(a: Iterable[T], target=tuple) -> Sequence[T]:
     if isinstance(a, (list, str, tuple, array)):
         return a
 
-    return tuple(a)
+    return target(a)
 
 
 def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
@@ -107,8 +107,8 @@ def bestsubseqwithgap(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iter
     return find(len(a))[1]
 
 
-def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[Tuple[int]]:
-    def findallsubseqswithgap_overlap(prefixposs: Tuple[int]) -> Iterable[Tuple[int]]:
+def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[List[int]]:
+    def findallsubseqswithgap_overlap(prefixposs: List[int]) -> Iterable[List[int]]:
         if len(prefixposs) == len(x):
             yield prefixposs
 
@@ -127,7 +127,7 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False)
     if len(x) == 0:
         return
 
-    y: Any = __indexable(b)
+    y = cast(List, __indexable(b, target=list))
 
     if overlap:
         yield from findallsubseqswithgap_overlap([])
@@ -146,7 +146,7 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False)
             y[pos] = sentinel
 
 
-def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[Tuple[int]]:
+def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
     sentinel = object()
 
     x, y = iter(a), iter(b)
@@ -268,7 +268,7 @@ def sortedbyrank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False)
     ]
 
 
-def compress(data: Iterable[T], key: Callable[[T], Any] = None) -> Iterable[Tuple[T, int]]:
+def compress(data: Iterable[T], key: Optional[Callable[[T], Any]] = None) -> Iterable[Tuple[T, int]]:
     for k, g in itertools.groupby(data, key=key):
         yield (k, itertoolz.count(g))
 
@@ -318,7 +318,7 @@ def fromdeltas(data: Iterable[T], op: Callable[[T, T], T] = operator.add) -> Ite
 
 
 def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
-    c = Counter()
+    c: Counter[T] = Counter()
     for seq in seqs:
         c.update(unique(seq, key=key))
 
@@ -341,17 +341,17 @@ def enumeratesubseqswithgap(seq: Iterable[T]) -> Iterable[Iterable[T]]:
         yield from combinations(seq, i)
 
 
-def nonsharingsubseqs(*seqs: Iterable[Iterable[T]], closed: bool = True) -> Tuple[int, Tuple[T]]:
-    seqs = __indexable(__indexable(seq) for seq in seqs)
-    freqs = dict(matchingfrequencies(*seqs))
+def nonsharingsubseqs(*seqs: Iterable[T], closed: bool = True) -> Mapping[Tuple[T, ...], int]:
+    safeseqs = __indexable(__indexable(seq) for seq in seqs)
+    freqs = dict(matchingfrequencies(*safeseqs))
 
-    res = defaultdict(set)
+    res: Dict[Tuple[T, ...], Set[int]] = defaultdict(set)
 
-    for k, seq in enumerate(seqs):
+    for k, seq in enumerate(safeseqs):
         for i, firstitem in enumerate(seq):
             freq = freqs[firstitem]
 
-            p = tuple()
+            p: Tuple[T, ...] = tuple()
             for j in range(i, len(seq)):
                 item = seq[j]
                 if freq != freqs[item]:
@@ -369,7 +369,7 @@ def nonsharingsubseqs(*seqs: Iterable[Iterable[T]], closed: bool = True) -> Tupl
     if closed:
         for p in list(results.keys()):
             for q in enumeratesubseqs(p):
-                results.pop(q, None)
+                results.pop(cast(Tuple[T, ...], q), None)
 
     return results
 
