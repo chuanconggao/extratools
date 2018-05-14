@@ -89,6 +89,9 @@ Returns each item and the respective number of sequences in `seqs` contains it.
 !!! success
     This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
 
+!!! success
+    `sortedtools.matchingfrequencies` is more efficient than `seqtools.matchingfrequencies`.
+
 !!! tip
     For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
 
@@ -112,7 +115,7 @@ Matches two sorted sequences `a` and `b` in pairs, such that the total number of
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
 !!! success
-    `sortedmatch` accepts iterable and is more efficient than `seqtools.match`.
+    `sortedmatch` is more efficient than `seqtools.match`.
 
 ``` python
 list(sortedmatch(
@@ -134,7 +137,7 @@ Joins two sequences, optionally according to `leftkey` and `rightkey`, respectiv
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 
 !!! success
-    `sortedjoin` accepts iterable and is more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+    `sortedjoin` is more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
 
 ``` python
 list(sortedjoin(

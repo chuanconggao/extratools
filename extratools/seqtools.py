@@ -6,19 +6,28 @@ T = TypeVar('T')
 
 import operator
 import itertools
-from itertools import chain, zip_longest, repeat
+from itertools import chain, zip_longest, repeat, combinations
 import math
 from functools import lru_cache
+from collections import defaultdict
+from array import array
 
 from toolz import itertoolz
-from toolz.itertoolz import sliding_window
+from toolz.itertoolz import sliding_window, unique
 
 from .misctools import cmp
 from .dicttools import nextentries
 from .__join import join
 
+def __indexable(a: Iterable) -> Tuple:
+    if isinstance(a, (list, str, tuple, array)):
+        return a
+
+    return tuple(a)
+
+
 def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
-    a = list(a)
+    a = __indexable(a)
 
     return max(
         chain([[]], (
@@ -31,7 +40,7 @@ def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]
 
 
 def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[int]:
-    x = list(a)
+    x = __indexable(a)
     if len(x) == 0:
         return
 
@@ -44,7 +53,7 @@ def findallsubseqs(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Ite
 
 
 def findsubseq(a: Iterable[T], b: Iterable[T]) -> int:
-    x = list(a)
+    x = __indexable(a)
     if len(x) == 0:
         return 0
 
@@ -64,8 +73,8 @@ def commonsubseq(a: Iterable[T], b: Iterable[T]) -> Iterable[T]:
 
         return align_rec(alen - 1, blen - 1)
 
-    a = list(a)
-    b = list(b)
+    a = __indexable(a)
+    b = __indexable(b)
 
     for k in range(*max(
             (
@@ -93,13 +102,13 @@ def bestsubseqwithgap(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iter
         )
 
 
-    a = list(a)
+    a = __indexable(a)
 
     return find(len(a))[1]
 
 
-def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[List[int]]:
-    def findallsubseqswithgap_overlap(prefixposs: List[int]) -> Iterable[List[int]]:
+def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False) -> Iterable[Tuple[int]]:
+    def findallsubseqswithgap_overlap(prefixposs: Tuple[int]) -> Iterable[Tuple[int]]:
         if len(prefixposs) == len(x):
             yield prefixposs
 
@@ -114,11 +123,11 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False)
             yield from findallsubseqswithgap_overlap(prefixposs + [i])
 
 
-    x = list(a)
+    x = __indexable(a)
     if len(x) == 0:
         return
 
-    y: Any = list(b)
+    y: Any = __indexable(b)
 
     if overlap:
         yield from findallsubseqswithgap_overlap([])
@@ -137,7 +146,7 @@ def findallsubseqswithgap(a: Iterable[T], b: Iterable[T], overlap: bool = False)
             y[pos] = sentinel
 
 
-def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[List[int]]:
+def findsubseqwithgap(a: Iterable[T], b: Iterable[T]) -> Optional[Tuple[int]]:
     sentinel = object()
 
     x, y = iter(a), iter(b)
@@ -214,8 +223,8 @@ def align(
         )
 
 
-    a = list(a)
-    b = list(b)
+    a = __indexable(a)
+    b = __indexable(b)
 
     if not cost:
         cost = lambda x, y: 0 if x == y else 1
@@ -306,3 +315,84 @@ def fromdeltas(data: Iterable[T], op: Callable[[T, T], T] = operator.add) -> Ite
         yield curr
 
         prev = curr
+
+
+def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
+    c = Counter()
+    for seq in seqs:
+        c.update(unique(seq, key=key))
+
+    return c.items()
+
+
+def enumeratesubseqs(seq: Iterable[T]) -> Iterable[Iterable[T]]:
+    seq = __indexable(seq)
+    l = len(seq)
+
+    for i in range(l):
+        for j in range(i + 1, l + 1 if i > 0 else l):
+            yield seq[i:j]
+
+
+def enumeratesubseqswithgap(seq: Iterable[T]) -> Iterable[Iterable[T]]:
+    seq = __indexable(seq)
+
+    for i in range(1, len(seq)):
+        yield from combinations(seq, i)
+
+
+def nonsharingsubseqs(*seqs: Iterable[Iterable[T]], closed: bool = True) -> Tuple[int, Tuple[T]]:
+    seqs = __indexable(__indexable(seq) for seq in seqs)
+    freqs = dict(matchingfrequencies(*seqs))
+
+    res = defaultdict(set)
+
+    for k, seq in enumerate(seqs):
+        for i, firstitem in enumerate(seq):
+            freq = freqs[firstitem]
+
+            p = tuple()
+            for j in range(i, len(seq)):
+                item = seq[j]
+                if freq != freqs[item]:
+                    break
+
+                p += (item,)
+
+                res[p].add(k)
+
+    results = {
+        p: len(s) for p, s in res.items()
+        if freqs[p[0]] == len(s)
+    }
+
+    if closed:
+        for p in list(results.keys()):
+            for q in enumeratesubseqs(p):
+                results.pop(q, None)
+
+    return results
+
+
+def partitionbysubseqs(subseqs: Iterable[Iterable[T]], seq: Iterable[T]) -> Iterable[Iterable[T]]:
+    subseqs = set(__indexable(seq) for seq in subseqs)
+    seq = __indexable(seq)
+
+    lastj = 0
+    i = 0
+    while i < len(seq):
+        j = i
+        while j < len(seq):
+            p = seq[i:j + 1]
+            if tuple(p) in subseqs:
+                if lastj < i:
+                    yield seq[lastj:i]
+                yield p
+                lastj = j + 1
+
+            j += 1
+
+        i += 1
+
+    if lastj < i:
+        yield seq[lastj:i]

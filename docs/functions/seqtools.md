@@ -1,6 +1,6 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-## Sequence Matching
+## Sequence Matching without Gap
 
 Tools for matching sequences (including strings), without gaps allowed between matching items.
 
@@ -189,6 +189,30 @@ list(commonsubseqwithgap(
 # [0, 1, 1, 1]
 ```
 
+## Sequence Matching in General
+
+### `matchingfrequencies(*seqs, key=None)`
+
+Returns each item and the respective number of sequences in `seqs` contains it.
+
+- Optional key function `key` can be specified.
+
+!!! tip
+    If each sequence is sorted, then optimized `sortedtools.matchingfrequencies` with the same API should be used for better efficiency.
+
+!!! tip
+    For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
+
+``` python
+list(matchingfrequencies(
+    [0, 1, 2, 3, 4],
+    [1, 1, 1, 3, 4],
+    [2, 1, 2, 2, 0],
+    [1, 1, 1, 2, 2]
+))
+# [(0, 2), (1, 4), (2, 3), (3, 2), (4, 2)]
+```
+
 ## Sequence Alignment and Join
 
 Tools for aligning and joining sequences.
@@ -235,6 +259,9 @@ Matches two sequences `a` and `b` in pairs, such that the total number of matchi
 !!! warning
     This function reads all sequences at once.
 
+!!! tip
+    If both two sequences are sorted, respectively, then optimized `sortedtools.sortedmatch` with the same API should be used for better efficiency.
+
 ``` python
 list(match(
     [0,    1, 1, 0, 1],
@@ -279,9 +306,126 @@ list(join(
 #  (-5, 5)]
 ```
 
+## Sub-Sequence Enumeration without Gap
+
+Tools for enumerating sub-sequences without gap.
+
+### `enumeratesubseqs(seq)`
+
+Enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
+
+- Although `seq` is a sub-sequence of itself, it is not returned.
+
+!!! warning
+    This function reads the sequence at once.
+
+``` python
+list(enumeratesubseqs([0, 1, 0, 2]))
+# [[0],
+#  [0, 1],
+#  [0, 1, 0],
+#  [1],
+#  [1, 0],
+#  [1, 0, 2],
+#  [0],
+#  [0, 2],
+#  [2]]
+```
+
+### `nonsharingsubseqs(*seqs, closed=True)`
+
+Finds all the non-sharing non-empty sub-sequences among `seqs`, such that the item of each sub-sequence only appears in any sequence of `seqs` containing that respective sub-sequence.
+
+- Each sub-sequence is a tuple of items.
+
+- `closed=True` can be specified to return only the longest sub-sequences, i.e. no sub-sequence of is a sub-sequence of another sub-sequence.
+
+!!! warning
+    This function reads all sequences at once.
+
+``` python
+db = [
+    [0, 1, 2, 3, 4],
+    [1, 1, 1, 3, 4],
+    [2, 1, 2, 2, 0],
+    [1, 1, 1, 2, 2],
+]
+
+nonsharingsubseqs(db)
+# {(0,): 2,
+#  (1,): 4,
+#  (2,): 3,
+#  (3, 4): 2}
+
+nonsharingsubseqs(db, closed=False)
+# {(0,): 2,
+#  (1,): 4,
+#  (2,): 3,
+#  (3,): 2,
+#  (3, 4): 2,
+#  (4,): 2}
+```
+
+## Sub-Sequence Enumeration with Gap
+
+Tools for enumerating sub-sequences with gap.
+
+### `enumeratesubseqswithgap(seq)`
+
+Enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
+
+- Although `seq` is a sub-sequence of itself, it is not returned.
+
+!!! warning
+    This function reads the sequence at once.
+
+``` python
+list(enumeratesubseqswithgap([0, 1, 0, 2]))
+# [(0,),
+#  (1,),
+#  (0,),
+#  (2,),
+#  (0, 1),
+#  (0, 0),
+#  (0, 2),
+#  (1, 0),
+#  (1, 2),
+#  (0, 2),
+#  (0, 1, 0),
+#  (0, 1, 2),
+#  (0, 0, 2),
+#  (1, 0, 2)]
+```
+
+## Sequence Partition
+
+Tools for sequence partition.
+
+### `partitionbysubseqs(subseqs, seq)`
+
+Finds the partitions of sequence `seq`, according to a known sets of sub-sequences `subseqs`.
+
+- For unknown sub-sequences, the longest ones are outputted.
+
+!!! warning
+    This function reads the sequence `seq` at once.
+
+``` python
+list(partitionbysubseqs(
+    [
+        (0,),
+        (1,),
+        (2,),
+        (3, 4)
+    ],
+    [-1, 0, 1, 1, 5, 6, 3, 4, 7]
+))
+# [[-1], [0], [1], [1], [5, 6], [3, 4], [7]]
+```
+
 ## Sequence Comparison
 
-Tools for comparing sequences (including strings).
+Tools for comparing sequences.
 
 ### `productcmp(x, y)`
 
