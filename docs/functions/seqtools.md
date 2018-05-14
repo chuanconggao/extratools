@@ -1,195 +1,12 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-## Sequence Matching without Gap
+!!! info
+    For tools specific to sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap.md).
 
-Tools for matching sequences (including strings), without gaps allowed between matching items.
+!!! info
+    For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap.md).
 
-### `bestsubseq(a, key)`
-
-Finds the best sub-sequence of `a` that maximizes the key function `key`.
-
-!!! warning
-    This function reads the sequence at once.
-
-``` python
-bestsubseq([1, -2, 3, -4, 5, -6], sum)
-# [5]
-```
-
-### `findallsubseqs(a, b, overlap=False)`
-
-Returns all the positions where `a` is a sub-sequence of `b`.
-
-- In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
-
-- Unlike other function in `seqtools`, empty list is returned when `a` is empty.
-
-!!! warning
-    This function reads the first sequence at once.
-
-``` python
-list(findallsubseqs(
-    [   0, 1, 0],
-    [0, 0, 1, 0, 1, 0]
-))
-# [1]
-
-list(findallsubseqs(
-    [   0, 1, 0],
-  # [         0, 1, 0],
-    [0, 0, 1, 0, 1, 0],
-    overlap=True
-))
-# [1, 3]
-```
-
-### `findsubseq(a, b)`
-
-Returns the first position where `a` is a sub-sequence of `b`, or `-1` when not found.
-
-!!! warning
-    This function reads the first sequence at once.
-
-``` python
-findsubseq(
-    [   0, 1, 0],
-    [0, 0, 1, 0, 1, 0]
-)
-# 1
-```
-
-### `issubseq(a, b)`
-
-Checks if `a` is a sub-sequence of `b`.
-
-!!! warning
-    This function reads the first sequence at once.
-
-``` python
-issubseq(
-    [   0, 1, 0],
-    [0, 0, 1, 0, 1, 0]
-)
-# True
-```
-
-### `commonsubseq(a, b)`
-
-Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two sequences `a` and `b`.
-
-!!! warning
-    This function reads all sequences at once.
-
-``` python
-list(commonsubseq(
-    [   0, 1, 1,   0, 1],
-    [0, 0, 1, 1, 1]
-))
-# [0, 1, 1]
-```
-
-## Sequence Matching with Gap
-
-Tools for matching sequences (including strings), with gaps allowed between matching items.
-
-### `bestsubseqwithgap(a, key)`
-
-Finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
-
-!!! warning
-    This function reads the sequence at once.
-
-``` python
-bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
-# [1, 3, 5]
-```
-
-### `findallsubseqswithgap(a, b, overlap=False)`
-
-Returns all the positions where `a` is a sub-sequence of `b`.
-
-- In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
-
-- Unlike other function in `seqtools`, empty list is returned when `a` is empty.
-
-!!! warning
-    This function reads all sequences at once.
-
-``` python
-list(findallsubseqswithgap(
-    [0,    1,    1],
-  # [   0,             1, 1],
-    [0, 0, 1, 0, 1, 0, 1, 1]
-))
-# [[0, 2, 4], [1, 6, 7]]
-
-# Enumerates all the possible matchings.
-list(findallsubseqswithgap(
-   [0,    1,    1],
- # [0,    1,          1],
- # ...
- # [               0, 1, 1],
-   [0, 0, 1, 0, 1, 0, 1, 1],
-   overlap=True
-)
-# [[0, 2, 4],
-#  [0, 2, 6],
-#  [0, 2, 7],
-#  [0, 4, 6],
-#  [0, 4, 7],
-#  [0, 6, 7],
-#  [1, 2, 4],
-#  [1, 2, 6],
-#  [1, 2, 7],
-#  [1, 4, 6],
-#  [1, 4, 7],
-#  [1, 6, 7],
-#  [3, 4, 6],
-#  [3, 4, 7],
-#  [3, 6, 7],
-#  [5, 6, 7]]
-```
-
-### `findsubseqwithgap(a, b)`
-
-Returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
-
-``` python
-list(findsubseqwithgap(
-    [0,    1,    1],
-    [0, 0, 1, 0, 1, 0]
-))
-# [0, 2, 4]
-```
-
-### `issubseqwithgap(a, b)`
-
-Checks if `a` is a sub-sequence of `b`, where gaps are allowed.
-
-``` python
-list(issubseqwithgap(
-    [0,    1,    1],
-    [0, 0, 1, 0, 1, 0]
-))
-# True
-```
-
-### `commonsubseqwithgap(a, b)`
-
-Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
-
-!!! warning
-    This function reads all sequences at once.
-
-``` python
-list(commonsubseqwithgap(
-    [0,    1, 1, 0, 1],
-    [0, 0, 1, 1,    1]
-))
-# [0, 1, 1, 1]
-```
-
-## Sequence Matching in General
+## Sequence Matching
 
 ### `matchingfrequencies(*seqs, key=None)`
 
@@ -216,6 +33,31 @@ list(matchingfrequencies(
 ## Sequence Alignment and Join
 
 Tools for aligning and joining sequences.
+
+### `match(a, b, default=None)`
+
+Matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
+
+- If there are multiple alignments having the same number, the leftmost one is returned.
+
+!!! warning
+    This function reads all sequences at once.
+
+!!! tip
+    If both two sequences are sorted, respectively, then optimized `sortedtools.sortedmatch` with the same API should be used for better efficiency.
+
+``` python
+list(match(
+    [0,    1, 1, 0, 1],
+    [0, 0, 1, 1,    1]
+))
+# [(0, 0),
+#  (None, 0),
+#  (1, 1),
+#  (1, 1),
+#  (0, None),
+#  (1, 1)]
+```
 
 ### `align(a, b, cost=None, bound=inf, default=None)`
 
@@ -250,31 +92,6 @@ align(
 # None
 ```
 
-### `match(a, b, default=None)`
-
-Matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
-
-- If there are multiple alignments having the same number, the leftmost one is returned.
-
-!!! warning
-    This function reads all sequences at once.
-
-!!! tip
-    If both two sequences are sorted, respectively, then optimized `sortedtools.sortedmatch` with the same API should be used for better efficiency.
-
-``` python
-list(match(
-    [0,    1, 1, 0, 1],
-    [0, 0, 1, 1,    1]
-))
-# [(0, 0),
-#  (None, 0),
-#  (1, 1),
-#  (1, 1),
-#  (0, None),
-#  (1, 1)]
-```
-
 ### `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
 
 Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
@@ -304,123 +121,6 @@ list(join(
 #  (-4, 4),
 #  (-5, 5),
 #  (-5, 5)]
-```
-
-## Sub-Sequence Enumeration without Gap
-
-Tools for enumerating sub-sequences without gap.
-
-### `enumeratesubseqs(seq)`
-
-Enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
-
-- Although `seq` is a sub-sequence of itself, it is not returned.
-
-!!! warning
-    This function reads the sequence at once.
-
-``` python
-list(enumeratesubseqs([0, 1, 0, 2]))
-# [[0],
-#  [0, 1],
-#  [0, 1, 0],
-#  [1],
-#  [1, 0],
-#  [1, 0, 2],
-#  [0],
-#  [0, 2],
-#  [2]]
-```
-
-### `nonsharingsubseqs(*seqs, closed=True)`
-
-Finds all the non-sharing non-empty sub-sequences among `seqs`, such that the item of each sub-sequence only appears in any sequence of `seqs` containing that respective sub-sequence.
-
-- Each sub-sequence is a tuple of items.
-
-- `closed=True` can be specified to return only the longest sub-sequences, i.e. no sub-sequence of is a sub-sequence of another sub-sequence.
-
-!!! warning
-    This function reads all sequences at once.
-
-``` python
-db = [
-    [0, 1, 2, 3, 4],
-    [1, 1, 1, 3, 4],
-    [2, 1, 2, 2, 0],
-    [1, 1, 1, 2, 2],
-]
-
-nonsharingsubseqs(db)
-# {(0,): 2,
-#  (1,): 4,
-#  (2,): 3,
-#  (3, 4): 2}
-
-nonsharingsubseqs(db, closed=False)
-# {(0,): 2,
-#  (1,): 4,
-#  (2,): 3,
-#  (3,): 2,
-#  (3, 4): 2,
-#  (4,): 2}
-```
-
-## Sub-Sequence Enumeration with Gap
-
-Tools for enumerating sub-sequences with gap.
-
-### `enumeratesubseqswithgap(seq)`
-
-Enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
-
-- Although `seq` is a sub-sequence of itself, it is not returned.
-
-!!! warning
-    This function reads the sequence at once.
-
-``` python
-list(enumeratesubseqswithgap([0, 1, 0, 2]))
-# [(0,),
-#  (1,),
-#  (0,),
-#  (2,),
-#  (0, 1),
-#  (0, 0),
-#  (0, 2),
-#  (1, 0),
-#  (1, 2),
-#  (0, 2),
-#  (0, 1, 0),
-#  (0, 1, 2),
-#  (0, 0, 2),
-#  (1, 0, 2)]
-```
-
-## Sequence Partition
-
-Tools for sequence partition.
-
-### `partitionbysubseqs(subseqs, seq)`
-
-Finds the partitions of sequence `seq`, according to a known sets of sub-sequences `subseqs`.
-
-- For unknown sub-sequences, the longest ones are outputted.
-
-!!! warning
-    This function reads the sequence `seq` at once.
-
-``` python
-list(partitionbysubseqs(
-    [
-        (0,),
-        (1,),
-        (2,),
-        (3, 4)
-    ],
-    [-1, 0, 1, 1, 5, 6, 3, 4, 7]
-))
-# [[-1], [0], [1], [1], [5, 6], [3, 4], [7]]
 ```
 
 ## Sequence Comparison

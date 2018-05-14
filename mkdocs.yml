@@ -48,7 +48,10 @@ pages:
         - misctools: functions/misctools.md
         - printtools: functions/printtools.md
         - rangetools: functions/rangetools.md
-        - seqtools: functions/seqtools.md
+        - seqtools:
+            - Overview: functions/seqtools.md
+            - Sequence without Gap: functions/seqtools/seqwithoutgap.md
+            - Sequence with Gap: functions/seqtools/seqwithgap.md
         - settools: functions/settools.md
         - sortedtools: functions/sortedtools.md
         - stattools: functions/stattools.md
