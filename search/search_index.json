@@ -2,23 +2,268 @@
     "docs": [
         {
             "location": "/",
-            "text": "Success\n\n\nIf not explicitly noted, a sequence means not only a list or string, but any iterable.\n\n\n\n\n\n\nSuccess\n\n\nIf not explicitly noted, a function that returns a sequence is lazy and returns a generator.\n\n\n\n\n\n\nInfo\n\n\nEmpty sequence is always a sub-sequence of any other sequence.\n\n\n\n\nFunctions\n\u00b6\n\n\nseqtools\n\n\nsortedtools\n\n\nstrtools\n\n\nrangetools\n\n\ndicttools\n\n\njsontools\n\n\nsettools\n\n\ntabletools\n\n\nmathtools\n\n\nstattools\n\n\nmisctools\n\n\nprinttools\n\n\ndebugtools\n\n\nData Structures\n\u00b6\n\n\ndisjointsets.DisjointSets\n\n\ndefaultlist.DefaultList\n\n\nCLI Tools\n\u00b6\n\n\ndicttools.remap\n\n\njsontools.flatten\n\n\njsontools.teststats",
+            "text": "Success\n\n\nIf not explicitly noted, a sequence means not only a list or string, but any iterable.\n\n\n\n\n\n\nSuccess\n\n\nIf not explicitly noted, a function that returns a sequence is lazy and returns a generator.\n\n\n\n\n\n\nInfo\n\n\nEmpty sequence is always a sub-sequence of any other sequence.\n\n\n\n\nFunctions\n\u00b6\n\n\ndebugtools\n\n\ndicttools\n\n\njsontools\n\n\nmathtools\n\n\nmisctools\n\n\nprinttools\n\n\nrangetools\n\n\nseqtools\n\n\nsettools\n\n\nsortedtools\n\n\nstattools\n\n\nstrtools\n\n\ntabletools\n\n\nData Structures\n\u00b6\n\n\ndefaultlist.DefaultList\n\n\ndisjointsets.DisjointSets\n\n\nsegmenttree.SegmentTree\n\n\nCLI Tools\n\u00b6\n\n\ndicttools.remap\n\n\njsontools.flatten\n\n\nstattools.teststats",
             "title": "Index"
         },
         {
             "location": "/#functions",
-            "text": "seqtools  sortedtools  strtools  rangetools  dicttools  jsontools  settools  tabletools  mathtools  stattools  misctools  printtools  debugtools",
+            "text": "debugtools  dicttools  jsontools  mathtools  misctools  printtools  rangetools  seqtools  settools  sortedtools  stattools  strtools  tabletools",
             "title": "Functions"
         },
         {
             "location": "/#data-structures",
-            "text": "disjointsets.DisjointSets  defaultlist.DefaultList",
+            "text": "defaultlist.DefaultList  disjointsets.DisjointSets  segmenttree.SegmentTree",
             "title": "Data Structures"
         },
         {
             "location": "/#cli-tools",
-            "text": "dicttools.remap  jsontools.flatten  jsontools.teststats",
+            "text": "dicttools.remap  jsontools.flatten  stattools.teststats",
             "title": "CLI Tools"
+        },
+        {
+            "location": "/functions/debugtools/",
+            "text": "Source\n\n\nIterable\n\u00b6\n\n\nTools for debugging iterable sequence.\n\n\ndelayediter(seq, delay=None)\n\u00b6\n\n\nDelays the production of each item in \nseq\n by \ndelay\n seconds.\n\n\n\n\nIn default, \ndelay=None\n is disabled.\n\n\n\n\nfor\n \nv\n \nin\n \ndelayediter(range(\n5\n),\n \ndelay\n=\n1\n):\n\n    \nprint\n(datetime\n.\ndatetime\n.\nnow()\n.\ntime(),\n \nv)\n\n\n# 01:11:21.562655 0\n\n\n# 01:11:22.563725 1\n\n\n# 01:11:23.567723 2\n\n\n# 01:11:24.567997 3\n\n\n# 01:11:25.568119 4\n\n\n\n\n\n\ntimediter(seq)\n\u00b6\n\n\nProduces each item in \nseq\n and its respective timestamp when encountered.\n\n\nfor\n \nt,\n \nv\n \nin\n \ntimediter(delayediter(range(\n5\n),\n \ndelay\n=\n1\n)):\n\n    \nprint\n(datetime\n.\ndatetime\n.\nfromtimestamp(t)\n.\ntime(),\n \nv)\n\n\n# 01:13:37.181460 0\n\n\n# 01:13:38.182715 1\n\n\n# 01:13:39.188049 2\n\n\n# 01:13:40.193304 3\n\n\n# 01:13:41.197916 4\n\n\n\n\n\n\nSystem Diagnosis\n\u00b6\n\n\nTools for non-functional but useful system diagnosis tools.\n\n\nstopwatch()\n\u00b6\n\n\nReturns both the duration since program start and the duration since last call in seconds.\n\n\n\n\nWarning\n\n\nThe stopwatch only starts after \ndebugtools\n is imported.\n\n\n\n\npeakmem()\n\u00b6\n\n\nReturns the peak memory usage since program start.\n\n\n\n\nDanger\n\n\nIn bytes on macOS, and in kilobytes on Linux.",
+            "title": "debugtools"
+        },
+        {
+            "location": "/functions/debugtools/#iterable",
+            "text": "Tools for debugging iterable sequence.",
+            "title": "Iterable"
+        },
+        {
+            "location": "/functions/debugtools/#delayediterseq-delaynone",
+            "text": "Delays the production of each item in  seq  by  delay  seconds.   In default,  delay=None  is disabled.   for   v   in   delayediter(range( 5 ),   delay = 1 ): \n     print (datetime . datetime . now() . time(),   v)  # 01:11:21.562655 0  # 01:11:22.563725 1  # 01:11:23.567723 2  # 01:11:24.567997 3  # 01:11:25.568119 4",
+            "title": "delayediter(seq, delay=None)"
+        },
+        {
+            "location": "/functions/debugtools/#timediterseq",
+            "text": "Produces each item in  seq  and its respective timestamp when encountered.  for   t,   v   in   timediter(delayediter(range( 5 ),   delay = 1 )): \n     print (datetime . datetime . fromtimestamp(t) . time(),   v)  # 01:13:37.181460 0  # 01:13:38.182715 1  # 01:13:39.188049 2  # 01:13:40.193304 3  # 01:13:41.197916 4",
+            "title": "timediter(seq)"
+        },
+        {
+            "location": "/functions/debugtools/#system-diagnosis",
+            "text": "Tools for non-functional but useful system diagnosis tools.",
+            "title": "System Diagnosis"
+        },
+        {
+            "location": "/functions/debugtools/#stopwatch",
+            "text": "Returns both the duration since program start and the duration since last call in seconds.   Warning  The stopwatch only starts after  debugtools  is imported.",
+            "title": "stopwatch()"
+        },
+        {
+            "location": "/functions/debugtools/#peakmem",
+            "text": "Returns the peak memory usage since program start.   Danger  In bytes on macOS, and in kilobytes on Linux.",
+            "title": "peakmem()"
+        },
+        {
+            "location": "/functions/dicttools/",
+            "text": "Source\n\n\nDictionary Inverting\n\u00b6\n\n\nTools for inverting dictionaries.\n\n\ninvert(d)\n\u00b6\n\n\nInverts \n(Key, Value)\n pairs to \n(Value, Key)\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps last of the respective keys.\n\n\n\n\ninvert_multiple(d)\n\u00b6\n\n\nInverts \n(Key, List[Value])\n pairs to \n(Value, Key)\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps last of the respective keys.\n\n\n\n\ninvert_safe(d)\n\u00b6\n\n\nInverts \n(Key, Value)\n pairs to \n(Value, List[Key])\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps a list of all the respective keys.\n\n\n\n\nRemapping\n\u00b6\n\n\nTools for remapping elements.\n\n\nremap(data, mapping, key=None)\n\u00b6\n\n\nRemaps each unique element in \ndata\n to a new value from calling function \nkey\n.\n\n\n\n\n\n\nmapping\n is a dictionary recording all the mappings, optionally containing previous mappings to reuse.\n\n\n\n\n\n\nIn default, \nkey\n returns integers starting from \n0\n.\n\n\n\n\n\n\nwordmap\n \n=\n \n{}\n\n\ndb\n \n=\n \n[list(remap(doc,\n \nwordmap))\n \nfor\n \ndoc\n \nin\n \ndocs]\n\n\n\n\n\n\nIndexing\n\u00b6\n\n\nTools for indexing.\n\n\ninvertedindex(seqs)\n\u00b6\n\n\nCreates an \ninverted index\n.\n\n\n\n\nEach item\u2019s index is a list of \n(ID, position)\n pairs for all the sequences in \nseqs\n containing the item.\n\n\n\n\ndata\n \n=\n \n[s\n.\nsplit()\n \nfor\n \ns\n \nin\n \n[\n\n    \n\"a b c d e\"\n,\n\n    \n\"b b b d e\"\n,\n\n    \n\"c b c c a\"\n,\n\n    \n\"b b b c c\"\n\n\n]]\n\n\n\ninvertedindex(data)\n\n\n# {'a': [(0, 0), (2, 4)],\n\n\n#  'b': [(0, 1), (1, 0), (2, 1), (3, 0)],\n\n\n#  'c': [(0, 2), (2, 0), (3, 3)],\n\n\n#  'd': [(0, 3), (1, 3)],\n\n\n#  'e': [(0, 4), (1, 4)]}\n\n\n\n\n\n\nnextentries(data, entries)\n\u00b6\n\n\nScans the sequences in \ndata\n from left to right after current entries \nentries\n, and returns each item and its respective following entries.\n\n\n\n\nEach entry is a pair of \n(ID, Position)\n denoting the sequence ID and its respective matching position.\n\n\n\n\n# same data from previous example\n\n\n\n# the first positions of `c` among sequences.\n\n\nentries\n \n=\n \n[(\n0\n,\n \n2\n),\n \n(\n2\n,\n \n0\n),\n \n(\n3\n,\n \n3\n)]\n\n\n\nnextentries(data,\n \nentries)\n\n\n# {'d': [(0, 3)],\n\n\n#  'e': [(0, 4)],\n\n\n#  'b': [(2, 1)],\n\n\n#  'c': [(2, 2), (3, 4)],\n\n\n#  'a': [(2, 4)]}\n\n\n\n\n\n\nDictionary Flatten/Unflatten\n\u00b6\n\n\nTools for flatten/unflatten a dictionary.\n\n\nflatten(d, force=False)\n\u00b6\n\n\nFlattens a dictionary by returning \n(Path, Value\n) tuples with each path \nPath\n from root to each value \nValue\n.\n\n\n\n\n\n\nFor each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.\n\n\n\n\n\n\nIn default, only an array with nested dictionary is flatten. Instead, parameter \nforce\n can be specified to flatten any array.\n\n\n\n\n\n\n\n\nWarning\n\n\nDifferent from \njsontools.flatten\n, this function accepts only dictionary.\n\n\n\n\n\n\nWarning\n\n\nAn empty array disappears after being flatten.\n\n\n\n\nflatten(json\n.\nloads(\n\"\"\"{\n\n\n  \"name\": \"John\",\n\n\n  \"address\": {\n\n\n    \"streetAddress\": \"21 2nd Street\",\n\n\n    \"city\": \"New York\",\n\n\n  },\n\n\n  \"phoneNumbers\": [\n\n\n    {\n\n\n      \"type\": \"home\",\n\n\n      \"number\": \"212 555-1234\"\n\n\n    },\n\n\n    {\n\n\n      \"type\": \"office\",\n\n\n      \"number\": \"646 555-4567\"\n\n\n    }\n\n\n  ],\n\n\n  \"children\": [],\n\n\n  \"spouse\": null\n\n\n}\"\"\"\n))\n\n\n# {'name': 'John',\n\n\n#  ('address', 'streetAddress'): '21 2nd Street',\n\n\n#  ('address', 'city'): 'New York',\n\n\n#  (('phoneNumbers', 0), 'type'): 'home',\n\n\n#  (('phoneNumbers', 0), 'number'): '212 555-1234',\n\n\n#  (('phoneNumbers', 1), 'type'): 'office',\n\n\n#  (('phoneNumbers', 1), 'number'): '646 555-4567',\n\n\n#  'children': [],\n\n\n#  'spouse': None}",
+            "title": "dicttools"
+        },
+        {
+            "location": "/functions/dicttools/#dictionary-inverting",
+            "text": "Tools for inverting dictionaries.",
+            "title": "Dictionary Inverting"
+        },
+        {
+            "location": "/functions/dicttools/#invertd",
+            "text": "Inverts  (Key, Value)  pairs to  (Value, Key) .   If multiple keys share the same value, the inverted directory keeps last of the respective keys.",
+            "title": "invert(d)"
+        },
+        {
+            "location": "/functions/dicttools/#invert_multipled",
+            "text": "Inverts  (Key, List[Value])  pairs to  (Value, Key) .   If multiple keys share the same value, the inverted directory keeps last of the respective keys.",
+            "title": "invert_multiple(d)"
+        },
+        {
+            "location": "/functions/dicttools/#invert_safed",
+            "text": "Inverts  (Key, Value)  pairs to  (Value, List[Key]) .   If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.",
+            "title": "invert_safe(d)"
+        },
+        {
+            "location": "/functions/dicttools/#remapping",
+            "text": "Tools for remapping elements.",
+            "title": "Remapping"
+        },
+        {
+            "location": "/functions/dicttools/#remapdata-mapping-keynone",
+            "text": "Remaps each unique element in  data  to a new value from calling function  key .    mapping  is a dictionary recording all the mappings, optionally containing previous mappings to reuse.    In default,  key  returns integers starting from  0 .    wordmap   =   {}  db   =   [list(remap(doc,   wordmap))   for   doc   in   docs]",
+            "title": "remap(data, mapping, key=None)"
+        },
+        {
+            "location": "/functions/dicttools/#indexing",
+            "text": "Tools for indexing.",
+            "title": "Indexing"
+        },
+        {
+            "location": "/functions/dicttools/#invertedindexseqs",
+            "text": "Creates an  inverted index .   Each item\u2019s index is a list of  (ID, position)  pairs for all the sequences in  seqs  containing the item.   data   =   [s . split()   for   s   in   [ \n     \"a b c d e\" , \n     \"b b b d e\" , \n     \"c b c c a\" , \n     \"b b b c c\"  ]]  invertedindex(data)  # {'a': [(0, 0), (2, 4)],  #  'b': [(0, 1), (1, 0), (2, 1), (3, 0)],  #  'c': [(0, 2), (2, 0), (3, 3)],  #  'd': [(0, 3), (1, 3)],  #  'e': [(0, 4), (1, 4)]}",
+            "title": "invertedindex(seqs)"
+        },
+        {
+            "location": "/functions/dicttools/#nextentriesdata-entries",
+            "text": "Scans the sequences in  data  from left to right after current entries  entries , and returns each item and its respective following entries.   Each entry is a pair of  (ID, Position)  denoting the sequence ID and its respective matching position.   # same data from previous example  # the first positions of `c` among sequences.  entries   =   [( 0 ,   2 ),   ( 2 ,   0 ),   ( 3 ,   3 )]  nextentries(data,   entries)  # {'d': [(0, 3)],  #  'e': [(0, 4)],  #  'b': [(2, 1)],  #  'c': [(2, 2), (3, 4)],  #  'a': [(2, 4)]}",
+            "title": "nextentries(data, entries)"
+        },
+        {
+            "location": "/functions/dicttools/#dictionary-flattenunflatten",
+            "text": "Tools for flatten/unflatten a dictionary.",
+            "title": "Dictionary Flatten/Unflatten"
+        },
+        {
+            "location": "/functions/dicttools/#flattend-forcefalse",
+            "text": "Flattens a dictionary by returning  (Path, Value ) tuples with each path  Path  from root to each value  Value .    For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.    In default, only an array with nested dictionary is flatten. Instead, parameter  force  can be specified to flatten any array.     Warning  Different from  jsontools.flatten , this function accepts only dictionary.    Warning  An empty array disappears after being flatten.   flatten(json . loads( \"\"\"{    \"name\": \"John\",    \"address\": {      \"streetAddress\": \"21 2nd Street\",      \"city\": \"New York\",    },    \"phoneNumbers\": [      {        \"type\": \"home\",        \"number\": \"212 555-1234\"      },      {        \"type\": \"office\",        \"number\": \"646 555-4567\"      }    ],    \"children\": [],    \"spouse\": null  }\"\"\" ))  # {'name': 'John',  #  ('address', 'streetAddress'): '21 2nd Street',  #  ('address', 'city'): 'New York',  #  (('phoneNumbers', 0), 'type'): 'home',  #  (('phoneNumbers', 0), 'number'): '212 555-1234',  #  (('phoneNumbers', 1), 'type'): 'office',  #  (('phoneNumbers', 1), 'number'): '646 555-4567',  #  'children': [],  #  'spouse': None}",
+            "title": "flatten(d, force=False)"
+        },
+        {
+            "location": "/functions/jsontools/",
+            "text": "Source\n\n\nJSON Flatten/Unflatten\n\u00b6\n\n\nTools for flatten/unflatten a JSON object.\n\n\nflatten(data, force=False)\n\u00b6\n\n\nFlattens a JSON object by returning \n(Path, Value\n) tuples with each path \nPath\n from root to each value \nValue\n.\n\n\n\n\n\n\nFor each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.\n\n\n\n\n\n\nIn default, only an array with nested dictionary is flatten. Instead, parameter \nforce\n can be specified to flatten any array.\n\n\n\n\n\n\n\n\nInfo\n\n\nDifferent from \ndicttools.flatten\n, this function accepts any JSON object not limited to dictionary.\n\n\n\n\n\n\nWarning\n\n\nAn empty array disappears after being flatten.\n\n\n\n\nflatten(json\n.\nloads(\n\"\"\"{\n\n\n  \"name\": \"John\",\n\n\n  \"address\": {\n\n\n    \"streetAddress\": \"21 2nd Street\",\n\n\n    \"city\": \"New York\",\n\n\n  },\n\n\n  \"phoneNumbers\": [\n\n\n    {\n\n\n      \"type\": \"home\",\n\n\n      \"number\": \"212 555-1234\"\n\n\n    },\n\n\n    {\n\n\n      \"type\": \"office\",\n\n\n      \"number\": \"646 555-4567\"\n\n\n    }\n\n\n  ],\n\n\n  \"children\": [],\n\n\n  \"spouse\": null\n\n\n}\"\"\"\n))\n\n\n# {'name': 'John',\n\n\n#  'address.streetAddress': '21 2nd Street',\n\n\n#  'address.city': 'New York',\n\n\n#  'phoneNumbers[0].type': 'home',\n\n\n#  'phoneNumbers[0].number': '212 555-1234',\n\n\n#  'phoneNumbers[1].type': 'office',\n\n\n#  'phoneNumbers[1].number': '646 555-4567',\n\n\n#  'children': [],\n\n\n#  'spouse': None}",
+            "title": "jsontools"
+        },
+        {
+            "location": "/functions/jsontools/#json-flattenunflatten",
+            "text": "Tools for flatten/unflatten a JSON object.",
+            "title": "JSON Flatten/Unflatten"
+        },
+        {
+            "location": "/functions/jsontools/#flattendata-forcefalse",
+            "text": "Flattens a JSON object by returning  (Path, Value ) tuples with each path  Path  from root to each value  Value .    For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.    In default, only an array with nested dictionary is flatten. Instead, parameter  force  can be specified to flatten any array.     Info  Different from  dicttools.flatten , this function accepts any JSON object not limited to dictionary.    Warning  An empty array disappears after being flatten.   flatten(json . loads( \"\"\"{    \"name\": \"John\",    \"address\": {      \"streetAddress\": \"21 2nd Street\",      \"city\": \"New York\",    },    \"phoneNumbers\": [      {        \"type\": \"home\",        \"number\": \"212 555-1234\"      },      {        \"type\": \"office\",        \"number\": \"646 555-4567\"      }    ],    \"children\": [],    \"spouse\": null  }\"\"\" ))  # {'name': 'John',  #  'address.streetAddress': '21 2nd Street',  #  'address.city': 'New York',  #  'phoneNumbers[0].type': 'home',  #  'phoneNumbers[0].number': '212 555-1234',  #  'phoneNumbers[1].type': 'office',  #  'phoneNumbers[1].number': '646 555-4567',  #  'children': [],  #  'spouse': None}",
+            "title": "flatten(data, force=False)"
+        },
+        {
+            "location": "/functions/mathtools/",
+            "text": "Source\n\n\nMath\n\u00b6\n\n\nTools for math.\n\n\nsafediv(a, b)\n\u00b6\n\n\nAvoids the \ndivision by zero\n exception, by returning infinite with proper sign.\n\n\n\n\nInfo\n\n\nClosely referring \nIEEE Standard 754\n.",
+            "title": "mathtools"
+        },
+        {
+            "location": "/functions/mathtools/#math",
+            "text": "Tools for math.",
+            "title": "Math"
+        },
+        {
+            "location": "/functions/mathtools/#safediva-b",
+            "text": "Avoids the  division by zero  exception, by returning infinite with proper sign.   Info  Closely referring  IEEE Standard 754 .",
+            "title": "safediv(a, b)"
+        },
+        {
+            "location": "/functions/misctools/",
+            "text": "Source\n\n\nMiscellaneous\n\u00b6\n\n\nTools for miscellaneous purposes.\n\n\ncmp(a, b)\n\u00b6\n\n\nRestores the useful \ncmp\n function previously in Python 2.\n\n\n\n\nInfo\n\n\nImplemented according to \nWhat\u2019s New in Python 3.0\n.\n\n\n\n\nparsebool(s)\n\u00b6\n\n\nParses a string to boolean, if its lowercase equals to \n1\n, \ntrue\n, \nyes\n, etc.\n\n\n\n\nTip\n\n\nCheck the full list of acceptable strings in \nSource\n.",
+            "title": "misctools"
+        },
+        {
+            "location": "/functions/misctools/#miscellaneous",
+            "text": "Tools for miscellaneous purposes.",
+            "title": "Miscellaneous"
+        },
+        {
+            "location": "/functions/misctools/#cmpa-b",
+            "text": "Restores the useful  cmp  function previously in Python 2.   Info  Implemented according to  What\u2019s New in Python 3.0 .",
+            "title": "cmp(a, b)"
+        },
+        {
+            "location": "/functions/misctools/#parsebools",
+            "text": "Parses a string to boolean, if its lowercase equals to  1 ,  true ,  yes , etc.   Tip  Check the full list of acceptable strings in  Source .",
+            "title": "parsebool(s)"
+        },
+        {
+            "location": "/functions/printtools/",
+            "text": "Source\n\n\nPrinting\n\u00b6\n\n\nTools for controlling printing destination.\n\n\nprint2(*args, **kwargs)\n\u00b6\n\n\nRedirects the output of \nprint\n to standard error.\n\n\n\n\nTip\n\n\nThe same parameters of builtin \nprint\n are accepted.\n\n\n\n\nTo String\n\u00b6\n\n\nTools for generating the intuitive string representation.\n\n\n\n\nInfo\n\n\nBuiltin function \nrepr\n is used to print each item safely.\n\n\n\n\niter2str(seq, limit=None)\n\u00b6\n\n\nConverts an iterable sequence to string.\n\n\n\n\nIf \nlimit\n is specified, only print the first \nlimit\n items. This is useful when \nseq\n is an infinite sequence.\n\n\n\n\niter2str(range(\n5\n))\n\n\n# '<0, 1, 2, 3, 4>'\n\n\n\n# Infinity sequence\n\n\niter2str(itertools\n.\ncount(),\n \nlimit\n=\n5\n)\n\n\n# '<0, 1, 2, 3, 4, ...>'\n\n\n\n\n\n\nalignment2str(*seqs, default=None, separator=' ')\n\u00b6\n\n\nPrints the alignment between sequences \nseq\n. \ndefault=None\n is used for labelling missing value from each sequences.\n\n\n\n\n\n\nseparator\n can be specified to separate every two values.\n\n\n\n\n\n\nIf sequences have different lengths, the extra trailing items are also printed as not matching.\n\n\n\n\n\n\n\n\nTip\n\n\nseqtools.align\n can compute the alignment between two sequences.\n\n\n\n\nprint\n(alignment2str(\n\n    \n[\n1\n,\n \n10\n,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n \nNone,\n \n\"New York\"\n]\n\n\n))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10     'New York'\n\n\n\nprint\n(alignment2str(\n*\nalign(\n\n    \n[\n1\n,\n \n10\n,\n \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n      \n\"New York\"\n]\n\n\n)[\n1\n]))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10     'New York'\n\n\n\nprint\n(alignment2str(\n\n    \n[\n1\n,\n \n10\n,\n \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n \n100\n]\n\n\n))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10 100     \n\n\n\n\n\n\ntable2str(data, default=None, separator=\" | \")\n\u00b6\n\n\nA thin wrapper of \nalignment2str\n to print a row-based table.\n\n\n\n\nTip\n\n\nThe default output format is compatible to Markdown format.\n\n\n\n\nprint\n(table2str([\n\n    \n[\n1\n,\n   \n10\n,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n   \n10\n,\n \nNone,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \nNone,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n   \n10\n,\n  \n100\n,\n \n\"New York\"\n]\n\n\n]))\n\n\n# 1 | 10 | 100 | 'New York'\n\n\n# 1 | 10 |     | 'New York'\n\n\n# 1 |    | 100 | 'New York'\n\n\n# 1 | 10 | 100 | 'New York'\n\n\n\n\n\n\nrange2str(r)\n\u00b6\n\n\nPrints a range \nr\n.\n\n\nprint\n(range2str((\n0\n,\n \n1\n)))\n\n\n# [0, 1)\n\n\n\n\n\n\nsorted2str(seq, key=None)\n\u00b6\n\n\nPrints a sorted sequence \nseq\n, optionally according to the key function \nkey\n.\n\n\nprint\n(sorted2str([\n1\n,\n \n2\n,\n \n2\n,\n \n3\n]))\n\n\n# 1 <= 2 == 2 <= 3",
+            "title": "printtools"
+        },
+        {
+            "location": "/functions/printtools/#printing",
+            "text": "Tools for controlling printing destination.",
+            "title": "Printing"
+        },
+        {
+            "location": "/functions/printtools/#print2args-kwargs",
+            "text": "Redirects the output of  print  to standard error.   Tip  The same parameters of builtin  print  are accepted.",
+            "title": "print2(*args, **kwargs)"
+        },
+        {
+            "location": "/functions/printtools/#to-string",
+            "text": "Tools for generating the intuitive string representation.   Info  Builtin function  repr  is used to print each item safely.",
+            "title": "To String"
+        },
+        {
+            "location": "/functions/printtools/#iter2strseq-limitnone",
+            "text": "Converts an iterable sequence to string.   If  limit  is specified, only print the first  limit  items. This is useful when  seq  is an infinite sequence.   iter2str(range( 5 ))  # '<0, 1, 2, 3, 4>'  # Infinity sequence  iter2str(itertools . count(),   limit = 5 )  # '<0, 1, 2, 3, 4, ...>'",
+            "title": "iter2str(seq, limit=None)"
+        },
+        {
+            "location": "/functions/printtools/#alignment2strseqs-defaultnone-separator",
+            "text": "Prints the alignment between sequences  seq .  default=None  is used for labelling missing value from each sequences.    separator  can be specified to separate every two values.    If sequences have different lengths, the extra trailing items are also printed as not matching.     Tip  seqtools.align  can compute the alignment between two sequences.   print (alignment2str( \n     [ 1 ,   10 ,    100 ,   \"New York\" ], \n     [ 1 ,   10 ,   None,   \"New York\" ]  ))  # 1 10 100 'New York'  # 1 10     'New York'  print (alignment2str( * align( \n     [ 1 ,   10 ,   100 ,   \"New York\" ], \n     [ 1 ,   10 ,        \"New York\" ]  )[ 1 ]))  # 1 10 100 'New York'  # 1 10     'New York'  print (alignment2str( \n     [ 1 ,   10 ,   100 ,   \"New York\" ], \n     [ 1 ,   10 ,   100 ]  ))  # 1 10 100 'New York'  # 1 10 100",
+            "title": "alignment2str(*seqs, default=None, separator=' ')"
+        },
+        {
+            "location": "/functions/printtools/#table2strdata-defaultnone-separator",
+            "text": "A thin wrapper of  alignment2str  to print a row-based table.   Tip  The default output format is compatible to Markdown format.   print (table2str([ \n     [ 1 ,     10 ,    100 ,   \"New York\" ], \n     [ 1 ,     10 ,   None,   \"New York\" ], \n     [ 1 ,   None,    100 ,   \"New York\" ], \n     [ 1 ,     10 ,    100 ,   \"New York\" ]  ]))  # 1 | 10 | 100 | 'New York'  # 1 | 10 |     | 'New York'  # 1 |    | 100 | 'New York'  # 1 | 10 | 100 | 'New York'",
+            "title": "table2str(data, default=None, separator=\" | \")"
+        },
+        {
+            "location": "/functions/printtools/#range2strr",
+            "text": "Prints a range  r .  print (range2str(( 0 ,   1 )))  # [0, 1)",
+            "title": "range2str(r)"
+        },
+        {
+            "location": "/functions/printtools/#sorted2strseq-keynone",
+            "text": "Prints a sorted sequence  seq , optionally according to the key function  key .  print (sorted2str([ 1 ,   2 ,   2 ,   3 ]))  # 1 <= 2 == 2 <= 3",
+            "title": "sorted2str(seq, key=None)"
+        },
+        {
+            "location": "/functions/rangetools/",
+            "text": "Source\n\n\n\n\nWarning\n\n\nEach range is closed on the left side, and open on the right side.\n\n\n\n\nRange Statistics\n\u00b6\n\n\nTools for statistics over ranges.\n\n\nhistogram(thresholds, data, leftmost=-inf)\n\u00b6\n\n\nComputes the \nhistogram\n over all the floats in \ndata\n.\n\n\n\n\n\n\nThe search space is divided by the thresholds of bins specified in \nthresholds\n.\n\n\n\n\n\n\nEach bin of the histogram is labelled by its lower threshold.\n\n\n\n\n\n\nAll values in the bin are no less than the current threshold and less than the next threshold.\n\n\n\n\n\n\nThe first bin is labelled by \nleftmost\n, which is \n-inf\n in default.\n\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nthresholds\n must be a list.\n\n\n\n\nhistogram(\n\n    \n[\n   \n0.1\n,\n                \n0.5\n,\n           \n0.8\n,\n \n0.9\n],\n\n    \n[\n0\n,\n \n0.1\n,\n \n0.2\n,\n \n0.3\n,\n \n0.4\n,\n \n0.5\n,\n \n0.6\n,\n \n0.7\n,\n \n0.8\n,\n \n0.9\n,\n \n1\n]\n\n\n)\n\n\n# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}\n\n\n\n\n\n\nRange Querying\n\u00b6\n\n\nTools for querying ranges.\n\n\nrangequery(keyvalues, query, func=min)\n\u00b6\n\n\nEfficiently finds the best value from the covered values in \nkeyvalues\n, if each key in \nkeyvalues\n is within the query range \nquery\n.\n\n\n\n\nfunc\n defines how the best value is computed, and defaults to \nmin\n for minimum value.\n\n\n\n\n\n\nInfo\n\n\nImplemented by \nSegmentTree\n to solve the \nrange minimum query\n problem.\n\n\n\n\nrangequery(\n\n    \n{\n0.1\n:\n \n1\n,\n \n0.2\n:\n \n3\n,\n \n0.3\n:\n \n0\n},\n\n            \n(\n0.2\n,\n            \n0.4\n)\n\n\n)\n\n\n# 0\n\n\n\n\n\n\nRange Transformation\n\u00b6\n\n\nTools for transformations over ranges.\n\n\nintersect(a, b)\n\u00b6\n\n\nComputes the overlapping of two ranges \na\n and \nb\n. Returns \nNone\n if there is no overlapping.\n\n\nintersect((\n0\n,\n \n0.6\n),\n \n(\n0.4\n,\n \n1\n))\n\n\n# (0.4, 0.6)\n\n\n\n\n\n\nunion(a, b)\n\u00b6\n\n\nComputes the merging of two ranges \na\n and \nb\n. Returns \nNone\n if there is no overlapping.\n\n\nunion((\n0\n,\n \n0.6\n),\n \n(\n0.4\n,\n \n1\n))\n\n\n# (0, 1)\n\n\n\n\n\n\nrangecover(whole, covered)\n\u00b6\n\n\nSolves the variation of the \nset cover problem\n by covering the universe range \nwhole\n as best as possible, using a subset of the covering ranges \ncovered\n.\n\n\n\n\nWarning\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\nlist(rangecover(\n\n     \n(\n0\n,\n                                                 \n1\n),\n\n    \n[(\n0\n,\n \n0.4\n),\n \n(\n0.2\n,\n \n0.5\n),\n \n(\n0.5\n,\n \n0.8\n),\n \n(\n0.6\n,\n \n0.9\n),\n \n(\n0.8\n,\n \n1\n)]\n\n\n))\n\n\n# [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]\n\n\n\n\n\n\ncovers(covered)\n\u00b6\n\n\nMerges the covered ranges \ncovered\n to resolve any overlap.\n\n\n\n\nDanger\n\n\nCovered ranges in \ncovered\n must be sorted by the left side of each range.\n\n\n\n\nlist(covers([(\n-\ninf,\n \n0\n),\n \n(\n0.1\n,\n \n0.2\n),\n \n(\n0.5\n,\n \n0.7\n),\n \n(\n0.6\n,\n \n0.9\n)]))\n\n\n# [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]\n\n\n\n\n\n\ngaps(covered, whole=(-inf, inf))\n\u00b6\n\n\nComputes the uncovered ranges of the whole range \nwhole\n, given the covered ranges \ncovered\n.\n\n\n\n\nDanger\n\n\nCovered ranges in \ncovered\n must be sorted by the left side of each range.\n\n\n\n\n\n\nInfo\n\n\nOverlaps among covered ranges \ncovered\n are resolved, like \ncovers(covered)\n.\n\n\n\n\nlist(gaps(\n\n    \n[(\n-\ninf,\n \n0\n),\n \n(\n0.1\n,\n \n0.2\n),\n \n(\n0.5\n,\n \n0.7\n),\n \n(\n0.6\n,\n \n0.9\n)],\n\n           \n(\n0\n,\n                                     \n1\n)\n\n\n))\n\n\n# [(0, 0.1), (0.2, 0.5), (0.9, 1)]",
+            "title": "rangetools"
+        },
+        {
+            "location": "/functions/rangetools/#range-statistics",
+            "text": "Tools for statistics over ranges.",
+            "title": "Range Statistics"
+        },
+        {
+            "location": "/functions/rangetools/#histogramthresholds-data-leftmost-inf",
+            "text": "Computes the  histogram  over all the floats in  data .    The search space is divided by the thresholds of bins specified in  thresholds .    Each bin of the histogram is labelled by its lower threshold.    All values in the bin are no less than the current threshold and less than the next threshold.    The first bin is labelled by  leftmost , which is  -inf  in default.       Warning  thresholds  must be a list.   histogram( \n     [     0.1 ,                  0.5 ,             0.8 ,   0.9 ], \n     [ 0 ,   0.1 ,   0.2 ,   0.3 ,   0.4 ,   0.5 ,   0.6 ,   0.7 ,   0.8 ,   0.9 ,   1 ]  )  # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}",
+            "title": "histogram(thresholds, data, leftmost=-inf)"
+        },
+        {
+            "location": "/functions/rangetools/#range-querying",
+            "text": "Tools for querying ranges.",
+            "title": "Range Querying"
+        },
+        {
+            "location": "/functions/rangetools/#rangequerykeyvalues-query-funcmin",
+            "text": "Efficiently finds the best value from the covered values in  keyvalues , if each key in  keyvalues  is within the query range  query .   func  defines how the best value is computed, and defaults to  min  for minimum value.    Info  Implemented by  SegmentTree  to solve the  range minimum query  problem.   rangequery( \n     { 0.1 :   1 ,   0.2 :   3 ,   0.3 :   0 }, \n             ( 0.2 ,              0.4 )  )  # 0",
+            "title": "rangequery(keyvalues, query, func=min)"
+        },
+        {
+            "location": "/functions/rangetools/#range-transformation",
+            "text": "Tools for transformations over ranges.",
+            "title": "Range Transformation"
+        },
+        {
+            "location": "/functions/rangetools/#intersecta-b",
+            "text": "Computes the overlapping of two ranges  a  and  b . Returns  None  if there is no overlapping.  intersect(( 0 ,   0.6 ),   ( 0.4 ,   1 ))  # (0.4, 0.6)",
+            "title": "intersect(a, b)"
+        },
+        {
+            "location": "/functions/rangetools/#uniona-b",
+            "text": "Computes the merging of two ranges  a  and  b . Returns  None  if there is no overlapping.  union(( 0 ,   0.6 ),   ( 0.4 ,   1 ))  # (0, 1)",
+            "title": "union(a, b)"
+        },
+        {
+            "location": "/functions/rangetools/#rangecoverwhole-covered",
+            "text": "Solves the variation of the  set cover problem  by covering the universe range  whole  as best as possible, using a subset of the covering ranges  covered .   Warning  This is an approximate algorithm, which means the returned result is not always the best.   list(rangecover( \n      ( 0 ,                                                   1 ), \n     [( 0 ,   0.4 ),   ( 0.2 ,   0.5 ),   ( 0.5 ,   0.8 ),   ( 0.6 ,   0.9 ),   ( 0.8 ,   1 )]  ))  # [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]",
+            "title": "rangecover(whole, covered)"
+        },
+        {
+            "location": "/functions/rangetools/#coverscovered",
+            "text": "Merges the covered ranges  covered  to resolve any overlap.   Danger  Covered ranges in  covered  must be sorted by the left side of each range.   list(covers([( - inf,   0 ),   ( 0.1 ,   0.2 ),   ( 0.5 ,   0.7 ),   ( 0.6 ,   0.9 )]))  # [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]",
+            "title": "covers(covered)"
+        },
+        {
+            "location": "/functions/rangetools/#gapscovered-whole-inf-inf",
+            "text": "Computes the uncovered ranges of the whole range  whole , given the covered ranges  covered .   Danger  Covered ranges in  covered  must be sorted by the left side of each range.    Info  Overlaps among covered ranges  covered  are resolved, like  covers(covered) .   list(gaps( \n     [( - inf,   0 ),   ( 0.1 ,   0.2 ),   ( 0.5 ,   0.7 ),   ( 0.6 ,   0.9 )], \n            ( 0 ,                                       1 )  ))  # [(0, 0.1), (0.2, 0.5), (0.9, 1)]",
+            "title": "gaps(covered, whole=(-inf, inf))"
         },
         {
             "location": "/functions/seqtools/",
@@ -196,6 +441,56 @@
             "title": "fromdeltas(data, op=operator.add)"
         },
         {
+            "location": "/functions/settools/",
+            "text": "Source\n\n\nSet Matching\n\u00b6\n\n\nTools for matching sets.\n\n\nbestsubset(a, key)\n\u00b6\n\n\nFinds the best sub-set of \na\n that maximizes the key function \nkey\n.\n\n\nbestsubset({\n1\n,\n \n-\n2\n,\n \n3\n,\n \n-\n4\n,\n \n5\n,\n \n-\n6\n},\n \nsum)\n\n\n#          {1,     3,     5}\n\n\n\n\n\n\nsetcover(whole, covered, key=len)\n\u00b6\n\n\nSolves the \nset cover problem\n by covering the universe set \nwhole\n as best as possible, using a subset of the covering sets \ncovered\n.\n\n\n\n\nIn default, the size of each set \nlen\n is used as key function \nkey\n to measure the coverage.\n\n\n\n\n\n\nWarning\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\nlist(setcover(\n\n    \n{\n \n1\n,\n \n2\n,\n \n3\n,\n         \n4\n,\n         \n5\n},\n\n    \n[{\n1\n,\n \n2\n,\n \n3\n},\n \n{\n2\n,\n \n3\n,\n \n4\n},\n \n{\n2\n,\n \n4\n,\n \n5\n}]\n\n\n))\n\n\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]\n\n\n\n\n\n\nSet Operation\n\u00b6\n\n\nTools for set operations.\n\n\naddtoset(s, x)\n\u00b6\n\n\nChecks whether adding \nx\n to set \ns\n is successful.\n\n\nSet Similarity\n\u00b6\n\n\nTools for set similarities.\n\n\njaccard(a, b)\n\u00b6\n\n\nComputes the \nJaccard similarity\n between two sets \na\n and \nb\n.\n\n\nmultisetjaccard(a, b)\n\u00b6\n\n\nComputes the \nJaccard similarity\n between two multi-sets (Counters) \na\n and \nb\n.\n\n\nweightedjaccard(a, b, key=sum)\n\u00b6\n\n\nComputes the weighted \nJaccard similarity\n between two sets \na\n and \nb\n, using function \nkey\n to compute the total weight of the elements within a set.",
+            "title": "settools"
+        },
+        {
+            "location": "/functions/settools/#set-matching",
+            "text": "Tools for matching sets.",
+            "title": "Set Matching"
+        },
+        {
+            "location": "/functions/settools/#bestsubseta-key",
+            "text": "Finds the best sub-set of  a  that maximizes the key function  key .  bestsubset({ 1 ,   - 2 ,   3 ,   - 4 ,   5 ,   - 6 },   sum)  #          {1,     3,     5}",
+            "title": "bestsubset(a, key)"
+        },
+        {
+            "location": "/functions/settools/#setcoverwhole-covered-keylen",
+            "text": "Solves the  set cover problem  by covering the universe set  whole  as best as possible, using a subset of the covering sets  covered .   In default, the size of each set  len  is used as key function  key  to measure the coverage.    Warning  This is an approximate algorithm, which means the returned result is not always the best.   list(setcover( \n     {   1 ,   2 ,   3 ,           4 ,           5 }, \n     [{ 1 ,   2 ,   3 },   { 2 ,   3 ,   4 },   { 2 ,   4 ,   5 }]  ))  # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]",
+            "title": "setcover(whole, covered, key=len)"
+        },
+        {
+            "location": "/functions/settools/#set-operation",
+            "text": "Tools for set operations.",
+            "title": "Set Operation"
+        },
+        {
+            "location": "/functions/settools/#addtosets-x",
+            "text": "Checks whether adding  x  to set  s  is successful.",
+            "title": "addtoset(s, x)"
+        },
+        {
+            "location": "/functions/settools/#set-similarity",
+            "text": "Tools for set similarities.",
+            "title": "Set Similarity"
+        },
+        {
+            "location": "/functions/settools/#jaccarda-b",
+            "text": "Computes the  Jaccard similarity  between two sets  a  and  b .",
+            "title": "jaccard(a, b)"
+        },
+        {
+            "location": "/functions/settools/#multisetjaccarda-b",
+            "text": "Computes the  Jaccard similarity  between two multi-sets (Counters)  a  and  b .",
+            "title": "multisetjaccard(a, b)"
+        },
+        {
+            "location": "/functions/settools/#weightedjaccarda-b-keysum",
+            "text": "Computes the weighted  Jaccard similarity  between two sets  a  and  b , using function  key  to compute the total weight of the elements within a set.",
+            "title": "weightedjaccard(a, b, key=sum)"
+        },
+        {
             "location": "/functions/sortedtools/",
             "text": "Source\n\n\n\n\nDanger\n\n\nFor most tools here except \nissorted\n, each sequence must already be sorted.\n\n\n\n\n\n\nInfo\n\n\nTools in \nseqtools\n can also be applied here. \nsortedtools\n only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.\n\n\n\n\nSequence Check\n\u00b6\n\n\nissorted(seq, key=None)\n\u00b6\n\n\nReturns if sequence \nseq\n is already sorted, optionally according to the key function \nkey\n.\n\n\nissorted([\n1\n,\n \n2\n,\n \n2\n,\n \n3\n])\n\n\n# True\n\n\n\n\n\n\nSequence Matching\n\u00b6\n\n\nTools for matching sorted sequences.\n\n\nsortedcommon(a, b, key=None)\n\u00b6\n\n\nReturns the common elements between \na\n and \nb\n, optionally according to the key function \nkey\n.\n\n\n\n\nSuccess\n\n\nWhen both \na\n and \nb\n are sorted sets with no duplicate element, equal to \nsorted(set(a) & set(b))\n but more efficient.\n\n\n\n\nlist(sortedcommon(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n   \n2\n,\n    \n3\n,\n \n4\n,\n \n4\n]\n\n\n))\n\n\n# [2, 3]\n\n\n\n\n\n\nsortedalone(a, b, key=None)\n\u00b6\n\n\nReturns the elements not in both \na\n and \nb\n, optionally according to the key function \nkey\n.\n\n\n\n\nSuccess\n\n\nWhen both \na\n and \nb\n are sorted sets with no duplicate element, equal to \nsorted((set(a) | set(b)) - (set(a) & set(b)))\n but more efficient.\n\n\n\n\nlist(sortedalone(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n   \n2\n,\n    \n3\n,\n \n4\n,\n \n4\n]\n\n\n))\n\n\n# [1, 2, 4, 4]\n\n\n\n\n\n\nsorteddiff(a, b, key=None)\n\u00b6\n\n\nReturns the elements only in \na\n and not in \nb\n, optionally according to the key function \nkey\n.\n\n\n\n\nSuccess\n\n\nWhen both \na\n and \nb\n are sorted sets with no duplicate element, equal to \nsorted(set(a) - set(b))\n but more efficient.\n\n\n\n\nlist(sorteddiff(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n   \n2\n,\n    \n3\n,\n \n4\n,\n \n4\n]\n\n\n))\n\n\n# [1, 2]\n\n\n\n\n\n\nissubsorted(a, b, key=None)\n\u00b6\n\n\nChecks if \na\n is a sorted sub-sequence of \nb\n, optionally according to the key function \nkey\n.\n\n\n\n\nWhen both \na\n and \nb\n are sorted sets with no duplicate element, equal to \nset(a) <= set(b)\n but more efficient.\n\n\n\n\nissubsorted(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n,\n \n4\n,\n \n4\n]\n\n\n)\n\n\n# True\n\n\n\n\n\n\nmatchingfrequencies(*seqs, key=None)\n\u00b6\n\n\nReturns each item and the respective number of sequences in \nseqs\n contains it.\n\n\n\n\nOptional key function \nkey\n can be specified.\n\n\n\n\n\n\nSuccess\n\n\nThis implementation is space efficient. If there are \nn\n sequences, only \nO(n)\n space is used.\n\n\n\n\n\n\nSuccess\n\n\nsortedtools.matchingfrequencies\n is more efficient than \nseqtools.matchingfrequencies\n.\n\n\n\n\n\n\nTip\n\n\nFor the frequency of each item within a single sequence, use \ntoolz.itertoolz.frequencies\n.\n\n\n\n\nlist(matchingfrequencies(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n   \n2\n,\n    \n3\n,\n    \n4\n,\n \n5\n],\n\n    \n[\n1\n,\n       \n3\n,\n \n3\n,\n \n4\n]\n\n\n))\n\n\n# [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]\n\n\n\n\n\n\nSequence Alignment and Join\n\u00b6\n\n\nTools for aligning and joining sorted sequences.\n\n\nsortedmatch(a, b, default=None)\n\u00b6\n\n\nMatches two sorted sequences \na\n and \nb\n in pairs, such that the total number of matching pairs is maximized.\n\n\n\n\nIf there are multiple alignments having the same number, the leftmost one is returned.\n\n\n\n\n\n\nSuccess\n\n\nsortedmatch\n is more efficient than \nseqtools.match\n.\n\n\n\n\nlist(sortedmatch(\n\n    \n[\n1\n,\n \n2\n,\n \n2\n,\n \n3\n],\n\n    \n[\n   \n2\n,\n    \n3\n,\n \n4\n,\n \n4\n]\n\n\n))\n\n\n# [(1, None),\n\n\n#  (2, 2),\n\n\n#  (2, None),\n\n\n#  (3, 3),\n\n\n#  (None, 4),\n\n\n#  (None, 4)]\n\n\n\n\n\n\nsortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)\n\u00b6\n\n\nJoins two sequences, optionally according to \nleftkey\n and \nrightkey\n, respectively. Outer join is also supported.\n\n\n\n\nTwo sequences must be already sorted according to \nleftkey\n and \nrightkey\n, respectively.\n\n\n\n\n\n\nSuccess\n\n\nsortedjoin\n is more efficient than \nseqtools.join\n and its underneath \ntoolz.itertools.join\n.\n\n\n\n\nlist(sortedjoin(\n\n    \n[\n   \n-\n1\n,\n \n-\n1\n,\n \n-\n2\n,\n    \n-\n4\n,\n \n-\n5\n,\n    \n-\n6\n],\n\n    \n[\n0\n,\n  \n1\n,\n  \n1\n,\n  \n2\n,\n \n3\n,\n  \n4\n,\n  \n5\n,\n \n5\n],\n\n    \nleftkey\n=\nabs,\n \nleftdefault\n=\nNone\n\n\n))\n\n\n# [(None, 0),\n\n\n#  (-1, 1),\n\n\n#  (-1, 1),\n\n\n#  (-1, 1),\n\n\n#  (-1, 1),\n\n\n#  (-2, 2),\n\n\n#  (None, 3),\n\n\n#  (-4, 4),\n\n\n#  (-5, 5),\n\n\n#  (-5, 5)]",
             "title": "sortedtools"
@@ -256,281 +551,6 @@
             "title": "sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)"
         },
         {
-            "location": "/functions/strtools/",
-            "text": "Source\n\n\n\n\nInfo\n\n\nTools in \nseqtools\n can also be applied here. \nstrtools\n only contains tools that are unique to the concept of string.\n\n\n\n\nString Matching\n\u00b6\n\n\nTools for string matching.\n\n\ncommonsubstr(a, b)\n\u00b6\n\n\nFinds the \nlongest common sub-string\n among two strings \na\n and \nb\n.\n\n\ncommonsubstr(\n\n     \n\"abbab\"\n,\n\n    \n\"aabbb\"\n\n\n)\n\n\n# \"abb\"\n\n\n\n\n\n\neditdist(a, b, bound=inf)\n\u00b6\n\n\nComputes the \nedit distance\n between two strings \na\n and \nb\n.\n\n\n\n\nTo speedup the computation, a threshold of maximum cost \nbound=inf\n can be specified. When there is no satisfying result, \nNone\n is returned.\n\n\n\n\neditdist(\n\n     \n\"dog\"\n,\n\n    \n\"frog\"\n\n\n)\n\n\n# 2\n\n\n\n\n\n\ntagstats(tags, lines, separator=None)\n\u00b6\n\n\nEfficiently computes the number of lines containing each tag.\n\n\n\n\nseparator\n is a regex to tokenize each string. In default when \nseparator\n is \nNone\n, each string is not tokenized.\n\n\n\n\n\n\nSuccess\n\n\nTagStats\n is used to compute efficiently, where the common prefixes among tags are matched only once.\n\n\n\n\ntagstats(\n\n    \n[\n\"a b\"\n,\n \n\"a c\"\n,\n \n\"b c\"\n],\n\n    \n[\n\"a b c\"\n,\n \n\"b c d\"\n,\n \n\"c d e\"\n]\n\n\n)\n\n\n# {'a b': 1, 'a c': 0, 'b c': 2}\n\n\n\n\n\n\nString Transformation\n\u00b6\n\n\nTools for string transformations.\n\n\nstr2grams(s, n, pad=None)\n\u00b6\n\n\nReturns the ordered \nn\n-grams\n of string \ns\n.\n\n\n\n\nOptional padding at the start and end can be added by specifying \npad\n.\n\n\n\n\n\n\nTip\n\n\n\\0\n is usually a safe choice for \npad\n when not displaying.\n\n\n\n\nlist(str2grams(\n\"str2grams\"\n,\n \n2\n,\n \npad\n=\n'#'\n))\n\n\n# ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']\n\n\n\n\n\n\nChecksum\n\u00b6\n\n\nTools for checksums.\n\n\nsha1sum(f)\n , \nsha256sum(f)\n, \nsha512sum(f)\n, and \nmd5sum(f)\n\u00b6\n\n\nCompute the respective checksum, accepting string, bytes, text file object, and binary file object.\n\n\nsha1sum(\n\"strtools\"\n)\n\n\n# 'bb91c4c3457cd1442acda4c11b29b02748679409'",
-            "title": "strtools"
-        },
-        {
-            "location": "/functions/strtools/#string-matching",
-            "text": "Tools for string matching.",
-            "title": "String Matching"
-        },
-        {
-            "location": "/functions/strtools/#commonsubstra-b",
-            "text": "Finds the  longest common sub-string  among two strings  a  and  b .  commonsubstr( \n      \"abbab\" , \n     \"aabbb\"  )  # \"abb\"",
-            "title": "commonsubstr(a, b)"
-        },
-        {
-            "location": "/functions/strtools/#editdista-b-boundinf",
-            "text": "Computes the  edit distance  between two strings  a  and  b .   To speedup the computation, a threshold of maximum cost  bound=inf  can be specified. When there is no satisfying result,  None  is returned.   editdist( \n      \"dog\" , \n     \"frog\"  )  # 2",
-            "title": "editdist(a, b, bound=inf)"
-        },
-        {
-            "location": "/functions/strtools/#tagstatstags-lines-separatornone",
-            "text": "Efficiently computes the number of lines containing each tag.   separator  is a regex to tokenize each string. In default when  separator  is  None , each string is not tokenized.    Success  TagStats  is used to compute efficiently, where the common prefixes among tags are matched only once.   tagstats( \n     [ \"a b\" ,   \"a c\" ,   \"b c\" ], \n     [ \"a b c\" ,   \"b c d\" ,   \"c d e\" ]  )  # {'a b': 1, 'a c': 0, 'b c': 2}",
-            "title": "tagstats(tags, lines, separator=None)"
-        },
-        {
-            "location": "/functions/strtools/#string-transformation",
-            "text": "Tools for string transformations.",
-            "title": "String Transformation"
-        },
-        {
-            "location": "/functions/strtools/#str2gramss-n-padnone",
-            "text": "Returns the ordered  n -grams  of string  s .   Optional padding at the start and end can be added by specifying  pad .    Tip  \\0  is usually a safe choice for  pad  when not displaying.   list(str2grams( \"str2grams\" ,   2 ,   pad = '#' ))  # ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']",
-            "title": "str2grams(s, n, pad=None)"
-        },
-        {
-            "location": "/functions/strtools/#checksum",
-            "text": "Tools for checksums.",
-            "title": "Checksum"
-        },
-        {
-            "location": "/functions/strtools/#sha1sumf-sha256sumf-sha512sumf-and-md5sumf",
-            "text": "Compute the respective checksum, accepting string, bytes, text file object, and binary file object.  sha1sum( \"strtools\" )  # 'bb91c4c3457cd1442acda4c11b29b02748679409'",
-            "title": "sha1sum(f) , sha256sum(f), sha512sum(f), and md5sum(f)"
-        },
-        {
-            "location": "/functions/rangetools/",
-            "text": "Source\n\n\n\n\nWarning\n\n\nEach range is closed on the left side, and open on the right side.\n\n\n\n\nRange Statistics\n\u00b6\n\n\nTools for statistics over ranges.\n\n\nhistogram(thresholds, data, leftmost=-inf)\n\u00b6\n\n\nComputes the \nhistogram\n over all the floats in \ndata\n.\n\n\n\n\n\n\nThe search space is divided by the thresholds of bins specified in \nthresholds\n.\n\n\n\n\n\n\nEach bin of the histogram is labelled by its lower threshold.\n\n\n\n\n\n\nAll values in the bin are no less than the current threshold and less than the next threshold.\n\n\n\n\n\n\nThe first bin is labelled by \nleftmost\n, which is \n-inf\n in default.\n\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nthresholds\n must be a list.\n\n\n\n\nhistogram(\n\n    \n[\n   \n0.1\n,\n                \n0.5\n,\n           \n0.8\n,\n \n0.9\n],\n\n    \n[\n0\n,\n \n0.1\n,\n \n0.2\n,\n \n0.3\n,\n \n0.4\n,\n \n0.5\n,\n \n0.6\n,\n \n0.7\n,\n \n0.8\n,\n \n0.9\n,\n \n1\n]\n\n\n)\n\n\n# {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}\n\n\n\n\n\n\nRange Querying\n\u00b6\n\n\nTools for querying ranges.\n\n\nrangequery(keyvalues, query, func=min)\n\u00b6\n\n\nEfficiently finds the best value from the covered values in \nkeyvalues\n, if each key in \nkeyvalues\n is within the query range \nquery\n.\n\n\n\n\nfunc\n defines how the best value is computed, and defaults to \nmin\n for minimum value.\n\n\n\n\n\n\nInfo\n\n\nImplemented by \nSegmentTree\n to solve the \nrange minimum query\n problem.\n\n\n\n\nrangequery(\n\n    \n{\n0.1\n:\n \n1\n,\n \n0.2\n:\n \n3\n,\n \n0.3\n:\n \n0\n},\n\n            \n(\n0.2\n,\n            \n0.4\n)\n\n\n)\n\n\n# 0\n\n\n\n\n\n\nRange Transformation\n\u00b6\n\n\nTools for transformations over ranges.\n\n\nintersect(a, b)\n\u00b6\n\n\nComputes the overlapping of two ranges \na\n and \nb\n. Returns \nNone\n if there is no overlapping.\n\n\nintersect((\n0\n,\n \n0.6\n),\n \n(\n0.4\n,\n \n1\n))\n\n\n# (0.4, 0.6)\n\n\n\n\n\n\nunion(a, b)\n\u00b6\n\n\nComputes the merging of two ranges \na\n and \nb\n. Returns \nNone\n if there is no overlapping.\n\n\nunion((\n0\n,\n \n0.6\n),\n \n(\n0.4\n,\n \n1\n))\n\n\n# (0, 1)\n\n\n\n\n\n\nrangecover(whole, covered)\n\u00b6\n\n\nSolves the variation of the \nset cover problem\n by covering the universe range \nwhole\n as best as possible, using a subset of the covering ranges \ncovered\n.\n\n\n\n\nWarning\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\nlist(rangecover(\n\n     \n(\n0\n,\n                                                 \n1\n),\n\n    \n[(\n0\n,\n \n0.4\n),\n \n(\n0.2\n,\n \n0.5\n),\n \n(\n0.5\n,\n \n0.8\n),\n \n(\n0.6\n,\n \n0.9\n),\n \n(\n0.8\n,\n \n1\n)]\n\n\n))\n\n\n# [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]\n\n\n\n\n\n\ncovers(covered)\n\u00b6\n\n\nMerges the covered ranges \ncovered\n to resolve any overlap.\n\n\n\n\nDanger\n\n\nCovered ranges in \ncovered\n must be sorted by the left side of each range.\n\n\n\n\nlist(covers([(\n-\ninf,\n \n0\n),\n \n(\n0.1\n,\n \n0.2\n),\n \n(\n0.5\n,\n \n0.7\n),\n \n(\n0.6\n,\n \n0.9\n)]))\n\n\n# [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]\n\n\n\n\n\n\ngaps(covered, whole=(-inf, inf))\n\u00b6\n\n\nComputes the uncovered ranges of the whole range \nwhole\n, given the covered ranges \ncovered\n.\n\n\n\n\nDanger\n\n\nCovered ranges in \ncovered\n must be sorted by the left side of each range.\n\n\n\n\n\n\nInfo\n\n\nOverlaps among covered ranges \ncovered\n are resolved, like \ncovers(covered)\n.\n\n\n\n\nlist(gaps(\n\n    \n[(\n-\ninf,\n \n0\n),\n \n(\n0.1\n,\n \n0.2\n),\n \n(\n0.5\n,\n \n0.7\n),\n \n(\n0.6\n,\n \n0.9\n)],\n\n           \n(\n0\n,\n                                     \n1\n)\n\n\n))\n\n\n# [(0, 0.1), (0.2, 0.5), (0.9, 1)]",
-            "title": "rangetools"
-        },
-        {
-            "location": "/functions/rangetools/#range-statistics",
-            "text": "Tools for statistics over ranges.",
-            "title": "Range Statistics"
-        },
-        {
-            "location": "/functions/rangetools/#histogramthresholds-data-leftmost-inf",
-            "text": "Computes the  histogram  over all the floats in  data .    The search space is divided by the thresholds of bins specified in  thresholds .    Each bin of the histogram is labelled by its lower threshold.    All values in the bin are no less than the current threshold and less than the next threshold.    The first bin is labelled by  leftmost , which is  -inf  in default.       Warning  thresholds  must be a list.   histogram( \n     [     0.1 ,                  0.5 ,             0.8 ,   0.9 ], \n     [ 0 ,   0.1 ,   0.2 ,   0.3 ,   0.4 ,   0.5 ,   0.6 ,   0.7 ,   0.8 ,   0.9 ,   1 ]  )  # {-inf: 1, 0.1: 4, 0.5: 3, 0.8: 1, 0.9: 2}",
-            "title": "histogram(thresholds, data, leftmost=-inf)"
-        },
-        {
-            "location": "/functions/rangetools/#range-querying",
-            "text": "Tools for querying ranges.",
-            "title": "Range Querying"
-        },
-        {
-            "location": "/functions/rangetools/#rangequerykeyvalues-query-funcmin",
-            "text": "Efficiently finds the best value from the covered values in  keyvalues , if each key in  keyvalues  is within the query range  query .   func  defines how the best value is computed, and defaults to  min  for minimum value.    Info  Implemented by  SegmentTree  to solve the  range minimum query  problem.   rangequery( \n     { 0.1 :   1 ,   0.2 :   3 ,   0.3 :   0 }, \n             ( 0.2 ,              0.4 )  )  # 0",
-            "title": "rangequery(keyvalues, query, func=min)"
-        },
-        {
-            "location": "/functions/rangetools/#range-transformation",
-            "text": "Tools for transformations over ranges.",
-            "title": "Range Transformation"
-        },
-        {
-            "location": "/functions/rangetools/#intersecta-b",
-            "text": "Computes the overlapping of two ranges  a  and  b . Returns  None  if there is no overlapping.  intersect(( 0 ,   0.6 ),   ( 0.4 ,   1 ))  # (0.4, 0.6)",
-            "title": "intersect(a, b)"
-        },
-        {
-            "location": "/functions/rangetools/#uniona-b",
-            "text": "Computes the merging of two ranges  a  and  b . Returns  None  if there is no overlapping.  union(( 0 ,   0.6 ),   ( 0.4 ,   1 ))  # (0, 1)",
-            "title": "union(a, b)"
-        },
-        {
-            "location": "/functions/rangetools/#rangecoverwhole-covered",
-            "text": "Solves the variation of the  set cover problem  by covering the universe range  whole  as best as possible, using a subset of the covering ranges  covered .   Warning  This is an approximate algorithm, which means the returned result is not always the best.   list(rangecover( \n      ( 0 ,                                                   1 ), \n     [( 0 ,   0.4 ),   ( 0.2 ,   0.5 ),   ( 0.5 ,   0.8 ),   ( 0.6 ,   0.9 ),   ( 0.8 ,   1 )]  ))  # [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]",
-            "title": "rangecover(whole, covered)"
-        },
-        {
-            "location": "/functions/rangetools/#coverscovered",
-            "text": "Merges the covered ranges  covered  to resolve any overlap.   Danger  Covered ranges in  covered  must be sorted by the left side of each range.   list(covers([( - inf,   0 ),   ( 0.1 ,   0.2 ),   ( 0.5 ,   0.7 ),   ( 0.6 ,   0.9 )]))  # [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]",
-            "title": "covers(covered)"
-        },
-        {
-            "location": "/functions/rangetools/#gapscovered-whole-inf-inf",
-            "text": "Computes the uncovered ranges of the whole range  whole , given the covered ranges  covered .   Danger  Covered ranges in  covered  must be sorted by the left side of each range.    Info  Overlaps among covered ranges  covered  are resolved, like  covers(covered) .   list(gaps( \n     [( - inf,   0 ),   ( 0.1 ,   0.2 ),   ( 0.5 ,   0.7 ),   ( 0.6 ,   0.9 )], \n            ( 0 ,                                       1 )  ))  # [(0, 0.1), (0.2, 0.5), (0.9, 1)]",
-            "title": "gaps(covered, whole=(-inf, inf))"
-        },
-        {
-            "location": "/functions/dicttools/",
-            "text": "Source\n\n\nDictionary Inverting\n\u00b6\n\n\nTools for inverting dictionaries.\n\n\ninvert(d)\n\u00b6\n\n\nInverts \n(Key, Value)\n pairs to \n(Value, Key)\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps last of the respective keys.\n\n\n\n\ninvert_multiple(d)\n\u00b6\n\n\nInverts \n(Key, List[Value])\n pairs to \n(Value, Key)\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps last of the respective keys.\n\n\n\n\ninvert_safe(d)\n\u00b6\n\n\nInverts \n(Key, Value)\n pairs to \n(Value, List[Key])\n.\n\n\n\n\nIf multiple keys share the same value, the inverted directory keeps a list of all the respective keys.\n\n\n\n\nRemapping\n\u00b6\n\n\nTools for remapping elements.\n\n\nremap(data, mapping, key=None)\n\u00b6\n\n\nRemaps each unique element in \ndata\n to a new value from calling function \nkey\n.\n\n\n\n\n\n\nmapping\n is a dictionary recording all the mappings, optionally containing previous mappings to reuse.\n\n\n\n\n\n\nIn default, \nkey\n returns integers starting from \n0\n.\n\n\n\n\n\n\nwordmap\n \n=\n \n{}\n\n\ndb\n \n=\n \n[list(remap(doc,\n \nwordmap))\n \nfor\n \ndoc\n \nin\n \ndocs]\n\n\n\n\n\n\nIndexing\n\u00b6\n\n\nTools for indexing.\n\n\ninvertedindex(seqs)\n\u00b6\n\n\nCreates an \ninverted index\n.\n\n\n\n\nEach item\u2019s index is a list of \n(ID, position)\n pairs for all the sequences in \nseqs\n containing the item.\n\n\n\n\ndata\n \n=\n \n[s\n.\nsplit()\n \nfor\n \ns\n \nin\n \n[\n\n    \n\"a b c d e\"\n,\n\n    \n\"b b b d e\"\n,\n\n    \n\"c b c c a\"\n,\n\n    \n\"b b b c c\"\n\n\n]]\n\n\n\ninvertedindex(data)\n\n\n# {'a': [(0, 0), (2, 4)],\n\n\n#  'b': [(0, 1), (1, 0), (2, 1), (3, 0)],\n\n\n#  'c': [(0, 2), (2, 0), (3, 3)],\n\n\n#  'd': [(0, 3), (1, 3)],\n\n\n#  'e': [(0, 4), (1, 4)]}\n\n\n\n\n\n\nnextentries(data, entries)\n\u00b6\n\n\nScans the sequences in \ndata\n from left to right after current entries \nentries\n, and returns each item and its respective following entries.\n\n\n\n\nEach entry is a pair of \n(ID, Position)\n denoting the sequence ID and its respective matching position.\n\n\n\n\n# same data from previous example\n\n\n\n# the first positions of `c` among sequences.\n\n\nentries\n \n=\n \n[(\n0\n,\n \n2\n),\n \n(\n2\n,\n \n0\n),\n \n(\n3\n,\n \n3\n)]\n\n\n\nnextentries(data,\n \nentries)\n\n\n# {'d': [(0, 3)],\n\n\n#  'e': [(0, 4)],\n\n\n#  'b': [(2, 1)],\n\n\n#  'c': [(2, 2), (3, 4)],\n\n\n#  'a': [(2, 4)]}\n\n\n\n\n\n\nDictionary Flatten/Unflatten\n\u00b6\n\n\nTools for flatten/unflatten a dictionary.\n\n\nflatten(d, force=False)\n\u00b6\n\n\nFlattens a dictionary by returning \n(Path, Value\n) tuples with each path \nPath\n from root to each value \nValue\n.\n\n\n\n\n\n\nFor each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.\n\n\n\n\n\n\nIn default, only an array with nested dictionary is flatten. Instead, parameter \nforce\n can be specified to flatten any array.\n\n\n\n\n\n\n\n\nWarning\n\n\nDifferent from \njsontools.flatten\n, this function accepts only dictionary.\n\n\n\n\n\n\nWarning\n\n\nAn empty array disappears after being flatten.\n\n\n\n\nflatten(json\n.\nloads(\n\"\"\"{\n\n\n  \"name\": \"John\",\n\n\n  \"address\": {\n\n\n    \"streetAddress\": \"21 2nd Street\",\n\n\n    \"city\": \"New York\",\n\n\n  },\n\n\n  \"phoneNumbers\": [\n\n\n    {\n\n\n      \"type\": \"home\",\n\n\n      \"number\": \"212 555-1234\"\n\n\n    },\n\n\n    {\n\n\n      \"type\": \"office\",\n\n\n      \"number\": \"646 555-4567\"\n\n\n    }\n\n\n  ],\n\n\n  \"children\": [],\n\n\n  \"spouse\": null\n\n\n}\"\"\"\n))\n\n\n# {'name': 'John',\n\n\n#  ('address', 'streetAddress'): '21 2nd Street',\n\n\n#  ('address', 'city'): 'New York',\n\n\n#  (('phoneNumbers', 0), 'type'): 'home',\n\n\n#  (('phoneNumbers', 0), 'number'): '212 555-1234',\n\n\n#  (('phoneNumbers', 1), 'type'): 'office',\n\n\n#  (('phoneNumbers', 1), 'number'): '646 555-4567',\n\n\n#  'children': [],\n\n\n#  'spouse': None}",
-            "title": "dicttools"
-        },
-        {
-            "location": "/functions/dicttools/#dictionary-inverting",
-            "text": "Tools for inverting dictionaries.",
-            "title": "Dictionary Inverting"
-        },
-        {
-            "location": "/functions/dicttools/#invertd",
-            "text": "Inverts  (Key, Value)  pairs to  (Value, Key) .   If multiple keys share the same value, the inverted directory keeps last of the respective keys.",
-            "title": "invert(d)"
-        },
-        {
-            "location": "/functions/dicttools/#invert_multipled",
-            "text": "Inverts  (Key, List[Value])  pairs to  (Value, Key) .   If multiple keys share the same value, the inverted directory keeps last of the respective keys.",
-            "title": "invert_multiple(d)"
-        },
-        {
-            "location": "/functions/dicttools/#invert_safed",
-            "text": "Inverts  (Key, Value)  pairs to  (Value, List[Key]) .   If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.",
-            "title": "invert_safe(d)"
-        },
-        {
-            "location": "/functions/dicttools/#remapping",
-            "text": "Tools for remapping elements.",
-            "title": "Remapping"
-        },
-        {
-            "location": "/functions/dicttools/#remapdata-mapping-keynone",
-            "text": "Remaps each unique element in  data  to a new value from calling function  key .    mapping  is a dictionary recording all the mappings, optionally containing previous mappings to reuse.    In default,  key  returns integers starting from  0 .    wordmap   =   {}  db   =   [list(remap(doc,   wordmap))   for   doc   in   docs]",
-            "title": "remap(data, mapping, key=None)"
-        },
-        {
-            "location": "/functions/dicttools/#indexing",
-            "text": "Tools for indexing.",
-            "title": "Indexing"
-        },
-        {
-            "location": "/functions/dicttools/#invertedindexseqs",
-            "text": "Creates an  inverted index .   Each item\u2019s index is a list of  (ID, position)  pairs for all the sequences in  seqs  containing the item.   data   =   [s . split()   for   s   in   [ \n     \"a b c d e\" , \n     \"b b b d e\" , \n     \"c b c c a\" , \n     \"b b b c c\"  ]]  invertedindex(data)  # {'a': [(0, 0), (2, 4)],  #  'b': [(0, 1), (1, 0), (2, 1), (3, 0)],  #  'c': [(0, 2), (2, 0), (3, 3)],  #  'd': [(0, 3), (1, 3)],  #  'e': [(0, 4), (1, 4)]}",
-            "title": "invertedindex(seqs)"
-        },
-        {
-            "location": "/functions/dicttools/#nextentriesdata-entries",
-            "text": "Scans the sequences in  data  from left to right after current entries  entries , and returns each item and its respective following entries.   Each entry is a pair of  (ID, Position)  denoting the sequence ID and its respective matching position.   # same data from previous example  # the first positions of `c` among sequences.  entries   =   [( 0 ,   2 ),   ( 2 ,   0 ),   ( 3 ,   3 )]  nextentries(data,   entries)  # {'d': [(0, 3)],  #  'e': [(0, 4)],  #  'b': [(2, 1)],  #  'c': [(2, 2), (3, 4)],  #  'a': [(2, 4)]}",
-            "title": "nextentries(data, entries)"
-        },
-        {
-            "location": "/functions/dicttools/#dictionary-flattenunflatten",
-            "text": "Tools for flatten/unflatten a dictionary.",
-            "title": "Dictionary Flatten/Unflatten"
-        },
-        {
-            "location": "/functions/dicttools/#flattend-forcefalse",
-            "text": "Flattens a dictionary by returning  (Path, Value ) tuples with each path  Path  from root to each value  Value .    For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.    In default, only an array with nested dictionary is flatten. Instead, parameter  force  can be specified to flatten any array.     Warning  Different from  jsontools.flatten , this function accepts only dictionary.    Warning  An empty array disappears after being flatten.   flatten(json . loads( \"\"\"{    \"name\": \"John\",    \"address\": {      \"streetAddress\": \"21 2nd Street\",      \"city\": \"New York\",    },    \"phoneNumbers\": [      {        \"type\": \"home\",        \"number\": \"212 555-1234\"      },      {        \"type\": \"office\",        \"number\": \"646 555-4567\"      }    ],    \"children\": [],    \"spouse\": null  }\"\"\" ))  # {'name': 'John',  #  ('address', 'streetAddress'): '21 2nd Street',  #  ('address', 'city'): 'New York',  #  (('phoneNumbers', 0), 'type'): 'home',  #  (('phoneNumbers', 0), 'number'): '212 555-1234',  #  (('phoneNumbers', 1), 'type'): 'office',  #  (('phoneNumbers', 1), 'number'): '646 555-4567',  #  'children': [],  #  'spouse': None}",
-            "title": "flatten(d, force=False)"
-        },
-        {
-            "location": "/functions/jsontools/",
-            "text": "Source\n\n\nJSON Flatten/Unflatten\n\u00b6\n\n\nTools for flatten/unflatten a JSON object.\n\n\nflatten(data, force=False)\n\u00b6\n\n\nFlattens a JSON object by returning \n(Path, Value\n) tuples with each path \nPath\n from root to each value \nValue\n.\n\n\n\n\n\n\nFor each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.\n\n\n\n\n\n\nIn default, only an array with nested dictionary is flatten. Instead, parameter \nforce\n can be specified to flatten any array.\n\n\n\n\n\n\n\n\nInfo\n\n\nDifferent from \ndicttools.flatten\n, this function accepts any JSON object not limited to dictionary.\n\n\n\n\n\n\nWarning\n\n\nAn empty array disappears after being flatten.\n\n\n\n\nflatten(json\n.\nloads(\n\"\"\"{\n\n\n  \"name\": \"John\",\n\n\n  \"address\": {\n\n\n    \"streetAddress\": \"21 2nd Street\",\n\n\n    \"city\": \"New York\",\n\n\n  },\n\n\n  \"phoneNumbers\": [\n\n\n    {\n\n\n      \"type\": \"home\",\n\n\n      \"number\": \"212 555-1234\"\n\n\n    },\n\n\n    {\n\n\n      \"type\": \"office\",\n\n\n      \"number\": \"646 555-4567\"\n\n\n    }\n\n\n  ],\n\n\n  \"children\": [],\n\n\n  \"spouse\": null\n\n\n}\"\"\"\n))\n\n\n# {'name': 'John',\n\n\n#  'address.streetAddress': '21 2nd Street',\n\n\n#  'address.city': 'New York',\n\n\n#  'phoneNumbers[0].type': 'home',\n\n\n#  'phoneNumbers[0].number': '212 555-1234',\n\n\n#  'phoneNumbers[1].type': 'office',\n\n\n#  'phoneNumbers[1].number': '646 555-4567',\n\n\n#  'children': [],\n\n\n#  'spouse': None}",
-            "title": "jsontools"
-        },
-        {
-            "location": "/functions/jsontools/#json-flattenunflatten",
-            "text": "Tools for flatten/unflatten a JSON object.",
-            "title": "JSON Flatten/Unflatten"
-        },
-        {
-            "location": "/functions/jsontools/#flattendata-forcefalse",
-            "text": "Flattens a JSON object by returning  (Path, Value ) tuples with each path  Path  from root to each value  Value .    For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.    In default, only an array with nested dictionary is flatten. Instead, parameter  force  can be specified to flatten any array.     Info  Different from  dicttools.flatten , this function accepts any JSON object not limited to dictionary.    Warning  An empty array disappears after being flatten.   flatten(json . loads( \"\"\"{    \"name\": \"John\",    \"address\": {      \"streetAddress\": \"21 2nd Street\",      \"city\": \"New York\",    },    \"phoneNumbers\": [      {        \"type\": \"home\",        \"number\": \"212 555-1234\"      },      {        \"type\": \"office\",        \"number\": \"646 555-4567\"      }    ],    \"children\": [],    \"spouse\": null  }\"\"\" ))  # {'name': 'John',  #  'address.streetAddress': '21 2nd Street',  #  'address.city': 'New York',  #  'phoneNumbers[0].type': 'home',  #  'phoneNumbers[0].number': '212 555-1234',  #  'phoneNumbers[1].type': 'office',  #  'phoneNumbers[1].number': '646 555-4567',  #  'children': [],  #  'spouse': None}",
-            "title": "flatten(data, force=False)"
-        },
-        {
-            "location": "/functions/settools/",
-            "text": "Source\n\n\nSet Matching\n\u00b6\n\n\nTools for matching sets.\n\n\nbestsubset(a, key)\n\u00b6\n\n\nFinds the best sub-set of \na\n that maximizes the key function \nkey\n.\n\n\nbestsubset({\n1\n,\n \n-\n2\n,\n \n3\n,\n \n-\n4\n,\n \n5\n,\n \n-\n6\n},\n \nsum)\n\n\n#          {1,     3,     5}\n\n\n\n\n\n\nsetcover(whole, covered, key=len)\n\u00b6\n\n\nSolves the \nset cover problem\n by covering the universe set \nwhole\n as best as possible, using a subset of the covering sets \ncovered\n.\n\n\n\n\nIn default, the size of each set \nlen\n is used as key function \nkey\n to measure the coverage.\n\n\n\n\n\n\nWarning\n\n\nThis is an approximate algorithm, which means the returned result is not always the best.\n\n\n\n\nlist(setcover(\n\n    \n{\n \n1\n,\n \n2\n,\n \n3\n,\n         \n4\n,\n         \n5\n},\n\n    \n[{\n1\n,\n \n2\n,\n \n3\n},\n \n{\n2\n,\n \n3\n,\n \n4\n},\n \n{\n2\n,\n \n4\n,\n \n5\n}]\n\n\n))\n\n\n# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]\n\n\n\n\n\n\nSet Operation\n\u00b6\n\n\nTools for set operations.\n\n\naddtoset(s, x)\n\u00b6\n\n\nChecks whether adding \nx\n to set \ns\n is successful.\n\n\nSet Similarity\n\u00b6\n\n\nTools for set similarities.\n\n\njaccard(a, b)\n\u00b6\n\n\nComputes the \nJaccard similarity\n between two sets \na\n and \nb\n.\n\n\nmultisetjaccard(a, b)\n\u00b6\n\n\nComputes the \nJaccard similarity\n between two multi-sets (Counters) \na\n and \nb\n.\n\n\nweightedjaccard(a, b, key=sum)\n\u00b6\n\n\nComputes the weighted \nJaccard similarity\n between two sets \na\n and \nb\n, using function \nkey\n to compute the total weight of the elements within a set.",
-            "title": "settools"
-        },
-        {
-            "location": "/functions/settools/#set-matching",
-            "text": "Tools for matching sets.",
-            "title": "Set Matching"
-        },
-        {
-            "location": "/functions/settools/#bestsubseta-key",
-            "text": "Finds the best sub-set of  a  that maximizes the key function  key .  bestsubset({ 1 ,   - 2 ,   3 ,   - 4 ,   5 ,   - 6 },   sum)  #          {1,     3,     5}",
-            "title": "bestsubset(a, key)"
-        },
-        {
-            "location": "/functions/settools/#setcoverwhole-covered-keylen",
-            "text": "Solves the  set cover problem  by covering the universe set  whole  as best as possible, using a subset of the covering sets  covered .   In default, the size of each set  len  is used as key function  key  to measure the coverage.    Warning  This is an approximate algorithm, which means the returned result is not always the best.   list(setcover( \n     {   1 ,   2 ,   3 ,           4 ,           5 }, \n     [{ 1 ,   2 ,   3 },   { 2 ,   3 ,   4 },   { 2 ,   4 ,   5 }]  ))  # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]",
-            "title": "setcover(whole, covered, key=len)"
-        },
-        {
-            "location": "/functions/settools/#set-operation",
-            "text": "Tools for set operations.",
-            "title": "Set Operation"
-        },
-        {
-            "location": "/functions/settools/#addtosets-x",
-            "text": "Checks whether adding  x  to set  s  is successful.",
-            "title": "addtoset(s, x)"
-        },
-        {
-            "location": "/functions/settools/#set-similarity",
-            "text": "Tools for set similarities.",
-            "title": "Set Similarity"
-        },
-        {
-            "location": "/functions/settools/#jaccarda-b",
-            "text": "Computes the  Jaccard similarity  between two sets  a  and  b .",
-            "title": "jaccard(a, b)"
-        },
-        {
-            "location": "/functions/settools/#multisetjaccarda-b",
-            "text": "Computes the  Jaccard similarity  between two multi-sets (Counters)  a  and  b .",
-            "title": "multisetjaccard(a, b)"
-        },
-        {
-            "location": "/functions/settools/#weightedjaccarda-b-keysum",
-            "text": "Computes the weighted  Jaccard similarity  between two sets  a  and  b , using function  key  to compute the total weight of the elements within a set.",
-            "title": "weightedjaccard(a, b, key=sum)"
-        },
-        {
-            "location": "/functions/tabletools/",
-            "text": "Source\n\n\nTable Transformation\n\u00b6\n\n\nTools for table transformations.\n\n\ntranspose(data)\n\u00b6\n\n\nReturns the transpose of table \ndata\n, i.e., switch rows and columns.\n\n\n\n\nTip\n\n\nUseful to switch table \ndata\n from row-based to column-based and backwards.\n\n\n\n\nlist(transpose([\n\n    \n[\n1\n,\n \n2\n,\n \n3\n],\n\n    \n[\n4\n,\n \n5\n,\n \n6\n],\n\n    \n[\n7\n,\n \n8\n,\n \n9\n]\n\n\n]))\n\n\n# [[1, 4, 7],\n\n\n#  [2, 5, 8],\n\n\n#  [3, 6, 9]]\n\n\n\n\n\n\nmergecols(cols, default=None)\n\u00b6\n\n\nMerges the columns in \ncols\n into a single column. Return \nNone\n if there is conflict in any row.\n\n\n\n\n\n\nA row has conflict if there are more than one valid values, where each valid value is not \nNone\n or empty string.\n\n\n\n\n\n\ndefault\n is a place holder when there are no valid value in one row.\n\n\n\n\n\n\ncols\n \n=\n \nlist(transpose([\n\n    \n[\n   \n0\n,\n \nNone,\n    \n2\n],\n\n    \n[\n   \n0\n,\n    \n1\n,\n \nNone],\n\n    \n[None,\n    \n1\n,\n \nNone]\n\n    \n[\n0\n,\n    \nNone,\n \nNone]\n\n\n]))\n\n\n\n# Merge the last two columns.\n\n\nmergecols(cols[\n1\n:])\n\n\n# [2,\n\n   \n1\n,\n\n   \n1\n,\n\n   \nNone]\n\n\n\n# Merge all three columns.\n\n\nmergecols(cols)\n\n\n# None\n\n\n\n\n\n\nCSV\n\u00b6\n\n\nTools for processing CSV.\n\n\nloadcsv(path, delimiter=',')\n\u00b6\n\n\nLoads a CSV file, from either a file path or a file object.\n\n\ndumpcsv(path, data, delimiter=',')\n\u00b6\n\n\nDumps a table \ndata\n in CSV, to either a file path or a file object.",
-            "title": "tabletools"
-        },
-        {
-            "location": "/functions/tabletools/#table-transformation",
-            "text": "Tools for table transformations.",
-            "title": "Table Transformation"
-        },
-        {
-            "location": "/functions/tabletools/#transposedata",
-            "text": "Returns the transpose of table  data , i.e., switch rows and columns.   Tip  Useful to switch table  data  from row-based to column-based and backwards.   list(transpose([ \n     [ 1 ,   2 ,   3 ], \n     [ 4 ,   5 ,   6 ], \n     [ 7 ,   8 ,   9 ]  ]))  # [[1, 4, 7],  #  [2, 5, 8],  #  [3, 6, 9]]",
-            "title": "transpose(data)"
-        },
-        {
-            "location": "/functions/tabletools/#mergecolscols-defaultnone",
-            "text": "Merges the columns in  cols  into a single column. Return  None  if there is conflict in any row.    A row has conflict if there are more than one valid values, where each valid value is not  None  or empty string.    default  is a place holder when there are no valid value in one row.    cols   =   list(transpose([ \n     [     0 ,   None,      2 ], \n     [     0 ,      1 ,   None], \n     [None,      1 ,   None] \n     [ 0 ,      None,   None]  ]))  # Merge the last two columns.  mergecols(cols[ 1 :])  # [2, \n    1 , \n    1 , \n    None]  # Merge all three columns.  mergecols(cols)  # None",
-            "title": "mergecols(cols, default=None)"
-        },
-        {
-            "location": "/functions/tabletools/#csv",
-            "text": "Tools for processing CSV.",
-            "title": "CSV"
-        },
-        {
-            "location": "/functions/tabletools/#loadcsvpath-delimiter",
-            "text": "Loads a CSV file, from either a file path or a file object.",
-            "title": "loadcsv(path, delimiter=',')"
-        },
-        {
-            "location": "/functions/tabletools/#dumpcsvpath-data-delimiter",
-            "text": "Dumps a table  data  in CSV, to either a file path or a file object.",
-            "title": "dumpcsv(path, data, delimiter=',')"
-        },
-        {
-            "location": "/functions/mathtools/",
-            "text": "Source\n\n\nMath\n\u00b6\n\n\nTools for math.\n\n\nsafediv(a, b)\n\u00b6\n\n\nAvoids the \ndivision by zero\n exception, by returning infinite with proper sign.\n\n\n\n\nInfo\n\n\nClosely referring \nIEEE Standard 754\n.",
-            "title": "mathtools"
-        },
-        {
-            "location": "/functions/mathtools/#math",
-            "text": "Tools for math.",
-            "title": "Math"
-        },
-        {
-            "location": "/functions/mathtools/#safediva-b",
-            "text": "Avoids the  division by zero  exception, by returning infinite with proper sign.   Info  Closely referring  IEEE Standard 754 .",
-            "title": "safediv(a, b)"
-        },
-        {
             "location": "/functions/stattools/",
             "text": "Source\n\n\nStatistics\n\u00b6\n\n\nTools for statistics.\n\n\nmedianabsdev(data)\n\u00b6\n\n\nComputes the \nmedian absolute deviation\n of a sequence of floats.\n\n\nentropy(data)\n\u00b6\n\n\nComputes the \nentropy\n of a sequence of any items.\n\n\n\n\nTip\n\n\nYou can also pass a dictionary of \n(item, frequency)\n as known frequency distribution to \ndata\n.\n\n\n\n\nBinary Classification\n\u00b6\n\n\nTools for binary classification.\n\n\nteststats(truths, predictions)\n\u00b6\n\n\nMatches the truth labels and the prediction labels. Return a tuples of \n(tp, fp, tn, fn)\n as \ntrue positive, false positive, true negative, and false negative\n.\n\n\naccuracy(tp, fp, tn, fn)\n\u00b6\n\n\nReturns the \naccuracy\n.\n\n\n\n\nTip\n\n\nYou can simply call \naccuracy(*teststats(truths, predictions))\n.\n\n\n\n\nprecision(tp, fp, tn, fn)\n and \nrecall(tp, fp, tn, fn)\n\u00b6\n\n\nReturn the \nprecision and recall\n.\n\n\nf1(tp, fp, tn, fn, beta=1)\n\u00b6\n\n\nReturns the \nF-1 measure\n in default, and returns the F-\u03b2 measure when \nbeta\n is specified.",
             "title": "stattools"
@@ -576,114 +596,94 @@
             "title": "f1(tp, fp, tn, fn, beta=1)"
         },
         {
-            "location": "/functions/misctools/",
-            "text": "Source\n\n\nMiscellaneous\n\u00b6\n\n\nTools for miscellaneous purposes.\n\n\ncmp(a, b)\n\u00b6\n\n\nRestores the useful \ncmp\n function previously in Python 2.\n\n\n\n\nInfo\n\n\nImplemented according to \nWhat\u2019s New in Python 3.0\n.\n\n\n\n\nparsebool(s)\n\u00b6\n\n\nParses a string to boolean, if its lowercase equals to \n1\n, \ntrue\n, \nyes\n, etc.\n\n\n\n\nTip\n\n\nCheck the full list of acceptable strings in \nSource\n.",
-            "title": "misctools"
+            "location": "/functions/strtools/",
+            "text": "Source\n\n\n\n\nInfo\n\n\nTools in \nseqtools\n can also be applied here. \nstrtools\n only contains tools that are unique to the concept of string.\n\n\n\n\nString Matching\n\u00b6\n\n\nTools for string matching.\n\n\ncommonsubstr(a, b)\n\u00b6\n\n\nFinds the \nlongest common sub-string\n among two strings \na\n and \nb\n.\n\n\ncommonsubstr(\n\n     \n\"abbab\"\n,\n\n    \n\"aabbb\"\n\n\n)\n\n\n# \"abb\"\n\n\n\n\n\n\neditdist(a, b, bound=inf)\n\u00b6\n\n\nComputes the \nedit distance\n between two strings \na\n and \nb\n.\n\n\n\n\nTo speedup the computation, a threshold of maximum cost \nbound=inf\n can be specified. When there is no satisfying result, \nNone\n is returned.\n\n\n\n\neditdist(\n\n     \n\"dog\"\n,\n\n    \n\"frog\"\n\n\n)\n\n\n# 2\n\n\n\n\n\n\ntagstats(tags, lines, separator=None)\n\u00b6\n\n\nEfficiently computes the number of lines containing each tag.\n\n\n\n\nseparator\n is a regex to tokenize each string. In default when \nseparator\n is \nNone\n, each string is not tokenized.\n\n\n\n\n\n\nSuccess\n\n\nTagStats\n is used to compute efficiently, where the common prefixes among tags are matched only once.\n\n\n\n\ntagstats(\n\n    \n[\n\"a b\"\n,\n \n\"a c\"\n,\n \n\"b c\"\n],\n\n    \n[\n\"a b c\"\n,\n \n\"b c d\"\n,\n \n\"c d e\"\n]\n\n\n)\n\n\n# {'a b': 1, 'a c': 0, 'b c': 2}\n\n\n\n\n\n\nString Transformation\n\u00b6\n\n\nTools for string transformations.\n\n\nstr2grams(s, n, pad=None)\n\u00b6\n\n\nReturns the ordered \nn\n-grams\n of string \ns\n.\n\n\n\n\nOptional padding at the start and end can be added by specifying \npad\n.\n\n\n\n\n\n\nTip\n\n\n\\0\n is usually a safe choice for \npad\n when not displaying.\n\n\n\n\nlist(str2grams(\n\"str2grams\"\n,\n \n2\n,\n \npad\n=\n'#'\n))\n\n\n# ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']\n\n\n\n\n\n\nChecksum\n\u00b6\n\n\nTools for checksums.\n\n\nsha1sum(f)\n , \nsha256sum(f)\n, \nsha512sum(f)\n, and \nmd5sum(f)\n\u00b6\n\n\nCompute the respective checksum, accepting string, bytes, text file object, and binary file object.\n\n\nsha1sum(\n\"strtools\"\n)\n\n\n# 'bb91c4c3457cd1442acda4c11b29b02748679409'",
+            "title": "strtools"
         },
         {
-            "location": "/functions/misctools/#miscellaneous",
-            "text": "Tools for miscellaneous purposes.",
-            "title": "Miscellaneous"
+            "location": "/functions/strtools/#string-matching",
+            "text": "Tools for string matching.",
+            "title": "String Matching"
         },
         {
-            "location": "/functions/misctools/#cmpa-b",
-            "text": "Restores the useful  cmp  function previously in Python 2.   Info  Implemented according to  What\u2019s New in Python 3.0 .",
-            "title": "cmp(a, b)"
+            "location": "/functions/strtools/#commonsubstra-b",
+            "text": "Finds the  longest common sub-string  among two strings  a  and  b .  commonsubstr( \n      \"abbab\" , \n     \"aabbb\"  )  # \"abb\"",
+            "title": "commonsubstr(a, b)"
         },
         {
-            "location": "/functions/misctools/#parsebools",
-            "text": "Parses a string to boolean, if its lowercase equals to  1 ,  true ,  yes , etc.   Tip  Check the full list of acceptable strings in  Source .",
-            "title": "parsebool(s)"
+            "location": "/functions/strtools/#editdista-b-boundinf",
+            "text": "Computes the  edit distance  between two strings  a  and  b .   To speedup the computation, a threshold of maximum cost  bound=inf  can be specified. When there is no satisfying result,  None  is returned.   editdist( \n      \"dog\" , \n     \"frog\"  )  # 2",
+            "title": "editdist(a, b, bound=inf)"
         },
         {
-            "location": "/functions/printtools/",
-            "text": "Source\n\n\nPrinting\n\u00b6\n\n\nTools for controlling printing destination.\n\n\nprint2(*args, **kwargs)\n\u00b6\n\n\nRedirects the output of \nprint\n to standard error.\n\n\n\n\nTip\n\n\nThe same parameters of builtin \nprint\n are accepted.\n\n\n\n\nTo String\n\u00b6\n\n\nTools for generating the intuitive string representation.\n\n\n\n\nInfo\n\n\nBuiltin function \nrepr\n is used to print each item safely.\n\n\n\n\niter2str(seq, limit=None)\n\u00b6\n\n\nConverts an iterable sequence to string.\n\n\n\n\nIf \nlimit\n is specified, only print the first \nlimit\n items. This is useful when \nseq\n is an infinite sequence.\n\n\n\n\niter2str(range(\n5\n))\n\n\n# '<0, 1, 2, 3, 4>'\n\n\n\n# Infinity sequence\n\n\niter2str(itertools\n.\ncount(),\n \nlimit\n=\n5\n)\n\n\n# '<0, 1, 2, 3, 4, ...>'\n\n\n\n\n\n\nalignment2str(*seqs, default=None, separator=' ')\n\u00b6\n\n\nPrints the alignment between sequences \nseq\n. \ndefault=None\n is used for labelling missing value from each sequences.\n\n\n\n\n\n\nseparator\n can be specified to separate every two values.\n\n\n\n\n\n\nIf sequences have different lengths, the extra trailing items are also printed as not matching.\n\n\n\n\n\n\n\n\nTip\n\n\nseqtools.align\n can compute the alignment between two sequences.\n\n\n\n\nprint\n(alignment2str(\n\n    \n[\n1\n,\n \n10\n,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n \nNone,\n \n\"New York\"\n]\n\n\n))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10     'New York'\n\n\n\nprint\n(alignment2str(\n*\nalign(\n\n    \n[\n1\n,\n \n10\n,\n \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n      \n\"New York\"\n]\n\n\n)[\n1\n]))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10     'New York'\n\n\n\nprint\n(alignment2str(\n\n    \n[\n1\n,\n \n10\n,\n \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \n10\n,\n \n100\n]\n\n\n))\n\n\n# 1 10 100 'New York'\n\n\n# 1 10 100     \n\n\n\n\n\n\ntable2str(data, default=None, separator=\" | \")\n\u00b6\n\n\nA thin wrapper of \nalignment2str\n to print a row-based table.\n\n\n\n\nTip\n\n\nThe default output format is compatible to Markdown format.\n\n\n\n\nprint\n(table2str([\n\n    \n[\n1\n,\n   \n10\n,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n   \n10\n,\n \nNone,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n \nNone,\n  \n100\n,\n \n\"New York\"\n],\n\n    \n[\n1\n,\n   \n10\n,\n  \n100\n,\n \n\"New York\"\n]\n\n\n]))\n\n\n# 1 | 10 | 100 | 'New York'\n\n\n# 1 | 10 |     | 'New York'\n\n\n# 1 |    | 100 | 'New York'\n\n\n# 1 | 10 | 100 | 'New York'\n\n\n\n\n\n\nrange2str(r)\n\u00b6\n\n\nPrints a range \nr\n.\n\n\nprint\n(range2str((\n0\n,\n \n1\n)))\n\n\n# [0, 1)\n\n\n\n\n\n\nsorted2str(seq, key=None)\n\u00b6\n\n\nPrints a sorted sequence \nseq\n, optionally according to the key function \nkey\n.\n\n\nprint\n(sorted2str([\n1\n,\n \n2\n,\n \n2\n,\n \n3\n]))\n\n\n# 1 <= 2 == 2 <= 3",
-            "title": "printtools"
+            "location": "/functions/strtools/#tagstatstags-lines-separatornone",
+            "text": "Efficiently computes the number of lines containing each tag.   separator  is a regex to tokenize each string. In default when  separator  is  None , each string is not tokenized.    Success  TagStats  is used to compute efficiently, where the common prefixes among tags are matched only once.   tagstats( \n     [ \"a b\" ,   \"a c\" ,   \"b c\" ], \n     [ \"a b c\" ,   \"b c d\" ,   \"c d e\" ]  )  # {'a b': 1, 'a c': 0, 'b c': 2}",
+            "title": "tagstats(tags, lines, separator=None)"
         },
         {
-            "location": "/functions/printtools/#printing",
-            "text": "Tools for controlling printing destination.",
-            "title": "Printing"
+            "location": "/functions/strtools/#string-transformation",
+            "text": "Tools for string transformations.",
+            "title": "String Transformation"
         },
         {
-            "location": "/functions/printtools/#print2args-kwargs",
-            "text": "Redirects the output of  print  to standard error.   Tip  The same parameters of builtin  print  are accepted.",
-            "title": "print2(*args, **kwargs)"
+            "location": "/functions/strtools/#str2gramss-n-padnone",
+            "text": "Returns the ordered  n -grams  of string  s .   Optional padding at the start and end can be added by specifying  pad .    Tip  \\0  is usually a safe choice for  pad  when not displaying.   list(str2grams( \"str2grams\" ,   2 ,   pad = '#' ))  # ['#s', 'st', 'tr', 'r2', '2g', 'gr', 'ra', 'am', 'ms', 's#']",
+            "title": "str2grams(s, n, pad=None)"
         },
         {
-            "location": "/functions/printtools/#to-string",
-            "text": "Tools for generating the intuitive string representation.   Info  Builtin function  repr  is used to print each item safely.",
-            "title": "To String"
+            "location": "/functions/strtools/#checksum",
+            "text": "Tools for checksums.",
+            "title": "Checksum"
         },
         {
-            "location": "/functions/printtools/#iter2strseq-limitnone",
-            "text": "Converts an iterable sequence to string.   If  limit  is specified, only print the first  limit  items. This is useful when  seq  is an infinite sequence.   iter2str(range( 5 ))  # '<0, 1, 2, 3, 4>'  # Infinity sequence  iter2str(itertools . count(),   limit = 5 )  # '<0, 1, 2, 3, 4, ...>'",
-            "title": "iter2str(seq, limit=None)"
+            "location": "/functions/strtools/#sha1sumf-sha256sumf-sha512sumf-and-md5sumf",
+            "text": "Compute the respective checksum, accepting string, bytes, text file object, and binary file object.  sha1sum( \"strtools\" )  # 'bb91c4c3457cd1442acda4c11b29b02748679409'",
+            "title": "sha1sum(f) , sha256sum(f), sha512sum(f), and md5sum(f)"
         },
         {
-            "location": "/functions/printtools/#alignment2strseqs-defaultnone-separator",
-            "text": "Prints the alignment between sequences  seq .  default=None  is used for labelling missing value from each sequences.    separator  can be specified to separate every two values.    If sequences have different lengths, the extra trailing items are also printed as not matching.     Tip  seqtools.align  can compute the alignment between two sequences.   print (alignment2str( \n     [ 1 ,   10 ,    100 ,   \"New York\" ], \n     [ 1 ,   10 ,   None,   \"New York\" ]  ))  # 1 10 100 'New York'  # 1 10     'New York'  print (alignment2str( * align( \n     [ 1 ,   10 ,   100 ,   \"New York\" ], \n     [ 1 ,   10 ,        \"New York\" ]  )[ 1 ]))  # 1 10 100 'New York'  # 1 10     'New York'  print (alignment2str( \n     [ 1 ,   10 ,   100 ,   \"New York\" ], \n     [ 1 ,   10 ,   100 ]  ))  # 1 10 100 'New York'  # 1 10 100",
-            "title": "alignment2str(*seqs, default=None, separator=' ')"
+            "location": "/functions/tabletools/",
+            "text": "Source\n\n\nTable Transformation\n\u00b6\n\n\nTools for table transformations.\n\n\ntranspose(data)\n\u00b6\n\n\nReturns the transpose of table \ndata\n, i.e., switch rows and columns.\n\n\n\n\nTip\n\n\nUseful to switch table \ndata\n from row-based to column-based and backwards.\n\n\n\n\nlist(transpose([\n\n    \n[\n1\n,\n \n2\n,\n \n3\n],\n\n    \n[\n4\n,\n \n5\n,\n \n6\n],\n\n    \n[\n7\n,\n \n8\n,\n \n9\n]\n\n\n]))\n\n\n# [[1, 4, 7],\n\n\n#  [2, 5, 8],\n\n\n#  [3, 6, 9]]\n\n\n\n\n\n\nmergecols(cols, default=None)\n\u00b6\n\n\nMerges the columns in \ncols\n into a single column. Return \nNone\n if there is conflict in any row.\n\n\n\n\n\n\nA row has conflict if there are more than one valid values, where each valid value is not \nNone\n or empty string.\n\n\n\n\n\n\ndefault\n is a place holder when there are no valid value in one row.\n\n\n\n\n\n\ncols\n \n=\n \nlist(transpose([\n\n    \n[\n   \n0\n,\n \nNone,\n    \n2\n],\n\n    \n[\n   \n0\n,\n    \n1\n,\n \nNone],\n\n    \n[None,\n    \n1\n,\n \nNone]\n\n    \n[\n0\n,\n    \nNone,\n \nNone]\n\n\n]))\n\n\n\n# Merge the last two columns.\n\n\nmergecols(cols[\n1\n:])\n\n\n# [2,\n\n   \n1\n,\n\n   \n1\n,\n\n   \nNone]\n\n\n\n# Merge all three columns.\n\n\nmergecols(cols)\n\n\n# None\n\n\n\n\n\n\nCSV\n\u00b6\n\n\nTools for processing CSV.\n\n\nloadcsv(path, delimiter=',')\n\u00b6\n\n\nLoads a CSV file, from either a file path or a file object.\n\n\ndumpcsv(path, data, delimiter=',')\n\u00b6\n\n\nDumps a table \ndata\n in CSV, to either a file path or a file object.",
+            "title": "tabletools"
         },
         {
-            "location": "/functions/printtools/#table2strdata-defaultnone-separator",
-            "text": "A thin wrapper of  alignment2str  to print a row-based table.   Tip  The default output format is compatible to Markdown format.   print (table2str([ \n     [ 1 ,     10 ,    100 ,   \"New York\" ], \n     [ 1 ,     10 ,   None,   \"New York\" ], \n     [ 1 ,   None,    100 ,   \"New York\" ], \n     [ 1 ,     10 ,    100 ,   \"New York\" ]  ]))  # 1 | 10 | 100 | 'New York'  # 1 | 10 |     | 'New York'  # 1 |    | 100 | 'New York'  # 1 | 10 | 100 | 'New York'",
-            "title": "table2str(data, default=None, separator=\" | \")"
+            "location": "/functions/tabletools/#table-transformation",
+            "text": "Tools for table transformations.",
+            "title": "Table Transformation"
         },
         {
-            "location": "/functions/printtools/#range2strr",
-            "text": "Prints a range  r .  print (range2str(( 0 ,   1 )))  # [0, 1)",
-            "title": "range2str(r)"
+            "location": "/functions/tabletools/#transposedata",
+            "text": "Returns the transpose of table  data , i.e., switch rows and columns.   Tip  Useful to switch table  data  from row-based to column-based and backwards.   list(transpose([ \n     [ 1 ,   2 ,   3 ], \n     [ 4 ,   5 ,   6 ], \n     [ 7 ,   8 ,   9 ]  ]))  # [[1, 4, 7],  #  [2, 5, 8],  #  [3, 6, 9]]",
+            "title": "transpose(data)"
         },
         {
-            "location": "/functions/printtools/#sorted2strseq-keynone",
-            "text": "Prints a sorted sequence  seq , optionally according to the key function  key .  print (sorted2str([ 1 ,   2 ,   2 ,   3 ]))  # 1 <= 2 == 2 <= 3",
-            "title": "sorted2str(seq, key=None)"
+            "location": "/functions/tabletools/#mergecolscols-defaultnone",
+            "text": "Merges the columns in  cols  into a single column. Return  None  if there is conflict in any row.    A row has conflict if there are more than one valid values, where each valid value is not  None  or empty string.    default  is a place holder when there are no valid value in one row.    cols   =   list(transpose([ \n     [     0 ,   None,      2 ], \n     [     0 ,      1 ,   None], \n     [None,      1 ,   None] \n     [ 0 ,      None,   None]  ]))  # Merge the last two columns.  mergecols(cols[ 1 :])  # [2, \n    1 , \n    1 , \n    None]  # Merge all three columns.  mergecols(cols)  # None",
+            "title": "mergecols(cols, default=None)"
         },
         {
-            "location": "/functions/debugtools/",
-            "text": "Source\n\n\nIterable\n\u00b6\n\n\nTools for debugging iterable sequence.\n\n\ndelayediter(seq, delay=None)\n\u00b6\n\n\nDelays the production of each item in \nseq\n by \ndelay\n seconds.\n\n\n\n\nIn default, \ndelay=None\n is disabled.\n\n\n\n\nfor\n \nv\n \nin\n \ndelayediter(range(\n5\n),\n \ndelay\n=\n1\n):\n\n    \nprint\n(datetime\n.\ndatetime\n.\nnow()\n.\ntime(),\n \nv)\n\n\n# 01:11:21.562655 0\n\n\n# 01:11:22.563725 1\n\n\n# 01:11:23.567723 2\n\n\n# 01:11:24.567997 3\n\n\n# 01:11:25.568119 4\n\n\n\n\n\n\ntimediter(seq)\n\u00b6\n\n\nProduces each item in \nseq\n and its respective timestamp when encountered.\n\n\nfor\n \nt,\n \nv\n \nin\n \ntimediter(delayediter(range(\n5\n),\n \ndelay\n=\n1\n)):\n\n    \nprint\n(datetime\n.\ndatetime\n.\nfromtimestamp(t)\n.\ntime(),\n \nv)\n\n\n# 01:13:37.181460 0\n\n\n# 01:13:38.182715 1\n\n\n# 01:13:39.188049 2\n\n\n# 01:13:40.193304 3\n\n\n# 01:13:41.197916 4\n\n\n\n\n\n\nSystem Diagnosis\n\u00b6\n\n\nTools for non-functional but useful system diagnosis tools.\n\n\nstopwatch()\n\u00b6\n\n\nReturns both the duration since program start and the duration since last call in seconds.\n\n\n\n\nWarning\n\n\nThe stopwatch only starts after \ndebugtools\n is imported.\n\n\n\n\npeakmem()\n\u00b6\n\n\nReturns the peak memory usage since program start.\n\n\n\n\nDanger\n\n\nIn bytes on macOS, and in kilobytes on Linux.",
-            "title": "debugtools"
+            "location": "/functions/tabletools/#csv",
+            "text": "Tools for processing CSV.",
+            "title": "CSV"
         },
         {
-            "location": "/functions/debugtools/#iterable",
-            "text": "Tools for debugging iterable sequence.",
-            "title": "Iterable"
+            "location": "/functions/tabletools/#loadcsvpath-delimiter",
+            "text": "Loads a CSV file, from either a file path or a file object.",
+            "title": "loadcsv(path, delimiter=',')"
         },
         {
-            "location": "/functions/debugtools/#delayediterseq-delaynone",
-            "text": "Delays the production of each item in  seq  by  delay  seconds.   In default,  delay=None  is disabled.   for   v   in   delayediter(range( 5 ),   delay = 1 ): \n     print (datetime . datetime . now() . time(),   v)  # 01:11:21.562655 0  # 01:11:22.563725 1  # 01:11:23.567723 2  # 01:11:24.567997 3  # 01:11:25.568119 4",
-            "title": "delayediter(seq, delay=None)"
-        },
-        {
-            "location": "/functions/debugtools/#timediterseq",
-            "text": "Produces each item in  seq  and its respective timestamp when encountered.  for   t,   v   in   timediter(delayediter(range( 5 ),   delay = 1 )): \n     print (datetime . datetime . fromtimestamp(t) . time(),   v)  # 01:13:37.181460 0  # 01:13:38.182715 1  # 01:13:39.188049 2  # 01:13:40.193304 3  # 01:13:41.197916 4",
-            "title": "timediter(seq)"
-        },
-        {
-            "location": "/functions/debugtools/#system-diagnosis",
-            "text": "Tools for non-functional but useful system diagnosis tools.",
-            "title": "System Diagnosis"
-        },
-        {
-            "location": "/functions/debugtools/#stopwatch",
-            "text": "Returns both the duration since program start and the duration since last call in seconds.   Warning  The stopwatch only starts after  debugtools  is imported.",
-            "title": "stopwatch()"
-        },
-        {
-            "location": "/functions/debugtools/#peakmem",
-            "text": "Returns the peak memory usage since program start.   Danger  In bytes on macOS, and in kilobytes on Linux.",
-            "title": "peakmem()"
-        },
-        {
-            "location": "/datastructures/disjointsets/",
-            "text": "Source\n\n\nDisjoint sets\n with path compression. After \nd = DisjointSets()\n:\n\n\n\n\n\n\nd.add(x)\n adds a new disjoint set containing \nx\n.\n\n\n\n\n\n\nd[x]\n returns the representing element of the disjoint set containing \nx\n.\n\n\n\n\n\n\nd.disjoints()\n returns all the representing elements and their respective disjoint sets.\n\n\n\n\n\n\nd.union(*xs)\n union all the elements in \nxs\n into a single disjoint set.\n\n\n\n\n\n\n\n\nNote\n\n\nBased a lot on this \nimplementation",
-            "title": "disjointsets.DisjointSets"
+            "location": "/functions/tabletools/#dumpcsvpath-data-delimiter",
+            "text": "Dumps a table  data  in CSV, to either a file path or a file object.",
+            "title": "dumpcsv(path, data, delimiter=',')"
         },
         {
             "location": "/datastructures/defaultlist/",
             "text": "Source\n\n\nA sub-class of \nlist\n that automatically grows when setting an index beyond the list size.\n\n\n\n\nWhen creating a list, use \nDefaultList(default, ...)\n to specify a function that returns default value when visiting an unassigned index.\n\n\n\n\n\n\nTip\n\n\nThis library is designed to be highly similar to \ncollections.defaultdict\n in standard library.\n\n\n\n\nl\n \n=\n \nDefaultList(\nlambda\n:\n \nNone,\n \nrange(\n10\n))\n\n\n\nl[\n11\n]\n \n=\n \n11\n\n\n\nl\n\n\n# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, None, 11]",
             "title": "defaultlist.DefaultList"
+        },
+        {
+            "location": "/datastructures/disjointsets/",
+            "text": "Source\n\n\nDisjoint sets\n with path compression. After \nd = DisjointSets()\n:\n\n\n\n\n\n\nd.add(x)\n adds a new disjoint set containing \nx\n.\n\n\n\n\n\n\nd[x]\n returns the representing element of the disjoint set containing \nx\n.\n\n\n\n\n\n\nd.disjoints()\n returns all the representing elements and their respective disjoint sets.\n\n\n\n\n\n\nd.union(*xs)\n union all the elements in \nxs\n into a single disjoint set.\n\n\n\n\n\n\n\n\nNote\n\n\nBased a lot on this \nimplementation",
+            "title": "disjointsets.DisjointSets"
         },
         {
             "location": "/datastructures/segmenttree/",

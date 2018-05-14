@@ -12,25 +12,7 @@
     
         
     <url>
-     <loc>/functions/seqtools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/functions/sortedtools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/functions/strtools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/functions/rangetools/</loc>
+     <loc>/functions/debugtools/</loc>
      <lastmod>2018-05-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -48,25 +30,7 @@
     </url>
         
     <url>
-     <loc>/functions/settools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/functions/tabletools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>/functions/mathtools/</loc>
-     <lastmod>2018-05-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/functions/stattools/</loc>
      <lastmod>2018-05-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -84,7 +48,43 @@
     </url>
         
     <url>
-     <loc>/functions/debugtools/</loc>
+     <loc>/functions/rangetools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/seqtools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/settools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/sortedtools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/stattools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/strtools/</loc>
+     <lastmod>2018-05-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/functions/tabletools/</loc>
      <lastmod>2018-05-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -94,13 +94,13 @@
     
         
     <url>
-     <loc>/datastructures/disjointsets/</loc>
+     <loc>/datastructures/defaultlist/</loc>
      <lastmod>2018-05-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/datastructures/defaultlist/</loc>
+     <loc>/datastructures/disjointsets/</loc>
      <lastmod>2018-05-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
