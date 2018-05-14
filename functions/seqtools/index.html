@@ -879,13 +879,20 @@
                   <h1>Overview</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py">Source</a></p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>For tools specific to sequence without gap, please go to specific <a href="seqwithoutgap/">documentation</a>.</p>
+<p>For tools specific to sequence with gap, please go to specific <a href="seqwithgap/">documentation</a>.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>If not explicitly noted, a sequence means not only list, tuple, string, or <a href="https://docs.python.org/3/library/array.html">array</a>, but any iterable.</p>
+<p>If not explicitly noted, a function that returns a sequence is lazy and returns a generator.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>For tools specific to sequence with gap, please go to specific <a href="seqwithgap/">documentation</a>.</p>
+<p>Empty sequence is always a sub-sequence of any other sequence.</p>
+<p>A sequence is always a sub-sequence of itself.</p>
 </div>
 <h2 id="sequence-matching">Sequence Matching<a class="headerlink" href="#sequence-matching" title="Permanent link">&para;</a></h2>
 <h3 id="matchingfrequenciesseqs-keynone"><code>matchingfrequencies(*seqs, key=None)</code><a class="headerlink" href="#matchingfrequenciesseqs-keynone" title="Permanent link">&para;</a></h3>
@@ -896,9 +903,6 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If each sequence is sorted, then optimized <code>sortedtools.matchingfrequencies</code> with the same API should be used for better efficiency.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
 <p>For the frequency of each item within a single sequence, use <code>toolz.itertoolz.frequencies</code>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(matchingfrequencies(</span>
