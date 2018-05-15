@@ -24,7 +24,7 @@ list(transpose([
 
 ### `mergecols`
 
-`mergecols(cols, default=None)` merges the columns in `cols` into a single column. Return `None` if there is conflict in any row.
+`mergecols(cols, default=None)` merges the columns in `cols` into a single column. Returns `None` if there is conflict in any row.
 
 - A row has conflict if there are more than one valid values, where each valid value is not `None` or empty string.
 
@@ -41,9 +41,9 @@ cols = list(transpose([
 # Merge the last two columns.
 mergecols(cols[1:])
 # [2,
-   1,
-   1,
-   None]
+#  1,
+#  1,
+#  None]
 
 # Merge all three columns.
 mergecols(cols)

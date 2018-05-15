@@ -13,7 +13,7 @@ Tools for statistics.
 `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a sequence of any items.
 
 !!! tip
-    You can also pass a dictionary of `(item, frequency)` as known frequency distribution to `data`.
+    You can also pass a dictionary of `(item, frequency)` as known frequency distribution as `data`.
 
 ## Binary Classification
 
@@ -30,10 +30,8 @@ Tools for binary classification.
 !!! tip
     You can simply call `accuracy(*teststats(truths, predictions))`.
 
-### `precision` and `recall`
+### `precision`, `recall`, and `f1`
 
 `precision(tp, fp, tn, fn)` and `recall(tp, fp, tn, fn)` return the [precision and recall](https://en.wikipedia.org/wiki/Precision_and_recall).
-
-### `f1`
 
 `f1(tp, fp, tn, fn, beta=1)` returns the [F$_1$ measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F$_\beta$ measure when `beta` is specified.
