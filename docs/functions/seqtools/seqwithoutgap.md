@@ -20,7 +20,7 @@ bestsubseq([1, -2, 3, -4, 5, -6], sum)
 
 - In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
-- Unlike other function in `seqtools`, empty list is returned when `a` is empty.
+- Unlike other function in [`seqtools`](.), empty list is returned when `a` is empty.
 
 !!! warning
     This function reads the first sequence at once.

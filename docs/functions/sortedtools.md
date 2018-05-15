@@ -1,10 +1,10 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py)
 
 !!! danger
-    For most tools here except `issorted`, each sequence must already be sorted.
+    For most tools here except [`issorted`](#issorted), each sequence must already be sorted.
 
 !!! info
-    Tools in `seqtools` can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
+    Tools in [`seqtools`](seqtools) can also be applied here. `sortedtools` only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.
 
 ## Sequence Check
 
@@ -89,10 +89,10 @@ issubsorted(
 !!! success
     This implementation is space efficient. If there are $n$ sequences, only $O(n)$ space is used.
 
-    `sortedtools.matchingfrequencies` is more efficient than `seqtools.matchingfrequencies`.
+    `sortedtools.matchingfrequencies` is more efficient than [`seqtools.matchingfrequencies`](seqtools#matchingfrequencies).
 
 !!! tip
-    For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
+    For the frequency of each item within a single sequence, use [`toolz.itertoolz.frequencies`](https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.frequencies).
 
 ``` python
 list(matchingfrequencies(
@@ -114,7 +114,7 @@ Tools for aligning and joining sorted sequences.
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
 !!! success
-    `sortedmatch` is more efficient than `seqtools.match`.
+    `sortedmatch` is more efficient than [`seqtools.match`](seqtools#match).
 
 ``` python
 list(sortedmatch(
@@ -136,7 +136,7 @@ list(sortedmatch(
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 
 !!! success
-    `sortedjoin` is more efficient than `seqtools.join` and its underneath `toolz.itertools.join`.
+    `sortedjoin` is more efficient than [`seqtools.join`](seqtools#join) and its underneath [`toolz.itertools.join`](https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.join).
 
 ``` python
 list(sortedjoin(

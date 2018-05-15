@@ -1,9 +1,9 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 !!! warning
-    For tools specific to sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap.md).
+    For tools specific to sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap).
 
-    For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap.md).
+    For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap).
 
 !!! success
     If not explicitly noted, a sequence refers to not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
@@ -24,9 +24,9 @@
 - Optional key function `key` can be specified.
 
 !!! tip
-    If each sequence is sorted, then optimized `sortedtools.matchingfrequencies` with the same API should be used for better efficiency.
+    If each sequence is sorted, then optimized [`sortedtools.matchingfrequencies`](sortedtools#matchingfrequencies) with the same API should be used for better efficiency.
 
-    For the frequency of each item within a single sequence, use `toolz.itertoolz.frequencies`.
+    For the frequency of each item within a single sequence, use [`toolz.itertoolz.frequencies`](https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.frequencies).
 
 ``` python
 list(matchingfrequencies(
@@ -52,7 +52,7 @@ Tools for aligning and joining sequences.
     This function reads all sequences at once.
 
 !!! tip
-    If both two sequences are sorted, respectively, then optimized `sortedtools.sortedmatch` with the same API should be used for better efficiency.
+    If both two sequences are sorted, respectively, then optimized [`sortedtools.sortedmatch`](sortedtools#sortedmatch) with the same API should be used for better efficiency.
 
 ``` python
 list(match(
@@ -69,7 +69,7 @@ list(match(
 
 ### `align`
 
-`align(a, b, cost=None, bound=inf, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
+`align(a, b, cost=None, bound=inf, default=None)` computes the [alignment](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
 - Assume the sequences after alignment are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
 
@@ -108,10 +108,10 @@ align(
     This function reads the first sequence at once.
 
 !!! tip
-    If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized `sortedtools.sortedjoin` with the same API should be used for better efficiency.
+    If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized [`sortedtools.sortedjoin`](sortedtools#sortedjoin) with the same API should be used for better efficiency.
 
 !!! info
-    `join` is just a wrapper of `toolz.itertools.join` with the same more friendly API of `sortedtools.sortedjoin`.
+    `join` is just a wrapper of [`toolz.itertools.join`](https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.join) with the same more friendly API of [`sortedtools.sortedjoin`](sortedtools#sortedjoin).
 
 ``` python
 list(join(
@@ -179,7 +179,8 @@ Tools for encoding/decoding sequences.
 
 `compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
-- Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
+!!! warning
+    Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
 
 ``` python
 list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))

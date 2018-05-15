@@ -108,7 +108,7 @@ list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
     Covered ranges in `covered` must be sorted by the left side of each range.
 
 !!! info
-    Overlaps among covered ranges `covered` are resolved, like `covers(covered)`.
+    Overlaps among covered ranges `covered` are resolved, like [`covers(covered)`](#covers).
 
 ``` python
 list(gaps(

@@ -62,14 +62,14 @@ Besides other interesting ideas, I am planning to make the following updates in 
 
 Here are three examples out of dozens of our tools.
 
-- `seqtools.compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+- [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/#compress) compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
 list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [(1, 1), (2, 2), (3, 3), (4, 4)]
 ```
 
-- `rangetools.gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
+- [`rangetools.gaps(covered, whole=(-inf, inf))`](https://chuanconggao.github.io/extratools/functions/rangetools/#gaps) computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
 ``` python
 list(gaps(
@@ -79,7 +79,7 @@ list(gaps(
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```
 
-- `jsontools.flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+- [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools/#json-flattenunflatten) flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
 ``` python
 flatten(json.loads("""{

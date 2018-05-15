@@ -9,14 +9,14 @@ Tools for controlling printing destination.
 `print2(*args, **kwargs)` redirects the output of `print` to standard error.
 
 !!! tip
-    The same parameters of builtin `print` are accepted.
+    The same parameters of builtin [`print`](https://docs.python.org/3.6/library/functions.html#print) are accepted.
 
 ## To String
 
 Tools for generating the intuitive string representation.
 
 !!! info
-    Builtin function `repr` is used to print each item safely.
+    Builtin function [`repr`](https://docs.python.org/3.6/library/functions.html#repr) is used to print each item safely.
 
 
 ### `iter2str`
@@ -43,7 +43,7 @@ iter2str(itertools.count(), limit=5)
 - If sequences have different lengths, the extra trailing items are also printed as not matching.
 
 !!! tip
-    `seqtools.align` can compute the alignment between two sequences.
+    [`seqtools.align`](seqtools#align) can compute the alignment between two sequences.
 
 ``` python
 print(alignment2str(
@@ -73,7 +73,7 @@ print(alignment2str(
 `table2str(data, default=None, separator=" | ")` a thin wrapper of `alignment2str` to print a row-based table.
 
 !!! tip
-    The default output format is compatible to Markdown format.
+    The default output format is compatible to [Markdown](https://spec.commonmark.org/) format.
 
 ``` python
 print(table2str([

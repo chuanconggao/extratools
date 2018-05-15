@@ -1,7 +1,7 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/strtools.py)
 
 !!! info
-    Tools in `seqtools` can also be applied here. `strtools` only contains tools that are unique to the concept of string.
+    Tools in [`seqtools`](seqtools) can also be applied here. `strtools` only contains tools that are unique to the concept of string.
 
 ## String Matching
 

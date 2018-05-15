@@ -36,4 +36,4 @@ Tools for binary classification.
 
 ### `f1`
 
-`f1(tp, fp, tn, fn, beta=1)` returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.
+`f1(tp, fp, tn, fn, beta=1)` returns the [F$_1$ measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F$_\beta$ measure when `beta` is specified.

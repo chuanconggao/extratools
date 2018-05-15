@@ -98,7 +98,7 @@ Tools for flatten/unflatten a dictionary.
 - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array.
 
 !!! warning
-    Different from `jsontools.flatten`, this function accepts only dictionary.
+    Different from [`jsontools.flatten`](jsontools/#flatten), this function accepts only dictionary.
 
     An empty array disappears after being flatten.
 

@@ -1,43 +1,43 @@
 ## Functions
 
-[`debugtools`](functions/debugtools.md)
+[`debugtools`](functions/debugtools)
 
-[`dicttools`](functions/dicttools.md)
+[`dicttools`](functions/dicttools)
 
-[`jsontools`](functions/jsontools.md)
+[`jsontools`](functions/jsontools)
 
-[`mathtools`](functions/mathtools.md)
+[`mathtools`](functions/mathtools)
 
-[`misctools`](functions/misctools.md)
+[`misctools`](functions/misctools)
 
-[`printtools`](functions/printtools.md)
+[`printtools`](functions/printtools)
 
-[`rangetools`](functions/rangetools.md)
+[`rangetools`](functions/rangetools)
 
-[`seqtools`](functions/seqtools.md)
+[`seqtools`](functions/seqtools)
 
-[`settools`](functions/settools.md)
+[`settools`](functions/settools)
 
-[`sortedtools`](functions/sortedtools.md)
+[`sortedtools`](functions/sortedtools)
 
-[`stattools`](functions/stattools.md)
+[`stattools`](functions/stattools)
 
-[`strtools`](functions/strtools.md)
+[`strtools`](functions/strtools)
 
-[`tabletools`](functions/tabletools.md)
+[`tabletools`](functions/tabletools)
 
 ## Data Structures
 
-[`defaultlist.DefaultList`](datastructures/defaultlist.md)
+[`defaultlist.DefaultList`](datastructures/defaultlist)
 
-[`disjointsets.DisjointSets`](datastructures/disjointsets.md)
+[`disjointsets.DisjointSets`](datastructures/disjointsets)
 
-[`segmenttree.SegmentTree`](datastructures/segmenttree.md)
+[`segmenttree.SegmentTree`](datastructures/segmenttree)
 
 ## CLI Tools
 
-[`dicttools.remap`](cli.md)
+[`dicttools.remap`](cli#dicttools.remap)
 
-[`jsontools.flatten`](cli.md)
+[`jsontools.flatten`](cli#jsontools.flatten)
 
-[`stattools.teststats`](cli.md)
+[`stattools.teststats`](cli#stattools.teststats)

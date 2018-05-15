@@ -13,7 +13,7 @@ Tools for flatten/unflatten a JSON object.
 - In default, only an array with nested dictionary is flatten. Instead, parameter `force` can be specified to flatten any array.
 
 !!! info
-    Different from `dicttools.flatten`, this function accepts any JSON object not limited to dictionary.
+    Different from [`dicttools.flatten`](dicttools/#flatten), this function accepts any JSON object not limited to dictionary.
 
 !!! warning
     An empty array disappears after being flatten.
