@@ -799,11 +799,11 @@
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/sortedtools.py">Source</a></p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>For most tools here except <code>issorted</code>, each sequence must already be sorted.</p>
+<p>For most tools here except <a href="#issorted"><code>issorted</code></a>, each sequence must already be sorted.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Tools in <code>seqtools</code> can also be applied here. <code>sortedtools</code> only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.</p>
+<p>Tools in <a href="../seqtools"><code>seqtools</code></a> can also be applied here. <code>sortedtools</code> only contains tools that either are unique to the concept of sorted sequence or have more efficient implementations.</p>
 </div>
 <h2 id="sequence-check">Sequence Check<a class="headerlink" href="#sequence-check" title="Permanent link">&para;</a></h2>
 <h3 id="issorted"><code>issorted</code><a class="headerlink" href="#issorted" title="Permanent link">&para;</a></h3>
@@ -878,11 +878,11 @@
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>This implementation is space efficient. If there are <script type="math/tex">n</script> sequences, only <script type="math/tex">O(n)</script> space is used.</p>
-<p><code>sortedtools.matchingfrequencies</code> is more efficient than <code>seqtools.matchingfrequencies</code>.</p>
+<p><code>sortedtools.matchingfrequencies</code> is more efficient than <a href="../seqtools#matchingfrequencies"><code>seqtools.matchingfrequencies</code></a>.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>For the frequency of each item within a single sequence, use <code>toolz.itertoolz.frequencies</code>.</p>
+<p>For the frequency of each item within a single sequence, use <a href="https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.frequencies"><code>toolz.itertoolz.frequencies</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(matchingfrequencies(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
@@ -902,7 +902,7 @@
 </ul>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>sortedmatch</code> is more efficient than <code>seqtools.match</code>.</p>
+<p><code>sortedmatch</code> is more efficient than <a href="../seqtools#match"><code>seqtools.match</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedmatch(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
@@ -924,7 +924,7 @@
 </ul>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>sortedjoin</code> is more efficient than <code>seqtools.join</code> and its underneath <code>toolz.itertools.join</code>.</p>
+<p><code>sortedjoin</code> is more efficient than <a href="../seqtools#join"><code>seqtools.join</code></a> and its underneath <a href="https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.join"><code>toolz.itertools.join</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedjoin(</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>

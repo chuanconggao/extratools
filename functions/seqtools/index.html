@@ -921,8 +921,8 @@
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py">Source</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>For tools specific to sequence without gap, please go to specific <a href="seqwithoutgap/">documentation</a>.</p>
-<p>For tools specific to sequence with gap, please go to specific <a href="seqwithgap/">documentation</a>.</p>
+<p>For tools specific to sequence without gap, please go to specific <a href="../seqtools/seqwithoutgap">documentation</a>.</p>
+<p>For tools specific to sequence with gap, please go to specific <a href="../seqtools/seqwithgap">documentation</a>.</p>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -942,8 +942,8 @@
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If each sequence is sorted, then optimized <code>sortedtools.matchingfrequencies</code> with the same API should be used for better efficiency.</p>
-<p>For the frequency of each item within a single sequence, use <code>toolz.itertoolz.frequencies</code>.</p>
+<p>If each sequence is sorted, then optimized <a href="../sortedtools#matchingfrequencies"><code>sortedtools.matchingfrequencies</code></a> with the same API should be used for better efficiency.</p>
+<p>For the frequency of each item within a single sequence, use <a href="https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.frequencies"><code>toolz.itertoolz.frequencies</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(matchingfrequencies(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">],</span>
@@ -968,7 +968,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If both two sequences are sorted, respectively, then optimized <code>sortedtools.sortedmatch</code> with the same API should be used for better efficiency.</p>
+<p>If both two sequences are sorted, respectively, then optimized <a href="../sortedtools#sortedmatch"><code>sortedtools.sortedmatch</code></a> with the same API should be used for better efficiency.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(match(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
@@ -984,7 +984,7 @@
 
 
 <h3 id="align"><code>align</code><a class="headerlink" href="#align" title="Permanent link">&para;</a></h3>
-<p><code>align(a, b, cost=None, bound=inf, default=None)</code> <a href="https://en.wikipedia.org/wiki/Sequence_alignment">aligns</a> two sequences <code>a</code> and <code>b</code>, such that the total cost of the aligned sequences given the pair-wise cost function <code>cost(x, y)</code> is minimized.</p>
+<p><code>align(a, b, cost=None, bound=inf, default=None)</code> computes the <a href="https://en.wikipedia.org/wiki/Sequence_alignment">alignment</a> two sequences <code>a</code> and <code>b</code>, such that the total cost of the aligned sequences given the pair-wise cost function <code>cost(x, y)</code> is minimized.</p>
 <ul>
 <li>
 <p>Assume the sequences after alignment are <code>a'</code> and <code>b'</code>. The total cost is <code>sum(cost(x, y) for x, y in zip(a', b'))</code>.</p>
@@ -1030,11 +1030,11 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If both two sequences are sorted according to <code>leftkey</code> and <code>rightkey</code>, respectively, then optimized <code>sortedtools.sortedjoin</code> with the same API should be used for better efficiency.</p>
+<p>If both two sequences are sorted according to <code>leftkey</code> and <code>rightkey</code>, respectively, then optimized <a href="../sortedtools#sortedjoin"><code>sortedtools.sortedjoin</code></a> with the same API should be used for better efficiency.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><code>join</code> is just a wrapper of <code>toolz.itertools.join</code> with the same more friendly API of <code>sortedtools.sortedjoin</code>.</p>
+<p><code>join</code> is just a wrapper of <a href="https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.join"><code>toolz.itertools.join</code></a> with the same more friendly API of <a href="../sortedtools#sortedjoin"><code>sortedtools.sortedjoin</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(join(</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span>    <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
@@ -1091,9 +1091,10 @@
 <p>Tools for encoding/decoding sequences.</p>
 <h3 id="compress"><code>compress</code><a class="headerlink" href="#compress" title="Permanent link">&para;</a></h3>
 <p><code>compress(data, key=None)</code> compresses the sequence by encoding continuous identical <code>Item</code> to <code>(Item, Count)</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</p>
-<ul>
-<li>Different from <a href="https://docs.python.org/3.6/library/itertools.html#itertools.compress"><code>itertools.compress</code></a>.</li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Different from <a href="https://docs.python.org/3.6/library/itertools.html#itertools.compress"><code>itertools.compress</code></a>.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(compress([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]))</span>
 <span style="color: #75715e"># [(1, 1), (2, 2), (3, 3), (4, 4)]</span>
 </pre></div>
