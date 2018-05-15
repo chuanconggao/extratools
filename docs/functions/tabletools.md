@@ -4,9 +4,9 @@
 
 Tools for table transformations.
 
-### `transpose(data)`
+### `transpose`
 
-Returns the transpose of table `data`, i.e., switch rows and columns.
+`transpose(data)` returns the transpose of table `data`, i.e., switch rows and columns.
 
 !!! tip
     Useful to switch table `data` from row-based to column-based and backwards.
@@ -22,9 +22,9 @@ list(transpose([
 #  [3, 6, 9]]
 ```
 
-### `mergecols(cols, default=None)`
+### `mergecols`
 
-Merges the columns in `cols` into a single column. Return `None` if there is conflict in any row.
+`mergecols(cols, default=None)` merges the columns in `cols` into a single column. Return `None` if there is conflict in any row.
 
 - A row has conflict if there are more than one valid values, where each valid value is not `None` or empty string.
 
@@ -54,21 +54,21 @@ mergecols(cols)
 
 Tools for processing CSV.
 
-### `loadcsv(path, delimiter=',')`
+### `loadcsv`
 
-Loads a CSV file, from either a file path or a file object.
+`loadcsv(path, delimiter=',')` loads a CSV file, from either a file path or a file object.
 
-### `dumpcsv(path, data, delimiter=',')`
+### `dumpcsv`
 
-Dumps a table `data` in CSV, to either a file path or a file object.
+`dumpcsv(path, data, delimiter=',')` dumps a table `data` in CSV, to either a file path or a file object.
 
 ## Parsing Text to Table
 
 Tools for parsing each line of text to a row in respective table.
 
-### `parse(lines, sep=None)`
+### `parse`
 
-Parse each line to a row by using separator `sep=None`.
+`parse(lines, sep=None)` parse each line to a row by using separator `sep=None`.
 
 !!! tip
     Check the builtin function [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split) for details of the behavior with `sep`.
@@ -82,9 +82,9 @@ list(parse([
 #  ['2',   'BOB', 'London']]
 ```
 
-### `parsebyregex(lines, regex)`
+### `parsebyregex`
 
-Parse each line to a row by using a regular expression `regex`, where each capturing group matches a column value.
+`parsebyregex(lines, regex)` parse each line to a row by using a regular expression `regex`, where each capturing group matches a column value.
 
 - `regex` can be either a regular expression string, or a regular expression object (compiled by either `re` or [`regex`](https://pypi.org/project/regex/)) for more advanced usage.
 

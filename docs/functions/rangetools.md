@@ -7,9 +7,9 @@
 
 Tools for statistics over ranges.
 
-### `histogram(thresholds, data, leftmost=-inf)`
+### `histogram`
 
-Computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
+`histogram(thresholds, data, leftmost=-inf)` computes the [histogram](https://en.wikipedia.org/wiki/Histogram) over all the floats in `data`.
 
 - The search space is divided by the thresholds of bins specified in `thresholds`.
 
@@ -34,9 +34,9 @@ histogram(
 
 Tools for querying ranges.
 
-### `rangequery(keyvalues, query, func=min)`
+### `rangequery`
 
-Efficiently finds the best value from the covered values in `keyvalues`, if each key in `keyvalues` is within the query range `query`.
+`rangequery(keyvalues, query, func=min)` efficiently finds the best value from the covered values in `keyvalues`, if each key in `keyvalues` is within the query range `query`.
 
 - `func` defines how the best value is computed, and defaults to `min` for minimum value.
 
@@ -55,27 +55,27 @@ rangequery(
 
 Tools for transformations over ranges.
 
-### `intersect(a, b)`
+### `intersect`
 
-Computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+`intersect(a, b)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
 
 ``` python
 intersect((0, 0.6), (0.4, 1))
 # (0.4, 0.6)
 ```
 
-### `union(a, b)`
+### `union`
 
-Computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+`union(a, b)` computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
 
 ``` python
 union((0, 0.6), (0.4, 1))
 # (0, 1)
 ```
 
-### `rangecover(whole, covered)`
+### `rangecover`
 
-Solves the variation of the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covered`.
+`rangecover(whole, covered)` solves the variation of the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe range `whole` as best as possible, using a subset of the covering ranges `covered`.
 
 !!! warning
     This is an approximate algorithm, which means the returned result is not always the best.
@@ -88,9 +88,9 @@ list(rangecover(
 # [(0, 0.4), (0.5, 0.8), (0.8, 1), (0.2, 0.5)]
 ```
 
-### `covers(covered)`
+### `covers`
 
-Merges the covered ranges `covered` to resolve any overlap.
+`covers(covered)` merges the covered ranges `covered` to resolve any overlap.
 
 !!! danger
     Covered ranges in `covered` must be sorted by the left side of each range.
@@ -100,9 +100,9 @@ list(covers([(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)]))
 # [(-inf, 0), (0.1, 0.2), (0.5, 0.9)]
 ```
 
-### `gaps(covered, whole=(-inf, inf))`
+### `gaps`
 
-Computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
+`gaps(covered, whole=(-inf, inf))` computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
 !!! danger
     Covered ranges in `covered` must be sorted by the left side of each range.

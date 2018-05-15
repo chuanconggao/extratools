@@ -8,9 +8,9 @@
 
 ## Sequence Check
 
-### `issorted(seq, key=None)`
+### `issorted`
 
-Returns if sequence `seq` is already sorted, optionally according to the key function `key`.
+`issorted(seq, key=None)` returns if sequence `seq` is already sorted, optionally according to the key function `key`.
 
 ``` python
 issorted([1, 2, 2, 3])
@@ -21,9 +21,9 @@ issorted([1, 2, 2, 3])
 
 Tools for matching sorted sequences.
 
-### `sortedcommon(a, b, key=None)`
+### `sortedcommon`
 
-Returns the common elements between `a` and `b`, optionally according to the key function `key`.
+`sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`, optionally according to the key function `key`.
 
 !!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
@@ -36,9 +36,9 @@ list(sortedcommon(
 # [2, 3]
 ```
 
-### `sortedalone(a, b, key=None)`
+### `sortedalone`
 
-Returns the elements not in both `a` and `b`, optionally according to the key function `key`.
+`sortedalone(a, b, key=None)` returns the elements not in both `a` and `b`, optionally according to the key function `key`.
 
 !!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
@@ -51,9 +51,9 @@ list(sortedalone(
 # [1, 2, 4, 4]
 ```
 
-### `sorteddiff(a, b, key=None)`
+### `sorteddiff`
 
-Returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
+`sorteddiff(a, b, key=None)` returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
 
 !!! success
     When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
@@ -66,9 +66,9 @@ list(sorteddiff(
 # [1, 2]
 ```
 
-### `issubsorted(a, b, key=None)`
+### `issubsorted`
 
-Checks if `a` is a sorted sub-sequence of `b`, optionally according to the key function `key`.
+`issubsorted(a, b, key=None)` checks if `a` is a sorted sub-sequence of `b`, optionally according to the key function `key`.
 
 - When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
 
@@ -80,9 +80,9 @@ issubsorted(
 # True
 ```
 
-### `matchingfrequencies(*seqs, key=None)`
+### `matchingfrequencies`
 
-Returns each item and the respective number of sequences in `seqs` contains it.
+`matchingfrequencies(*seqs, key=None)` returns each item and the respective number of sequences in `seqs` contains it.
 
 - Optional key function `key` can be specified.
 
@@ -107,9 +107,9 @@ list(matchingfrequencies(
 
 Tools for aligning and joining sorted sequences.
 
-### `sortedmatch(a, b, default=None)`
+### `sortedmatch`
 
-Matches two sorted sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
+`sortedmatch(a, b, default=None)` matches two sorted sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
 
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
@@ -129,9 +129,9 @@ list(sortedmatch(
 #  (None, 4)]
 ```
 
-### `sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
+### `sortedjoin`
 
-Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+`sortedjoin(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
 - Two sequences must be already sorted according to `leftkey` and `rightkey`, respectively.
 

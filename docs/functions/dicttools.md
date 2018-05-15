@@ -4,21 +4,21 @@
 
 Tools for inverting dictionaries.
 
-### `invert(d)`
+### `invert`
 
-Inverts `(Key, Value)` pairs to `(Value, Key)`.
-
-- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
-
-### `invert_multiple(d)`
-
-Inverts `(Key, List[Value])` pairs to `(Value, Key)`.
+`invert(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
 
 - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
-### `invert_safe(d)`
+### `invert_multiple`
 
-Inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+`invert_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
+
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+### `invert_safe`
+
+`invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
 
 - If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
 
@@ -26,9 +26,9 @@ Inverts `(Key, Value)` pairs to `(Value, List[Key])`.
 
 Tools for remapping elements.
 
-### `remap(data, mapping, key=None)`
+### `remap`
 
-Remaps each unique element in `data` to a new value from calling function `key`.
+`remap(data, mapping, key=None)` remaps each unique element in `data` to a new value from calling function `key`.
 
 - `mapping` is a dictionary recording all the mappings, optionally containing previous mappings to reuse.
 
@@ -43,9 +43,9 @@ db = [list(remap(doc, wordmap)) for doc in docs]
 
 Tools for indexing.
 
-### `invertedindex(seqs)`
+### `invertedindex`
 
-Creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
+`invertedindex(seqs)` creates an [inverted index](https://en.wikipedia.org/wiki/Inverted_index).
 
 - Each item's index is a list of `(ID, position)` pairs for all the sequences in `seqs` containing the item.
 
@@ -65,9 +65,9 @@ invertedindex(data)
 #  'e': [(0, 4), (1, 4)]}
 ```
 
-### `nextentries(data, entries)`
+### `nextentries`
 
-Scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
+`nextentries(data, entries)` scans the sequences in `data` from left to right after current entries `entries`, and returns each item and its respective following entries.
 
 - Each entry is a pair of `(ID, Position)` denoting the sequence ID and its respective matching position.
 
@@ -89,9 +89,9 @@ nextentries(data, entries)
 
 Tools for flatten/unflatten a dictionary.
 
-### `flatten(d, force=False)`
+### `flatten`
 
-Flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+`flatten(d, force=False)` flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
 - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
 

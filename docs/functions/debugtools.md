@@ -4,9 +4,9 @@
 
 Tools for debugging iterable sequence.
 
-### `delayediter(seq, delay=None)`
+### `delayediter`
 
-Delays the production of each item in `seq` by `delay` seconds.
+`delayediter(seq, delay=None)` delays the production of each item in `seq` by `delay` seconds.
 
 - In default, `delay=None` is disabled.
 
@@ -20,9 +20,9 @@ for v in delayediter(range(5), delay=1):
 # 01:11:25.568119 4
 ```
 
-### `timediter(seq)`
+### `timediter`
 
-Produces each item in `seq` and its respective timestamp when encountered.
+`timediter(seq)` produces each item in `seq` and its respective timestamp when encountered.
 
 ``` python
 for t, v in timediter(delayediter(range(5), delay=1)):
@@ -38,16 +38,16 @@ for t, v in timediter(delayediter(range(5), delay=1)):
 
 Tools for non-functional but useful system diagnosis tools.
 
-### `stopwatch()`
+### `stopwatch`
 
-Returns both the duration since program start and the duration since last call in seconds.
+`stopwatch()` returns both the duration since program start and the duration since last call in seconds.
 
 !!! warning
     The stopwatch only starts after `debugtools` is imported.
 
-### `peakmem()`
+### `peakmem`
 
-Returns the peak memory usage since program start.
+`peakmem()` returns the peak memory usage since program start.
 
 !!! danger
     In bytes on macOS, and in kilobytes on Linux.

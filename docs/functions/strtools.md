@@ -7,9 +7,9 @@
 
 Tools for string matching.
 
-### `commonsubstr(a, b)`
+### `commonsubstr`
 
-Finds the [longest common sub-string](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two strings `a` and `b`.
+`commonsubstr(a, b)` finds the [longest common sub-string](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two strings `a` and `b`.
 
 ``` python
 commonsubstr(
@@ -19,9 +19,9 @@ commonsubstr(
 # "abb"
 ```
 
-### `editdist(a, b, bound=inf)`
+### `editdist`
 
-Computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) between two strings `a` and `b`.
+`editdist(a, b, bound=inf)` computes the [edit distance](https://en.wikipedia.org/wiki/Edit_distance) between two strings `a` and `b`.
 
 - To speedup the computation, a threshold of maximum cost `bound=inf` can be specified. When there is no satisfying result, `None` is returned.
 
@@ -33,9 +33,9 @@ editdist(
 # 2
 ```
 
-### `tagstats(tags, lines, separator=None)`
+### `tagstats`
 
-Efficiently computes the number of lines containing each tag.
+`tagstats(tags, lines, separator=None)` efficiently computes the number of lines containing each tag.
 
 - `separator` is a regex to tokenize each string. In default when `separator` is `None`, each string is not tokenized.
 
@@ -54,9 +54,9 @@ tagstats(
 
 Tools for string transformations.
 
-### `str2grams(s, n, pad=None)`
+### `str2grams`
 
-Returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
+`str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
 
 - Optional padding at the start and end can be added by specifying `pad`.
 
@@ -72,9 +72,9 @@ list(str2grams("str2grams", 2, pad='#'))
 
 Tools for checksums.
 
-### `sha1sum(f)` , `sha256sum(f)`, `sha512sum(f)`, and `md5sum(f)`
+### `sha1sum` , `sha256sum`, `sha512sum`, and `md5sum`
 
-Compute the respective checksum, accepting string, bytes, text file object, and binary file object.
+`sha1sum(f)` , `sha256sum(f)`, `sha512sum(f)`, and `md5sum(f)` compute the respective checksum, accepting string, bytes, text file object, and binary file object.
 
 ``` python
 sha1sum("strtools")

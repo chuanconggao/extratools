@@ -4,9 +4,9 @@
 
 Tools for controlling printing destination.
 
-### `print2(*args, **kwargs)`
+### `print2`
 
-Redirects the output of `print` to standard error.
+`print2(*args, **kwargs)` redirects the output of `print` to standard error.
 
 !!! tip
     The same parameters of builtin `print` are accepted.
@@ -19,9 +19,9 @@ Tools for generating the intuitive string representation.
     Builtin function `repr` is used to print each item safely.
 
 
-### `iter2str(seq, limit=None)`
+### `iter2str`
 
-Converts an iterable sequence to string.
+`iter2str(seq, limit=None)` converts an iterable sequence to string.
 
 - If `limit` is specified, only print the first `limit` items. This is useful when `seq` is an infinite sequence.
 
@@ -34,9 +34,9 @@ iter2str(itertools.count(), limit=5)
 # '<0, 1, 2, 3, 4, ...>'
 ```
 
-### `alignment2str(*seqs, default=None, separator=' ')`
+### `alignment2str`
 
-Prints the alignment between sequences `seq`. `default=None` is used for labelling missing value from each sequences.
+`alignment2str(*seqs, default=None, separator=' ')` prints the alignment between sequences `seq`. `default=None` is used for labelling missing value from each sequences.
 
 - `separator` can be specified to separate every two values.
 
@@ -68,9 +68,9 @@ print(alignment2str(
 # 1 10 100     
 ```
 
-### `table2str(data, default=None, separator=" | ")`
+### `table2str`
 
-A thin wrapper of `alignment2str` to print a row-based table.
+`table2str(data, default=None, separator=" | ")` a thin wrapper of `alignment2str` to print a row-based table.
 
 !!! tip
     The default output format is compatible to Markdown format.
@@ -88,18 +88,18 @@ print(table2str([
 # 1 | 10 | 100 | 'New York'
 ```
 
-### `range2str(r)`
+### `range2str`
 
-Prints a range `r`.
+`range2str(r)` prints a range `r`.
 
 ``` python
 print(range2str((0, 1)))
 # [0, 1)
 ```
 
-### `sorted2str(seq, key=None)`
+### `sorted2str`
 
-Prints a sorted sequence `seq`, optionally according to the key function `key`.
+`sorted2str(seq, key=None)` prints a sorted sequence `seq`, optionally according to the key function `key`.
 
 ``` python
 print(sorted2str([1, 2, 2, 3]))

@@ -4,13 +4,13 @@
 
 Tools for statistics.
 
-### `medianabsdev(data)`
+### `medianabsdev`
 
-Computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation) of a sequence of floats.
+`medianabsdev(data)` computes the [median absolute deviation](https://en.wikipedia.org/wiki/Median_absolute_deviation) of a sequence of floats.
 
-### `entropy(data)`
+### `entropy`
 
-Computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a sequence of any items.
+`entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a sequence of any items.
 
 !!! tip
     You can also pass a dictionary of `(item, frequency)` as known frequency distribution to `data`.
@@ -19,21 +19,21 @@ Computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory
 
 Tools for binary classification.
 
-### `teststats(truths, predictions)`
+### `teststats`
 
-Matches the truth labels and the prediction labels. Return a tuples of `(tp, fp, tn, fn)` as [true positive, false positive, true negative, and false negative](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
+`teststats(truths, predictions)` matches the truth labels and the prediction labels. Return a tuples of `(tp, fp, tn, fn)` as [true positive, false positive, true negative, and false negative](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
 
-### `accuracy(tp, fp, tn, fn)`
+### `accuracy`
 
-Returns the [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
+`accuracy(tp, fp, tn, fn)` returns the [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers).
 
 !!! tip
     You can simply call `accuracy(*teststats(truths, predictions))`.
 
-### `precision(tp, fp, tn, fn)` and `recall(tp, fp, tn, fn)`
+### `precision` and `recall`
 
-Return the [precision and recall](https://en.wikipedia.org/wiki/Precision_and_recall).
+`precision(tp, fp, tn, fn)` and `recall(tp, fp, tn, fn)` return the [precision and recall](https://en.wikipedia.org/wiki/Precision_and_recall).
 
-### `f1(tp, fp, tn, fn, beta=1)`
+### `f1`
 
-Returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.
+`f1(tp, fp, tn, fn, beta=1)` returns the [F-1 measure](https://en.wikipedia.org/wiki/F1_score) in default, and returns the F-β measure when `beta` is specified.

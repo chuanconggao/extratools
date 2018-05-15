@@ -2,9 +2,9 @@
 
 Tools for matching sequences (including strings), with gaps allowed between matching items.
 
-### `bestsubseqwithgap(a, key)`
+### `bestsubseqwithgap`
 
-Finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
+`bestsubseqwithgap(a, key)` finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
 
 !!! warning
     This function reads the sequence at once.
@@ -14,9 +14,9 @@ bestsubseqwithgap([1, -2, 3, -4, 5, -6], sum)
 # [1, 3, 5]
 ```
 
-### `findallsubseqswithgap(a, b, overlap=False)`
+### `findallsubseqswithgap`
 
-Returns all the positions where `a` is a sub-sequence of `b`.
+`findallsubseqswithgap(a, b, overlap=False)` returns all the positions where `a` is a sub-sequence of `b`.
 
 - In default, no overlapping is allowed. You can change this behavior by specify `overlap`.
 
@@ -60,9 +60,9 @@ list(findallsubseqswithgap(
 #  [5, 6, 7]]
 ```
 
-### `findsubseqwithgap(a, b)`
+### `findsubseqwithgap`
 
-Returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
+`findsubseqwithgap(a, b)` returns the matching positions where `a` is a sub-sequence of `b`, where gaps are allowed, or `None` when not found.
 
 ``` python
 list(findsubseqwithgap(
@@ -72,9 +72,9 @@ list(findsubseqwithgap(
 # [0, 2, 4]
 ```
 
-### `issubseqwithgap(a, b)`
+### `issubseqwithgap`
 
-Checks if `a` is a sub-sequence of `b`, where gaps are allowed.
+`issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
 
 ``` python
 list(issubseqwithgap(
@@ -84,9 +84,9 @@ list(issubseqwithgap(
 # True
 ```
 
-### `commonsubseqwithgap(a, b)`
+### `commonsubseqwithgap`
 
-Finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
+`commonsubseqwithgap(a, b)` finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) among two sequences `a` and `b`, where gaps are allowed.
 
 !!! warning
     This function reads all sequences at once.
@@ -103,9 +103,9 @@ list(commonsubseqwithgap(
 
 Tools for enumerating sub-sequences with gap.
 
-### `enumeratesubseqswithgap(seq)`
+### `enumeratesubseqswithgap`
 
-Enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
+`enumeratesubseqswithgap(seq)` enumerates all of `seq`'s non-empty sub-sequences in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
 
 - Although `seq` is a sub-sequence of itself, it is not returned.
 

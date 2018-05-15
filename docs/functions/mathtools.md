@@ -2,9 +2,9 @@
 
 Tools for math.
 
-### `safediv(a, b)`
+### `safediv`
 
-Avoids the `division by zero` exception, by returning infinite with proper sign.
+`safediv(a, b)` avoids the `division by zero` exception, by returning infinite with proper sign.
 
 !!! info
     Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).

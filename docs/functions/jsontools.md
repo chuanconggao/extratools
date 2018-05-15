@@ -4,9 +4,9 @@
 
 Tools for flatten/unflatten a JSON object.
 
-### `flatten(data, force=False)`
+### `flatten`
 
-Flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+`flatten(data, force=False)` flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
 - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
 

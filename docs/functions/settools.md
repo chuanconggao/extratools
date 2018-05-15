@@ -4,18 +4,18 @@
 
 Tools for matching sets.
 
-### `bestsubset(a, key)`
+### `bestsubset`
 
-Finds the best sub-set of `a` that maximizes the key function `key`.
+`bestsubset(a, key)` finds the best sub-set of `a` that maximizes the key function `key`.
 
 ``` python
 bestsubset({1, -2, 3, -4, 5, -6}, sum)
 #          {1,     3,     5}
 ```
 
-### `setcover(whole, covered, key=len)`
+### `setcover`
 
-Solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe set `whole` as best as possible, using a subset of the covering sets `covered`.
+`setcover(whole, covered, key=len)` solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe set `whole` as best as possible, using a subset of the covering sets `covered`.
 
 - In default, the size of each set `len` is used as key function `key` to measure the coverage.
 
@@ -34,22 +34,22 @@ list(setcover(
 
 Tools for set operations.
 
-### `addtoset(s, x)`
+### `addtoset`
 
-Checks whether adding `x` to set `s` is successful.
+`addtoset(s, x)` checks whether adding `x` to set `s` is successful.
 
 ## Set Similarity
 
 Tools for set similarities.
 
-### `jaccard(a, b)`
+### `jaccard`
 
-Computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`.
+`jaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`.
 
-### `multisetjaccard(a, b)`
+### `multisetjaccard`
 
-Computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two multi-sets (Counters) `a` and `b`.
+`multisetjaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two multi-sets (Counters) `a` and `b`.
 
-### `weightedjaccard(a, b, key=sum)`
+### `weightedjaccard`
 
-Computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.
+`weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.

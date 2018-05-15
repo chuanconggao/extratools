@@ -17,9 +17,9 @@
 
 ## Sequence Matching
 
-### `matchingfrequencies(*seqs, key=None)`
+### `matchingfrequencies`
 
-Returns each item and the respective number of sequences in `seqs` contains it.
+`matchingfrequencies(*seqs, key=None)` returns each item and the respective number of sequences in `seqs` contains it.
 
 - Optional key function `key` can be specified.
 
@@ -42,9 +42,9 @@ list(matchingfrequencies(
 
 Tools for aligning and joining sequences.
 
-### `match(a, b, default=None)`
+### `match`
 
-Matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
+`match(a, b, default=None)` matches two sequences `a` and `b` in pairs, such that the total number of matching pairs is maximized.
 
 - If there are multiple alignments having the same number, the leftmost one is returned.
 
@@ -67,9 +67,9 @@ list(match(
 #  (1, 1)]
 ```
 
-### `align(a, b, cost=None, bound=inf, default=None)`
+### `align`
 
-[Aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
+`align(a, b, cost=None, bound=inf, default=None)` [aligns](https://en.wikipedia.org/wiki/Sequence_alignment) two sequences `a` and `b`, such that the total cost of the aligned sequences given the pair-wise cost function `cost(x, y)` is minimized.
 
 - Assume the sequences after alignment are `a'` and `b'`. The total cost is `sum(cost(x, y) for x, y in zip(a', b'))`.
 
@@ -100,9 +100,9 @@ align(
 # None
 ```
 
-### `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)`
+### `join`
 
-Joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
+`join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
 !!! warning
     This function reads the first sequence at once.
@@ -135,9 +135,9 @@ list(join(
 
 Tools for comparing sequences.
 
-### `productcmp(x, y)`
+### `productcmp`
 
-Compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
+`productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
 
 - Throw exception if `x` and `y` have different lengths.
 
@@ -159,9 +159,9 @@ productcmp(
 
 Tools for sorting sequences.
 
-### `sortedbyrank(data, ranks, reverse=False)`
+### `sortedbyrank`
 
-Returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
 
 ``` python
 sortedbyrank(
@@ -175,9 +175,9 @@ sortedbyrank(
 
 Tools for encoding/decoding sequences.
 
-### `compress(data, key=None)`
+### `compress`
 
-Compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+`compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 - Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
 
@@ -186,18 +186,18 @@ list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [(1, 1), (2, 2), (3, 3), (4, 4)]
 ```
 
-### `decompress(data)`
+### `decompress`
 
-Decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+`decompress(data)` decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
 list(decompress([(1, 1), (2, 2), (3, 3), (4, 4)]))
 # [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 ```
 
-### `todeltas(data, op=operator.sub)`
+### `todeltas`
 
-Compresses the sequence by encoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
+`todeltas(data, op=operator.sub)` compresses the sequence by encoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
 
 - For custom type of item, either define the `-` operator or specify the `op` function computing the difference.
 
@@ -206,9 +206,9 @@ list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [1, 1, 0, 1, 0, 0, 1, 0, 0, 0]
 ```
 
-### `fromdeltas(data, op=operator.add)`
+### `fromdeltas`
 
-Decompresses the sequence by decoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
+`fromdeltas(data, op=operator.add)` decompresses the sequence by decoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
 
 - For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
 
@@ -221,9 +221,9 @@ list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
 
 Tools for converting the type of sequence.
 
-### `iter2seq(iterable, target=tuple)`
+### `iter2seq`
 
-Converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
+`iter2seq(iterable, target=tuple)` converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
 
 !!! warning
     This function reads the sequence at once.
