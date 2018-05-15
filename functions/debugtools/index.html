@@ -296,15 +296,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#delayediterseq-delaynone" title="delayediter(seq, delay=None)" class="md-nav__link">
-    delayediter(seq, delay=None)
+  <a href="#delayediter" title="delayediter" class="md-nav__link">
+    delayediter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#timediterseq" title="timediter(seq)" class="md-nav__link">
-    timediter(seq)
+  <a href="#timediter" title="timediter" class="md-nav__link">
+    timediter
   </a>
   
 </li>
@@ -323,15 +323,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stopwatch" title="stopwatch()" class="md-nav__link">
-    stopwatch()
+  <a href="#stopwatch" title="stopwatch" class="md-nav__link">
+    stopwatch
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#peakmem" title="peakmem()" class="md-nav__link">
-    peakmem()
+  <a href="#peakmem" title="peakmem" class="md-nav__link">
+    peakmem
   </a>
   
 </li>
@@ -648,15 +648,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#delayediterseq-delaynone" title="delayediter(seq, delay=None)" class="md-nav__link">
-    delayediter(seq, delay=None)
+  <a href="#delayediter" title="delayediter" class="md-nav__link">
+    delayediter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#timediterseq" title="timediter(seq)" class="md-nav__link">
-    timediter(seq)
+  <a href="#timediter" title="timediter" class="md-nav__link">
+    timediter
   </a>
   
 </li>
@@ -675,15 +675,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stopwatch" title="stopwatch()" class="md-nav__link">
-    stopwatch()
+  <a href="#stopwatch" title="stopwatch" class="md-nav__link">
+    stopwatch
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#peakmem" title="peakmem()" class="md-nav__link">
-    peakmem()
+  <a href="#peakmem" title="peakmem" class="md-nav__link">
+    peakmem
   </a>
   
 </li>
@@ -717,8 +717,8 @@
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py">Source</a></p>
 <h2 id="iterable">Iterable<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h2>
 <p>Tools for debugging iterable sequence.</p>
-<h3 id="delayediterseq-delaynone"><code>delayediter(seq, delay=None)</code><a class="headerlink" href="#delayediterseq-delaynone" title="Permanent link">&para;</a></h3>
-<p>Delays the production of each item in <code>seq</code> by <code>delay</code> seconds.</p>
+<h3 id="delayediter"><code>delayediter</code><a class="headerlink" href="#delayediter" title="Permanent link">&para;</a></h3>
+<p><code>delayediter(seq, delay=None)</code> delays the production of each item in <code>seq</code> by <code>delay</code> seconds.</p>
 <ul>
 <li>In default, <code>delay=None</code> is disabled.</li>
 </ul>
@@ -732,8 +732,8 @@
 </pre></div>
 
 
-<h3 id="timediterseq"><code>timediter(seq)</code><a class="headerlink" href="#timediterseq" title="Permanent link">&para;</a></h3>
-<p>Produces each item in <code>seq</code> and its respective timestamp when encountered.</p>
+<h3 id="timediter"><code>timediter</code><a class="headerlink" href="#timediter" title="Permanent link">&para;</a></h3>
+<p><code>timediter(seq)</code> produces each item in <code>seq</code> and its respective timestamp when encountered.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">t,</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">timediter(delayediter(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">delay</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)):</span>
     <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fromtimestamp(t)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">time(),</span> <span style="color: #f8f8f2">v)</span>
 <span style="color: #75715e"># 01:13:37.181460 0</span>
@@ -746,14 +746,14 @@
 
 <h2 id="system-diagnosis">System Diagnosis<a class="headerlink" href="#system-diagnosis" title="Permanent link">&para;</a></h2>
 <p>Tools for non-functional but useful system diagnosis tools.</p>
-<h3 id="stopwatch"><code>stopwatch()</code><a class="headerlink" href="#stopwatch" title="Permanent link">&para;</a></h3>
-<p>Returns both the duration since program start and the duration since last call in seconds.</p>
+<h3 id="stopwatch"><code>stopwatch</code><a class="headerlink" href="#stopwatch" title="Permanent link">&para;</a></h3>
+<p><code>stopwatch()</code> returns both the duration since program start and the duration since last call in seconds.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The stopwatch only starts after <code>debugtools</code> is imported.</p>
 </div>
-<h3 id="peakmem"><code>peakmem()</code><a class="headerlink" href="#peakmem" title="Permanent link">&para;</a></h3>
-<p>Returns the peak memory usage since program start.</p>
+<h3 id="peakmem"><code>peakmem</code><a class="headerlink" href="#peakmem" title="Permanent link">&para;</a></h3>
+<p><code>peakmem()</code> returns the peak memory usage since program start.</p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>In bytes on macOS, and in kilobytes on Linux.</p>
