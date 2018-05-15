@@ -26,7 +26,6 @@ markdown_extensions:
         pygments_style: monokai
         noclasses: true
     - footnotes
-    - nl2br
     - smarty
     - mdx_math:
         enable_dollar_delimiter: true
@@ -39,6 +38,8 @@ google_analytics: ["UA-119119396-1", "www.chuancong.site"]
 
 pages:
     - Index: index.md
+
+    - README: README.md
 
     - Functions:
         - debugtools: functions/debugtools.md
