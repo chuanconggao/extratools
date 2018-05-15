@@ -517,15 +517,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#precision-and-recall" title="precision and recall" class="md-nav__link">
-    precision and recall
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f1" title="f1" class="md-nav__link">
-    f1
+  <a href="#precision-recall-and-f1" title="precision, recall, and f1" class="md-nav__link">
+    precision, recall, and f1
   </a>
   
 </li>
@@ -715,15 +708,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#precision-and-recall" title="precision and recall" class="md-nav__link">
-    precision and recall
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f1" title="f1" class="md-nav__link">
-    f1
+  <a href="#precision-recall-and-f1" title="precision, recall, and f1" class="md-nav__link">
+    precision, recall, and f1
   </a>
   
 </li>
@@ -763,7 +749,7 @@
 <p><code>entropy(data)</code> computes the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> of a sequence of any items.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can also pass a dictionary of <code>(item, frequency)</code> as known frequency distribution to <code>data</code>.</p>
+<p>You can also pass a dictionary of <code>(item, frequency)</code> as known frequency distribution as <code>data</code>.</p>
 </div>
 <h2 id="binary-classification">Binary Classification<a class="headerlink" href="#binary-classification" title="Permanent link">&para;</a></h2>
 <p>Tools for binary classification.</p>
@@ -775,9 +761,8 @@
 <p class="admonition-title">Tip</p>
 <p>You can simply call <code>accuracy(*teststats(truths, predictions))</code>.</p>
 </div>
-<h3 id="precision-and-recall"><code>precision</code> and <code>recall</code><a class="headerlink" href="#precision-and-recall" title="Permanent link">&para;</a></h3>
+<h3 id="precision-recall-and-f1"><code>precision</code>, <code>recall</code>, and <code>f1</code><a class="headerlink" href="#precision-recall-and-f1" title="Permanent link">&para;</a></h3>
 <p><code>precision(tp, fp, tn, fn)</code> and <code>recall(tp, fp, tn, fn)</code> return the <a href="https://en.wikipedia.org/wiki/Precision_and_recall">precision and recall</a>.</p>
-<h3 id="f1"><code>f1</code><a class="headerlink" href="#f1" title="Permanent link">&para;</a></h3>
 <p><code>f1(tp, fp, tn, fn, beta=1)</code> returns the <a href="https://en.wikipedia.org/wiki/F1_score">F<script type="math/tex">_1</script> measure</a> in default, and returns the F<script type="math/tex">_\beta</script> measure when <code>beta</code> is specified.</p>
                 
                   

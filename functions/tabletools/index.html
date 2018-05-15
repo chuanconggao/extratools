@@ -801,7 +801,7 @@
 
 
 <h3 id="mergecols"><code>mergecols</code><a class="headerlink" href="#mergecols" title="Permanent link">&para;</a></h3>
-<p><code>mergecols(cols, default=None)</code> merges the columns in <code>cols</code> into a single column. Return <code>None</code> if there is conflict in any row.</p>
+<p><code>mergecols(cols, default=None)</code> merges the columns in <code>cols</code> into a single column. Returns <code>None</code> if there is conflict in any row.</p>
 <ul>
 <li>
 <p>A row has conflict if there are more than one valid values, where each valid value is not <code>None</code> or empty string.</p>
@@ -820,9 +820,9 @@
 <span style="color: #75715e"># Merge the last two columns.</span>
 <span style="color: #f8f8f2">mergecols(cols[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:])</span>
 <span style="color: #75715e"># [2,</span>
-   <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
-   <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
-   <span style="color: #f8f8f2">None]</span>
+<span style="color: #75715e">#  1,</span>
+<span style="color: #75715e">#  1,</span>
+<span style="color: #75715e">#  None]</span>
 
 <span style="color: #75715e"># Merge all three columns.</span>
 <span style="color: #f8f8f2">mergecols(cols)</span>
