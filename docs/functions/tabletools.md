@@ -68,7 +68,7 @@ Tools for parsing each line of text to a row in respective table.
 
 ### `parse`
 
-`parse(lines, sep=None)` parse each line to a row by using separator `sep=None`.
+`parse(lines, sep=None)` parses each line to a row by using separator `sep=None`.
 
 !!! tip
     Check the builtin function [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split) for details of the behavior with `sep`.
@@ -84,7 +84,7 @@ list(parse([
 
 ### `parsebyregex`
 
-`parsebyregex(lines, regex)` parse each line to a row by using a regular expression `regex`, where each capturing group matches a column value.
+`parsebyregex(lines, regex)` parses each line to a row by using a regular expression `regex`, where each capturing group matches a column value.
 
 - `regex` can be either a regular expression string, or a regular expression object (compiled by either `re` or [`regex`](https://pypi.org/project/regex/)) for more advanced usage.
 
@@ -107,4 +107,31 @@ list(parsebyregex(
 # [('1',   'ALICE',    'Pairs'),
 #  ('2',     'BOB',   'London'),
 #  ('3', 'CARL JR', 'New York')]
+```
+
+### `parsebyregexes`
+
+`parsebyregexes(lines, regexes)` parses each line to a row by using a list of regular expressions `regexes`, where each regular expression matches a column value.
+
+- Each regular expression of `regexes` can be either a regular expression string, or a regular expression object (compiled by either `re` or [`regex`](https://pypi.org/project/regex/)) for more advanced usage.
+
+!!! tip
+    Compatible third party library [`regex`](https://pypi.org/project/regex/) is used instead of standard library `re`, to support advanced unicode features.
+
+``` python
+list(parsebyregexes(
+    [
+        "1 ALICE Pairs",
+        "2 BOB London",
+        "3 CARL JR New York"
+    ],
+    [
+        r"\b\d\b",
+        r"\b[A-Z]+(?:\s+[A-Z]+)*\b",
+        r"\b\S.+\b"
+    ]
+))
+# [['1',   'ALICE',    'Pairs'],
+#  ['2',     'BOB',   'London'],
+#  ['3', 'CARL JR', 'New York']]
 ```

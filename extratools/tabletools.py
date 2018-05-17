@@ -55,3 +55,21 @@ def parsebyregex(lines: Iterable[str], regex: Any) -> Table:
 
     for line in lines:
         yield r.fullmatch(line).groups(default="")
+
+
+def parsebyregexes(lines: Iterable[str], regexes: Any) -> Table:
+    regexes = [
+        re.compile(regex) if isinstance(regex, str) else regex
+        for regex in regexes
+    ]
+
+    for line in lines:
+        vals = [None] * len(regexes)
+
+        start = 0
+        for i, regex in enumerate(regexes):
+            m = regex.search(line, start)
+            vals[i] = m.group(0)
+            start = m.end()
+
+        yield vals
