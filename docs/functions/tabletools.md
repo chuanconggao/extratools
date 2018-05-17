@@ -106,7 +106,7 @@ list(parse([
 #  ['2',   'BOB', 'London']]
 ```
 
-### `parseasmarkdown`
+### `parsebymarkdown`
 
 `parsebymarkdown(text)` parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
