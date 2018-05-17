@@ -1081,10 +1081,24 @@
 
 
 <h3 id="templateseq"><code>templateseq</code><a class="headerlink" href="#templateseq" title="Permanent link">&para;</a></h3>
-<p><code>templateseq(seqs, default=None)</code> finds the common template of all the sequences <code>seqs</code>. <code>default=None</code> is used to denote any placeholder sub-sequence.</p>
+<p><code>templateseq(seqs, default=None, simple=True)</code> finds the common template of all the sequences <code>seqs</code>. <code>default=None</code> is used to denote any placeholder sub-sequence.</p>
+<ul>
+<li>
+<p>For better performance, option <code>simple</code> is enabled in default for only one scan of the sequences. However, it may work incorrectly for more complex template, which is:</p>
+<ul>
+<li>
+<p>Any part of the template appears more than once in the same sequence,</p>
+</li>
+<li>
+<p>Any part of the template does not always appear before or after than another according to the same order part among sequences.</p>
+</li>
+</ul>
+</li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This function reads all the sequences at once.</p>
+<p>This function reads all the sequences more than once when <code>simple = False</code>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(templateseq((</span>
     <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
@@ -1094,6 +1108,35 @@
     <span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;*&#39;</span><span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># [&#39;*&#39;, &#39;likes&#39;, &#39;*&#39;, &#39;and&#39;, &#39;*&#39;, &#39;!&#39;]</span>
+
+<span style="color: #f8f8f2">list(templateseq((</span>
+    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&quot;Alice likes tea and coffee !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Bob likes sushi and ramen !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Elisa or Anna likes icecream and cake and cookie !&quot;</span>
+    <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;*&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">simple</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">False))</span>
+<span style="color: #75715e"># [&#39;*&#39;, &#39;likes&#39;, &#39;*&#39;, &#39;and&#39;, &#39;*&#39;, &#39;!&#39;]</span>
+
+<span style="color: #75715e"># For more complex data.</span>
+<span style="color: #f8f8f2">list(templateseq((</span>
+    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&quot;! Alice likes tea and coffee ! !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Bob likes sushi and ramen ! !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Elisa or Anna likes icecream and cake and cookie ! !&quot;</span>
+    <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;*&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># Incorrect template.</span>
+<span style="color: #75715e"># [&#39;*&#39;, &#39;likes&#39;, &#39;*&#39;, &#39;and&#39;, &#39;*&#39;]</span>
+
+<span style="color: #f8f8f2">list(templateseq((</span>
+    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&quot;! Alice likes tea and coffee ! !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Bob likes sushi and ramen ! !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Elisa or Anna likes icecream and cake and cookie ! !&quot;</span>
+    <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;*&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">simple</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">False))</span>
+<span style="color: #75715e"># [&#39;*&#39;, &#39;likes&#39;, &#39;*&#39;, &#39;and&#39;, &#39;*&#39;, &#39;!&#39;, &#39;!&#39;]</span>
 </pre></div>
 
 
