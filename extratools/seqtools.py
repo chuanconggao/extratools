@@ -16,7 +16,7 @@ from toolz import itertoolz
 from toolz.itertoolz import sliding_window, unique
 
 from .misctools import cmp
-from .dicttools import nextentries
+from .dicttools import invertedindex, nextentries
 from .__join import join
 
 def iter2seq(a: Iterable[T], target=tuple) -> Sequence[T]:
@@ -396,3 +396,38 @@ def partitionbysubseqs(subseqs: Iterable[Iterable[T]], seq: Iterable[T]) -> Iter
 
     if lastj < i:
         yield seq[lastj:i]
+
+
+def templateseq(seqs: Iterable[Iterable[T]], default: Any = None) -> Iterable:
+    safeseqs = iter2seq(iter2seq(seq) for seq in seqs)
+    l = len(safeseqs)
+
+    lastentries = [(i, -1) for i, _ in enumerate(safeseqs)]
+
+    for k, entries in sorted(
+            filter(
+                lambda p: len(p[1]) == l,
+                invertedindex(safeseqs).items()
+            ),
+            key=lambda p: p[1]
+        ):
+        conflict = False
+        for (_, x), (_, y) in zip(lastentries, entries):
+            if x + 1 > y:
+                conflict = True
+                break
+
+            if x + 1 < y:
+                yield default
+                break
+
+        if conflict:
+            continue
+
+        yield k
+        lastentries = entries
+
+    for (_, x), seq in zip(lastentries, safeseqs):
+        if x + 1 < len(seq):
+            yield default
+            break

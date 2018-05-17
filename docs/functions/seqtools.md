@@ -131,6 +131,24 @@ list(join(
 #  (-5, 5)]
 ```
 
+### `templateseq`
+
+`templateseq(seqs, default=None)` finds the common template of all the sequences `seqs`. `default=None` is used to denote any placeholder sub-sequence.
+
+!!! warning
+    This function reads all the sequences at once.
+
+``` python
+list(templateseq((
+    s.split() for s in [
+        "Alice likes tea and coffee !",
+        "Bob likes sushi and ramen !",
+        "Elisa or Anna likes icecream and cake and cookie !"
+    ]
+), default='*'))
+# ['*', 'likes', '*', 'and', '*', '!']
+```
+
 ## Sequence Comparison
 
 Tools for comparing sequences.

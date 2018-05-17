@@ -61,7 +61,7 @@ def invertedindex(seqs: Iterable[Sequence[T]], entries: Entries = None) -> Mappi
     return index
 
 
-def nextentries(data: List[List[T]], entries: Entries) -> Mapping[T, Entries]:
+def nextentries(data: Sequence[Sequence[T]], entries: Entries) -> Mapping[T, Entries]:
     return invertedindex(
         (data[i][lastpos + 1:] for i, lastpos in entries),
         entries
