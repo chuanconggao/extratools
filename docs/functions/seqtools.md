@@ -133,10 +133,18 @@ list(join(
 
 ### `templateseq`
 
-`templateseq(seqs, default=None)` finds the common template of all the sequences `seqs`. `default=None` is used to denote any placeholder sub-sequence.
+`templateseq(seqs, default=None, simple=True)` finds the common template of all the sequences `seqs`. `default=None` is used to denote any placeholder sub-sequence.
+
+- For better performance, option `simple` is enabled in default for only one scan of the sequences. However, it may work incorrectly for more complex template, which is:
+
+    - Any part of the template appears more than once in the same sequence,
+    
+    - Any part of the template does not always appear before or after than another according to the same order part among sequences.
 
 !!! warning
     This function reads all the sequences at once.
+
+    This function reads all the sequences more than once when `simple = False`.
 
 ``` python
 list(templateseq((
@@ -147,6 +155,35 @@ list(templateseq((
     ]
 ), default='*'))
 # ['*', 'likes', '*', 'and', '*', '!']
+
+list(templateseq((
+    s.split() for s in [
+        "Alice likes tea and coffee !",
+        "Bob likes sushi and ramen !",
+        "Elisa or Anna likes icecream and cake and cookie !"
+    ]
+), default='*', simple=False))
+# ['*', 'likes', '*', 'and', '*', '!']
+
+# For more complex data.
+list(templateseq((
+    s.split() for s in [
+        "! Alice likes tea and coffee ! !",
+        "Bob likes sushi and ramen ! !",
+        "Elisa or Anna likes icecream and cake and cookie ! !"
+    ]
+), default='*'))
+# Incorrect template.
+# ['*', 'likes', '*', 'and', '*']
+
+list(templateseq((
+    s.split() for s in [
+        "! Alice likes tea and coffee ! !",
+        "Bob likes sushi and ramen ! !",
+        "Elisa or Anna likes icecream and cake and cookie ! !"
+    ]
+), default='*', simple=False))
+# ['*', 'likes', '*', 'and', '*', '!', '!']
 ```
 
 ## Sequence Comparison

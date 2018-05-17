@@ -398,34 +398,62 @@ def partitionbysubseqs(subseqs: Iterable[Iterable[T]], seq: Iterable[T]) -> Iter
         yield seq[lastj:i]
 
 
-def templateseq(seqs: Iterable[Iterable[T]], default: Any = None) -> Iterable:
+def templateseq(seqs: Iterable[Iterable[T]], default: Any = None, simple: bool = True) -> Iterable:
     safeseqs = iter2seq(iter2seq(seq) for seq in seqs)
     l = len(safeseqs)
 
     lastentries = [(i, -1) for i, _ in enumerate(safeseqs)]
 
-    for k, entries in sorted(
-            filter(
-                lambda p: len(p[1]) == l,
-                invertedindex(safeseqs).items()
-            ),
-            key=lambda p: p[1]
-        ):
-        conflict = False
-        for (_, x), (_, y) in zip(lastentries, entries):
-            if x + 1 > y:
-                conflict = True
+    key = lambda p: sum(
+        y - x
+        for (_, x), (_, y) in zip(lastentries, p[1])
+    )
+
+    if simple:
+        for k, entries in sorted(
+                filter(
+                    lambda p: len(p[1]) == l,
+                    invertedindex(safeseqs).items()
+                ),
+                key=key
+            ):
+            conflict = False
+            for (_, x), (_, y) in zip(lastentries, entries):
+                if x + 1 > y:
+                    conflict = True
+                    break
+
+                if x + 1 < y:
+                    yield default
+                    break
+
+            if conflict:
+                continue
+
+            yield k
+            lastentries = entries
+    else:
+        while True:
+            k, entries = min(
+                filter(
+                    lambda p: len(p[1]) == l,
+                    nextentries(safeseqs, lastentries).items()
+                ),
+                key=key,
+                default=(None, None)
+            )
+
+            if k is None:
                 break
 
-            if x + 1 < y:
+            if any(
+                    x + 1 < y
+                    for (_, x), (_, y) in zip(lastentries, entries)
+                ):
                 yield default
-                break
 
-        if conflict:
-            continue
-
-        yield k
-        lastentries = entries
+            yield k
+            lastentries = entries
 
     for (_, x), seq in zip(lastentries, safeseqs):
         if x + 1 < len(seq):
