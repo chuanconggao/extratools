@@ -453,6 +453,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#templateseq" title="templateseq" class="md-nav__link">
+    templateseq
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -803,6 +810,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#templateseq" title="templateseq" class="md-nav__link">
+    templateseq
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1063,6 +1077,23 @@
 <span style="color: #75715e">#  (-4, 4),</span>
 <span style="color: #75715e">#  (-5, 5),</span>
 <span style="color: #75715e">#  (-5, 5)]</span>
+</pre></div>
+
+
+<h3 id="templateseq"><code>templateseq</code><a class="headerlink" href="#templateseq" title="Permanent link">&para;</a></h3>
+<p><code>templateseq(seqs, default=None)</code> finds the common template of all the sequences <code>seqs</code>. <code>default=None</code> is used to denote any placeholder sub-sequence.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function reads all the sequences at once.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(templateseq((</span>
+    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&quot;Alice likes tea and coffee !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Bob likes sushi and ramen !&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Elisa or Anna likes icecream and cake and cookie !&quot;</span>
+    <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;*&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [&#39;*&#39;, &#39;likes&#39;, &#39;*&#39;, &#39;and&#39;, &#39;*&#39;, &#39;!&#39;]</span>
 </pre></div>
 
 
