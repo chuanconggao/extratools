@@ -455,7 +455,8 @@ def templateseq(seqs: Iterable[Iterable[T]], default: Any = None, simple: bool =
             yield k
             lastentries = entries
 
-    for (_, x), seq in zip(lastentries, safeseqs):
-        if x + 1 < len(seq):
-            yield default
-            break
+    if any(
+            x + 1 < len(seq)
+            for (_, x), seq in zip(lastentries, safeseqs)
+        ):
+        yield default

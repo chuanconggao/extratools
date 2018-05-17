@@ -146,6 +146,9 @@ list(join(
 
     This function reads all the sequences more than once when `simple = False`.
 
+!!! tip
+    Essentially, each template is a closed sequential pattern covering all the sequences. Please check [PrefixSpan-Py](https://github.com/chuanconggao/PrefixSpan-py) for more advanced scenarios.
+
 ``` python
 list(templateseq((
     s.split() for s in [
