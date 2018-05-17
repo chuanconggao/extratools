@@ -6,7 +6,9 @@ T = TypeVar('T')
 
 import csv
 from io import TextIOBase
+import itertools
 import regex as re
+from .seqtools import iter2seq
 
 Table = Iterable[Union[List[T], Tuple[T]]]
 
@@ -29,13 +31,13 @@ def dumpcsv(path: Union[str, TextIOBase], data: Table, delimiter: str = ',') -> 
         writer.writerow(row)
 
 
-def mergecols(cols: Table, default=None) -> Optional[List[T]]:
+def mergecols(cols: Table, default=None, blank=None) -> Optional[List[T]]:
     mergedcol = []
 
     for vals in zip(*cols):
         mergedvals = [
             val for val in vals
-            if val is not None and val != ""
+            if val is not None and str(val).strip(blank) != ""
         ]
         if len(mergedvals) > 1:
             return None
@@ -45,9 +47,38 @@ def mergecols(cols: Table, default=None) -> Optional[List[T]]:
     return mergedcol
 
 
+def trim(table: Table, blank=None) -> Table:
+    def isempty(v):
+        return v is None or str(v).strip(blank) == ""
+
+    table = iter2seq(table)
+
+    nonemptyflags = [
+        any(not isempty(v) for v in col)
+        for col in transpose(table)
+    ]
+
+    for row in table:
+        if all(isempty(v) for v in row):
+            continue
+
+        yield list(itertools.compress(row, nonemptyflags))
+
+
 def parse(lines: Iterable[str], sep=None) -> Table:
     for line in lines:
         yield line.split(sep)
+
+
+def parsebymarkdown(text: str) -> Table:
+    for row in trim(
+            parse(
+                filter(lambda line: line, text.split('\n')),
+                sep='|'
+            ),
+            blank=" \t-:"
+        ):
+        yield list(map(str.strip, row))
 
 
 def parsebyregex(lines: Iterable[str], regex: Any) -> Table:

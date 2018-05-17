@@ -73,7 +73,7 @@ print(alignment2str(
 `table2str(data, default=None, separator=" | ")` a thin wrapper of `alignment2str` to print a row-based table.
 
 !!! tip
-    The default output format is compatible to [Markdown](https://spec.commonmark.org/) format.
+    The default output format is compatible to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
 ``` python
 print(table2str([

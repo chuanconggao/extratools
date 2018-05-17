@@ -24,11 +24,16 @@ list(transpose([
 
 ### `mergecols`
 
-`mergecols(cols, default=None)` merges the columns in `cols` into a single column. Returns `None` if there is conflict in any row.
+`mergecols(cols, default=None, blank=None)` merges the columns in `cols` into a single column. Returns `None` if there is conflict in any row.
 
-- A row has conflict if there are more than one valid values, where each valid value is not `None` or empty string.
+- A row has conflict if there are more than one valid values, where each valid value is not `None` or empty.
 
-- `default` is a place holder when there are no valid value in one row.
+    - `blank=None` is a list of characters denoting empty value. Default to whitespace characters.
+
+- `default` is a placeholder when there are no valid value in one row.
+
+!!! tip
+    Check the builtin function [`str.strip`](https://docs.python.org/3/library/stdtypes.html#str.strip) for details of the behavior with `blank`.
 
 ``` python
 cols = list(transpose([
@@ -48,6 +53,25 @@ mergecols(cols[1:])
 # Merge all three columns.
 mergecols(cols)
 # None
+```
+
+### `trim`
+
+`trim(table, blank=None`) removes any empty column or row.
+
+- `blank=None` is a list of characters denoting empty value. Default to whitespace characters.
+
+!!! tip
+    Check the builtin function [`str.strip`](https://docs.python.org/3/library/stdtypes.html#str.strip) for details of the behavior with `blank`.
+
+``` python
+list(trim([
+    ['', 'a', 'b'],
+    ['', '-', '-'],
+    ['', 'c', 'd']
+], blank='-'))
+# [['a', 'b'],
+#  ['c', 'd']]
 ```
 
 ## CSV
@@ -80,6 +104,20 @@ list(parse([
 ]))
 # [['1', 'ALICE',  'Pairs'],
 #  ['2',   'BOB', 'London']]
+```
+
+### `parseasmarkdown`
+
+`parsebymarkdown(text)` parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
+
+``` python
+list(parseasmarkdown("""
+| foo | bar |
+| --- | --- |
+| baz | bim |
+"""))
+# [['foo', 'bar'],
+#  ['baz', 'bim']]
 ```
 
 ### `parsebyregex`
