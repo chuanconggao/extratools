@@ -92,16 +92,25 @@ Tools for parsing each line of text to a row in respective table.
 
 ### `parse`
 
-`parse(lines, sep=None)` parses each line to a row by using separator `sep=None`.
+`parse(lines, sep=None, useregex=False)` parses each line to a row by using separator `sep=None`.
+
+- In default, `sep` is a plain string. When setting `useregex`, `sep` is a regular expression for more advanced scenarios.
 
 !!! tip
-    Check the builtin function [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split) for details of the behavior with `sep`.
+    Check the builtin function [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split) for details of the behavior with `sep` when `useregex = False`.
 
 ``` python
 list(parse([
     "1 ALICE Pairs",
     "2 BOB London"
 ]))
+# [['1', 'ALICE',  'Pairs'],
+#  ['2',   'BOB', 'London']]
+
+list(parse([
+    "1 | ALICE | Pairs",
+    "2 | BOB | London"
+], sep=r"\s*\|\s*", useregex=True))
 # [['1', 'ALICE',  'Pairs'],
 #  ['2',   'BOB', 'London']]
 ```

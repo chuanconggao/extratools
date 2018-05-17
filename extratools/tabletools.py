@@ -65,16 +65,23 @@ def trim(table: Table, blank=None) -> Table:
         yield list(itertools.compress(row, nonemptyflags))
 
 
-def parse(lines: Iterable[str], sep=None) -> Table:
-    for line in lines:
-        yield line.split(sep)
+def parse(lines: Iterable[str], sep=None, useregex=False) -> Table:
+    if useregex:
+        r = re.compile(sep) if isinstance(sep, str) else sep
+
+        for line in lines:
+            yield r.split(line)
+    else:
+        for line in lines:
+            yield line.split(sep)
 
 
 def parsebymarkdown(text: str) -> Table:
     for row in trim(
             parse(
                 filter(lambda line: line, text.split('\n')),
-                sep='|'
+                sep=r"(?<!\\)\|",
+                useregex=True
             ),
             blank=" \t-:"
         ):
