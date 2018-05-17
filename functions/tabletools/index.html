@@ -513,6 +513,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#trim" title="trim" class="md-nav__link">
+    trim
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -556,6 +563,13 @@
           <li class="md-nav__item">
   <a href="#parse" title="parse" class="md-nav__link">
     parse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parseasmarkdown" title="parseasmarkdown" class="md-nav__link">
+    parseasmarkdown
   </a>
   
 </li>
@@ -707,6 +721,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#trim" title="trim" class="md-nav__link">
+    trim
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -750,6 +771,13 @@
           <li class="md-nav__item">
   <a href="#parse" title="parse" class="md-nav__link">
     parse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parseasmarkdown" title="parseasmarkdown" class="md-nav__link">
+    parseasmarkdown
   </a>
   
 </li>
@@ -815,15 +843,22 @@
 
 
 <h3 id="mergecols"><code>mergecols</code><a class="headerlink" href="#mergecols" title="Permanent link">&para;</a></h3>
-<p><code>mergecols(cols, default=None)</code> merges the columns in <code>cols</code> into a single column. Returns <code>None</code> if there is conflict in any row.</p>
+<p><code>mergecols(cols, default=None, blank=None)</code> merges the columns in <code>cols</code> into a single column. Returns <code>None</code> if there is conflict in any row.</p>
 <ul>
 <li>
-<p>A row has conflict if there are more than one valid values, where each valid value is not <code>None</code> or empty string.</p>
+<p>A row has conflict if there are more than one valid values, where each valid value is not <code>None</code> or empty.</p>
+<ul>
+<li><code>blank=None</code> is a list of characters denoting empty value. Default to whitespace characters.</li>
+</ul>
 </li>
 <li>
-<p><code>default</code> is a place holder when there are no valid value in one row.</p>
+<p><code>default</code> is a placeholder when there are no valid value in one row.</p>
 </li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the builtin function <a href="https://docs.python.org/3/library/stdtypes.html#str.strip"><code>str.strip</code></a> for details of the behavior with <code>blank</code>.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">cols</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">list(transpose([</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span>    <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None],</span>
@@ -841,6 +876,25 @@
 <span style="color: #75715e"># Merge all three columns.</span>
 <span style="color: #f8f8f2">mergecols(cols)</span>
 <span style="color: #75715e"># None</span>
+</pre></div>
+
+
+<h3 id="trim"><code>trim</code><a class="headerlink" href="#trim" title="Permanent link">&para;</a></h3>
+<p><code>trim(table, blank=None</code>) removes any empty column or row.</p>
+<ul>
+<li><code>blank=None</code> is a list of characters denoting empty value. Default to whitespace characters.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the builtin function <a href="https://docs.python.org/3/library/stdtypes.html#str.strip"><code>str.strip</code></a> for details of the behavior with <code>blank</code>.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(trim([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;-&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;-&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">blank</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;-&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [[&#39;a&#39;, &#39;b&#39;],</span>
+<span style="color: #75715e">#  [&#39;c&#39;, &#39;d&#39;]]</span>
 </pre></div>
 
 
@@ -864,6 +918,18 @@
 <span style="color: #f8f8f2">]))</span>
 <span style="color: #75715e"># [[&#39;1&#39;, &#39;ALICE&#39;,  &#39;Pairs&#39;],</span>
 <span style="color: #75715e">#  [&#39;2&#39;,   &#39;BOB&#39;, &#39;London&#39;]]</span>
+</pre></div>
+
+
+<h3 id="parseasmarkdown"><code>parseasmarkdown</code><a class="headerlink" href="#parseasmarkdown" title="Permanent link">&para;</a></h3>
+<p><code>parsebymarkdown(text)</code> parses a text of multiple lines to a table, according to <a href="https://github.github.com/gfm/#tables-extension-">Markdown</a> format.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(parseasmarkdown(</span><span style="color: #e6db74">&quot;&quot;&quot;</span>
+<span style="color: #e6db74">| foo | bar |</span>
+<span style="color: #e6db74">| --- | --- |</span>
+<span style="color: #e6db74">| baz | bim |</span>
+<span style="color: #e6db74">&quot;&quot;&quot;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [[&#39;foo&#39;, &#39;bar&#39;],</span>
+<span style="color: #75715e">#  [&#39;baz&#39;, &#39;bim&#39;]]</span>
 </pre></div>
 
 
