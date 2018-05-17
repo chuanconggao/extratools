@@ -567,6 +567,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#parsebyregexes" title="parsebyregexes" class="md-nav__link">
+    parsebyregexes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -754,6 +761,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#parsebyregexes" title="parsebyregexes" class="md-nav__link">
+    parsebyregexes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -839,7 +853,7 @@
 <h2 id="parsing-text-to-table">Parsing Text to Table<a class="headerlink" href="#parsing-text-to-table" title="Permanent link">&para;</a></h2>
 <p>Tools for parsing each line of text to a row in respective table.</p>
 <h3 id="parse"><code>parse</code><a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
-<p><code>parse(lines, sep=None)</code> parse each line to a row by using separator <code>sep=None</code>.</p>
+<p><code>parse(lines, sep=None)</code> parses each line to a row by using separator <code>sep=None</code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Check the builtin function <a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>str.split</code></a> for details of the behavior with <code>sep</code>.</p>
@@ -854,7 +868,7 @@
 
 
 <h3 id="parsebyregex"><code>parsebyregex</code><a class="headerlink" href="#parsebyregex" title="Permanent link">&para;</a></h3>
-<p><code>parsebyregex(lines, regex)</code> parse each line to a row by using a regular expression <code>regex</code>, where each capturing group matches a column value.</p>
+<p><code>parsebyregex(lines, regex)</code> parses each line to a row by using a regular expression <code>regex</code>, where each capturing group matches a column value.</p>
 <ul>
 <li><code>regex</code> can be either a regular expression string, or a regular expression object (compiled by either <code>re</code> or <a href="https://pypi.org/project/regex/"><code>regex</code></a>) for more advanced usage.</li>
 </ul>
@@ -877,6 +891,33 @@
 <span style="color: #75715e"># [(&#39;1&#39;,   &#39;ALICE&#39;,    &#39;Pairs&#39;),</span>
 <span style="color: #75715e">#  (&#39;2&#39;,     &#39;BOB&#39;,   &#39;London&#39;),</span>
 <span style="color: #75715e">#  (&#39;3&#39;, &#39;CARL JR&#39;, &#39;New York&#39;)]</span>
+</pre></div>
+
+
+<h3 id="parsebyregexes"><code>parsebyregexes</code><a class="headerlink" href="#parsebyregexes" title="Permanent link">&para;</a></h3>
+<p><code>parsebyregexes(lines, regexes)</code> parses each line to a row by using a list of regular expressions <code>regexes</code>, where each capturing group matches a column value.</p>
+<ul>
+<li>Each regular expression of <code>regexes</code> can be either a regular expression string, or a regular expression object (compiled by either <code>re</code> or <a href="https://pypi.org/project/regex/"><code>regex</code></a>) for more advanced usage.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Compatible third party library <a href="https://pypi.org/project/regex/"><code>regex</code></a> is used instead of standard library <code>re</code>, to support advanced unicode features.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(parsebyregexes(</span>
+    <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">&quot;1 ALICE Pairs&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;2 BOB London&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;3 CARL JR New York&quot;</span>
+    <span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>
+        <span style="color: #e6db74">r&quot;\b\d\b&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">r&quot;\b[A-Z]+(?:\s+[A-Z]+)*\b&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">r&quot;\b\S.+\b&quot;</span>
+    <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [[&#39;1&#39;,   &#39;ALICE&#39;,    &#39;Pairs&#39;],</span>
+<span style="color: #75715e">#  [&#39;2&#39;,     &#39;BOB&#39;,   &#39;London&#39;],</span>
+<span style="color: #75715e">#  [&#39;3&#39;, &#39;CARL JR&#39;, &#39;New York&#39;]]</span>
 </pre></div>
                 
                   
