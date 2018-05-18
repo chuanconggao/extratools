@@ -8,8 +8,9 @@ import math
 import regex as re
 
 import tagstats as tagmatches
+from toolz.itertoolz import no_default
 
-from .seqtools import commonsubseq, align
+from .seqtools import commonsubseq, align, seq2grams
 from .rangetools import intersect
 
 def commonsubstr(a: str, b: str) -> str:
@@ -33,32 +34,15 @@ def tagstats(tags: Iterable[str], lines: Iterable[str], separator: str = None) -
     }
 
 
-def __str2grams(s: str, n: int) -> Iterable[str]:
-    yield from (
-        s[i:i + n] for i in range(len(s) - n + 1)
-    )
+def str2grams(s: str, n: int, pad: str = '') -> Iterable[str]:
+    if pad != '' and len(pad) > 1:
+        raise ValueError
 
+    if pad == '':
+        pad = no_default
 
-def str2grams(s: str, n: int, pad: str = None) -> Iterable[str]:
-    if pad:
-        if len(pad) > 1:
-            raise ValueError
-
-        pad = pad * (n - 1)
-
-    if len(s) < n:
-        if pad:
-            yield from __str2grams(pad + s + pad, n)
-        else:
-            yield s
-    else:
-        if pad:
-            yield from __str2grams(pad + s[:n - 1], n)
-
-        yield from __str2grams(s, n)
-
-        if pad:
-            yield from __str2grams(s[-(n - 1):] + pad, n)
+    for seq in seq2grams(s, n, pad):
+        yield ''.join(seq)
 
 
 def rewrite(s: str, regex: Any, template: str) -> str:

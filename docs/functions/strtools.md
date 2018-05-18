@@ -110,7 +110,7 @@ rewrite(
 
 ### `str2grams`
 
-`str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
+`str2grams(s, n, pad='')` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
 
 - Optional padding at the start and end can be added by specifying `pad`.
 

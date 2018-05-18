@@ -14,6 +14,7 @@ from array import array
 
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window, unique
+from toolz.utils import no_default
 
 from .misctools import cmp
 from .dicttools import invertedindex, nextentries
@@ -460,3 +461,10 @@ def templateseq(seqs: Iterable[Iterable[T]], default: Any = None, simple: bool =
             for (_, x), seq in zip(lastentries, safeseqs)
         ):
         yield default
+
+
+def seq2grams(seq: Iterable[T], n: int, pad: Any = no_default) -> Iterable[Iterable[T]]:
+    if pad is not no_default:
+        seq = chain(repeat(pad, n - 1), seq, repeat(pad, n - 1))
+
+    return sliding_window(n, seq)

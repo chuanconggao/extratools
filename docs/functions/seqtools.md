@@ -276,9 +276,9 @@ list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
 # [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 ```
 
-## Sequence Conversion
+## Sequence Transformation
 
-Tools for converting the type of sequence.
+Tools for transforming sequences.
 
 ### `iter2seq`
 
@@ -289,3 +289,25 @@ Tools for converting the type of sequence.
 
 !!! tip
     Useful if you need to scan the sequence more than once.
+
+### `seq2grams`
+
+`seq2grams(seq, n, pad=no_default)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of sequence `seq`.
+
+- Optional padding at the start and end can be added by specifying `pad`.
+
+``` python
+list(seq2grams(range(5), 3))
+# [(0, 1, 2),
+#  (1, 2, 3),
+#  (2, 3, 4)]
+
+list(seq2grams(range(5), 3, pad=None))
+# [(None, None, 0),
+#  (None, 0, 1),
+#  (0, 1, 2),
+#  (1, 2, 3),
+#  (2, 3, 4),
+#  (3, 4, None),
+#  (4, None, None)]
+```
