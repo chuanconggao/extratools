@@ -73,7 +73,7 @@ rewrite(
 
 rewrite(
     "Elisa likes icecream.",
-    r"(?<name>\w+) likes (?<item>\w+).",
+    r"(?P<name>\w+) likes (?P<item>\w+).",
     "{item} is {name}'s favorite."
 )
 # "icecream is Elisa's favorite."
