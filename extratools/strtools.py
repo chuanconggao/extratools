@@ -2,10 +2,10 @@
 
 from typing import *
 
-import re
 from hashlib import sha1, sha256, sha512, md5
 from io import TextIOBase, BufferedIOBase
 import math
+import regex as re
 
 import tagstats as tagmatches
 
@@ -58,6 +58,13 @@ def str2grams(s: str, n: int, pad: str = None) -> Iterable[str]:
 
         if pad:
             yield from __str2grams(s[-(n - 1):] + pad, n)
+
+
+def rewrite(s: str, regex: Any, template: str) -> str:
+    r = re.compile(regex) if isinstance(regex, str) else regex
+
+    m = r.fullmatch(s)
+    return template.format(*m.groups(), **m.groupdict())
 
 
 def __checksum(f: Any, func: Callable[[bytes], Any]) -> str:

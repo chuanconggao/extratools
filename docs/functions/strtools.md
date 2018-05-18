@@ -54,6 +54,31 @@ tagstats(
 
 Tools for string transformations.
 
+### `rewrite`
+
+`rewrite(s, regex, template)` rewrites a string `s` according to the template `template`, where the values are extracted according to the regular expression `regex`.
+
+!!! tip
+    Check the [`re`](https://docs.python.org/3/library/re.html) for details of naming capturing group.
+
+    Check the [`str.format`](https://docs.python.org/3.4/library/string.html#formatstrings) for details of referring captured values in template.
+
+``` python
+rewrite(
+    "Elisa likes icecream.",
+    r"(\w+) likes (\w+).",
+    "{1} is {0}'s favorite."
+)
+# "icecream is Elisa's favorite."
+
+rewrite(
+    "Elisa likes icecream.",
+    r"(?<name>\w+) likes (?<item>\w+).",
+    "{item} is {name}'s favorite."
+)
+# "icecream is Elisa's favorite."
+```
+
 ### `str2grams`
 
 `str2grams(s, n, pad=None)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.

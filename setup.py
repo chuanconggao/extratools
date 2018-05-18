@@ -4,7 +4,7 @@ from setuptools import setup
 from glob import glob
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.6.7.1"
+version = "0.6.8"
 
 setup(
     name="extratools",
