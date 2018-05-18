@@ -59,9 +59,9 @@ Tools for string transformations.
 `rewrite(s, regex, template)` rewrites a string `s` according to the template `template`, where the values are extracted according to the regular expression `regex`.
 
 !!! tip
-    Check the [`re`](https://docs.python.org/3/library/re.html) for details of naming capturing group.
+    Check [`re`](https://docs.python.org/3/library/re.html) for details of naming capturing group.
 
-    Check the [`str.format`](https://docs.python.org/3.4/library/string.html#formatstrings) for details of referring captured values in template.
+    Check [`str.format`](https://docs.python.org/3.4/library/string.html#formatstrings) for details of referring captured values in template.
 
 ``` python
 rewrite(
@@ -75,6 +75,35 @@ rewrite(
     "Elisa likes icecream.",
     r"(?P<name>\w+) likes (?P<item>\w+).",
     "{item} is {name}'s favorite."
+)
+# "icecream is Elisa's favorite."
+```
+
+### `learnrewrite`
+
+`learnrewrite(src, dst, minlen=3)` learns the respective regular expression and template to rewrite `src` to `dst`.
+
+- Please check [`rewrite`](strtools#rewrite) for details of the regular expression and template.
+
+- `minlen=3` specifies the minimum length for each substitution.
+
+!!! warning
+    As regular expression is greedy, it cannot learn capturing groups next to each other.
+
+``` python
+learnrewrite(
+    "Elisa likes icecream.",
+    "icecream is Elisa's favorite."
+)
+# ('(.*) likes (.*).',
+#  "{1} is {0}'s favorite.")
+
+rewrite(
+    "Elisa likes icecream.",
+    *learnrewrite(
+        "Elisa likes icecream.",
+        "icecream is Elisa's favorite."
+    )
 )
 # "icecream is Elisa's favorite."
 ```

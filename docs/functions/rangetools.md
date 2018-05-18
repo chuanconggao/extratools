@@ -57,7 +57,9 @@ Tools for transformations over ranges.
 
 ### `intersect`
 
-`intersect(a, b)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+`intersect(a, b, allowempty=False)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+- `allowempty` specifies whether empty range is returned.
 
 ``` python
 intersect((0, 0.6), (0.4, 1))

@@ -29,12 +29,12 @@ def rangequery(keyvalues: Dict[float, T], query: Range, func: Callable[[Iterable
     return s.query(query)
 
 
-def intersect(a: Range, b: Range) -> Optional[Range]:
+def intersect(a: Range, b: Range, allowempty: bool = False) -> Optional[Range]:
     a1, a2 = a
     b1, b2 = b
     c1, c2 = max(a1, b1), min(a2, b2)
 
-    return None if c1 > c2 else (c1, c2)
+    return None if (c1 > c2 if allowempty else c1 >= c2) else (c1, c2)
 
 
 def union(a: Range, b: Range) -> Optional[Range]:
