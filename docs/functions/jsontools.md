@@ -16,7 +16,7 @@ Tools for flatten/unflatten a JSON object.
     Different from [`dicttools.flatten`](dicttools/#flatten), this function accepts any JSON object not limited to dictionary.
 
 !!! warning
-    An empty array disappears after being flatten.
+    An empty dictionary disappears after being flatten. When use `force = True`, an empty array disappears after being flatten.
 
 ``` python
 flatten(json.loads("""{
