@@ -850,8 +850,24 @@
 <p>In default, <code>key</code> returns integers starting from <code>0</code>.</p>
 </li>
 </ul>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">wordmap</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{}</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">docs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;e&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;e&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]</span>
+
+<span style="color: #f8f8f2">wordmap</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{}</span>
 <span style="color: #f8f8f2">db</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[list(remap(doc,</span> <span style="color: #f8f8f2">wordmap))</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">doc</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">docs]</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(db)</span>
+<span style="color: #75715e"># [[0, 1, 2, 3, 4],</span>
+<span style="color: #75715e">#  [1, 1, 1, 3, 4],</span>
+<span style="color: #75715e">#  [2, 1, 2, 2, 0],</span>
+<span style="color: #75715e">#  [1, 1, 1, 2, 2]]</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(wordmap)</span>
+<span style="color: #75715e"># {&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 2, &#39;d&#39;: 3, &#39;e&#39;: 4}</span>
 </pre></div>
 
 
