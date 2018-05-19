@@ -9,7 +9,7 @@ import itertools
 from itertools import chain, zip_longest, repeat, combinations
 import math
 from functools import lru_cache
-from collections import defaultdict
+from collections import defaultdict, Counter
 from array import array
 
 from toolz import itertoolz
@@ -468,3 +468,23 @@ def seq2grams(seq: Iterable[T], n: int, pad: Any = no_default) -> Iterable[Itera
         seq = chain(repeat(pad, n - 1), seq, repeat(pad, n - 1))
 
     return sliding_window(n, seq)
+
+
+def gramstats(seqs: Iterable[Iterable[T]], numgrams: int = 2) -> Mapping[Any, int]:
+    c: Counter = Counter()
+    for seq in seqs:
+        c.update(seq2grams(seq, numgrams))
+
+    return c
+
+
+def probability(seq: Iterable[T], grams: Mapping[Any, int], numgrams: int = 2) -> float:
+    total = sum(grams.values())
+
+    prob = 0.0
+    k = 0
+    for gram in seq2grams(seq, numgrams):
+        prob += math.log((grams.get(gram, 0) + 1) / total)
+        k += 1
+
+    return math.exp(prob / k)

@@ -64,7 +64,7 @@ def learnrewrite(src: str, dst: str, minlen: int = 3) -> Tuple[str, str]:
         return target
 
 
-    xs = []
+    xs: List[Tuple[int, int, int]] = []
 
     lastj = 0
     for i in range(len(src)):
@@ -85,7 +85,7 @@ def learnrewrite(src: str, dst: str, minlen: int = 3) -> Tuple[str, str]:
         if currp >= 0 and lastj - i >= minlen:
             xs.append((i, currp, lastj - i))
 
-    ys = []
+    ys: List[Tuple[int, int, int]] = []
     for x, y, l in sorted(xs, key=lambda p: p[2], reverse=True):
         if any(
                 intersect((y, y + l), (yy, yy + ll), allowempty=True) is not None

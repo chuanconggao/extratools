@@ -51,8 +51,8 @@ pages:
         - rangetools: functions/rangetools.md
         - seqtools:
             - Overview: functions/seqtools.md
-            - Sequence without Gap: functions/seqtools/seqwithoutgap.md
-            - Sequence with Gap: functions/seqtools/seqwithgap.md
+            - Sub-Sequence without Gap: functions/seqtools/seqwithoutgap.md
+            - Sub-Sequence with Gap: functions/seqtools/seqwithgap.md
         - settools: functions/settools.md
         - sortedtools: functions/sortedtools.md
         - stattools: functions/stattools.md

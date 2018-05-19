@@ -1,9 +1,9 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
 !!! warning
-    For tools specific to sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap).
+    For tools specific to sub-sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap).
 
-    For tools specific to sequence with gap, please go to specific [documentation](seqtools/seqwithgap).
+    For tools specific to sub-sequence with gap, please go to specific [documentation](seqtools/seqwithgap).
 
 !!! success
     If not explicitly noted, a sequence refers to not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
@@ -290,6 +290,10 @@ Tools for transforming sequences.
 !!! tip
     Useful if you need to scan the sequence more than once.
 
+## Sequence Modeling
+
+Tools for modeling sequences.
+
 ### `seq2grams`
 
 `seq2grams(seq, n, pad=no_default)` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of sequence `seq`.
@@ -310,4 +314,56 @@ list(seq2grams(range(5), 3, pad=None))
 #  (2, 3, 4),
 #  (3, 4, None),
 #  (4, None, None)]
+```
+
+### `gramstats`
+
+`gramstats(seqs, numgrams=2)` computes the frequency of each `n`-grams in sequences `seqs`.
+
+- where `n` is specified by `numgrams`.
+
+``` python
+gramstats([
+    "python",
+    "python2",
+    "python2.7",
+    "python3",
+    "python3.7"
+])
+# {('p', 'y'): 5,
+#  ('y', 't'): 5,
+#  ('t', 'h'): 5,
+#  ('h', 'o'): 5,
+#  ('o', 'n'): 5,
+#  ('n', '2'): 2,
+#  ('2', '.'): 1,
+#  ('.', '7'): 2,
+#  ('n', '3'): 2,
+#  ('3', '.'): 1}
+```
+
+### `probability`
+
+`probability(seq, grams, numgrams=2)` computes the probability of generating sequence `seq` by the `n`-grams and their respective frequencies in `grams`.
+
+- where `n` is specified by `numgrams`.
+
+!!! tip
+    There are many publicily available pre-trained `n`-grams models on text.
+
+``` python
+gs = gramstats([
+    "python",
+    "python2",
+    "python2.7",
+    "python3",
+    "python3.7"
+])
+
+probability("pypy", gs)
+# 0.10005840148165537
+
+probability("pypy3", gs)
+# 0.07422696190252057
+
 ```

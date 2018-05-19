@@ -108,6 +108,10 @@ rewrite(
 # "icecream is Elisa's favorite."
 ```
 
+## String Modeling
+
+Tools for modeling strings.
+
 ### `str2grams`
 
 `str2grams(s, n, pad='')` returns the ordered [`n`-grams](https://en.wikipedia.org/wiki/N-gram) of string `s`.
