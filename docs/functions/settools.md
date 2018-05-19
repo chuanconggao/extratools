@@ -38,6 +38,16 @@ Tools for set operations.
 
 `addtoset(s, x)` checks whether adding `x` to set `s` is successful.
 
+``` python
+s = set()
+
+addtoset(s, 1)
+# True
+
+addtoset(s, 1)
+# False
+```
+
 ## Set Similarity
 
 Tools for set similarities.

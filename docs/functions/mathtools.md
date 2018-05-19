@@ -8,3 +8,17 @@ Tools for math.
 
 !!! info
     Closely referring [IEEE Standard 754](https://en.wikipedia.org/wiki/IEEE_754).
+
+``` python
+safediv(0, 0)
+# nan
+
+safediv(1, 0)
+# inf
+
+safediv(-1, 0)
+# -inf
+
+safediv(1, 1)
+# 1.0
+```

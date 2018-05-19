@@ -13,7 +13,7 @@ Tools for statistics.
 `entropy(data)` computes the [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a sequence of any items.
 
 !!! tip
-    You can also pass a dictionary of `(item, frequency)` as known frequency distribution as `data`.
+    You can also pass a dictionary of `(item, frequency)` as known frequency distribution to `data`.
 
 ## Binary Classification
 

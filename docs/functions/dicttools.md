@@ -35,8 +35,24 @@ Tools for remapping elements.
 - In default, `key` returns integers starting from `0`.
 
 ``` python
+docs = [
+    ['a', 'b', 'c', 'd', 'e'],
+    ['b', 'b', 'b', 'd', 'e'],
+    ['c', 'b', 'c', 'c', 'a'],
+    ['b', 'b', 'b', 'c', 'c']
+]
+
 wordmap = {}
 db = [list(remap(doc, wordmap)) for doc in docs]
+
+print(db)
+# [[0, 1, 2, 3, 4],
+#  [1, 1, 1, 3, 4],
+#  [2, 1, 2, 2, 0],
+#  [1, 1, 1, 2, 2]]
+
+print(wordmap)
+# {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4}
 ```
 
 ## Indexing
