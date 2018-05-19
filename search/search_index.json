@@ -2,22 +2,22 @@
     "docs": [
         {
             "location": "/",
-            "text": "Functions\n\u00b6\n\n\ndebugtools\n\n\ndicttools\n\n\njsontools\n\n\nmathtools\n\n\nmisctools\n\n\nprinttools\n\n\nrangetools\n\n\nseqtools\n\n\nsettools\n\n\nsortedtools\n\n\nstattools\n\n\nstrtools\n\n\ntabletools\n\n\nData Structures\n\u00b6\n\n\ndefaultlist.DefaultList\n\n\ndisjointsets.DisjointSets\n\n\nsegmenttree.SegmentTree\n\n\nCLI Tools\n\u00b6\n\n\ndicttools.remap\n\n\njsontools.flatten\n\n\nstattools.teststats",
+            "text": "Functions\n\u00b6\n\n\ndebugtools\n\n\n4+ tools for debugging purposes.\n\n\ndicttools\n\n\n7+ tools for operating dictionaries.\n\n\njsontools\n\n\n1+ tools for operating JSON data.\n\n\nmathtools\n\n\n1+ tools for math.\n\n\nmisctools\n\n\n2+ tools for miscellaneous purposes.\n\n\nprinttools\n\n\n5+ tools for printing purposes.\n\n\nrangetools\n\n\n7+ tools for operating ranges/intervals.\n\n\nseqtools\n\n\n28+ tools for operating sequences.\n\n\nsettools\n\n\n6+ tools for operating sets.\n\n\nsortedtools\n\n\n7+ tools for operating sorted sequences.\n\n\nstattools\n\n\n7+ tools for statistics.\n\n\nstrtools\n\n\n11+ tools for operating strings.\n\n\ntabletools\n\n\n9+ tools for operating tables/matrices.\n\n\nData Structures\n\u00b6\n\n\ndefaultlist.DefaultList\n\n\nAn implementation of \nlist\n that grows if necessary when accessing.\n\n\ndisjointsets.DisjointSets\n\n\nAn implementation of disjoint sets.\n\n\nsegmenttree.SegmentTree\n\n\nAn implementation of segment tree.\n\n\nCLI Tools\n\u00b6\n\n\ndicttools.remap\n\n\nCLI for \ndicttools.remap\n.\n\n\njsontools.flatten\n\n\nCLI for \njsontools.flatten\n.\n\n\nstattools.teststats\n\n\nCLI for \nstattools.teststats\n.",
             "title": "Index"
         },
         {
             "location": "/#functions",
-            "text": "debugtools  dicttools  jsontools  mathtools  misctools  printtools  rangetools  seqtools  settools  sortedtools  stattools  strtools  tabletools",
+            "text": "debugtools  4+ tools for debugging purposes.  dicttools  7+ tools for operating dictionaries.  jsontools  1+ tools for operating JSON data.  mathtools  1+ tools for math.  misctools  2+ tools for miscellaneous purposes.  printtools  5+ tools for printing purposes.  rangetools  7+ tools for operating ranges/intervals.  seqtools  28+ tools for operating sequences.  settools  6+ tools for operating sets.  sortedtools  7+ tools for operating sorted sequences.  stattools  7+ tools for statistics.  strtools  11+ tools for operating strings.  tabletools  9+ tools for operating tables/matrices.",
             "title": "Functions"
         },
         {
             "location": "/#data-structures",
-            "text": "defaultlist.DefaultList  disjointsets.DisjointSets  segmenttree.SegmentTree",
+            "text": "defaultlist.DefaultList  An implementation of  list  that grows if necessary when accessing.  disjointsets.DisjointSets  An implementation of disjoint sets.  segmenttree.SegmentTree  An implementation of segment tree.",
             "title": "Data Structures"
         },
         {
             "location": "/#cli-tools",
-            "text": "dicttools.remap  jsontools.flatten  stattools.teststats",
+            "text": "dicttools.remap  CLI for  dicttools.remap .  jsontools.flatten  CLI for  jsontools.flatten .  stattools.teststats  CLI for  stattools.teststats .",
             "title": "CLI Tools"
         },
         {
