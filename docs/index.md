@@ -30,7 +30,7 @@
 
 [`seqtools`](functions/seqtools)
 
-28+ tools for operating sequences.
+29+ tools for operating sequences.
 
 [`settools`](functions/settools)
 
@@ -38,7 +38,7 @@
 
 [`sortedtools`](functions/sortedtools)
 
-7+ tools for operating sorted sequences.
+8+ tools for operating sorted sequences.
 
 [`stattools`](functions/stattools)
 
