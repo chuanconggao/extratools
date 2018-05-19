@@ -2,7 +2,7 @@
 
 Please check each individual script for more details.
 
-### [`dicttools.remap`](functions/dicttools.md#)
+### [`dicttools.remap`](functions/dicttools.md#remap)
 
 [Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-remap)
 
@@ -11,7 +11,7 @@ Usage:
     extratools-remap <mapping>
 ```
 
-### [`jsontools.flatten`](functions/jsontools.md#)
+### [`jsontools.flatten`](functions/jsontools.md#flatten)
 
 [Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-flatten)
 
@@ -20,7 +20,7 @@ Usage:
     extratools-flatten [--force]
 ```
 
-### [`stattools.teststats`](functions/stattools.md#)
+### [`stattools.teststats`](functions/stattools.md#teststats)
 
 [Source](https://github.com/chuanconggao/extratools/tree/master/bin/extratools-teststats)
 
