@@ -392,8 +392,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../seqtools/seqwithoutgap/" title="Sequence without Gap" class="md-nav__link">
-      Sequence without Gap
+    <a href="../seqtools/seqwithoutgap/" title="Sub-Sequence without Gap" class="md-nav__link">
+      Sub-Sequence without Gap
     </a>
   </li>
 
@@ -404,8 +404,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../seqtools/seqwithgap/" title="Sequence with Gap" class="md-nav__link">
-      Sequence with Gap
+    <a href="../seqtools/seqwithgap/" title="Sub-Sequence with Gap" class="md-nav__link">
+      Sub-Sequence with Gap
     </a>
   </li>
 
@@ -534,6 +534,19 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-modeling" title="String Modeling" class="md-nav__link">
+    String Modeling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#str2grams" title="str2grams" class="md-nav__link">
@@ -741,6 +754,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-modeling" title="String Modeling" class="md-nav__link">
+    String Modeling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#str2grams" title="str2grams" class="md-nav__link">
     str2grams
@@ -898,8 +924,10 @@
 </pre></div>
 
 
+<h2 id="string-modeling">String Modeling<a class="headerlink" href="#string-modeling" title="Permanent link">&para;</a></h2>
+<p>Tools for modeling strings.</p>
 <h3 id="str2grams"><code>str2grams</code><a class="headerlink" href="#str2grams" title="Permanent link">&para;</a></h3>
-<p><code>str2grams(s, n, pad=None)</code> returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of string <code>s</code>.</p>
+<p><code>str2grams(s, n, pad='')</code> returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of string <code>s</code>.</p>
 <ul>
 <li>Optional padding at the start and end can be added by specifying <code>pad</code>.</li>
 </ul>

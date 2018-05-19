@@ -547,8 +547,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-conversion" title="Sequence Conversion" class="md-nav__link">
-    Sequence Conversion
+  <a href="#sequence-transformation" title="Sequence Transformation" class="md-nav__link">
+    Sequence Transformation
   </a>
   
     <nav class="md-nav">
@@ -557,6 +557,40 @@
           <li class="md-nav__item">
   <a href="#iter2seq" title="iter2seq" class="md-nav__link">
     iter2seq
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-modeling" title="Sequence Modeling" class="md-nav__link">
+    Sequence Modeling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seq2grams" title="seq2grams" class="md-nav__link">
+    seq2grams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gramstats" title="gramstats" class="md-nav__link">
+    gramstats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability" title="probability" class="md-nav__link">
+    probability
   </a>
   
 </li>
@@ -583,8 +617,8 @@
 
 
   <li class="md-nav__item">
-    <a href="seqwithoutgap/" title="Sequence without Gap" class="md-nav__link">
-      Sequence without Gap
+    <a href="seqwithoutgap/" title="Sub-Sequence without Gap" class="md-nav__link">
+      Sub-Sequence without Gap
     </a>
   </li>
 
@@ -595,8 +629,8 @@
 
 
   <li class="md-nav__item">
-    <a href="seqwithgap/" title="Sequence with Gap" class="md-nav__link">
-      Sequence with Gap
+    <a href="seqwithgap/" title="Sub-Sequence with Gap" class="md-nav__link">
+      Sub-Sequence with Gap
     </a>
   </li>
 
@@ -904,8 +938,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-conversion" title="Sequence Conversion" class="md-nav__link">
-    Sequence Conversion
+  <a href="#sequence-transformation" title="Sequence Transformation" class="md-nav__link">
+    Sequence Transformation
   </a>
   
     <nav class="md-nav">
@@ -914,6 +948,40 @@
           <li class="md-nav__item">
   <a href="#iter2seq" title="iter2seq" class="md-nav__link">
     iter2seq
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-modeling" title="Sequence Modeling" class="md-nav__link">
+    Sequence Modeling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seq2grams" title="seq2grams" class="md-nav__link">
+    seq2grams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gramstats" title="gramstats" class="md-nav__link">
+    gramstats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability" title="probability" class="md-nav__link">
+    probability
   </a>
   
 </li>
@@ -947,8 +1015,8 @@
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py">Source</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>For tools specific to sequence without gap, please go to specific <a href="../seqtools/seqwithoutgap">documentation</a>.</p>
-<p>For tools specific to sequence with gap, please go to specific <a href="../seqtools/seqwithgap">documentation</a>.</p>
+<p>For tools specific to sub-sequence without gap, please go to specific <a href="../seqtools/seqwithoutgap">documentation</a>.</p>
+<p>For tools specific to sub-sequence with gap, please go to specific <a href="../seqtools/seqwithgap">documentation</a>.</p>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -1217,8 +1285,8 @@
 </pre></div>
 
 
-<h2 id="sequence-conversion">Sequence Conversion<a class="headerlink" href="#sequence-conversion" title="Permanent link">&para;</a></h2>
-<p>Tools for converting the type of sequence.</p>
+<h2 id="sequence-transformation">Sequence Transformation<a class="headerlink" href="#sequence-transformation" title="Permanent link">&para;</a></h2>
+<p>Tools for transforming sequences.</p>
 <h3 id="iter2seq"><code>iter2seq</code><a class="headerlink" href="#iter2seq" title="Permanent link">&para;</a></h3>
 <p><code>iter2seq(iterable, target=tuple)</code> converts any iterable sequence <code>iterable</code> to an indexable and sizable sequence with type <code>target=tuple</code> if necessary, defaults to tuple.</p>
 <div class="admonition warning">
@@ -1229,6 +1297,77 @@
 <p class="admonition-title">Tip</p>
 <p>Useful if you need to scan the sequence more than once.</p>
 </div>
+<h2 id="sequence-modeling">Sequence Modeling<a class="headerlink" href="#sequence-modeling" title="Permanent link">&para;</a></h2>
+<p>Tools for modeling sequences.</p>
+<h3 id="seq2grams"><code>seq2grams</code><a class="headerlink" href="#seq2grams" title="Permanent link">&para;</a></h3>
+<p><code>seq2grams(seq, n, pad=no_default)</code> returns the ordered <a href="https://en.wikipedia.org/wiki/N-gram"><code>n</code>-grams</a> of sequence <code>seq</code>.</p>
+<ul>
+<li>Optional padding at the start and end can be added by specifying <code>pad</code>.</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(seq2grams(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [(0, 1, 2),</span>
+<span style="color: #75715e">#  (1, 2, 3),</span>
+<span style="color: #75715e">#  (2, 3, 4)]</span>
+
+<span style="color: #f8f8f2">list(seq2grams(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">pad</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">None))</span>
+<span style="color: #75715e"># [(None, None, 0),</span>
+<span style="color: #75715e">#  (None, 0, 1),</span>
+<span style="color: #75715e">#  (0, 1, 2),</span>
+<span style="color: #75715e">#  (1, 2, 3),</span>
+<span style="color: #75715e">#  (2, 3, 4),</span>
+<span style="color: #75715e">#  (3, 4, None),</span>
+<span style="color: #75715e">#  (4, None, None)]</span>
+</pre></div>
+
+
+<h3 id="gramstats"><code>gramstats</code><a class="headerlink" href="#gramstats" title="Permanent link">&para;</a></h3>
+<p><code>gramstats(seqs, numgrams=2)</code> computes the frequency of each <code>n</code>-grams in sequences <code>seqs</code>.</p>
+<ul>
+<li>where <code>n</code> is specified by <code>numgrams</code>.</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">gramstats([</span>
+    <span style="color: #e6db74">&quot;python&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python2&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python2.7&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python3&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python3.7&quot;</span>
+<span style="color: #f8f8f2">])</span>
+<span style="color: #75715e"># {(&#39;p&#39;, &#39;y&#39;): 5,</span>
+<span style="color: #75715e">#  (&#39;y&#39;, &#39;t&#39;): 5,</span>
+<span style="color: #75715e">#  (&#39;t&#39;, &#39;h&#39;): 5,</span>
+<span style="color: #75715e">#  (&#39;h&#39;, &#39;o&#39;): 5,</span>
+<span style="color: #75715e">#  (&#39;o&#39;, &#39;n&#39;): 5,</span>
+<span style="color: #75715e">#  (&#39;n&#39;, &#39;2&#39;): 2,</span>
+<span style="color: #75715e">#  (&#39;2&#39;, &#39;.&#39;): 1,</span>
+<span style="color: #75715e">#  (&#39;.&#39;, &#39;7&#39;): 2,</span>
+<span style="color: #75715e">#  (&#39;n&#39;, &#39;3&#39;): 2,</span>
+<span style="color: #75715e">#  (&#39;3&#39;, &#39;.&#39;): 1}</span>
+</pre></div>
+
+
+<h3 id="probability"><code>probability</code><a class="headerlink" href="#probability" title="Permanent link">&para;</a></h3>
+<p><code>probability(seq, grams, numgrams=2)</code> computes the probability of generating sequence <code>seq</code> by the <code>n</code>-grams and their respective frequencies in <code>grams</code>.</p>
+<ul>
+<li>where <code>n</code> is specified by <code>numgrams</code>.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There are many publicily available pre-trained <code>n</code>-grams models on text.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">gs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">gramstats([</span>
+    <span style="color: #e6db74">&quot;python&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python2&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python2.7&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python3&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;python3.7&quot;</span>
+<span style="color: #f8f8f2">])</span>
+
+<span style="color: #f8f8f2">probability(</span><span style="color: #e6db74">&quot;pypy&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">gs)</span>
+<span style="color: #75715e"># 0.10005840148165537</span>
+
+<span style="color: #f8f8f2">probability(</span><span style="color: #e6db74">&quot;pypy3&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">gs)</span>
+<span style="color: #75715e"># 0.07422696190252057</span>
+</pre></div>
                 
                   
                 
@@ -1264,13 +1403,13 @@
           </a>
         
         
-          <a href="seqwithoutgap/" title="Sequence without Gap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="seqwithoutgap/" title="Sub-Sequence without Gap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Sequence without Gap
+                Sub-Sequence without Gap
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
