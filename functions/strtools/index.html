@@ -508,6 +508,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#extract" title="extract" class="md-nav__link">
+    extract
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -727,6 +734,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#extract" title="extract" class="md-nav__link">
+    extract
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -864,6 +878,35 @@
     <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a b c&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b c d&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c d e&quot;</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># {&#39;a b&#39;: 1, &#39;a c&#39;: 0, &#39;b c&#39;: 2}</span>
+</pre></div>
+
+
+<h3 id="extract"><code>extract</code><a class="headerlink" href="#extract" title="Permanent link">&para;</a></h3>
+<p><code>extract(s, entities, useregex=False, ignorecase=True)</code> extracts the entities defined in <code>entities</code> from string <code>s</code>.</p>
+<ul>
+<li>
+<p>Regular expression can be used to define each entity by specifying <code>useregex = True</code>.</p>
+</li>
+<li>
+<p><code>ignorecase=True</code> specifies whether to ignore case when matching.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Compatible third party library <a href="https://pypi.org/project/regex/"><code>regex</code></a> is used instead of standard library <code>re</code>, to support advanced unicode features.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># From Python Documentation</span>
+<span style="color: #f8f8f2">s</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;&quot;</span>
+<span style="color: #e6db74">Both patterns and strings to be searched can be Unicode strings (str) as well as 8-bit strings (bytes). </span>
+<span style="color: #e6db74">However, Unicode strings and 8-bit strings cannot be mixed: that is, you cannot match a Unicode string with a byte pattern or vice-versa;</span>
+<span style="color: #e6db74">similarly, when asking for a substitution, the replacement string must be of the same type as both the pattern and the search string.</span>
+<span style="color: #e6db74">&quot;&quot;&quot;</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;byte&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;pattern&quot;</span><span style="color: #f8f8f2">])))</span>
+<span style="color: #75715e"># {&#39;Unicode&#39;, &#39;str&#39;, &#39;pattern&#39;, &#39;byte&#39;}</span>
+
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;bytes?&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;patterns?&quot;</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">useregex</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)))</span>
+<span style="color: #75715e"># {&#39;str&#39;, &#39;bytes&#39;, &#39;patterns&#39;, &#39;Unicode&#39;, &#39;pattern&#39;, &#39;byte&#39;}</span>
 </pre></div>
 
 
