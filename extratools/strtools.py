@@ -110,7 +110,7 @@ def learnrewrite(src: str, dst: str, minlen: int = 3) -> Tuple[str, str]:
 def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) -> Iterable[str]:
     for m in re.compile(
             r"\b(?:{})\b".format(r"|".join(
-                e if useregex else re.escape(e) for e in entities
+                e if useregex else re.escape(e).replace(' ', r"s+") for e in entities
             )),
             re.I if ignorecase else 0
         ).finditer(s):
