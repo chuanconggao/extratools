@@ -99,7 +99,7 @@ def locatebypos(rect: Rectangle, rows: int, cols: int, pos: Tuple[int, int]) -> 
     ww = (x2 - x1) / cols
     hh = (y2 - y1) / rows
 
-    col, row = pos
+    row, col = pos
 
     x, y = x1 + col * ww, y1 + row * hh
 
@@ -110,9 +110,7 @@ def locatebypos(rect: Rectangle, rows: int, cols: int, pos: Tuple[int, int]) -> 
 
 
 def locatebyid(rect: Rectangle, rows: int, cols: int, rectid: int) -> Tuple[int, Rectangle]:
-    row, col = divmod(rectid, cols)
-
-    return locatebypos(rect, rows, cols, (col, row))
+    return locatebypos(rect, rows, cols, divmod(rectid, cols))
 
 
 def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Tuple[int, Rectangle]:
