@@ -18,11 +18,11 @@
     "default": {
         "sortedcontainers": {
             "hashes": [
-                "sha256:566cf5f8dbada3aed99737a19d98f03d15d76bf2a6c27e4fb0f4a718a99be761",
-                "sha256:fa96e9920a37bde76bfdcaca919a125c1d2e581af1137e25de54ee0da7835282"
+                "sha256:d7e142fd4934b3af8937c8f6ad1d3323c8cdfe673730882bd2dc39b97e0e177f",
+                "sha256:dec52c0fb7a0453ff60ac121914ce0828eb2a0266e3c4ecab827f0870e4352f0"
             ],
             "index": "pypi",
-            "version": "==1.5.10"
+            "version": "==2.0.1"
         },
         "tagstats": {
             "hashes": [
@@ -99,10 +99,10 @@
         },
         "pymdown-extensions": {
             "hashes": [
-                "sha256:7ad77ecffc5b5c01e688f9989c2ac55135222950aa1ea75a7f27ea6b345f20f1",
-                "sha256:e7a66111268046e3cd3d95aa4651c73fd33753424942e324842dc37ba6616e7a"
+                "sha256:499dd1da42bcb0849f4b7ab5c60040268145973be95a70233de05284503a8f44",
+                "sha256:ce65a4e876f507a9593f080634d33751bfc26375a7f15f94790d848b5ad7589e"
             ],
-            "version": "==4.10.1"
+            "version": "==4.10.2"
         },
         "python-markdown-math": {
             "hashes": [
