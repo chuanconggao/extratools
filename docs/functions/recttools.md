@@ -8,7 +8,7 @@
 !!! danger
     Each rectangle is assumed to be valid, i.e., its bottom left point is at the bottom left of its top right point.
 
-### Rectangle Basics
+## Rectangle Basics
 
 Tools for basic rectangle usages.
 
@@ -130,6 +130,10 @@ union(
 )
 # ((1, 1), (5, 6))
 ```
+
+## Grid Operations
+
+Tools for operating on grid.
 
 ### `grid`
 
