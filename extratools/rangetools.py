@@ -45,6 +45,13 @@ def union(a: Range, b: Range) -> Optional[Range]:
     return (c1, c2) if intersect(a, b) else None
 
 
+def issubrange(a: Range, b: Range) -> bool:
+    a1, a2 = a
+    b1, b2 = b
+
+    return b1 <= a1 and a2 <= b2
+
+
 def rangecover(whole: Range, covered: Iterable[Range]) -> Iterable[Range]:
     remainings = [whole]
     covered = set(covered)

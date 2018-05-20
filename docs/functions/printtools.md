@@ -46,24 +46,24 @@ iter2str(itertools.count(), limit=5)
     [`seqtools.align`](seqtools#align) can compute the alignment between two sequences.
 
 ``` python
-print(alignment2str(
+alignment2str(
     [1, 10,  100, "New York"],
     [1, 10, None, "New York"]
-))
+)
 # 1 10 100 'New York'
 # 1 10     'New York'
 
-print(alignment2str(*align(
+alignment2str(*align(
     [1, 10, 100, "New York"],
     [1, 10,      "New York"]
-)[1]))
+)[1])
 # 1 10 100 'New York'
 # 1 10     'New York'
 
-print(alignment2str(
+alignment2str(
     [1, 10, 100, "New York"],
     [1, 10, 100]
-))
+)
 # 1 10 100 'New York'
 # 1 10 100     
 ```
@@ -76,12 +76,12 @@ print(alignment2str(
     The default output format is compatible to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
 ``` python
-print(table2str([
+table2str([
     [1,   10,  100, "New York"],
     [1,   10, None, "New York"],
     [1, None,  100, "New York"],
     [1,   10,  100, "New York"]
-]))
+])
 # 1 | 10 | 100 | 'New York'
 # 1 | 10 |     | 'New York'
 # 1 |    | 100 | 'New York'
@@ -93,7 +93,7 @@ print(table2str([
 `range2str(r)` prints a range `r`.
 
 ``` python
-print(range2str((0, 1)))
+range2str((0, 1))
 # [0, 1)
 ```
 
@@ -102,6 +102,6 @@ print(range2str((0, 1)))
 `sorted2str(seq, key=None)` prints a sorted sequence `seq`, optionally according to the key function `key`.
 
 ``` python
-print(sorted2str([1, 2, 2, 3]))
+sorted2str([1, 2, 2, 3])
 # 1 <= 2 == 2 <= 3
 ```

@@ -69,10 +69,10 @@ However, Unicode strings and 8-bit strings cannot be mixed: that is, you cannot 
 similarly, when asking for a substitution, the replacement string must be of the same type as both the pattern and the search string.
 """
 
-print(set(extract(s, ["str", "byte", "unicode string", "pattern"])))
+set(extract(s, ["str", "byte", "unicode string", "pattern"]))
 # {'pattern', 'byte', 'Unicode string', 'str'}
 
-print(set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True)))
+set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 # {'Unicode string', 'patterns', 'byte', 'Unicode strings', 'str', 'pattern'}
 ```
 

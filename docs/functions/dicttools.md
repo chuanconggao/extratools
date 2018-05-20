@@ -11,7 +11,7 @@ Tools for inverting dictionaries.
 - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
 ``` python
-print(invert({1: 'a', 2: 'b', 3: 'c'}))
+invert({1: 'a', 2: 'b', 3: 'c'})
 # {'a': 1, 'b': 2, 'c': 3}
 ```
 
@@ -24,10 +24,10 @@ print(invert({1: 'a', 2: 'b', 3: 'c'}))
 ``` python
 d = {1: 'a', 2: 'b', 3: 'a'}
 
-print(invert(d))
+invert(d)
 # {'a': 3, 'b': 2}
 
-print(invert_safe(d))
+invert_safe(d)
 # {'a': [1, 3], 'b': [2]}
 ```
 
@@ -65,13 +65,13 @@ docs = [
 wordmap = {}
 db = [list(remap(doc, wordmap)) for doc in docs]
 
-print(db)
+db
 # [[0, 1, 2, 3, 4],
 #  [1, 1, 1, 3, 4],
 #  [2, 1, 2, 2, 0],
 #  [1, 1, 1, 2, 2]]
 
-print(wordmap)
+wordmap
 # {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4}
 ```
 

@@ -1,7 +1,46 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/rangetools.py)
 
+!!! danger
+    Each range is assumed to be valid, i.e. the left side is no larger than the right side.
+
 !!! warning
     Each range is closed on the left side, and open on the right side.
+
+## Range Basics
+
+Tools for basic range usages.
+
+### `issubrange`
+
+`issubrange(a, b)` returns whether `a` is contained by `b`.
+
+``` python
+issubrange((0, 0.6), (0.4, 1))
+# False
+
+issubrange((0.4, 0.6), (0.4, 1))
+# True
+```
+
+### `intersect`
+
+`intersect(a, b, allowempty=False)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+- `allowempty` specifies whether empty range is returned.
+
+``` python
+intersect((0, 0.6), (0.4, 1))
+# (0.4, 0.6)
+```
+
+### `union`
+
+`union(a, b)` computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
+
+``` python
+union((0, 0.6), (0.4, 1))
+# (0, 1)
+```
 
 ## Range Statistics
 
@@ -54,26 +93,6 @@ rangequery(
 ## Range Transformation
 
 Tools for transformations over ranges.
-
-### `intersect`
-
-`intersect(a, b, allowempty=False)` computes the overlapping of two ranges `a` and `b`. Returns `None` if there is no overlapping.
-
-- `allowempty` specifies whether empty range is returned.
-
-``` python
-intersect((0, 0.6), (0.4, 1))
-# (0.4, 0.6)
-```
-
-### `union`
-
-`union(a, b)` computes the merging of two ranges `a` and `b`. Returns `None` if there is no overlapping.
-
-``` python
-union((0, 0.6), (0.4, 1))
-# (0, 1)
-```
 
 ### `rangecover`
 

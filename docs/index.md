@@ -26,7 +26,7 @@
 
 [`rangetools`](functions/rangetools)
 
-7+ tools for operating ranges/intervals.
+8+ tools for operating ranges/intervals.
 
 [`seqtools`](functions/seqtools)
 
