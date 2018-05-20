@@ -10,17 +10,37 @@ Tools for inverting dictionaries.
 
 - If multiple keys share the same value, the inverted directory keeps last of the respective keys.
 
-### `invert_multiple`
-
-`invert_multiple(d)` inverts `(Key, List[Value])` pairs to `(Value, Key)`.
-
-- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+``` python
+print(invert({1: 'a', 2: 'b', 3: 'c'}))
+# {'a': 1, 'b': 2, 'c': 3}
+```
 
 ### `invert_safe`
 
 `invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
 
 - If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
+
+``` python
+d = {1: 'a', 2: 'b', 3: 'a'}
+
+print(invert(d))
+# {'a': 3, 'b': 2}
+
+print(invert_safe(d))
+# {'a': [1, 3], 'b': [2]}
+```
+
+### `invert_multiple`
+
+`invert_multiple(d)` inverts either `(Key, Value)` to `(Value, Key)`, or `(Key, Iterable[Value])` pair to multiple `(Value, Key)`.
+
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+``` python
+invert_multiple({1: 'abc', 2: 'def', 3: 'ghi'})
+# {'a': 1, 'b': 1, 'c': 1, 'd': 2, 'e': 2, 'f': 2, 'g': 3}
+```
 
 ## Remapping
 

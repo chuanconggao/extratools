@@ -7,6 +7,7 @@ VT = TypeVar("VT")
 
 T = TypeVar("T")
 
+import collections
 from collections import defaultdict
 from itertools import count
 
@@ -20,12 +21,12 @@ def invert(d: Mapping[KT, VT]) -> Mapping[VT, KT]:
 
 def invert_multiple(d: Mapping[KT, Iterable[VT]]) -> Mapping[VT, KT]:
     return merge(
-        {v: k for v in vs}
+        {v: k for v in vs} if isinstance(vs, collections.Iterable) else {vs: k}
         for k, vs in d.items()
     )
 
 
-def invert_safe(d: Mapping[KT, VT]) -> Mapping[VT, List[KT]]:
+def invert_safe(d: Mapping[KT, VT]) -> Mapping[VT, Iterable[KT]]:
     r: Mapping[VT, List[KT]] = defaultdict(list)
 
     for k, v in d.items():
