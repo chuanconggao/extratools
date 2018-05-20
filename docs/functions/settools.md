@@ -1,5 +1,23 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
+## Set Basics
+
+Tools for basic set usages.
+
+### `addtoset`
+
+`addtoset(s, x)` checks whether adding `x` to set `s` is successful.
+
+``` python
+s = set()
+
+addtoset(s, 1)
+# True
+
+addtoset(s, 1)
+# False
+```
+
 ## Set Matching
 
 Tools for matching sets.
@@ -28,24 +46,6 @@ list(setcover(
     [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
 ))
 # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
-```
-
-## Set Operation
-
-Tools for set operations.
-
-### `addtoset`
-
-`addtoset(s, x)` checks whether adding `x` to set `s` is successful.
-
-``` python
-s = set()
-
-addtoset(s, 1)
-# True
-
-addtoset(s, 1)
-# False
 ```
 
 ## Set Similarity

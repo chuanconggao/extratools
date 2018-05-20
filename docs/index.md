@@ -28,6 +28,10 @@
 
 8+ tools for operating ranges/intervals.
 
+[`recttools`](functions/recttools)
+
+10+ tools for operating rectangles.
+
 [`seqtools`](functions/seqtools)
 
 29+ tools for operating sequences.

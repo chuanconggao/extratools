@@ -2,7 +2,7 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 
-Almost 100 extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+100+ extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
@@ -14,7 +14,7 @@ Full documentation available [here](https://www.chuancong.site/extratools/).
 
 ## Plans
 
-This library is under active development, and new functions are added on regular basis.
+This library is under active development, and new tools are added on regular basis.
 
 - Any idea or contribution is highly welcome.
 
@@ -39,6 +39,7 @@ Besides other interesting ideas, I am planning to make the following updates in 
 [`misctools`](https://chuanconggao.github.io/extratools/functions/misctools)
 [`printtools`](https://chuanconggao.github.io/extratools/functions/printtools)
 [`rangetools`](https://chuanconggao.github.io/extratools/functions/rangetools)
+[`recttools`](https://chuanconggao.github.io/extratools/functions/recttools)
 [`seqtools`](https://chuanconggao.github.io/extratools/functions/seqtools)
 [`settools`](https://chuanconggao.github.io/extratools/functions/settools)
 [`sortedtools`](https://chuanconggao.github.io/extratools/functions/sortedtools)

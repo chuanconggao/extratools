@@ -49,6 +49,7 @@ pages:
         - misctools: functions/misctools.md
         - printtools: functions/printtools.md
         - rangetools: functions/rangetools.md
+        - recttools: functions/recttools.md
         - seqtools:
             - Overview: functions/seqtools.md
             - Sub-Sequence without Gap: functions/seqtools/seqwithoutgap.md
