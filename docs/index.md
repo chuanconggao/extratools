@@ -14,7 +14,7 @@
 
 [`mathtools`](functions/mathtools)
 
-1+ tools for math.
+2+ tools for math.
 
 [`misctools`](functions/misctools)
 

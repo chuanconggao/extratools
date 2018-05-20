@@ -22,3 +22,12 @@ safediv(-1, 0)
 safediv(1, 1)
 # 1.0
 ```
+
+### `product`
+
+`product(*nums)` computes the product of all the numbers in `nums`.
+
+``` python
+product(*(0.1 * n for n in range(1, 101)))
+# 9.332621544394479e+57
+```
