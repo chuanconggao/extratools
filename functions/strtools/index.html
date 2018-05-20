@@ -902,11 +902,11 @@
 <span style="color: #e6db74">similarly, when asking for a substitution, the replacement string must be of the same type as both the pattern and the search string.</span>
 <span style="color: #e6db74">&quot;&quot;&quot;</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;byte&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;pattern&quot;</span><span style="color: #f8f8f2">])))</span>
-<span style="color: #75715e"># {&#39;Unicode&#39;, &#39;str&#39;, &#39;pattern&#39;, &#39;byte&#39;}</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;byte&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode string&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;pattern&quot;</span><span style="color: #f8f8f2">])))</span>
+<span style="color: #75715e"># {&#39;pattern&#39;, &#39;byte&#39;, &#39;Unicode string&#39;, &#39;str&#39;}</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;bytes?&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;patterns?&quot;</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">useregex</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)))</span>
-<span style="color: #75715e"># {&#39;str&#39;, &#39;bytes&#39;, &#39;patterns&#39;, &#39;Unicode&#39;, &#39;pattern&#39;, &#39;byte&#39;}</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(set(extract(s,</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;str&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;byte&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unicode strings?&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;patterns?&quot;</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">useregex</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)))</span>
+<span style="color: #75715e"># {&#39;Unicode string&#39;, &#39;patterns&#39;, &#39;byte&#39;, &#39;Unicode strings&#39;, &#39;str&#39;, &#39;pattern&#39;}</span>
 </pre></div>
 
 
