@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#set-matching" tabindex="1" class="md-skip">
+      <a href="#set-basics" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -360,15 +360,27 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="../recttools/" title="recttools" class="md-nav__link">
+      recttools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
     
-    <label class="md-nav__link" for="nav-3-8">
+    <label class="md-nav__link" for="nav-3-9">
       seqtools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-8">
+      <label class="md-nav__title" for="nav-3-9">
         seqtools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -444,6 +456,26 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#set-basics" title="Set Basics" class="md-nav__link">
+    Set Basics
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addtoset" title="addtoset" class="md-nav__link">
+    addtoset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-matching" title="Set Matching" class="md-nav__link">
     Set Matching
   </a>
@@ -461,26 +493,6 @@
           <li class="md-nav__item">
   <a href="#setcover" title="setcover" class="md-nav__link">
     setcover
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-operation" title="Set Operation" class="md-nav__link">
-    Set Operation
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#addtoset" title="addtoset" class="md-nav__link">
-    addtoset
   </a>
   
 </li>
@@ -679,6 +691,26 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#set-basics" title="Set Basics" class="md-nav__link">
+    Set Basics
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addtoset" title="addtoset" class="md-nav__link">
+    addtoset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-matching" title="Set Matching" class="md-nav__link">
     Set Matching
   </a>
@@ -696,26 +728,6 @@
           <li class="md-nav__item">
   <a href="#setcover" title="setcover" class="md-nav__link">
     setcover
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-operation" title="Set Operation" class="md-nav__link">
-    Set Operation
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#addtoset" title="addtoset" class="md-nav__link">
-    addtoset
   </a>
   
 </li>
@@ -781,6 +793,20 @@
                   <h1>settools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py">Source</a></p>
+<h2 id="set-basics">Set Basics<a class="headerlink" href="#set-basics" title="Permanent link">&para;</a></h2>
+<p>Tools for basic set usages.</p>
+<h3 id="addtoset"><code>addtoset</code><a class="headerlink" href="#addtoset" title="Permanent link">&para;</a></h3>
+<p><code>addtoset(s, x)</code> checks whether adding <code>x</code> to set <code>s</code> is successful.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">s</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">set()</span>
+
+<span style="color: #f8f8f2">addtoset(s,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># True</span>
+
+<span style="color: #f8f8f2">addtoset(s,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># False</span>
+</pre></div>
+
+
 <h2 id="set-matching">Set Matching<a class="headerlink" href="#set-matching" title="Permanent link">&para;</a></h2>
 <p>Tools for matching sets.</p>
 <h3 id="bestsubset"><code>bestsubset</code><a class="headerlink" href="#bestsubset" title="Permanent link">&para;</a></h3>
@@ -804,20 +830,6 @@
     <span style="color: #f8f8f2">[{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">}]</span>
 <span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># [frozenset({1, 2, 3}), frozenset({2, 4, 5})]</span>
-</pre></div>
-
-
-<h2 id="set-operation">Set Operation<a class="headerlink" href="#set-operation" title="Permanent link">&para;</a></h2>
-<p>Tools for set operations.</p>
-<h3 id="addtoset"><code>addtoset</code><a class="headerlink" href="#addtoset" title="Permanent link">&para;</a></h3>
-<p><code>addtoset(s, x)</code> checks whether adding <code>x</code> to set <code>s</code> is successful.</p>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">s</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">set()</span>
-
-<span style="color: #f8f8f2">addtoset(s,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># True</span>
-
-<span style="color: #f8f8f2">addtoset(s,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># False</span>
 </pre></div>
 
 
