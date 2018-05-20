@@ -107,6 +107,16 @@ def learnrewrite(src: str, dst: str, minlen: int = 3) -> Tuple[str, str]:
     )
 
 
+def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) -> Iterable[str]:
+    for m in re.compile(
+            r"\b(?:{})\b".format(r"|".join(
+                e if useregex else re.escape(e) for e in entities
+            )),
+            re.I if ignorecase else 0
+        ).finditer(s):
+        yield m.group(0)
+
+
 def __checksum(f: Any, func: Callable[[bytes], Any]) -> str:
     content: bytes
 

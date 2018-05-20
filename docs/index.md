@@ -46,7 +46,7 @@
 
 [`strtools`](functions/strtools)
 
-11+ tools for operating strings.
+12+ tools for operating strings.
 
 [`tabletools`](functions/tabletools)
 

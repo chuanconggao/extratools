@@ -50,6 +50,32 @@ tagstats(
 # {'a b': 1, 'a c': 0, 'b c': 2}
 ```
 
+### `extract`
+
+`extract(s, entities, useregex=False, ignorecase=True)` extracts the entities defined in `entities` from string `s`.
+
+- Regular expression can be used to define each entity by specifying `useregex = True`.
+
+- `ignorecase=True` specifies whether to ignore case when matching.
+
+!!! tip
+    Compatible third party library [`regex`](https://pypi.org/project/regex/) is used instead of standard library `re`, to support advanced unicode features.
+
+``` python
+# From Python Documentation
+s = """
+Both patterns and strings to be searched can be Unicode strings (str) as well as 8-bit strings (bytes). 
+However, Unicode strings and 8-bit strings cannot be mixed: that is, you cannot match a Unicode string with a byte pattern or vice-versa;
+similarly, when asking for a substitution, the replacement string must be of the same type as both the pattern and the search string.
+"""
+
+print(set(extract(s, ["str", "byte", "unicode", "pattern"])))
+# {'Unicode', 'str', 'pattern', 'byte'}
+
+print(set(extract(s, ["str", "bytes?", "unicode", "patterns?"], useregex=True)))
+# {'str', 'bytes', 'patterns', 'Unicode', 'pattern', 'byte'}
+```
+
 ## String Transformation
 
 Tools for string transformations.

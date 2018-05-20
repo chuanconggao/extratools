@@ -19,7 +19,7 @@ def invert(d: Mapping[KT, VT]) -> Mapping[VT, KT]:
     return {v: k for k, v in d.items()}
 
 
-def invert_multiple(d: Mapping[KT, Iterable[VT]]) -> Mapping[VT, KT]:
+def invert_multiple(d: Mapping[KT, Union[VT, Iterable[VT]]]) -> Mapping[VT, KT]:
     return merge(
         {v: k for v in vs} if isinstance(vs, collections.Iterable) else {vs: k}
         for k, vs in d.items()
