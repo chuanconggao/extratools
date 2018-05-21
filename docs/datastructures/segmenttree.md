@@ -10,36 +10,43 @@ Use `SegmentTree()` to initialize the tree with a set of keys, in **comparable a
 
 - `default=None` specifies the default value for each key.
 
-- `maxChildNum=2` specifies the maximum number of children for each node.
+- `numchild=2` specifies the maximum number of children for each node.
 
 !!! info
-    The space complexity should be $O(n)$.
+    The space complexity is $O(n)$. The time complexity is $O(n \cdot \log n)$.
 
 ``` Python
 tree = SegmentTree(
     {1, 2, 3, 4, 5},
-    func=min, default=0, maxChildNum=2
+    func=min, default=0
 )
 ```
 
 ### Updating
 
-You need to use `update()` to initialize the values, or update the values if necessary, by specifying a dictionary of key/value pairs. Currently, adding new keys is not supported yet.
+Use `update(keyvals)` to initialize the values, or update the values if necessary, by specifying `(Key, Value)` pairs `keyvals`.
+
+!!! warning
+    Currently, adding new keys is not supported yet.
 
 !!! info
-    Given m values updated, the time complexity should be $O(m^2)$.
+    Given m values updated, the time complexity should be $O(m \cdot \log n)$.
 
 ``` Python
-tree.update({1: 3, 4: 6})
+tree.update({1: 3, 2: -1, 4: 6})
 ```
 
 ### Querying
 
-Use `query()` to to find the best value of a range of keys. The range is denoted by a tuple `(a, b)`, representing each key `x` such that `a <= x < b`. The range here is closed on the left side and open on the right side, consistent with Python tradition.
+Use `query(queryrange)` to to find the best value of a range of keys `queryrange`.
+
+!!! warning
+    The range here is closed on the left side and open on the right side, consistent with Python tradition.
 
 !!! info
     The time complexity should be $O(log n)$.
 
 ``` Python
 tree.query((1, 3))
+# -1
 ```

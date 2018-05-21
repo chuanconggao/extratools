@@ -1,31 +1,32 @@
 #! /usr/bin/env python3
 
+from toolz.itertoolz import partition_all
+
 class SegmentTreeNode(object):
-    def __init__(self, nodeRange, default=None):
-        self.nodeRange = nodeRange
+    def __init__(self, keyrange, default=None):
+        self.keyrange = keyrange
         self.value = default
         self.children = []
         self.parent = None
 
 
 class SegmentTree(object):
-    def __init__(self, keys, func=min, default=None, maxChildNum=2):
+    def __init__(self, keys, func=min, default=None, numchild=2):
         self.func = func
 
         l = [
             SegmentTreeNode((k, k), default)
             for k in sorted(keys)
         ]
-        self.mapping = {n.nodeRange[0]: n for n in l}
+        self.mapping = {n.keyrange[0]: n for n in l}
 
         while len(l) > 1:
             nl = []
 
-            for i in range(0, len(l), maxChildNum):
-                c = l[i:i + maxChildNum]
+            for c in partition_all(numchild, l):
                 n = SegmentTreeNode(
-                    (c[0].nodeRange[0], c[-1].nodeRange[1]),
-                    default
+                    (c[0].keyrange[0], c[-1].keyrange[1]),
+                    default=default
                 )
                 n.children = c
                 for x in c:
@@ -38,10 +39,10 @@ class SegmentTree(object):
         self.root = l[0]
 
 
-    def update(self, keyValueDict):
+    def update(self, keyvals):
         ul = set()
 
-        for (k, v) in keyValueDict.items():
+        for k, v in keyvals.items():
             node = self.mapping[k]
 
             if node.value != v:
@@ -49,7 +50,7 @@ class SegmentTree(object):
                 if node.parent != None:
                     ul.add(node.parent)
 
-        while len(ul) > 0:
+        while ul:
             newUL = set()
 
             for node in ul:
@@ -62,27 +63,27 @@ class SegmentTree(object):
             ul = newUL
 
 
-    def query(self, queryRange):
+    def query(self, queryrange):
         def covers(b):
-            return queryRange[0] <= b[0] and b[1] < queryRange[1]
+            return queryrange[0] <= b[0] and b[1] < queryrange[1]
 
 
         def intersects(b):
-            return not (queryRange[1] <= b[0] or queryRange[0] > b[1])
+            return not (queryrange[1] <= b[0] or queryrange[0] > b[1])
 
 
         def query_aux(node):
-            if covers(node.nodeRange):
+            if covers(node.keyrange):
                 return node.value
 
             return self.func(
                 query_aux(cNode)
                 for cNode in node.children
-                if intersects(cNode.nodeRange)
+                if intersects(cNode.keyrange)
             )
 
 
-        if queryRange[0] >= queryRange[1] or not intersects(self.root.nodeRange):
+        if not intersects(self.root.keyrange):
             return None
 
         return query_aux(self.root)
