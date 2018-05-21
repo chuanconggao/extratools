@@ -300,6 +300,9 @@ Tools for modeling sequences.
 
 - Optional padding at the start and end can be added by specifying `pad`.
 
+!!! tip
+    For string, [`strtools.str2grams`](strtools#str2grams) can be used, which returns each gram as a string.
+
 ``` python
 list(seq2grams(range(5), 3))
 # [(0, 1, 2),

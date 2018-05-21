@@ -11,7 +11,9 @@ Tools for miscellaneous purposes.
 
 ### `parsebool`
 
-`parsebool(s)` parses a string to boolean, if its lowercase equals to `1`, `true`, `yes`, etc.
+`parsebool(s)` parses a string to boolean, by whether its lowercase equals to `1`, `true`, `yes`, `positive`, etc.
 
 !!! tip
     Check the full list of acceptable strings in [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/misctools.py).
+
+    Chinese is also supported. Support for more languages is welcome to be added by contributors.
