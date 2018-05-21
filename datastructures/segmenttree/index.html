@@ -684,37 +684,46 @@
 <p><code>default=None</code> specifies the default value for each key.</p>
 </li>
 <li>
-<p><code>maxChildNum=2</code> specifies the maximum number of children for each node.</p>
+<p><code>numchild=2</code> specifies the maximum number of children for each node.</p>
 </li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The space complexity should be <script type="math/tex">O(n)</script>.</p>
+<p>The space complexity is <script type="math/tex">O(n)</script>. The time complexity is <script type="math/tex">O(n \cdot \log n)</script>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">SegmentTree(</span>
     <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">},</span>
-    <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">min,</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">maxChildNum</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span>
+    <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">min,</span> <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span>
 <span style="color: #f8f8f2">)</span>
 </pre></div>
 
 
 <h3 id="updating">Updating<a class="headerlink" href="#updating" title="Permanent link">&para;</a></h3>
-<p>You need to use <code>update()</code> to initialize the values, or update the values if necessary, by specifying a dictionary of key/value pairs. Currently, adding new keys is not supported yet.</p>
+<p>Use <code>update(keyvals)</code> to initialize the values, or update the values if necessary, by specifying <code>(Key, Value)</code> pairs <code>keyvals</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Currently, adding new keys is not supported yet.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Given m values updated, the time complexity should be <script type="math/tex">O(m^2)</script>.</p>
+<p>Given m values updated, the time complexity should be <script type="math/tex">O(m \cdot \log n)</script>.</p>
 </div>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">})</span>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">})</span>
 </pre></div>
 
 
 <h3 id="querying">Querying<a class="headerlink" href="#querying" title="Permanent link">&para;</a></h3>
-<p>Use <code>query()</code> to to find the best value of a range of keys. The range is denoted by a tuple <code>(a, b)</code>, representing each key <code>x</code> such that <code>a &lt;= x &lt; b</code>. The range here is closed on the left side and open on the right side, consistent with Python tradition.</p>
+<p>Use <code>query(queryrange)</code> to to find the best value of a range of keys <code>queryrange</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The range here is closed on the left side and open on the right side, consistent with Python tradition.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The time complexity should be <script type="math/tex">O(log n)</script>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">tree</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">query((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># -1</span>
 </pre></div>
                 
                   
