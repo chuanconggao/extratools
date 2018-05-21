@@ -588,22 +588,55 @@
 <p><a href="https://en.wikipedia.org/wiki/Disjoint_sets">Disjoint sets</a> with path compression. After <code>d = DisjointSets()</code>:</p>
 <ul>
 <li>
-<p><code>d.add(x)</code> adds a new disjoint set containing <code>x</code>.</p>
-</li>
-<li>
 <p><code>d[x]</code> returns the representing element of the disjoint set containing <code>x</code>.</p>
 </li>
 <li>
-<p><code>d.disjoints()</code> returns all the representing elements and their respective disjoint sets.</p>
+<p><code>d.add(x)</code> adds a new disjoint set containing <code>x</code> and returns the representing element of the disjoint set.</p>
 </li>
 <li>
-<p><code>d.union(*xs)</code> union all the elements in <code>xs</code> into a single disjoint set.</p>
+<p><code>d.disjoints()</code> returns all the disjoint sets and their respective representing elements.</p>
+</li>
+<li>
+<p><code>d.union(*xs)</code> unions all the elements in <code>xs</code> into a single disjoint set.</p>
 </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Based a lot on this <a href="https://www.ics.uci.edu/~eppstein/PADS/UnionFind.py">implementation</a></p>
 </div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">d</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">DisjointSets()</span>
+
+<span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">):</span>
+    <span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(i)</span>
+
+<span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">disjoints()</span>
+<span style="color: #75715e"># {0: [0],</span>
+<span style="color: #75715e">#  1: [1],</span>
+<span style="color: #75715e">#  2: [2],</span>
+<span style="color: #75715e">#  3: [3],</span>
+<span style="color: #75715e">#  4: [4],</span>
+<span style="color: #75715e">#  5: [5],</span>
+<span style="color: #75715e">#  6: [6],</span>
+<span style="color: #75715e">#  7: [7],</span>
+<span style="color: #75715e">#  8: [8],</span>
+<span style="color: #75715e">#  9: [9]}</span>
+
+<span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">union(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 1</span>
+
+<span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">union(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 1</span>
+
+<span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">union(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">9</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 5</span>
+
+<span style="color: #f8f8f2">d</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">disjoints()</span>
+<span style="color: #75715e"># {0: [0],</span>
+<span style="color: #75715e">#  1: [1, 2, 3, 4],</span>
+<span style="color: #75715e">#  5: [5, 7, 9],</span>
+<span style="color: #75715e">#  6: [6],</span>
+<span style="color: #75715e">#  8: [8]}</span>
+</pre></div>
                 
                   
                 
