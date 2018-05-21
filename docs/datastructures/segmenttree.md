@@ -41,7 +41,7 @@ tree.update({1: 3, 2: -1, 4: 6})
 Use `query(queryrange)` to to find the best value of a range of keys `queryrange`.
 
 !!! warning
-    The range here is closed on the left side and open on the right side, consistent with Python tradition.
+    The range here is closed on the left side and open on the right side, consistent with [`rangetools`](../functions/rangetools).
 
 !!! info
     The time complexity should be $O(log n)$.
