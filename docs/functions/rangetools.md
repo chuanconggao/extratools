@@ -90,9 +90,9 @@ rangequery(
 # 0
 ```
 
-## Range Transformation
+## Range Matching
 
-Tools for transformations over ranges.
+Tools for matching ranges.
 
 ### `rangecover`
 
