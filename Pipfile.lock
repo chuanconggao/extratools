@@ -18,11 +18,11 @@
     "default": {
         "sortedcontainers": {
             "hashes": [
-                "sha256:d7e142fd4934b3af8937c8f6ad1d3323c8cdfe673730882bd2dc39b97e0e177f",
-                "sha256:dec52c0fb7a0453ff60ac121914ce0828eb2a0266e3c4ecab827f0870e4352f0"
+                "sha256:2c9db81119d0285a26119554e1ce7332b846ff7f0d05c9a46e9490423685808a",
+                "sha256:87b80f909def3f73778a7c4572ae1d3615daad0c86fc01cb046b51c32bbf85c1"
             ],
             "index": "pypi",
-            "version": "==2.0.1"
+            "version": "==2.0.2"
         },
         "tagstats": {
             "hashes": [

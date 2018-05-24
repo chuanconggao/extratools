@@ -4,7 +4,7 @@ from setuptools import setup
 from glob import glob
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.6.14"
+version = "0.6.14.1"
 
 setup(
     name="extratools",
@@ -16,7 +16,7 @@ setup(
     url=url,
 
     version=version,
-    download_url=f"{url}/tarball/{version}",
+    download_url="{}/tarball/{}".format(url, version),
 
     license="MIT",
 
@@ -24,7 +24,7 @@ setup(
     author_email="chuancong@gmail.com",
 
     description="Extra Functional Tools beyond Standard and Third-Party Libraries",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
 
     keywords=[
