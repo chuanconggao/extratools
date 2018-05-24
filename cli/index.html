@@ -583,22 +583,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dicttoolsremap" title="dicttools.remap" class="md-nav__link">
-    dicttools.remap
+  <a href="#extratools-remap-for-dicttoolsremap" title="extratools-remap for dicttools.remap" class="md-nav__link">
+    extratools-remap for dicttools.remap
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#jsontoolsflatten" title="jsontools.flatten" class="md-nav__link">
-    jsontools.flatten
+  <a href="#extratools-flatten-for-jsontoolsflatten" title="extratools-flatten for jsontools.flatten" class="md-nav__link">
+    extratools-flatten for jsontools.flatten
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stattoolsteststats" title="stattools.teststats" class="md-nav__link">
-    stattools.teststats
+  <a href="#extratools-teststats-for-stattoolsteststats" title="extratools-teststats for stattools.teststats" class="md-nav__link">
+    extratools-teststats for stattools.teststats
   </a>
   
 </li>
@@ -635,22 +635,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dicttoolsremap" title="dicttools.remap" class="md-nav__link">
-    dicttools.remap
+  <a href="#extratools-remap-for-dicttoolsremap" title="extratools-remap for dicttools.remap" class="md-nav__link">
+    extratools-remap for dicttools.remap
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#jsontoolsflatten" title="jsontools.flatten" class="md-nav__link">
-    jsontools.flatten
+  <a href="#extratools-flatten-for-jsontoolsflatten" title="extratools-flatten for jsontools.flatten" class="md-nav__link">
+    extratools-flatten for jsontools.flatten
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stattoolsteststats" title="stattools.teststats" class="md-nav__link">
-    stattools.teststats
+  <a href="#extratools-teststats-for-stattoolsteststats" title="extratools-teststats for stattools.teststats" class="md-nav__link">
+    extratools-teststats for stattools.teststats
   </a>
   
 </li>
@@ -675,23 +675,49 @@
                 
                 
                 <h1 id="cli-tools">CLI Tools<a class="headerlink" href="#cli-tools" title="Permanent link">&para;</a></h1>
-<p>Please check each individual script for more details.</p>
-<h3 id="dicttoolsremap"><a href="../functions/dicttools/#remap"><code>dicttools.remap</code></a><a class="headerlink" href="#dicttoolsremap" title="Permanent link">&para;</a></h3>
+<h3 id="extratools-remap-for-dicttoolsremap"><code>extratools-remap</code> for <a href="../functions/dicttools/#remap"><code>dicttools.remap</code></a><a class="headerlink" href="#extratools-remap-for-dicttoolsremap" title="Permanent link">&para;</a></h3>
+<p>For remapping elements.</p>
+<ul>
+<li>
+<p>Reads from standard in, and writes to standard out.</p>
+</li>
+<li>
+<p>Filename for the mapping dictionary needs to be specified. Loads and dumps as a CSV file.</p>
+</li>
+</ul>
 <p><a href="https://github.com/chuanconggao/extratools/tree/master/bin/extratools-remap">Source</a></p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span>Usage:
     extratools-remap &lt;mapping&gt;
 </pre></div>
 
 
-<h3 id="jsontoolsflatten"><a href="../functions/jsontools/#flatten"><code>jsontools.flatten</code></a><a class="headerlink" href="#jsontoolsflatten" title="Permanent link">&para;</a></h3>
+<h3 id="extratools-flatten-for-jsontoolsflatten"><code>extratools-flatten</code> for <a href="../functions/jsontools/#flatten"><code>jsontools.flatten</code></a><a class="headerlink" href="#extratools-flatten-for-jsontoolsflatten" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/chuanconggao/extratools/tree/master/bin/extratools-flatten">Source</a></p>
+<p>For flatten/unflatten a JSON object.</p>
+<ul>
+<li>
+<p>Reads from standard in, and writes to standard out.</p>
+</li>
+<li>
+<p><code>--force</code> can be specified to force flatten any array.</p>
+</li>
+</ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span>Usage:
     extratools-flatten [--force]
 </pre></div>
 
 
-<h3 id="stattoolsteststats"><a href="../functions/stattools/#teststats"><code>stattools.teststats</code></a><a class="headerlink" href="#stattoolsteststats" title="Permanent link">&para;</a></h3>
+<h3 id="extratools-teststats-for-stattoolsteststats"><code>extratools-teststats</code> for <a href="../functions/stattools/#teststats"><code>stattools.teststats</code></a><a class="headerlink" href="#extratools-teststats-for-stattoolsteststats" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/chuanconggao/extratools/tree/master/bin/extratools-teststats">Source</a></p>
+<p>For evaluating binary classification results.</p>
+<ul>
+<li>
+<p>Reads two files for truths and predictions, respectively. Each row is a label denoting true or false.</p>
+</li>
+<li>
+<p>Writes all the statistics to standard out in JSON.</p>
+</li>
+</ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span>Usage:
     extratools-teststats &lt;truth&gt; &lt;prediction&gt;
 </pre></div>
