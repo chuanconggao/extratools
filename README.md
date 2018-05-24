@@ -10,7 +10,7 @@
 
 - A few useful CLI tools for respective functions are also installed. They are available as `extratools-[funcname]`.
 
-Full documentation available [here](https://www.chuancong.site/extratools/).
+Full documentation is available [here](https://www.chuancong.site/extratools/).
 
 ## Plans
 
