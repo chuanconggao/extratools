@@ -94,12 +94,15 @@ def grid(rect: Rectangle, rows: int, cols: int) -> Iterable[Rectangle]:
             yield ((x, y), (x + ww, y + hh))
 
 
-def locatebypos(rect: Rectangle, rows: int, cols: int, pos: Tuple[int, int]) -> Tuple[int, Rectangle]:
+def locatebypos(rect: Rectangle, rows: int, cols: int, pos: Tuple[int, int]) -> Optional[Tuple[int, Rectangle]]:
+    row, col = pos
+
+    if not (0 <= row < rows and 0 <= col < cols):
+        return None
+
     (x1, y1), (x2, y2) = rect
     ww = (x2 - x1) / cols
     hh = (y2 - y1) / rows
-
-    row, col = pos
 
     x, y = x1 + col * ww, y1 + row * hh
 
@@ -109,16 +112,19 @@ def locatebypos(rect: Rectangle, rows: int, cols: int, pos: Tuple[int, int]) -> 
     )
 
 
-def locatebyid(rect: Rectangle, rows: int, cols: int, rectid: int) -> Tuple[int, Rectangle]:
+def locatebyid(rect: Rectangle, rows: int, cols: int, rectid: int) -> Optional[Tuple[int, Rectangle]]:
     return locatebypos(rect, rows, cols, divmod(rectid, cols))
 
 
-def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Tuple[int, Rectangle]:
+def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Optional[Tuple[int, Rectangle]]:
     (x1, y1), (x2, y2) = rect
+    xx, yy = point
+
+    if not (x1 <= xx < x2 and y1 <= yy < y2):
+        return None
+
     ww = (x2 - x1) / cols
     hh = (y2 - y1) / rows
-
-    xx, yy = point
 
     col = int((xx - x1) // ww)
     row = int((yy - y1) // hh)
@@ -126,5 +132,8 @@ def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Tuple[
     return locatebypos(rect, rows, cols, (row, col))
 
 
-def heatmap(rect: Rectangle, rows: int, cols: int, points: Iterable[Point]) -> Mapping[int, int]:
-    return Counter(locatebypoint(rect, rows, cols, point)[0] for point in points)
+def heatmap(rect: Rectangle, rows: int, cols: int, points: Iterable[Point]) -> Mapping[Optional[int], int]:
+    return Counter(
+        (locatebypoint(rect, rows, cols, point) or (None, None))[0]
+        for point in points
+    )

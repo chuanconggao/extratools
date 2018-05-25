@@ -166,6 +166,8 @@ list(grid(
 
 `locatebyid(rect, rows, cols, rectid)` finds the sub-rectangle and its ID within rectangle `rect` by a grid of `rows` rows and `cols` columns, according to its ID defined in [`grid`](#grid).
 
+- Return `None` when not in grid.
+
 !!! tip
     The ID is also returned to ensure the same returning type of [`locatebypos`](#locatebypos) and [`locatebypoint`](#locatebypoint).
 
@@ -184,6 +186,8 @@ locatebyid(
 
 `locatebypos(rect, rows, cols, pos)` finds the sub-rectangle and its ID within rectangle `rect` by a grid of `rows` rows and `cols` columns, according to the position of `(row, col)`.
 
+- Return `None` when not in grid.
+
 ![`locatebypos`](recttools/locatebypos.svg)
 
 ``` python
@@ -198,6 +202,8 @@ locatebypos(
 ### `locatebypoint`
 
 `locatebypoint(rect, rows, cols, point)` finds the sub-rectangle and its ID within rectangle `rect` by a grid of `rows` rows and `cols` columns.
+
+- Return `None` when not in grid.
 
 ![`locatebypoint`](recttools/locatebypoint.svg)
 
@@ -222,5 +228,5 @@ heatmap(
     3, 4,
     [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5)]
 )
-# {1: 2, 7: 1, 11: 1}
+# {1: 2, 7: 1, 11: 1, None: 1}
 ```
