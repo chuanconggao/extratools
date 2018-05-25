@@ -2,7 +2,9 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 
-100+ extra functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+**Featured on GitHub's Trending Python repos on May 25, 2018. Thank you so much for support!**
+
+100+ extra higher-level functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
@@ -12,15 +14,17 @@
 
 Full documentation is available [here](https://www.chuancong.site/extratools/).
 
-## Plans
+## Current Progress and Future Plans
 
-This library is under active development, and new tools are added on regular basis.
-
-- Any idea or contribution is highly welcome.
+There are currently more than 100 functions among 14 categories, 3 data structures, and 3 CLI tools.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
-Besides other interesting ideas, I am planning to make the following updates in recent days/weeks/months.
+This library is under active development, and new tools are added on almost weekly basis.
+
+- Any idea or contribution is highly welcome.
+
+Besides many other interesting ideas, I am planning to make the following updates in recent days/weeks/months.
 
 - Add `dicttools.unflatten` and `jsontools.unflatten`.
 
