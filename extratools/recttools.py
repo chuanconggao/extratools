@@ -123,4 +123,8 @@ def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Tuple[
     col = int((xx - x1) // ww)
     row = int((yy - y1) // hh)
 
-    return locatebypos(rect, rows, cols, (col, row))
+    return locatebypos(rect, rows, cols, (row, col))
+
+
+def heatmap(rect: Rectangle, rows: int, cols: int, points: Iterable[Point]) -> Mapping[int, int]:
+    return Counter(locatebypoint(rect, rows, cols, point)[0] for point in points)

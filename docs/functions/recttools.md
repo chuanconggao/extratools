@@ -209,3 +209,18 @@ locatebypoint(
 )
 # (7, ((2.5, 2.0), (3.0, 3.0)))
 ```
+
+### `heatmap`
+
+`heatmap(rect, rows, cols, points)` computes the heatmap within rectangle `rect` by a grid of `rows` rows and `cols` columns.
+
+![`heatmap`](recttools/heatmap.svg)
+
+``` python
+heatmap(
+    ((1, 1), (3, 4)),
+    3, 4,
+    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5)]
+)
+# {1: 2, 7: 1, 11: 1}
+```
