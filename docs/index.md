@@ -30,7 +30,7 @@
 
 [`recttools`](functions/recttools)
 
-10+ tools for operating rectangles.
+11+ tools for operating rectangles.
 
 [`seqtools`](functions/seqtools)
 

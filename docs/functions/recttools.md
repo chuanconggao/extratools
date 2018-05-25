@@ -139,7 +139,7 @@ Tools for operating on grid.
 
 `grid(rect, rows, cols)` divides the rectangle `rect` into `rows` rows and `cols` columns, in the order of left to right and bottom to top.
 
-- The returning order of each sub-rectangle is considered its ID. It is utilized by [`locatebyid`](#locatebyid), [`locatebypos`](#locatebypos), and [`locatebypoint`](#locatebypoint).
+- The returning order of each sub-rectangle is considered its ID. It is utilized by [`locatebyid`](#locatebyid), [`locatebypos`](#locatebypos), [`locatebypoint`](#locatebypoint), and [`heatmap`](#heatmap).
 
 ![`grid`](recttools/grid.svg)
 
