@@ -65,7 +65,7 @@ Besides many other interesting ideas, I am planning to make the following update
 
 ## Examples
 
-Here are three examples out of dozens of our tools.
+Here are a few examples out of dozens of our tools.
 
 - [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/#compress) compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
@@ -115,6 +115,30 @@ flatten(json.loads("""{
 #  'phoneNumbers[1].number': '646 555-4567',
 #  'children': [],
 #  'spouse': None}
+```
+
+[`strtools.learnrewrite(src, dst, minlen=3)`](https://chuanconggao.github.io/extratools/functions/strtools/#learnrewrite) learns the respective regular expression and template to rewrite `src` to `dst`.
+
+``` python
+learnrewrite(
+    "Elisa likes icecream.",
+    "icecream is Elisa's favorite."
+)
+# ('(.*) likes (.*).',
+#  "{1} is {0}'s favorite.")
+```
+
+[`parsebymarkdown(text)`](https://chuanconggao.github.io/extratools/functions/tabletools/#parsebymarkdown) parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
+
+
+``` python
+list(parseasmarkdown("""
+| foo | bar |
+| --- | --- |
+| baz | bim |
+"""))
+# [['foo', 'bar'],
+#  ['baz', 'bim']]
 ```
 
 ## Installation
