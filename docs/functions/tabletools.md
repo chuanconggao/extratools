@@ -120,7 +120,7 @@ list(parse([
 `parsebymarkdown(text)` parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
 ``` python
-list(parseasmarkdown("""
+list(parsebymarkdown("""
 | foo | bar |
 | --- | --- |
 | baz | bim |

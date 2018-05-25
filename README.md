@@ -70,6 +70,8 @@ Here are a few examples out of dozens of our tools.
 - [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/#compress) compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
+from extratools.seqtools import compress
+
 list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 # [(1, 1), (2, 2), (3, 3), (4, 4)]
 ```
@@ -77,6 +79,9 @@ list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 - [`rangetools.gaps(covered, whole=(-inf, inf))`](https://chuanconggao.github.io/extratools/functions/rangetools/#gaps) computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
 
 ``` python
+from math import inf
+from extratools.rangetools import gaps
+
 list(gaps(
     [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
     (0, 1)
@@ -87,11 +92,14 @@ list(gaps(
 - [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools/#json-flattenunflatten) flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
 
 ``` python
+import json
+from extratools.jsontools import flatten
+
 flatten(json.loads("""{
   "name": "John",
   "address": {
     "streetAddress": "21 2nd Street",
-    "city": "New York",
+    "city": "New York"
   },
   "phoneNumbers": [
     {
@@ -120,6 +128,8 @@ flatten(json.loads("""{
 [`strtools.learnrewrite(src, dst, minlen=3)`](https://chuanconggao.github.io/extratools/functions/strtools/#learnrewrite) learns the respective regular expression and template to rewrite `src` to `dst`.
 
 ``` python
+from extratools.strtools import learnrewrite
+
 learnrewrite(
     "Elisa likes icecream.",
     "icecream is Elisa's favorite."
@@ -128,11 +138,13 @@ learnrewrite(
 #  "{1} is {0}'s favorite.")
 ```
 
-[`parsebymarkdown(text)`](https://chuanconggao.github.io/extratools/functions/tabletools/#parsebymarkdown) parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
+[`tabletools.parsebymarkdown(text)`](https://chuanconggao.github.io/extratools/functions/tabletools/#parsebymarkdown) parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
 
 ``` python
-list(parseasmarkdown("""
+from extratools.tabletools import parsebymarkdown
+
+list(parsebymarkdown("""
 | foo | bar |
 | --- | --- |
 | baz | bim |

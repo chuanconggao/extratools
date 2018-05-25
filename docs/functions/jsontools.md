@@ -23,7 +23,7 @@ flatten(json.loads("""{
   "name": "John",
   "address": {
     "streetAddress": "21 2nd Street",
-    "city": "New York",
+    "city": "New York"
   },
   "phoneNumbers": [
     {
