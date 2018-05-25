@@ -988,6 +988,9 @@
 
 <h3 id="locatebyid"><code>locatebyid</code><a class="headerlink" href="#locatebyid" title="Permanent link">&para;</a></h3>
 <p><code>locatebyid(rect, rows, cols, rectid)</code> finds the sub-rectangle and its ID within rectangle <code>rect</code> by a grid of <code>rows</code> rows and <code>cols</code> columns, according to its ID defined in <a href="#grid"><code>grid</code></a>.</p>
+<ul>
+<li>Return <code>None</code> when not in grid.</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The ID is also returned to ensure the same returning type of <a href="#locatebypos"><code>locatebypos</code></a> and <a href="#locatebypoint"><code>locatebypoint</code></a>.</p>
@@ -1004,6 +1007,9 @@
 
 <h3 id="locatebypos"><code>locatebypos</code><a class="headerlink" href="#locatebypos" title="Permanent link">&para;</a></h3>
 <p><code>locatebypos(rect, rows, cols, pos)</code> finds the sub-rectangle and its ID within rectangle <code>rect</code> by a grid of <code>rows</code> rows and <code>cols</code> columns, according to the position of <code>(row, col)</code>.</p>
+<ul>
+<li>Return <code>None</code> when not in grid.</li>
+</ul>
 <p><img alt="locatebypos" src="../recttools/locatebypos.svg" /></p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">locatebypos(</span>
     <span style="color: #f8f8f2">((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)),</span>
@@ -1016,6 +1022,9 @@
 
 <h3 id="locatebypoint"><code>locatebypoint</code><a class="headerlink" href="#locatebypoint" title="Permanent link">&para;</a></h3>
 <p><code>locatebypoint(rect, rows, cols, point)</code> finds the sub-rectangle and its ID within rectangle <code>rect</code> by a grid of <code>rows</code> rows and <code>cols</code> columns.</p>
+<ul>
+<li>Return <code>None</code> when not in grid.</li>
+</ul>
 <p><img alt="locatebypoint" src="../recttools/locatebypoint.svg" /></p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">locatebypoint(</span>
     <span style="color: #f8f8f2">((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)),</span>
@@ -1034,7 +1043,7 @@
     <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>
     <span style="color: #f8f8f2">[(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.25</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3.5</span><span style="color: #f8f8f2">)]</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># {1: 2, 7: 1, 11: 1}</span>
+<span style="color: #75715e"># {1: 2, 7: 1, 11: 1, None: 1}</span>
 </pre></div>
                 
                   
