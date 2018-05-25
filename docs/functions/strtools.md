@@ -82,7 +82,9 @@ Tools for string transformations.
 
 ### `rewrite`
 
-`rewrite(s, regex, template)` rewrites a string `s` according to the template `template`, where the values are extracted according to the regular expression `regex`.
+`rewrite(s, regex, template, transformations=None)` rewrites a string `s` according to the template `template`, where the values are extracted according to the regular expression `regex`.
+
+- Optional parameter `transformations` specifies a dictionary to transform each value. In the dictionary, each key is a group ID and each value is a function.
 
 !!! tip
     Check [`re`](https://docs.python.org/3/library/re.html) for details of naming capturing group.
@@ -103,6 +105,14 @@ rewrite(
     "{item} is {name}'s favorite."
 )
 # "icecream is Elisa's favorite."
+
+rewrite(
+    "Elisa likes icecream.",
+    r"(?P<name>\w+) likes (?P<item>\w+).",
+    "{item} is {name}'s favorite.",
+    {"item": str.upper}
+)
+# "ICECREAM is Elisa's favorite."
 ```
 
 ### `learnrewrite`

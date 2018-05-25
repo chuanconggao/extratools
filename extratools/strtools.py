@@ -45,11 +45,24 @@ def str2grams(s: str, n: int, pad: str = '') -> Iterable[str]:
         yield ''.join(seq)
 
 
-def rewrite(s: str, regex: Any, template: str) -> str:
+def rewrite(s: str, regex: Any, template: str, transformations: Optional[Mapping[Union[str, int], Callable[[str], str]]] = None) -> str:
     r = re.compile(regex) if isinstance(regex, str) else regex
 
     m = r.fullmatch(s)
-    return template.format(*m.groups(), **m.groupdict())
+
+    gs = m.groups()
+    gd = m.groupdict()
+    if transformations:
+        gs = [
+            transformations.get(i, lambda x: x)(v)
+            for i, v in enumerate(gs)
+        ]
+        gd = {
+            k: transformations.get(k, lambda x: x)(v)
+            for k, v in gd.items()
+        }
+
+    return template.format(*gs, **gd)
 
 
 def learnrewrite(src: str, dst: str, minlen: int = 3) -> Tuple[str, str]:
