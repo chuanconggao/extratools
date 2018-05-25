@@ -120,14 +120,19 @@ def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Option
     (x1, y1), (x2, y2) = rect
     xx, yy = point
 
-    if not (x1 <= xx < x2 and y1 <= yy < y2):
+    if not (x1 <= xx <= x2 and y1 <= yy <= y2):
         return None
 
     ww = (x2 - x1) / cols
     hh = (y2 - y1) / rows
 
     col = int((xx - x1) // ww)
+    if xx == x2:
+        col -= 1
+
     row = int((yy - y1) // hh)
+    if yy == y2:
+        row -= 1
 
     return locatebypos(rect, rows, cols, (row, col))
 
