@@ -141,6 +141,9 @@ Tools for operating on grid.
 
 - The returning order of each sub-rectangle is considered its ID. It is utilized by [`locatebyid`](#locatebyid), [`locatebypos`](#locatebypos), [`locatebypoint`](#locatebypoint), and [`heatmap`](#heatmap).
 
+!!! tip
+    From the rectangle ID, you can easily get the position tuple `pos, col = divmod(rectid, cols)`.
+
 ![`grid`](recttools/grid.svg)
 
 ``` python
@@ -226,7 +229,17 @@ locatebypoint(
 heatmap(
     ((1, 1), (3, 4)),
     3, 4,
-    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5)]
+    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)]
 )
 # {1: 2, 7: 1, 11: 1, None: 1}
+
+# If you need positions:
+{
+    None if k is None else divmod(k, 4): v for k, v in heatmap(
+        ((1, 1), (3, 4)),
+        3, 4,
+        [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)]
+    ).items()
+}
+# {(0, 1): 2, (1, 3): 1, (2, 3): 1, None: 1}
 ```
