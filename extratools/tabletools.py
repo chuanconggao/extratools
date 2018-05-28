@@ -17,7 +17,7 @@ from toolz.itertoolz import isdistinct
 from .seqtools import iter2seq
 from .settools import dropsupersets
 
-Table = Iterable[Union[List[T], Tuple[T]]]
+Table = Iterable[Union[List[T], Tuple[T, ...]]]
 
 def transpose(data: Table) -> Table:
     for col in zip(*data):
