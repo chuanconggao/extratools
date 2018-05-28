@@ -163,3 +163,16 @@ The following libraries are highly recommended to use together with `extratools`
 
 [`toolz`](https://github.com/pytoolz/toolz)
 [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html)
+
+## Reference
+
+When using for research purpose, please cite this library as follows.
+
+``` tex
+@misc{extratools,
+  author = {Chuancong Gao},
+  title = {{extratools}},
+  howpublished = "\url{https://github.com/chuanconggao/extratools}",
+  year = {2018}
+}
+```

@@ -80,7 +80,18 @@ Tools for processing CSV.
 
 ### `loadcsv`
 
-`loadcsv(path, delimiter=',')` loads a CSV file, from either a file path or a file object.
+`loadcsv(path, delimiter=',')` loads a CSV file, from either a file path, a file object, or an iterable of strings.
+
+``` python
+s = """Los Angeles,34°03′,118°15′
+New York City,40°42′46″,74°00′21″
+Paris,48°51′24″,2°21′03″"""
+
+list(loadcsv(s.split('\n')))
+# [['Los Angeles'  , '34°03′'   , '118°15′'  ],
+#  ['New York City', '40°42′46″', '74°00′21″'],
+#  ['Paris'        , '48°51′24″', '2°21′03″' ]]
+```
 
 ### `dumpcsv`
 
@@ -181,4 +192,33 @@ list(parsebyregexes(
 # [['1',   'ALICE',    'Pairs'],
 #  ['2',     'BOB',   'London'],
 #  ['3', 'CARL JR', 'New York']]
+```
+
+## Schema of Table
+
+Tools for processing schema of table.
+
+### `inferschema`
+
+`inferschema(table)` infers the schema of the table `table`, as a tuple of column types. Currently available types are listed as follows.
+
+![Types](https://raw.githubusercontent.com/chuanconggao/RegexOrder/master/templates.svg?sanitize=true)
+
+!!! warning
+    The header must be removed for best result.
+
+!!! info
+    Utilizes the [`RegexOrder`](https://github.com/chuanconggao/RegexOrder) library.
+
+    `RegexOrder` is part of a research project. Thus, when using this function for research purpose, please cite both [`RegexOrder`](https://github.com/chuanconggao/RegexOrder#reference) and [`extratools`](../README#reference) accordingly.
+
+``` python
+t = [
+    ['Los Angeles'  , '34°03′'   , '118°15′'  ],
+    ['New York City', '40°42′46″', '74°00′21″'],
+    ['Paris'        , '48°51′24″', '2°21′03″' ]
+]
+
+inferschema(t)
+# ('title_words', 'formated_pos_ints', 'formated_pos_ints')
 ```

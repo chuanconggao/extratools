@@ -8,6 +8,10 @@ import csv
 from io import TextIOBase
 import itertools
 import regex as re
+import collections
+
+from regexorder import RegexOrder
+
 from .seqtools import iter2seq
 
 Table = Iterable[Union[List[T], Tuple[T]]]
@@ -17,8 +21,11 @@ def transpose(data: Table) -> Table:
         yield list(col)
 
 
-def loadcsv(path: Union[str, TextIOBase], delimiter: str = ',') -> Table:
-    f = cast(TextIOBase, path if isinstance(path, TextIOBase) else open(path, 'r', newline=''))
+def loadcsv(path: Union[Iterable[str], str, TextIOBase], delimiter: str = ',') -> Table:
+    if isinstance(path, collections.Iterable):
+        f = path
+    else:
+        f = cast(TextIOBase, path if isinstance(path, TextIOBase) else open(path, 'r', newline=''))
 
     yield from csv.reader(f, delimiter=delimiter)
 
@@ -111,3 +118,9 @@ def parsebyregexes(lines: Iterable[str], regexes: Any) -> Table:
             start = m.end()
 
         yield vals
+
+
+def inferschema(data: Table) -> Tuple[str, ...]:
+    r = RegexOrder()
+
+    return tuple(r.matchall(col).name for col in transpose(data))
