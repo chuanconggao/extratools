@@ -8,7 +8,7 @@
 Tools for string matching.
 
 !!! info
-    Commonly used [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) is available as [`settools.jaccard`](settools#jaccard).
+    Commonly used [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) is available as [`settools.jaccard`](settools/similarity#jaccard).
 
 ### `commonsubstr`
 

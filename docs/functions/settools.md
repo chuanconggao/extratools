@@ -1,5 +1,8 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
+!!! warning
+    For tools specific to set similarity, please go to specific [documentation](settools/similarity).
+
 !!! info
     A set is a subset/superset of itself.
 
@@ -88,19 +91,3 @@ list(setcover(
 ))
 # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
 ```
-
-## Set Similarity
-
-Tools for set similarities.
-
-### `jaccard`
-
-`jaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`.
-
-### `multisetjaccard`
-
-`multisetjaccard(a, b)` computes the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two multi-sets (Counters) `a` and `b`.
-
-### `weightedjaccard`
-
-`weightedjaccard(a, b, key=sum)` computes the weighted [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between two sets `a` and `b`, using function `key` to compute the total weight of the elements within a set.

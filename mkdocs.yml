@@ -49,16 +49,23 @@ pages:
         - misctools: functions/misctools.md
         - printtools: functions/printtools.md
         - rangetools: functions/rangetools.md
-        - recttools: functions/recttools.md
+        - recttools:
+            - Overview: functions/recttools.md
+            - Grid: functions/recttools/grid.md
         - seqtools:
             - Overview: functions/seqtools.md
             - Sub-Sequence without Gap: functions/seqtools/seqwithoutgap.md
             - Sub-Sequence with Gap: functions/seqtools/seqwithgap.md
-        - settools: functions/settools.md
+        - settools:
+            - Overview: functions/settools.md
+            - Similarity: functions/settools/similarity.md
         - sortedtools: functions/sortedtools.md
         - stattools: functions/stattools.md
         - strtools: functions/strtools.md
-        - tabletools: functions/tabletools.md
+        - tabletools:
+            - Overview: functions/tabletools.md
+            - Parsing: functions/tabletools/parse.md
+            - Schema: functions/tabletools/schema.md
 
     - Data Structures:
         - defaultlist.DefaultList: datastructures/defaultlist.md
