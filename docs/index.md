@@ -54,7 +54,7 @@
 
 [`tabletools`](functions/tabletools)
 
-9+ tools for operating tables/matrices.
+10+ tools for operating tables/matrices.
 
 ## Data Structures
 

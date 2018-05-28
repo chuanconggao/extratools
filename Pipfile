@@ -7,6 +7,7 @@ name = "pypi"
 sortedcontainers = ">=1.5.10"
 toolz = ">=0.9.0"
 TagStats = ">=0.1.2"
+regexorder = "*"
 
 [dev-packages]
 mkdocs = "*"
