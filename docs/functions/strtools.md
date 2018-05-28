@@ -7,6 +7,9 @@
 
 Tools for string matching.
 
+!!! info
+    Commonly used [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) is available as [`settools.jaccard`](settools#jaccard).
+
 ### `commonsubstr`
 
 `commonsubstr(a, b)` finds the [longest common sub-string](https://en.wikipedia.org/wiki/Longest_common_substring_problem) among two strings `a` and `b`.
