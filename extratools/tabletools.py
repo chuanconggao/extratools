@@ -130,8 +130,7 @@ def inferschema(data: Table) -> Tuple[str, ...]:
 
 
 def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Tuple[int, ...]]:
-    data = iter2seq(data)
-    cols = list(transpose(data))
+    cols = list(transpose(iter2seq(data)))
 
     return map(tuple, dropsupersets(map(set, (
         localcolids
@@ -142,14 +141,12 @@ def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Tuple[int, ...]]:
 
 
 def foreignkeys(primarydata: Table, primarykey: Tuple[int, ...], foreigndata: Table) -> Iterable[Tuple[int, ...]]:
-    pdata = iter2seq(primarydata)
     pvals = set(
         tuple(row[j] for j in primarykey)
-        for row in pdata
+        for row in iter2seq(primarydata)
     )
 
-    fdata = iter2seq(foreigndata)
-    fcols = list(transpose(fdata))
+    fcols = list(transpose(iter2seq(foreigndata)))
 
     return (
         localcolids
