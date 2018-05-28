@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#schema-of-table" tabindex="1" class="md-skip">
+      <a href="#column-types" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -633,8 +633,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-of-table" title="Schema of Table" class="md-nav__link">
-    Schema of Table
+  <a href="#column-types" title="Column Types" class="md-nav__link">
+    Column Types
   </a>
   
     <nav class="md-nav">
@@ -646,6 +646,26 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#hasheader" title="hasheader" class="md-nav__link">
+    hasheader
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primaryforeign-key-of-table" title="Primary/Foreign-Key of Table" class="md-nav__link">
+    Primary/Foreign-Key of Table
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#candidatekeys" title="candidatekeys" class="md-nav__link">
@@ -778,8 +798,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-of-table" title="Schema of Table" class="md-nav__link">
-    Schema of Table
+  <a href="#column-types" title="Column Types" class="md-nav__link">
+    Column Types
   </a>
   
     <nav class="md-nav">
@@ -791,6 +811,26 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#hasheader" title="hasheader" class="md-nav__link">
+    hasheader
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primaryforeign-key-of-table" title="Primary/Foreign-Key of Table" class="md-nav__link">
+    Primary/Foreign-Key of Table
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#candidatekeys" title="candidatekeys" class="md-nav__link">
@@ -832,18 +872,34 @@
                 
                   <h1>Schema</h1>
                 
-                <h2 id="schema-of-table">Schema of Table<a class="headerlink" href="#schema-of-table" title="Permanent link">&para;</a></h2>
-<p>Tools for processing schema of table.</p>
+                <h2 id="column-types">Column Types<a class="headerlink" href="#column-types" title="Permanent link">&para;</a></h2>
+<p>Tools for processing column types.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The header must be removed for best result.</p>
+<p>For all the function except <a href="#hasheader"><code>hasheader</code></a>, the header must be removed for best result.</p>
 </div>
 <h3 id="inferschema"><code>inferschema</code><a class="headerlink" href="#inferschema" title="Permanent link">&para;</a></h3>
-<p><code>inferschema(table)</code> infers the schema of the table <code>table</code>, as a tuple of column types. Currently available types are listed as follows.</p>
+<p><code>inferschema(data)</code> infers the schema of the table <code>data</code>, as a tuple of column types. Currently available types are listed as follows.</p>
 <p><img alt="Types" src="https://raw.githubusercontent.com/chuanconggao/RegexOrder/master/templates.svg?sanitize=true" /></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Utilizes the <a href="https://github.com/chuanconggao/RegexOrder"><code>RegexOrder</code></a> library.</p>
+<p>Utilizes the <a href="https://github.com/chuanconggao/RegexOrder"><code>RegexOrder</code></a> library to infer the type of each column.</p>
+<p><code>RegexOrder</code> is part of a research project. Thus, when using this function for research purpose, please cite both <a href="https://github.com/chuanconggao/RegexOrder#reference"><code>RegexOrder</code></a> and <a href="../../README#reference"><code>extratools</code></a> accordingly.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">inferschema([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;Los Angeles&#39;</span>  <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;34°03′&#39;</span>   <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;118°15′&#39;</span>  <span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;New York City&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;40°42′46″&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;74°00′21″&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;Paris&#39;</span>        <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;48°51′24″&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;2°21′03″&#39;</span> <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">])</span>
+<span style="color: #75715e"># (&#39;title_words&#39;, &#39;formated_pos_ints&#39;, &#39;formated_pos_ints&#39;)</span>
+</pre></div>
+
+
+<h3 id="hasheader"><code>hasheader</code><a class="headerlink" href="#hasheader" title="Permanent link">&para;</a></h3>
+<p><code>hasheader(data)</code> returns the confidence (between <script type="math/tex">0</script> and <script type="math/tex">1</script>) of whether the first row of the table <code>data</code> is header.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>It works by checking whether the type with vs. without the first row for each column, using the <a href="https://github.com/chuanconggao/RegexOrder"><code>RegexOrder</code></a> library.</p>
 <p><code>RegexOrder</code> is part of a research project. Thus, when using this function for research purpose, please cite both <a href="https://github.com/chuanconggao/RegexOrder#reference"><code>RegexOrder</code></a> and <a href="../../README#reference"><code>extratools</code></a> accordingly.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">t</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
@@ -852,11 +908,23 @@
     <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;Paris&#39;</span>        <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;48°51′24″&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;2°21′03″&#39;</span> <span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">]</span>
 
-<span style="color: #f8f8f2">inferschema(t)</span>
-<span style="color: #75715e"># (&#39;title_words&#39;, &#39;formated_pos_ints&#39;, &#39;formated_pos_ints&#39;)</span>
+<span style="color: #f8f8f2">hasheader(t)</span>
+<span style="color: #75715e"># 0.0</span>
+
+<span style="color: #f8f8f2">hasheader([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;City&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;Latitude&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;Longitude&#39;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">t)</span>
+<span style="color: #75715e"># 0.6666666666666666</span>
+
+<span style="color: #f8f8f2">hasheader([</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;C1&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;C2&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;C3&#39;</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">t)</span>
+<span style="color: #75715e"># 1.0</span>
 </pre></div>
 
 
+<h2 id="primaryforeign-key-of-table">Primary/Foreign-Key of Table<a class="headerlink" href="#primaryforeign-key-of-table" title="Permanent link">&para;</a></h2>
+<p>Tools for processing primary/foreign-key of table.</p>
 <h3 id="candidatekeys"><code>candidatekeys</code><a class="headerlink" href="#candidatekeys" title="Permanent link">&para;</a></h3>
 <p><code>candidatekeys(data, maxcols)</code> finds the <a href="https://en.wikipedia.org/wiki/Candidate_key">candidate keys</a> of a table <code>data</code>.</p>
 <ul>
