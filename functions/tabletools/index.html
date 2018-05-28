@@ -620,6 +620,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#candidatekeys" title="candidatekeys" class="md-nav__link">
+    candidatekeys
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -848,6 +855,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#candidatekeys" title="candidatekeys" class="md-nav__link">
+    candidatekeys
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -888,9 +902,9 @@
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">9</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">]))</span>
-<span style="color: #75715e"># [[1, 4, 7],</span>
-<span style="color: #75715e">#  [2, 5, 8],</span>
-<span style="color: #75715e">#  [3, 6, 9]]</span>
+<span style="color: #75715e"># [(1, 4, 7),</span>
+<span style="color: #75715e">#  (2, 5, 8),</span>
+<span style="color: #75715e">#  (3, 6, 9)]</span>
 </pre></div>
 
 
@@ -914,7 +928,7 @@
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">cols</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">list(transpose([</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None,</span>    <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None],</span>
-    <span style="color: #f8f8f2">[None,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None]</span>
+    <span style="color: #f8f8f2">[None,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">None],</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #f8f8f2">None,</span> <span style="color: #f8f8f2">None]</span>
 <span style="color: #f8f8f2">]))</span>
 
@@ -1082,6 +1096,40 @@
 
 <span style="color: #f8f8f2">inferschema(t)</span>
 <span style="color: #75715e"># (&#39;title_words&#39;, &#39;formated_pos_ints&#39;, &#39;formated_pos_ints&#39;)</span>
+</pre></div>
+
+
+<h3 id="candidatekeys"><code>candidatekeys</code><a class="headerlink" href="#candidatekeys" title="Permanent link">&para;</a></h3>
+<p><code>candidatekeys(data, maxcols)</code> finds the <a href="https://en.wikipedia.org/wiki/Candidate_key">candidate keys</a> of a table <code>data</code>.</p>
+<ul>
+<li>In default, the maximum number of columns <code>maxcols</code> in each candidate key is limited to <code>1</code> for efficiency. Specify larger number for more accurate results.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A proper primary key is further selected from the candidate keys.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">t1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a2&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c2&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a3&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+<span style="color: #f8f8f2">]</span>
+
+<span style="color: #f8f8f2">list(candidatekeys(t1))</span>
+<span style="color: #75715e"># [{0}]</span>
+<span style="color: #f8f8f2">list(candidatekeys(t1,</span> <span style="color: #f8f8f2">maxcols</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [{0}]</span>
+
+
+<span style="color: #f8f8f2">t2</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c2&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;a2&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;b1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;c1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;d1&quot;</span><span style="color: #f8f8f2">],</span>
+<span style="color: #f8f8f2">]</span>
+
+<span style="color: #f8f8f2">list(candidatekeys(t2))</span>
+<span style="color: #75715e"># []</span>
+<span style="color: #f8f8f2">list(candidatekeys(t2,</span> <span style="color: #f8f8f2">maxcols</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [{0, 2}]</span>
 </pre></div>
                 
                   

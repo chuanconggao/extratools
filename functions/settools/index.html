@@ -476,6 +476,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-filtering" title="Set Filtering" class="md-nav__link">
+    Set Filtering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dropsubsetsof-and-dropsupersetsof" title="dropsubsetsof and dropsupersetsof" class="md-nav__link">
+    dropsubsetsof and dropsupersetsof
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropsubsets-and-dropsupersets" title="dropsubsets and dropsupersets" class="md-nav__link">
+    dropsubsets and dropsupersets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-matching" title="Set Matching" class="md-nav__link">
     Set Matching
   </a>
@@ -711,6 +738,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-filtering" title="Set Filtering" class="md-nav__link">
+    Set Filtering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dropsubsetsof-and-dropsupersetsof" title="dropsubsetsof and dropsupersetsof" class="md-nav__link">
+    dropsubsetsof and dropsupersetsof
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropsubsets-and-dropsupersets" title="dropsubsets and dropsupersets" class="md-nav__link">
+    dropsubsets and dropsupersets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-matching" title="Set Matching" class="md-nav__link">
     Set Matching
   </a>
@@ -793,6 +847,10 @@
                   <h1>settools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py">Source</a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A set is a subset/superset of itself.</p>
+</div>
 <h2 id="set-basics">Set Basics<a class="headerlink" href="#set-basics" title="Permanent link">&para;</a></h2>
 <p>Tools for basic set usages.</p>
 <h3 id="addtoset"><code>addtoset</code><a class="headerlink" href="#addtoset" title="Permanent link">&para;</a></h3>
@@ -804,6 +862,38 @@
 
 <span style="color: #f8f8f2">addtoset(s,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># False</span>
+</pre></div>
+
+
+<h2 id="set-filtering">Set Filtering<a class="headerlink" href="#set-filtering" title="Permanent link">&para;</a></h2>
+<p>Tools for filtering set or a sequence of sets.</p>
+<h3 id="dropsubsetsof-and-dropsupersetsof"><code>dropsubsetsof</code> and <code>dropsupersetsof</code><a class="headerlink" href="#dropsubsetsof-and-dropsupersetsof" title="Permanent link">&para;</a></h3>
+<p><code>dropsubsetsof(a, b)</code>/<code>dropsupersetsof(a, b)</code> drops any set in <code>a</code> that is a subset/superset of another set <code>b</code>.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(dropsubsetsof(</span>
+    <span style="color: #f8f8f2">[{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">}],</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [{1}, {1, 2}, {1, 2, 3}]</span>
+
+<span style="color: #f8f8f2">list(dropsupersetsof(</span>
+    <span style="color: #f8f8f2">[{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">}],</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [{1}]</span>
+</pre></div>
+
+
+<h3 id="dropsubsets-and-dropsupersets"><code>dropsubsets</code> and <code>dropsupersets</code><a class="headerlink" href="#dropsubsets-and-dropsupersets" title="Permanent link">&para;</a></h3>
+<p><code>dropsubsets(a)</code>/<code>dropsupersets(a)</code> drops any set in <code>a</code> that is a subset/superset of another set in <code>a</code>.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(dropsubsets([</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">]))</span>
+<span style="color: #75715e"># [{1, 2, 3}, {2, 3, 4}]</span>
+
+<span style="color: #f8f8f2">list(dropsupersets([</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">]))</span>
+<span style="color: #75715e"># [{1}, {2, 3}]</span>
 </pre></div>
 
 
