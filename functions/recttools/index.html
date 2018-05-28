@@ -1040,7 +1040,10 @@
 
 
 <h3 id="heatmap"><code>heatmap</code><a class="headerlink" href="#heatmap" title="Permanent link">&para;</a></h3>
-<p><code>heatmap(rect, rows, cols, points)</code> computes the heatmap within rectangle <code>rect</code> by a grid of <code>rows</code> rows and <code>cols</code> columns.</p>
+<p><code>heatmap(rect, rows, cols, points, usepos=False)</code> computes the heatmap within rectangle <code>rect</code> by a grid of <code>rows</code> rows and <code>cols</code> columns.</p>
+<ul>
+<li>Specify <code>usepos=True</code> to return the position of <code>(row, col)</code> instead of rectangle ID for each sub-rectangle.</li>
+</ul>
 <p><img alt="heatmap" src="../recttools/heatmap.svg" /></p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">heatmap(</span>
     <span style="color: #f8f8f2">((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)),</span>
@@ -1049,14 +1052,12 @@
 <span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># {1: 2, 7: 1, 11: 1, None: 1}</span>
 
-<span style="color: #75715e"># If you need positions:</span>
-<span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">None</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">k</span> <span style="color: #f92672">is</span> <span style="color: #f8f8f2">None</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">divmod(k,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">):</span> <span style="color: #f8f8f2">v</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">k,</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">heatmap(</span>
-        <span style="color: #f8f8f2">((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)),</span>
-        <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>
-        <span style="color: #f8f8f2">[(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.25</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3.5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2.5</span><span style="color: #f8f8f2">)]</span>
-    <span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">items()</span>
-<span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">heatmap(</span>
+    <span style="color: #f8f8f2">((</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)),</span>
+    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">[(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.25</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2.75</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3.5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2.5</span><span style="color: #f8f8f2">)],</span>
+    <span style="color: #f8f8f2">usepos</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True</span>
+<span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># {(0, 1): 2, (1, 3): 1, (2, 3): 1, None: 1}</span>
 </pre></div>
                 
