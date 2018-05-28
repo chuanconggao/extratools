@@ -221,7 +221,9 @@ locatebypoint(
 
 ### `heatmap`
 
-`heatmap(rect, rows, cols, points)` computes the heatmap within rectangle `rect` by a grid of `rows` rows and `cols` columns.
+`heatmap(rect, rows, cols, points, usepos=False)` computes the heatmap within rectangle `rect` by a grid of `rows` rows and `cols` columns.
+
+- Specify `usepos=True` to return the position of `(row, col)` instead of rectangle ID for each sub-rectangle.
 
 ![`heatmap`](recttools/heatmap.svg)
 
@@ -233,13 +235,11 @@ heatmap(
 )
 # {1: 2, 7: 1, 11: 1, None: 1}
 
-# If you need positions:
-{
-    None if k is None else divmod(k, 4): v for k, v in heatmap(
-        ((1, 1), (3, 4)),
-        3, 4,
-        [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)]
-    ).items()
-}
+heatmap(
+    ((1, 1), (3, 4)),
+    3, 4,
+    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)],
+    usepos=True
+)
 # {(0, 1): 2, (1, 3): 1, (2, 3): 1, None: 1}
 ```

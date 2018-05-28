@@ -137,8 +137,16 @@ def locatebypoint(rect: Rectangle, rows: int, cols: int, point: Point) -> Option
     return locatebypos(rect, rows, cols, (row, col))
 
 
-def heatmap(rect: Rectangle, rows: int, cols: int, points: Iterable[Point]) -> Mapping[Optional[int], int]:
-    return Counter(
+def heatmap(rect: Rectangle, rows: int, cols: int, points: Iterable[Point], usepos: bool = False) -> Mapping[Optional[int], int]:
+    result = Counter(
         (locatebypoint(rect, rows, cols, point) or (None, None))[0]
         for point in points
     )
+
+    if not usepos:
+        return result
+
+    return {
+        None if k is None else divmod(k, cols): v
+        for k, v in result.items()
+    }
