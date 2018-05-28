@@ -1,8 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/recttools.py)
 
-!!! warning
-    For tools specific to grid operations, please go to specific [documentation](recttools/grid).
-
 !!! info
     Each point is defined as a tuple of its `(x, y)` positions in float.
 
@@ -10,6 +7,11 @@
 
 !!! danger
     Each rectangle is assumed to be valid, i.e., its bottom left point is at the bottom left of its top right point.
+
+!!! warning
+    For tools related to specific tasks, please go to the respective documentation:
+
+    - [Grid operations](recttools/grid).
 
 ## Rectangle Basics
 
@@ -60,6 +62,10 @@ allpoints(((1, 1), (2, 3)))
 ### `size`
 
 `size(rect)` computes the size of the rectangle `rect`.
+
+## Rectangle Operations
+
+Tools for rectangle operations.
 
 ### `issubrect`
 

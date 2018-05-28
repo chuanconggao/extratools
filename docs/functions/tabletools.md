@@ -1,9 +1,14 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
-!!! warning
-    For tools specific to schema of table, please go to specific [documentation](tabletools/schema).
+!!! info
+    A table is a list of rows having the same number of column values.
 
-    For tools specific to parsing text to table, please go to specific [documentation](tabletools/parse).
+!!! warning
+    For tools related to specific tasks, please go to the respective documentation:
+
+    - [Parsing text to table](tabletools/parse).
+
+    - [Schema of table](tabletools/schema).
 
 ## Table Transformation
 

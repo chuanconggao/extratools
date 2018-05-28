@@ -1,10 +1,12 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
-!!! warning
-    For tools specific to set similarity, please go to specific [documentation](settools/similarity).
-
 !!! info
     A set is a subset/superset of itself.
+
+!!! warning
+    For tools related to specific tasks, please go to the respective documentation:
+
+    - [Set similarity](set similarity).
 
 ## Set Basics
 

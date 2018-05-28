@@ -1,10 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/seqtools.py)
 
-!!! warning
-    For tools specific to sub-sequence without gap, please go to specific [documentation](seqtools/seqwithoutgap).
-
-    For tools specific to sub-sequence with gap, please go to specific [documentation](seqtools/seqwithgap).
-
 !!! success
     If not explicitly noted, a sequence refers to not only list, tuple, string, or [array](https://docs.python.org/3/library/array.html), but any iterable.
 
@@ -14,6 +9,15 @@
     Empty sequence is always a sub-sequence of any other sequence.
 
     A sequence is always a sub-sequence of itself.
+
+!!! warning
+    For tools related to specific tasks, please go to the respective documentation:
+
+    - [Sub-sequence without gap](seqtools/seqwithoutgap).
+
+    - [Sub-sequence with gap](seqtools/seqwithgap).
+
+    - [Sequence encoding/decoding](seqtools/encode).
 
 ## Sequence Filtering
 
@@ -266,53 +270,6 @@ sortedbyrank(
     [  3,   2,   1]
 )
 # ['c', 'b', 'a']
-```
-
-## Sequence Encoding/Decoding
-
-Tools for encoding/decoding sequences.
-
-### `compress`
-
-`compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
-
-!!! warning
-    Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
-
-``` python
-list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
-# [(1, 1), (2, 2), (3, 3), (4, 4)]
-```
-
-### `decompress`
-
-`decompress(data)` decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
-
-``` python
-list(decompress([(1, 1), (2, 2), (3, 3), (4, 4)]))
-# [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
-```
-
-### `todeltas`
-
-`todeltas(data, op=operator.sub)` compresses the sequence by encoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
-
-- For custom type of item, either define the `-` operator or specify the `op` function computing the difference.
-
-``` python
-list(todeltas([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
-# [1, 1, 0, 1, 0, 0, 1, 0, 0, 0]
-```
-
-### `fromdeltas`
-
-`fromdeltas(data, op=operator.add)` decompresses the sequence by decoding the difference between previous and current items, according to [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding).
-
-- For custom type of item, either define the `+` operator or specify the `op` function merging the difference.
-
-``` python
-list(fromdeltas([1, 1, 0, 1, 0, 0, 1, 0, 0, 0]))
-# [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 ```
 
 ## Sequence Transformation

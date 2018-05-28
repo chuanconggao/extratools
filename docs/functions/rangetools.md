@@ -6,9 +6,9 @@
 !!! warning
     Each range is closed on the left side, and open on the right side.
 
-## Range Basics
+## Range Operations
 
-Tools for basic range usages.
+Tools for range operations.
 
 ### `issubrange`
 
