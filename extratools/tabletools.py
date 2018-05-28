@@ -7,7 +7,7 @@ T = TypeVar('T')
 import csv
 from io import TextIOBase
 import itertools
-from itertools import combinations
+from itertools import combinations, permutations
 import regex as re
 import collections
 
@@ -129,13 +129,30 @@ def inferschema(data: Table) -> Tuple[str, ...]:
     return tuple(r.matchall(col).name for col in transpose(data))
 
 
-def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Iterable[int]]:
+def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Tuple[int, ...]]:
     data = iter2seq(data)
     cols = list(transpose(data))
 
-    return dropsupersets(map(set, [
+    return map(tuple, dropsupersets(map(set, (
         localcolids
         for i in range(1, maxcols + 1)
         for localcolids in combinations(range(len(cols)), i)
         if isdistinct(transpose(cols[j] for j in localcolids))
-    ]))
+    ))))
+
+
+def foreignkeys(primarydata: Table, primarykey: Tuple[int, ...], foreigndata: Table) -> Iterable[Tuple[int, ...]]:
+    pdata = iter2seq(primarydata)
+    pvals = set(
+        tuple(row[j] for j in primarykey)
+        for row in pdata
+    )
+
+    fdata = iter2seq(foreigndata)
+    fcols = list(transpose(fdata))
+
+    return (
+        localcolids
+        for localcolids in permutations(range(len(fcols)), len(primarykey))
+        if set(transpose(fcols[j] for j in localcolids)) <= pvals
+    )
