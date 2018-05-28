@@ -605,6 +605,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#schema-of-table" title="Schema of Table" class="md-nav__link">
+    Schema of Table
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inferschema" title="inferschema" class="md-nav__link">
+    inferschema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -813,6 +833,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#schema-of-table" title="Schema of Table" class="md-nav__link">
+    Schema of Table
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inferschema" title="inferschema" class="md-nav__link">
+    inferschema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -913,7 +953,18 @@
 <h2 id="csv">CSV<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h2>
 <p>Tools for processing CSV.</p>
 <h3 id="loadcsv"><code>loadcsv</code><a class="headerlink" href="#loadcsv" title="Permanent link">&para;</a></h3>
-<p><code>loadcsv(path, delimiter=',')</code> loads a CSV file, from either a file path or a file object.</p>
+<p><code>loadcsv(path, delimiter=',')</code> loads a CSV file, from either a file path, a file object, or an iterable of strings.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">s</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;&quot;Los Angeles,34°03′,118°15′</span>
+<span style="color: #e6db74">New York City,40°42′46″,74°00′21″</span>
+<span style="color: #e6db74">Paris,48°51′24″,2°21′03″&quot;&quot;&quot;</span>
+
+<span style="color: #f8f8f2">list(loadcsv(s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split(</span><span style="color: #e6db74">&#39;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">)))</span>
+<span style="color: #75715e"># [[&#39;Los Angeles&#39;  , &#39;34°03′&#39;   , &#39;118°15′&#39;  ],</span>
+<span style="color: #75715e">#  [&#39;New York City&#39;, &#39;40°42′46″&#39;, &#39;74°00′21″&#39;],</span>
+<span style="color: #75715e">#  [&#39;Paris&#39;        , &#39;48°51′24″&#39;, &#39;2°21′03″&#39; ]]</span>
+</pre></div>
+
+
 <h3 id="dumpcsv"><code>dumpcsv</code><a class="headerlink" href="#dumpcsv" title="Permanent link">&para;</a></h3>
 <p><code>dumpcsv(path, data, delimiter=',')</code> dumps a table <code>data</code> in CSV, to either a file path or a file object.</p>
 <h2 id="parsing-text-to-table">Parsing Text to Table<a class="headerlink" href="#parsing-text-to-table" title="Permanent link">&para;</a></h2>
@@ -1006,6 +1057,31 @@
 <span style="color: #75715e"># [[&#39;1&#39;,   &#39;ALICE&#39;,    &#39;Pairs&#39;],</span>
 <span style="color: #75715e">#  [&#39;2&#39;,     &#39;BOB&#39;,   &#39;London&#39;],</span>
 <span style="color: #75715e">#  [&#39;3&#39;, &#39;CARL JR&#39;, &#39;New York&#39;]]</span>
+</pre></div>
+
+
+<h2 id="schema-of-table">Schema of Table<a class="headerlink" href="#schema-of-table" title="Permanent link">&para;</a></h2>
+<p>Tools for processing schema of table.</p>
+<h3 id="inferschema"><code>inferschema</code><a class="headerlink" href="#inferschema" title="Permanent link">&para;</a></h3>
+<p><code>inferschema(table)</code> infers the schema of the table <code>table</code>, as a tuple of column types. Currently available types are listed as follows.</p>
+<p><img alt="Types" src="https://raw.githubusercontent.com/chuanconggao/RegexOrder/master/templates.svg?sanitize=true" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The header must be removed for best result.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Utilizes the <a href="https://github.com/chuanconggao/RegexOrder"><code>RegexOrder</code></a> library.</p>
+<p><code>RegexOrder</code> is part of a research project. Thus, when using this function for research purpose, please cite both <a href="https://github.com/chuanconggao/RegexOrder#reference"><code>RegexOrder</code></a> and <a href="../../README#reference"><code>extratools</code></a> accordingly.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">t</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;Los Angeles&#39;</span>  <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;34°03′&#39;</span>   <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;118°15′&#39;</span>  <span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;New York City&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;40°42′46″&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;74°00′21″&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;Paris&#39;</span>        <span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;48°51′24″&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;2°21′03″&#39;</span> <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">]</span>
+
+<span style="color: #f8f8f2">inferschema(t)</span>
+<span style="color: #75715e"># (&#39;title_words&#39;, &#39;formated_pos_ints&#39;, &#39;formated_pos_ints&#39;)</span>
 </pre></div>
                 
                   
