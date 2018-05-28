@@ -525,6 +525,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../functions/seqtools/encode/" title="Encoding/Decoding" class="md-nav__link">
+      Encoding/Decoding
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -903,7 +915,7 @@
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>Here are a few examples out of dozens of our tools.</p>
 <ul>
-<li><a href="https://chuanconggao.github.io/extratools/functions/seqtools/#compress"><code>seqtools.compress(data, key=None)</code></a> compresses the sequence by encoding continuous identical <code>Item</code> to <code>(Item, Count)</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</li>
+<li><a href="https://chuanconggao.github.io/extratools/functions/seqtools/encode#compress"><code>seqtools.compress(data, key=None)</code></a> compresses the sequence by encoding continuous identical <code>Item</code> to <code>(Item, Count)</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">extratools.seqtools</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">compress</span>
 
@@ -913,7 +925,7 @@
 
 
 <ul>
-<li><a href="https://chuanconggao.github.io/extratools/functions/rangetools/#gaps"><code>rangetools.gaps(covered, whole=(-inf, inf))</code></a> computes the uncovered ranges of the whole range <code>whole</code>, given the covered ranges <code>covered</code>.</li>
+<li><a href="https://chuanconggao.github.io/extratools/functions/rangetools#gaps"><code>rangetools.gaps(covered, whole=(-inf, inf))</code></a> computes the uncovered ranges of the whole range <code>whole</code>, given the covered ranges <code>covered</code>.</li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">inf</span>
 <span style="color: #f92672">from</span> <span style="color: #f8f8f2">extratools.rangetools</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">gaps</span>
@@ -927,7 +939,7 @@
 
 
 <ul>
-<li><a href="https://chuanconggao.github.io/extratools/functions/jsontools/#json-flattenunflatten"><code>jsontools.flatten(data, force=False)</code></a> flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</li>
+<li><a href="https://chuanconggao.github.io/extratools/functions/jsontools#flatten"><code>jsontools.flatten(data, force=False)</code></a> flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">json</span>
 <span style="color: #f92672">from</span> <span style="color: #f8f8f2">extratools.jsontools</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">flatten</span>
@@ -963,7 +975,7 @@
 </pre></div>
 
 
-<p><a href="https://chuanconggao.github.io/extratools/functions/strtools/#learnrewrite"><code>strtools.learnrewrite(src, dst, minlen=3)</code></a> learns the respective regular expression and template to rewrite <code>src</code> to <code>dst</code>.</p>
+<p><a href="https://chuanconggao.github.io/extratools/functions/strtools#learnrewrite"><code>strtools.learnrewrite(src, dst, minlen=3)</code></a> learns the respective regular expression and template to rewrite <code>src</code> to <code>dst</code>.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">extratools.strtools</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">learnrewrite</span>
 
 <span style="color: #f8f8f2">learnrewrite(</span>
@@ -975,7 +987,7 @@
 </pre></div>
 
 
-<p><a href="https://chuanconggao.github.io/extratools/functions/tabletools/#parsebymarkdown"><code>tabletools.parsebymarkdown(text)</code></a> parses a text of multiple lines to a table, according to <a href="https://github.github.com/gfm/#tables-extension-">Markdown</a> format.</p>
+<p><a href="https://chuanconggao.github.io/extratools/functions/tabletools#parsebymarkdown"><code>tabletools.parsebymarkdown(text)</code></a> parses a text of multiple lines to a table, according to <a href="https://github.github.com/gfm/#tables-extension-">Markdown</a> format.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">extratools.tabletools</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">parsebymarkdown</span>
 
 <span style="color: #f8f8f2">list(parsebymarkdown(</span><span style="color: #e6db74">&quot;&quot;&quot;</span>

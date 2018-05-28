@@ -433,6 +433,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectangle-operations" title="Rectangle Operations" class="md-nav__link">
+    Rectangle Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#issubrect" title="issubrect" class="md-nav__link">
     issubrect
@@ -538,6 +551,18 @@
   <li class="md-nav__item">
     <a href="../seqtools/seqwithgap/" title="Sub-Sequence with Gap" class="md-nav__link">
       Sub-Sequence with Gap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../seqtools/encode/" title="Encoding/Decoding" class="md-nav__link">
+      Encoding/Decoding
     </a>
   </li>
 
@@ -815,6 +840,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectangle-operations" title="Rectangle Operations" class="md-nav__link">
+    Rectangle Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#issubrect" title="issubrect" class="md-nav__link">
     issubrect
@@ -863,10 +901,6 @@
                   <h1>Overview</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/recttools.py">Source</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>For tools specific to grid operations, please go to specific <a href="../recttools/grid">documentation</a>.</p>
-</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Each point is defined as a tuple of its <code>(x, y)</code> positions in float.</p>
@@ -875,6 +909,13 @@
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>Each rectangle is assumed to be valid, i.e., its bottom left point is at the bottom left of its top right point.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For tools related to specific tasks, please go to the respective documentation:</p>
+<ul>
+<li><a href="../recttools/grid">Grid operations</a>.</li>
+</ul>
 </div>
 <h2 id="rectangle-basics">Rectangle Basics<a class="headerlink" href="#rectangle-basics" title="Permanent link">&para;</a></h2>
 <p>Tools for basic rectangle usages.</p>
@@ -925,6 +966,8 @@
 
 <h3 id="size"><code>size</code><a class="headerlink" href="#size" title="Permanent link">&para;</a></h3>
 <p><code>size(rect)</code> computes the size of the rectangle <code>rect</code>.</p>
+<h2 id="rectangle-operations">Rectangle Operations<a class="headerlink" href="#rectangle-operations" title="Permanent link">&para;</a></h2>
+<p>Tools for rectangle operations.</p>
 <h3 id="issubrect"><code>issubrect</code><a class="headerlink" href="#issubrect" title="Permanent link">&para;</a></h3>
 <p><code>issubrect(rect1, rect2)</code> checks if rectangle <code>rect1</code> is covered by another rectangle <code>rect2</code>.</p>
 <p><img alt="issubrect" src="../recttools/issubrect.svg" /></p>
