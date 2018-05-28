@@ -1,18 +1,36 @@
-## Schema of Table
+## Column Types
 
-Tools for processing schema of table.
+Tools for processing column types.
 
 !!! warning
-    The header must be removed for best result.
+    For all the function except [`hasheader`](#hasheader), the header must be removed for best result.
 
 ### `inferschema`
 
-`inferschema(table)` infers the schema of the table `table`, as a tuple of column types. Currently available types are listed as follows.
+`inferschema(data)` infers the schema of the table `data`, as a tuple of column types. Currently available types are listed as follows.
 
 ![Types](https://raw.githubusercontent.com/chuanconggao/RegexOrder/master/templates.svg?sanitize=true)
 
 !!! info
-    Utilizes the [`RegexOrder`](https://github.com/chuanconggao/RegexOrder) library.
+    Utilizes the [`RegexOrder`](https://github.com/chuanconggao/RegexOrder) library to infer the type of each column.
+
+    `RegexOrder` is part of a research project. Thus, when using this function for research purpose, please cite both [`RegexOrder`](https://github.com/chuanconggao/RegexOrder#reference) and [`extratools`](../README#reference) accordingly.
+
+``` python
+inferschema([
+    ['Los Angeles'  , '34°03′'   , '118°15′'  ],
+    ['New York City', '40°42′46″', '74°00′21″'],
+    ['Paris'        , '48°51′24″', '2°21′03″' ]
+])
+# ('title_words', 'formated_pos_ints', 'formated_pos_ints')
+```
+
+### `hasheader`
+
+`hasheader(data)` returns the confidence (between $0$ and $1$) of whether the first row of the table `data` is header.
+
+!!! info
+    It works by checking whether the type with vs. without the first row for each column, using the [`RegexOrder`](https://github.com/chuanconggao/RegexOrder) library.
 
     `RegexOrder` is part of a research project. Thus, when using this function for research purpose, please cite both [`RegexOrder`](https://github.com/chuanconggao/RegexOrder#reference) and [`extratools`](../README#reference) accordingly.
 
@@ -23,9 +41,23 @@ t = [
     ['Paris'        , '48°51′24″', '2°21′03″' ]
 ]
 
-inferschema(t)
-# ('title_words', 'formated_pos_ints', 'formated_pos_ints')
+hasheader(t)
+# 0.0
+
+hasheader([
+    ['City', 'Latitude', 'Longitude']
+] + t)
+# 0.6666666666666666
+
+hasheader([
+    ['C1', 'C2', 'C3']
+] + t)
+# 1.0
 ```
+
+## Primary/Foreign-Key of Table
+
+Tools for processing primary/foreign-key of table.
 
 ### `candidatekeys`
 

@@ -129,8 +129,26 @@ def inferschema(data: Table) -> Tuple[str, ...]:
     return tuple(r.matchall(col).name for col in transpose(data))
 
 
+def hasheader(data: Table) -> float:
+    r = RegexOrder()
+
+    cols = list(transpose(data))
+
+    total = 0
+
+    for col in cols:
+        t1 = r.matchall(col[1:])
+
+        t2 = r.match(col[0], t1)
+
+        if t1 != t2:
+            total += 1
+
+    return total / len(cols)
+
+
 def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Tuple[int, ...]]:
-    cols = list(transpose(iter2seq(data)))
+    cols = list(transpose(data))
 
     return map(tuple, dropsupersets(map(set, (
         localcolids
@@ -143,10 +161,10 @@ def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Tuple[int, ...]]:
 def foreignkeys(primarydata: Table, primarykey: Tuple[int, ...], foreigndata: Table) -> Iterable[Tuple[int, ...]]:
     pvals = set(
         tuple(row[j] for j in primarykey)
-        for row in iter2seq(primarydata)
+        for row in primarydata
     )
 
-    fcols = list(transpose(iter2seq(foreigndata)))
+    fcols = list(transpose(foreigndata))
 
     return (
         localcolids
