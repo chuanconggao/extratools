@@ -229,6 +229,11 @@ inferschema(t)
 
 - In default, the maximum number of columns `maxcols` in each candidate key is limited to `1` for efficiency. Specify larger number for more accurate results.
 
+- Each candidate key is a set of column IDs.
+
+!!! warning
+    The header must be removed for best result.
+
 !!! note
     A proper primary key is further selected from the candidate keys.
 
