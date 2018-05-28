@@ -488,3 +488,40 @@ def probability(seq: Iterable[T], grams: Mapping[Any, int], numgrams: int = 2) -
         k += 1
 
     return math.exp(prob / k)
+
+
+def takeat(poss: Iterable[int], seq: Iterable[T]) -> Iterable[T]:
+    p = iter(poss)
+    sentinel = object()
+
+    pos = next(p, sentinel)
+    if pos is sentinel:
+        return
+
+    for (i, v) in enumerate(seq):
+        if i == pos:
+            yield v
+
+            pos = next(p, sentinel)
+            if pos is sentinel:
+                return
+
+
+def filterbyother(func: Callable[[T, T], bool], seq: Iterable[T]) -> Iterable[T]:
+    seq = iter2seq(seq)
+
+    filtered = set(range(0, len(seq)))
+
+    for i, x in enumerate(seq):
+        for j in filtered:
+            if i == j:
+                continue
+
+            y = seq[j]
+
+            if not func(x, y):
+                filtered.remove(i)
+                break
+
+    for i in filtered:
+        yield seq[i]

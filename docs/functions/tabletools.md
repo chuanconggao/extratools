@@ -17,9 +17,9 @@ list(transpose([
     [4, 5, 6],
     [7, 8, 9]
 ]))
-# [[1, 4, 7],
-#  [2, 5, 8],
-#  [3, 6, 9]]
+# [(1, 4, 7),
+#  (2, 5, 8),
+#  (3, 6, 9)]
 ```
 
 ### `mergecols`
@@ -39,7 +39,7 @@ list(transpose([
 cols = list(transpose([
     [   0, None,    2],
     [   0,    1, None],
-    [None,    1, None]
+    [None,    1, None],
     [0,    None, None]
 ]))
 
@@ -221,4 +221,38 @@ t = [
 
 inferschema(t)
 # ('title_words', 'formated_pos_ints', 'formated_pos_ints')
+```
+
+### `candidatekeys`
+
+`candidatekeys(data, maxcols)` finds the [candidate keys](https://en.wikipedia.org/wiki/Candidate_key) of a table `data`.
+
+- In default, the maximum number of columns `maxcols` in each candidate key is limited to `1` for efficiency. Specify larger number for more accurate results.
+
+!!! note
+    A proper primary key is further selected from the candidate keys.
+
+``` python
+t1 = [
+    ["a1", "b1", "c1", "d1"],
+    ["a2", "b1", "c2", "d1"],
+    ["a3", "b1", "c1", "d1"],
+]
+
+list(candidatekeys(t1))
+# [{0}]
+list(candidatekeys(t1, maxcols=4))
+# [{0}]
+
+
+t2 = [
+    ["a1", "b1", "c1", "d1"],
+    ["a1", "b1", "c2", "d1"],
+    ["a2", "b1", "c1", "d1"],
+]
+
+list(candidatekeys(t2))
+# []
+list(candidatekeys(t2, maxcols=4))
+# [{0, 2}]
 ```

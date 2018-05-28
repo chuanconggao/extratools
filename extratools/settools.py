@@ -4,7 +4,9 @@ from typing import *
 
 T = TypeVar('T')
 
-from .seqtools import bestsubseqwithgap
+from itertools import filterfalse
+
+from .seqtools import bestsubseqwithgap, iter2seq, filterbyother
 from .mathtools import safediv
 
 def bestsubset(a: Set[T], key: Callable[[Iterable[T]], Any]) -> Set[T]:
@@ -52,3 +54,19 @@ def jaccard(a: Set[T], b: Set[T]) -> float:
 
 def multisetjaccard(a: Counter[T], b: Counter[T]) -> float:
     return weightedjaccard(a, b, key=lambda c: sum(c.values()))
+
+
+def dropsubsetsof(a: Iterable[Set[T]], b: Set[T]) -> Iterable[Set[T]]:
+    return filterfalse(lambda x: x <= b, a)
+
+
+def dropsubsets(a: Iterable[Set[T]]) -> Iterable[Set[T]]:
+    return filterbyother(lambda x, y: not x <= y, a)
+
+
+def dropsupersetsof(a: Iterable[Set[T]], b: Set[T]) -> Iterable[Set[T]]:
+    return filterfalse(lambda x: x >= b, a)
+
+
+def dropsupersets(a: Iterable[Set[T]]) -> Iterable[Set[T]]:
+    return filterbyother(lambda x, y: not x >= y, a)

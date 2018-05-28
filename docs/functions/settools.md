@@ -1,5 +1,8 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/settools.py)
 
+!!! info
+    A set is a subset/superset of itself.
+
 ## Set Basics
 
 Tools for basic set usages.
@@ -16,6 +19,44 @@ addtoset(s, 1)
 
 addtoset(s, 1)
 # False
+```
+
+## Set Filtering
+
+Tools for filtering set or a sequence of sets.
+
+### `dropsubsetsof` and `dropsupersetsof`
+
+`dropsubsetsof(a, b)`/`dropsupersetsof(a, b)` drops any set in `a` that is a subset/superset of another set `b`.
+
+``` python
+list(dropsubsetsof(
+    [{1,}, {1, 2}, {1, 2, 3}, {2, 3}],
+    {2, 3, 4}
+))
+# [{1}, {1, 2}, {1, 2, 3}]
+
+list(dropsupersetsof(
+    [{1,}, {1, 2}, {1, 2, 3}, {2, 3}],
+    {2}
+))
+# [{1}]
+```
+
+### `dropsubsets` and `dropsupersets`
+
+`dropsubsets(a)`/`dropsupersets(a)` drops any set in `a` that is a subset/superset of another set in `a`.
+
+``` python
+list(dropsubsets([
+    {1,}, {1, 2}, {1, 2, 3}, {2, 3}, {2, 3, 4}
+]))
+# [{1, 2, 3}, {2, 3, 4}]
+
+list(dropsupersets([
+    {1,}, {1, 2}, {1, 2, 3}, {2, 3}, {2, 3, 4}
+]))
+# [{1}, {2, 3}]
 ```
 
 ## Set Matching

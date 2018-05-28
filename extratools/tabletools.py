@@ -7,18 +7,21 @@ T = TypeVar('T')
 import csv
 from io import TextIOBase
 import itertools
+from itertools import combinations
 import regex as re
 import collections
 
 from regexorder import RegexOrder
+from toolz.itertoolz import isdistinct
 
 from .seqtools import iter2seq
+from .settools import dropsupersets
 
 Table = Iterable[Union[List[T], Tuple[T]]]
 
 def transpose(data: Table) -> Table:
     for col in zip(*data):
-        yield list(col)
+        yield tuple(col)
 
 
 def loadcsv(path: Union[Iterable[str], str, TextIOBase], delimiter: str = ',') -> Table:
@@ -124,3 +127,15 @@ def inferschema(data: Table) -> Tuple[str, ...]:
     r = RegexOrder()
 
     return tuple(r.matchall(col).name for col in transpose(data))
+
+
+def candidatekeys(data: Table, maxcols: int = 1) -> Iterable[Iterable[int]]:
+    data = iter2seq(data)
+    cols = list(transpose(data))
+
+    return dropsupersets(map(set, [
+        localcolids
+        for i in range(1, maxcols + 1)
+        for localcolids in combinations(range(len(cols)), i)
+        if isdistinct(transpose(cols[j] for j in localcolids))
+    ]))

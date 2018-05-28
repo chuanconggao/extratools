@@ -15,6 +15,45 @@
 
     A sequence is always a sub-sequence of itself.
 
+## Sequence Filtering
+
+Tools for filtering sequence.
+
+### `takeat`
+
+`takeat(poss, seq)` takes the elements of `seq` at the positions in `poss`.
+
+!!! danger
+    `poss` must already be sorted.
+
+!!! info
+    Let $m$ be the length of `poss` and $n$ be the length of `seq`. The complexity of this function is $O(n)$.
+
+!!! tip
+    If `seq` supports random access, it is more efficient to use `[seq[i] for i in poss]`, with the complexity of $O(m)$.
+
+``` python
+list(takeat(range(0, 10, 3), range(100, 110)))
+# [100, 103, 106, 109]
+```
+
+### `filterbyother`
+
+`filterbyother(func, seq)` drops the element in `seq` that fails the pairwise test `func` between the current element and any other element.
+
+``` python
+# Drop any number that is not the largest
+list(filterbyother(lambda x, y: x >= y, [1, 2, 2, 3, 3, 3]))
+# [3, 3, 3]
+
+# Drop any set that is a superset of another set
+list(filterbyother(
+    lambda x, y: not x >= y,
+    [{1,}, {1, 2}, {1, 2, 3}, {2, 3}, {2, 3, 4}]
+))
+# [{1}, {2, 3}]
+```
+
 ## Sequence Matching
 
 ### `matchingfrequencies`

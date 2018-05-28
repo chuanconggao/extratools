@@ -34,11 +34,11 @@
 
 [`seqtools`](functions/seqtools)
 
-29+ tools for operating sequences.
+31+ tools for operating sequences.
 
 [`settools`](functions/settools)
 
-6+ tools for operating sets.
+10+ tools for operating sets.
 
 [`sortedtools`](functions/sortedtools)
 
@@ -54,7 +54,7 @@
 
 [`tabletools`](functions/tabletools)
 
-10+ tools for operating tables/matrices.
+11+ tools for operating tables/matrices.
 
 ## Data Structures
 
