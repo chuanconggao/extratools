@@ -1102,8 +1102,17 @@
 <h3 id="candidatekeys"><code>candidatekeys</code><a class="headerlink" href="#candidatekeys" title="Permanent link">&para;</a></h3>
 <p><code>candidatekeys(data, maxcols)</code> finds the <a href="https://en.wikipedia.org/wiki/Candidate_key">candidate keys</a> of a table <code>data</code>.</p>
 <ul>
-<li>In default, the maximum number of columns <code>maxcols</code> in each candidate key is limited to <code>1</code> for efficiency. Specify larger number for more accurate results.</li>
+<li>
+<p>In default, the maximum number of columns <code>maxcols</code> in each candidate key is limited to <code>1</code> for efficiency. Specify larger number for more accurate results.</p>
+</li>
+<li>
+<p>Each candidate key is a set of column IDs.</p>
+</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The header must be removed for best result.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A proper primary key is further selected from the candidate keys.</p>
