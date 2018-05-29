@@ -10,7 +10,10 @@
 
     - [Schema of table](tabletools/schema).
 
-## Table Transformation
+!!! warning
+    For all the functions except [`loadcsv`](#loadcsv) and [`dumpcsv`](#dumpcsv), the header must be removed for best result.
+
+## Transformation
 
 Tools for table transformations.
 
@@ -82,6 +85,60 @@ list(trim([
 ], blank='-'))
 # [['a', 'b'],
 #  ['c', 'd']]
+```
+
+## Join
+
+Tools for join tables.
+
+### `join`
+
+`join(lefttable, righttable, leftkey, rightkey, leftjoin=False, rightjoin=False)` [joins](https://en.wikipedia.org/wiki/Join_(SQL)) two tables `lefttable` and `righttable`, according to their respective keys `leftkey` and `rightkey`.
+
+- Each key is a tuple of column IDs.
+
+- `leftjoin` and `rightjoin` control whether to perform inner join, left outer join, right outer join, or full outer join.
+
+!!! danger
+    Both tables must be non-empty.
+
+!!! info
+    This function is a thin wrapper of [`seqtools.join`](seqtools#join). Please refer to `seqtools.join` for other join scenarios.
+
+!!! tip
+    Please refer to [`candidatekeys`](tabletools/schema#candidatekeys) and [`foreignkeys`](tabletools/schema#foreignkeys) on how to find primary/foreign-key automatically to join tables.
+
+``` python
+pt = [
+    ["a1", "b1", "c1", "d1"],
+    ["a1", "b1", "c2", "d1"],
+    ["a2", "b1", "c1", "d1"],
+]
+pk = (0, 2)
+
+ft = [
+    ["c1", "b1", "a2", "d1"],
+    ["c2", "b1", "a1", "d1"],
+]
+fk = (2, 0)
+
+list(join(pt, ft, pk, fk))
+# [(['a2', 'b1', 'c1', 'd1'], ['c1', 'b1', 'a2', 'd1']),
+#  (['a1', 'b1', 'c2', 'd1'], ['c2', 'b1', 'a1', 'd1'])]
+
+list(join(pt, ft, pk, fk, leftjoin=True))
+# [(['a2', 'b1', 'c1', 'd1'], ['c1', 'b1', 'a2', 'd1']),
+#  (['a1', 'b1', 'c2', 'd1'], ['c2', 'b1', 'a1', 'd1']),
+#  (['a1', 'b1', 'c1', 'd1'], [None, None, None, None])]
+
+list(join(pt, ft, pk, fk, rightjoin=True))
+# [(['a2', 'b1', 'c1', 'd1'], ['c1', 'b1', 'a2', 'd1']),
+#  (['a1', 'b1', 'c2', 'd1'], ['c2', 'b1', 'a1', 'd1'])]
+
+list(join(pt, ft, pk, fk, leftjoin=True, rightjoin=True))
+# [(['a2', 'b1', 'c1', 'd1'], ['c1', 'b1', 'a2', 'd1']),
+#  (['a1', 'b1', 'c2', 'd1'], ['c2', 'b1', 'a1', 'd1']),
+#  (['a1', 'b1', 'c1', 'd1'], [None, None, None, None])]
 ```
 
 ## CSV

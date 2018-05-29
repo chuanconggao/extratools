@@ -1,9 +1,9 @@
+!!! warning
+    For all the functions except [`hasheader`](#hasheader), the header must be removed for best result.
+
 ## Column Types
 
 Tools for processing column types.
-
-!!! warning
-    For all the function except [`hasheader`](#hasheader), the header must be removed for best result.
 
 ### `inferschema`
 
@@ -102,22 +102,22 @@ list(candidatekeys(t2, maxcols=4))
 - Each foreign key is a tuple of column IDs.
 
 ``` python
-tp = [
+pt = [
     ["a1", "b1", "c1", "d1"],
     ["a1", "b1", "c2", "d1"],
     ["a2", "b1", "c1", "d1"],
 ]
 
 # Primary key of table tp
-pk = list(candidatekeys(tp, maxcols=4))[0]
+pk = list(candidatekeys(pt, maxcols=4))[0]
 # (0, 2)
 
-tf = [
+ft = [
     ["c1", "b1", "a2", "d1"],
     ["c2", "b1", "a1", "d1"],
 ]
 
-# Foreign keys of table tf
-list(foreignkeys(tp, pk, tf))
+# Foreign keys of table ft
+list(foreignkeys(pt, pk, ft))
 # [(2, 0)]
 ```

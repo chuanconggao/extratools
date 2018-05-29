@@ -15,7 +15,7 @@ Tools                                  | # Functions | Description
 [`sortedtools`](functions/sortedtools) | 8           | Tools for operating sorted sequences.
 [`stattools`](functions/stattools)     | 7           | Tools for statistics.
 [`strtools`](functions/strtools)       | 12          | Tools for operating strings.
-[`tabletools`](functions/tabletools)   | 13          | Tools for operating tables/matrices.
+[`tabletools`](functions/tabletools)   | 14          | Tools for operating tables/matrices.
 
 ## Data Structures
 

@@ -13,9 +13,11 @@ import collections
 
 from regexorder import RegexOrder
 from toolz.itertoolz import isdistinct
+from toolz.utils import no_default
 
 from .seqtools import iter2seq
 from .settools import dropsupersets
+from .__join import join as seqjoin
 
 Table = Iterable[Union[List[T], Tuple[T, ...]]]
 
@@ -170,4 +172,20 @@ def foreignkeys(primarydata: Table, primarykey: Tuple[int, ...], foreigndata: Ta
         localcolids
         for localcolids in permutations(range(len(fcols)), len(primarykey))
         if set(transpose(fcols[j] for j in localcolids)) <= pvals
+    )
+
+
+def join(
+        lefttable, righttable,
+        leftkey, rightkey,
+        leftjoin=False, rightjoin=False
+    ):
+    lefttable = iter2seq(lefttable)
+    righttable = iter2seq(righttable)
+
+    return seqjoin(
+        lefttable, righttable,
+        lambda r: tuple(r[i] for i in leftkey), lambda r: tuple(r[i] for i in rightkey),
+        leftdefault=([None] * len(lefttable[0]) if rightjoin else no_default),
+        rightdefault=([None] * len(righttable[0]) if leftjoin else no_default)
     )
