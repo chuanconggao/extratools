@@ -174,6 +174,50 @@ list(join(
 #  (-5, 5)]
 ```
 
+### `cmpjoin`
+
+`cmpjoin(leftseq, rightseq, func=operator.eq, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to the condition function `func`, respectively. Outer join is also supported.
+
+!!! warning
+    This function reads the first sequence at once.
+
+!!! tip
+    If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized [`sortedtools.sortedjoin`](sortedtools#sortedjoin) with the same API should be used for better efficiency.
+
+    This function is more flexable than [`join`](#join), and can be used in more scenarios.
+
+``` python
+list(cmpjoin(
+    [   1, 1, 2,    4, 5,    -6],
+    [0, 1, 1, 2, 3, 4, 5, 5]
+))
+# [(1, 1),
+#  (1, 1),
+#  (1, 1),
+#  (1, 1),
+#  (2, 2),
+#  (4, 4),
+#  (5, 5),
+#  (5, 5)]
+
+list(cmpjoin(
+    [   1, 1, 2,    4, 5,    -6],
+    [0, 1, 1, 2, 3, 4, 5, 5],
+    lambda x, y: abs(x - y) == 1
+))
+# [(1, 0),
+#  (1, 0),
+#  (2, 1),
+#  (2, 1),
+#  (1, 2),
+#  (1, 2),
+#  (2, 3),
+#  (4, 3),
+#  (5, 4),
+#  (4, 5),
+#  (4, 5)]
+```
+
 ### `templateseq`
 
 `templateseq(seqs, default=None, simple=True)` finds the common template of all the sequences `seqs`. `default=None` is used to denote any placeholder sub-sequence.

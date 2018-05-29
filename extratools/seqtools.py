@@ -10,7 +10,6 @@ from itertools import chain, zip_longest, repeat, combinations
 import math
 from functools import lru_cache
 from collections import defaultdict, Counter
-from array import array
 
 from toolz import itertoolz
 from toolz.itertoolz import sliding_window, unique
@@ -18,14 +17,8 @@ from toolz.utils import no_default
 
 from .misctools import cmp
 from .dicttools import invertedindex, nextentries
-from .__join import join
-
-def iter2seq(a: Iterable[T], target=tuple) -> Sequence[T]:
-    if isinstance(a, (list, str, tuple, array)):
-        return a
-
-    return target(a)
-
+from .__join import join, cmpjoin
+from .__common import iter2seq
 
 def bestsubseq(a: Iterable[T], key: Callable[[Iterable[T]], Any]) -> Iterable[T]:
     a = iter2seq(a)

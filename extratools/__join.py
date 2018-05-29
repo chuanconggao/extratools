@@ -2,10 +2,13 @@
 
 from typing import *
 
+import operator
 from itertools import groupby, product
 
 from toolz import itertoolz
 from toolz.utils import no_default
+
+from .__common import iter2seq
 
 def join(
         leftseq, rightseq,
@@ -18,6 +21,32 @@ def join(
         rightkey = lambda x: x
 
     return itertoolz.join(leftkey, leftseq, rightkey, rightseq, leftdefault, rightdefault)
+
+
+def cmpjoin(
+        leftseq, rightseq,
+        func=operator.eq,
+        leftdefault=no_default, rightdefault=no_default
+    ):
+    leftseq = iter2seq(leftseq)
+    leftmatches = [False] * len(leftseq)
+
+    for rightval in rightseq:
+        rightmatch = False
+
+        for i, leftval in enumerate(leftseq):
+            if func(leftval, rightval):
+                yield (leftval, rightval)
+
+                leftmatches[i] = rightmatch = True
+
+        if not rightmatch and leftdefault is not no_default:
+            yield (leftdefault, rightval)
+
+    if rightdefault is not no_default:
+        for leftmatch, leftval in zip(leftmatches, leftseq):
+            if not leftmatch:
+                yield (leftval, rightdefault)
 
 
 def __sortedjoin(
