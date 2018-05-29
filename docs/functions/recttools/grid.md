@@ -11,7 +11,7 @@ Tools for operating on grid.
 !!! tip
     From the rectangle ID, you can easily get the position tuple `pos, col = divmod(rectid, cols)`.
 
-![`grid`](recttools/grid.svg)
+![`grid`](grid.svg)
 
 ``` python
 list(grid(
@@ -41,7 +41,7 @@ list(grid(
 !!! tip
     The ID is also returned to ensure the same returning type of [`locatebypos`](#locatebypos) and [`locatebypoint`](#locatebypoint).
 
-![`locatebypos`](recttools/locatebypos.svg)
+![`locatebypos`](locatebypos.svg)
 
 ``` python
 locatebyid(
@@ -58,7 +58,7 @@ locatebyid(
 
 - Return `None` when not in grid.
 
-![`locatebypos`](recttools/locatebypos.svg)
+![`locatebypos`](locatebypos.svg)
 
 ``` python
 locatebypos(
@@ -75,7 +75,7 @@ locatebypos(
 
 - Return `None` when not in grid.
 
-![`locatebypoint`](recttools/locatebypoint.svg)
+![`locatebypoint`](locatebypoint.svg)
 
 ``` python
 locatebypoint(
@@ -92,7 +92,7 @@ locatebypoint(
 
 - Specify `usepos=True` to return the position of `(row, col)` instead of rectangle ID for each sub-rectangle.
 
-![`heatmap`](recttools/heatmap.svg)
+![`heatmap`](heatmap.svg)
 
 ``` python
 heatmap(
