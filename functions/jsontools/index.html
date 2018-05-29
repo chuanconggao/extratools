@@ -806,7 +806,7 @@
 <h2 id="json-flattenunflatten">JSON Flatten/Unflatten<a class="headerlink" href="#json-flattenunflatten" title="Permanent link">&para;</a></h2>
 <p>Tools for flatten/unflatten a JSON object.</p>
 <h3 id="flatten"><code>flatten</code><a class="headerlink" href="#flatten" title="Permanent link">&para;</a></h3>
-<p><code>flatten(data, force=False)</code> flattens a JSON object by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
+<p><code>flatten(data, force=False)</code> flattens a JSON object by returning all the tuples, each with a path and the respective value.</p>
 <ul>
 <li>
 <p>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</p>

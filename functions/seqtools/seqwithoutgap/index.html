@@ -473,6 +473,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#issubseq" title="issubseq" class="md-nav__link">
+    issubseq
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bestsubseq" title="bestsubseq" class="md-nav__link">
     bestsubseq
   </a>
@@ -489,13 +496,6 @@
           <li class="md-nav__item">
   <a href="#findsubseq" title="findsubseq" class="md-nav__link">
     findsubseq
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issubseq" title="issubseq" class="md-nav__link">
-    issubseq
   </a>
   
 </li>
@@ -847,6 +847,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#issubseq" title="issubseq" class="md-nav__link">
+    issubseq
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bestsubseq" title="bestsubseq" class="md-nav__link">
     bestsubseq
   </a>
@@ -863,13 +870,6 @@
           <li class="md-nav__item">
   <a href="#findsubseq" title="findsubseq" class="md-nav__link">
     findsubseq
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issubseq" title="issubseq" class="md-nav__link">
-    issubseq
   </a>
   
 </li>
@@ -956,6 +956,20 @@
                 
                 <h2 id="sequence-matching-without-gap">Sequence Matching without Gap<a class="headerlink" href="#sequence-matching-without-gap" title="Permanent link">&para;</a></h2>
 <p>Tools for matching sequences (including strings), without gaps allowed between matching items.</p>
+<h3 id="issubseq"><code>issubseq</code><a class="headerlink" href="#issubseq" title="Permanent link">&para;</a></h3>
+<p><code>issubseq(a, b)</code> checks if <code>a</code> is a sub-sequence of <code>b</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function reads the first sequence at once.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">issubseq(</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># True</span>
+</pre></div>
+
+
 <h3 id="bestsubseq"><code>bestsubseq</code><a class="headerlink" href="#bestsubseq" title="Permanent link">&para;</a></h3>
 <p><code>bestsubseq(a, key)</code> finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>.</p>
 <div class="admonition warning">
@@ -1008,20 +1022,6 @@
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># 1</span>
-</pre></div>
-
-
-<h3 id="issubseq"><code>issubseq</code><a class="headerlink" href="#issubseq" title="Permanent link">&para;</a></h3>
-<p><code>issubseq(a, b)</code> checks if <code>a</code> is a sub-sequence of <code>b</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This function reads the first sequence at once.</p>
-</div>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">issubseq(</span>
-    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
-<span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># True</span>
 </pre></div>
 
 

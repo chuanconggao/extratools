@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#sequence-encodingdecoding" tabindex="1" class="md-skip">
+      <a href="#compress" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -489,43 +489,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sequence-encodingdecoding" title="Sequence Encoding/Decoding" class="md-nav__link">
-    Sequence Encoding/Decoding
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#compress" title="compress" class="md-nav__link">
     compress
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#decompress" title="decompress" class="md-nav__link">
     decompress
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#todeltas" title="todeltas" class="md-nav__link">
     todeltas
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fromdeltas" title="fromdeltas" class="md-nav__link">
     fromdeltas
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -785,43 +772,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sequence-encodingdecoding" title="Sequence Encoding/Decoding" class="md-nav__link">
-    Sequence Encoding/Decoding
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#compress" title="compress" class="md-nav__link">
     compress
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#decompress" title="decompress" class="md-nav__link">
     decompress
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#todeltas" title="todeltas" class="md-nav__link">
     todeltas
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fromdeltas" title="fromdeltas" class="md-nav__link">
     fromdeltas
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -846,10 +820,9 @@
                 
                   <h1>Encoding/Decoding</h1>
                 
-                <h2 id="sequence-encodingdecoding">Sequence Encoding/Decoding<a class="headerlink" href="#sequence-encodingdecoding" title="Permanent link">&para;</a></h2>
-<p>Tools for encoding/decoding sequences.</p>
+                <p>Tools for encoding/decoding sequences.</p>
 <h3 id="compress"><code>compress</code><a class="headerlink" href="#compress" title="Permanent link">&para;</a></h3>
-<p><code>compress(data, key=None)</code> compresses the sequence by encoding continuous identical <code>Item</code> to <code>(Item, Count)</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</p>
+<p><code>compress(data, key=None)</code> compresses the sequence <code>data</code> by encoding continuous identical items to a tuple of item and count, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Different from <a href="https://docs.python.org/3.6/library/itertools.html#itertools.compress"><code>itertools.compress</code></a>.</p>
@@ -860,7 +833,7 @@
 
 
 <h3 id="decompress"><code>decompress</code><a class="headerlink" href="#decompress" title="Permanent link">&para;</a></h3>
-<p><code>decompress(data)</code> decompresses the sequence by decoding <code>(Item, Count)</code> to continuous identical <code>Item</code>, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</p>
+<p><code>decompress(data)</code> decompresses the sequence <code>data</code> by decoding each tuple of item and count to continuous identical items, according to <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a>.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(decompress([(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)]))</span>
 <span style="color: #75715e"># [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]</span>
 </pre></div>

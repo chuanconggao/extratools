@@ -259,6 +259,26 @@
     Functions
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-tools" title="By Tools" class="md-nav__link">
+    By Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-tag" title="By Tag" class="md-nav__link">
+    By Tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -765,6 +785,26 @@
     Functions
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-tools" title="By Tools" class="md-nav__link">
+    By Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-tag" title="By Tag" class="md-nav__link">
+    By Tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -802,85 +842,170 @@
                 
                   <h1>Index</h1>
                 
-                <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+                <div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For introduction of this library, please refer to <a href="./README">README</a>.</p>
+</div>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<h3 id="by-tools">By Tools<a class="headerlink" href="#by-tools" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>All the functions are organized as follows.</p>
+</div>
 <table>
 <thead>
 <tr>
 <th>Tools</th>
-<th># Functions</th>
+<th align="right"># Functions</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="./functions/debugtools"><code>debugtools</code></a></td>
-<td>4</td>
+<td align="right">4</td>
 <td>Tools for debugging purposes.</td>
 </tr>
 <tr>
 <td><a href="./functions/dicttools"><code>dicttools</code></a></td>
-<td>7</td>
+<td align="right">7</td>
 <td>Tools for operating dictionaries.</td>
 </tr>
 <tr>
 <td><a href="./functions/jsontools"><code>jsontools</code></a></td>
-<td>1</td>
+<td align="right">1</td>
 <td>Tools for operating JSON data.</td>
 </tr>
 <tr>
 <td><a href="./functions/mathtools"><code>mathtools</code></a></td>
-<td>2</td>
+<td align="right">2</td>
 <td>Tools for math.</td>
 </tr>
 <tr>
 <td><a href="./functions/misctools"><code>misctools</code></a></td>
-<td>2</td>
+<td align="right">2</td>
 <td>Tools for miscellaneous purposes.</td>
 </tr>
 <tr>
 <td><a href="./functions/printtools"><code>printtools</code></a></td>
-<td>5</td>
+<td align="right">5</td>
 <td>Tools for printing purposes.</td>
 </tr>
 <tr>
 <td><a href="./functions/rangetools"><code>rangetools</code></a></td>
-<td>8</td>
+<td align="right">8</td>
 <td>Tools for operating ranges/intervals.</td>
 </tr>
 <tr>
 <td><a href="./functions/recttools"><code>recttools</code></a></td>
-<td>11</td>
+<td align="right">11</td>
 <td>Tools for operating rectangles.</td>
 </tr>
 <tr>
 <td><a href="./functions/seqtools"><code>seqtools</code></a></td>
-<td>31</td>
+<td align="right">32</td>
 <td>Tools for operating sequences.</td>
 </tr>
 <tr>
 <td><a href="./functions/settools"><code>settools</code></a></td>
-<td>10</td>
+<td align="right">10</td>
 <td>Tools for operating sets.</td>
 </tr>
 <tr>
 <td><a href="./functions/sortedtools"><code>sortedtools</code></a></td>
-<td>8</td>
+<td align="right">8</td>
 <td>Tools for operating sorted sequences.</td>
 </tr>
 <tr>
 <td><a href="./functions/stattools"><code>stattools</code></a></td>
-<td>7</td>
+<td align="right">7</td>
 <td>Tools for statistics.</td>
 </tr>
 <tr>
 <td><a href="./functions/strtools"><code>strtools</code></a></td>
-<td>12</td>
+<td align="right">12</td>
 <td>Tools for operating strings.</td>
 </tr>
 <tr>
 <td><a href="./functions/tabletools"><code>tabletools</code></a></td>
-<td>14</td>
+<td align="right">14</td>
 <td>Tools for operating tables/matrices.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="by-tag">By Tag<a class="headerlink" href="#by-tag" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Only functions sharing similar logics are listed here.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Description</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cmp</code></td>
+<td>Compare objects/points/sequences.</td>
+<td><a href="./functions/misctools#cmp"><code>misctools.cmp</code></a> - <a href="./functions/recttools#pointcmp"><code>recttools.pointcmp</code></a> - <a href="./functions/seqtools#productcmp"><code>seqtools.productcmp</code></a></td>
+</tr>
+<tr>
+<td><code>flatten</code></td>
+<td>Flatten nested dictionary/JSON object.</td>
+<td><a href="./functions/dicttools#flatten"><code>dicttools.flatten</code></a> - <a href="./functions/jsontools#flatten"><code>jsontools.flatten</code></a></td>
+</tr>
+<tr>
+<td><code>intersect</code></td>
+<td>Compute the intersection between ranges/rectangles.</td>
+<td><a href="./functions/rangetools#intersect"><code>rangetools.intersect</code></a> - <a href="./functions/recttools#intersect"><code>recttools.intersect</code></a></td>
+</tr>
+<tr>
+<td><code>union</code></td>
+<td>Compute the union between ranges/rectangles.</td>
+<td><a href="./functions/rangetools#union"><code>rangetools.union</code></a> - <a href="./functions/recttools#union"><code>recttools.union</code></a></td>
+</tr>
+<tr>
+<td><code>issub*</code></td>
+<td>Verify whether a sub-range/rectange/sequence.</td>
+<td><a href="./functions/rangetools#issubrange"><code>rangetools.issubrange</code></a> - <a href="./functions/recttools#issubrect"><code>recttools.issubrect</code></a> - <a href="./functions/recttools#issubrect"><code>recttools.issubrect</code></a> - <a href="./functions/seqtools/seqwithoutgap#issubseq"><code>seqtools.issubseq</code></a> - <a href="./functions/seqtools/seqwithgap#issubseqwithgap"><code>seqtools.issubseqwithgap</code></a> - <a href="./functions/sortedtools#issubsorted"><code>sortedtools.issubsorted</code></a></td>
+</tr>
+<tr>
+<td><code>*cover</code></td>
+<td>Find the best sub-ranges/sets that cover the whole.</td>
+<td><a href="./functions/rangetools#rangecover"><code>rangetools.rangecover</code></a> - <a href="./functions/settools#setcover"><code>settools.setcover</code></a></td>
+</tr>
+<tr>
+<td><code>bestsub*</code></td>
+<td>Find the best sub-set/sequence.</td>
+<td><a href="./functions/seqtools#bestsubseq"><code>seqtools.bestsubseq</code></a> - <a href="./functions/seqtools#bestsubseqwithgap"><code>seqtools.bestsubseqwithgap</code></a> - <a href="./functions/settools#bestsubset"><code>settools.bestsubset</code></a></td>
+</tr>
+<tr>
+<td><code>commonsub*</code></td>
+<td>Find the common sub-sequence/substring.</td>
+<td><a href="./functions/seqtools/seqwithoutgap#commonsubseq"><code>seqtools.commonsubseq</code></a> - <a href="./functions/seqtools/seqwithgap#commonsubseqwithgap"><code>seqtools.commonsubseqwithgap</code></a> - <a href="./functions/sortedtools#sortedcommon"><code>sortedtools.sortedcommon</code></a> - <a href="./functions/strtools#commonsubstr"><code>strtools.commonsubstr</code></a></td>
+</tr>
+<tr>
+<td><code>match</code></td>
+<td>Match common elements among sequences.</td>
+<td><a href="./functions/seqtools#match"><code>seqtools.match</code></a> - <a href="./functions/sortedtools#sortedmatch"><code>sortedtools.sortedmatch</code></a></td>
+</tr>
+<tr>
+<td><code>join</code></td>
+<td>Join sequences/tables.</td>
+<td><a href="./functions/seqtools#join"><code>seqtools.join</code></a> - <a href="./functions/seqtools#cmpjoin"><code>seqtools.cmpjoin</code></a> - <a href="./functions/sortedtools#sortedjoin"><code>sortedtools.sortedjoin</code></a> - <a href="./functions/tabletools#join"><code>tabletools.join</code></a></td>
+</tr>
+<tr>
+<td><code>matchingfrequencies</code></td>
+<td>Compute the frequency of each item among sequences.</td>
+<td><a href="./functions/seqtools#matchingfrequencies"><code>seqtools.matchingfrequencies</code></a> - <a href="./functions/sortedtools#matchingfrequencies"><code>sortedtools.matchingfrequencies</code></a></td>
+</tr>
+<tr>
+<td><code>*2grams</code></td>
+<td>Convert sequence/string to grams.</td>
+<td><a href="./functions/seqtools#seq2grams"><code>seqtools.seq2grams</code></a> - <a href="./functions/strtools#str2grams"><code>strtools.str2grams</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -888,14 +1013,14 @@
 <table>
 <thead>
 <tr>
-<th>Tool</th>
+<th>Class</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="./datastructures/defaultlist"><code>defaultlist.DefaultList</code></a></td>
-<td><code>list</code> that grows if necessary when accessing.</td>
+<td>A sub-class of <code>list</code> that grows if necessary when accessing.</td>
 </tr>
 <tr>
 <td><a href="./datastructures/disjointsets"><code>disjointsets.DisjointSets</code></a></td>
@@ -911,21 +1036,21 @@
 <table>
 <thead>
 <tr>
-<th>Tool</th>
+<th>Name</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="./cli#dicttools.remap"><code>dicttools.remap</code></a></td>
+<td><a href="./cli#dicttools.remap"><code>extratools-remap</code></a></td>
 <td>CLI for <a href="./functions/dicttools#remap"><code>dicttools.remap</code></a>.</td>
 </tr>
 <tr>
-<td><a href="./cli#jsontools.flatten"><code>jsontools.flatten</code></a></td>
+<td><a href="./cli#jsontools.flatten"><code>extratools-flatten</code></a></td>
 <td>CLI for <a href="./functions/jsontools#flatten"><code>jsontools.flatten</code></a>.</td>
 </tr>
 <tr>
-<td><a href="./cli#stattools.teststats"><code>stattools.teststats</code></a></td>
+<td><a href="./cli#stattools.teststats"><code>extratools-teststats</code></a></td>
 <td>CLI for <a href="./functions/stattools#teststats"><code>stattools.teststats</code></a>.</td>
 </tr>
 </tbody>

@@ -872,11 +872,11 @@
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/debugtools.py">Source</a></p>
 <h2 id="iterable">Iterable<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h2>
-<p>Tools for debugging iterable sequence.</p>
+<p>Tools for debugging iterable.</p>
 <h3 id="delayediter"><code>delayediter</code><a class="headerlink" href="#delayediter" title="Permanent link">&para;</a></h3>
-<p><code>delayediter(seq, delay=None)</code> delays the production of each item in <code>seq</code> by <code>delay</code> seconds.</p>
+<p><code>delayediter(iterable, delay=None)</code> delays the production of each item in iterable <code>iterable</code> by a delay of <code>delay</code> in seconds.</p>
 <ul>
-<li>In default, <code>delay=None</code> is disabled.</li>
+<li>In default, <code>delay=None</code> disables the delay.</li>
 </ul>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">delayediter(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">delay</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">):</span>
     <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">now()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">time(),</span> <span style="color: #f8f8f2">v)</span>
@@ -889,7 +889,7 @@
 
 
 <h3 id="timediter"><code>timediter</code><a class="headerlink" href="#timediter" title="Permanent link">&para;</a></h3>
-<p><code>timediter(seq)</code> produces each item in <code>seq</code> and its respective timestamp when encountered.</p>
+<p><code>timediter(iterable)</code> produces each item in iterable <code>iterable</code> and its respective timestamp when encountered.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">t,</span> <span style="color: #f8f8f2">v</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">timediter(delayediter(range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">delay</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)):</span>
     <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fromtimestamp(t)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">time(),</span> <span style="color: #f8f8f2">v)</span>
 <span style="color: #75715e"># 01:13:37.181460 0</span>
@@ -901,13 +901,24 @@
 
 
 <h2 id="system-diagnosis">System Diagnosis<a class="headerlink" href="#system-diagnosis" title="Permanent link">&para;</a></h2>
-<p>Tools for non-functional but useful system diagnosis tools.</p>
+<p>Non-Functional but useful tools for system diagnosis.</p>
 <h3 id="stopwatch"><code>stopwatch</code><a class="headerlink" href="#stopwatch" title="Permanent link">&para;</a></h3>
-<p><code>stopwatch()</code> returns both the duration since program start and the duration since last call in seconds.</p>
+<p><code>stopwatch()</code> returns both the duration since program start and the duration since last call of this function in seconds.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The stopwatch only starts after <code>debugtools</code> is imported.</p>
+<p>The stopwatch starts only after <code>debugtools</code> is imported.</p>
 </div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">):</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(stopwatch())</span>
+    <span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># (1.4512503190198913, 1.4512503190198913)</span>
+<span style="color: #75715e"># (2.45514269702835  , 1.0038923780084588)</span>
+<span style="color: #75715e"># (3.4569691279903054, 1.0018264309619553)</span>
+<span style="color: #75715e"># (4.45844506600406  , 1.0014759380137548)</span>
+<span style="color: #75715e"># (5.463522073987406 , 1.0050770079833455)</span>
+</pre></div>
+
+
 <h3 id="peakmem"><code>peakmem</code><a class="headerlink" href="#peakmem" title="Permanent link">&para;</a></h3>
 <p><code>peakmem()</code> returns the peak memory usage since program start.</p>
 <div class="admonition danger">

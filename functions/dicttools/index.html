@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#dictionary-inverting" tabindex="1" class="md-skip">
+      <a href="#remapping" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -312,40 +312,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dictionary-inverting" title="Dictionary Inverting" class="md-nav__link">
-    Dictionary Inverting
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#invert" title="invert" class="md-nav__link">
-    invert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invert_safe" title="invert_safe" class="md-nav__link">
-    invert_safe
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invert_multiple" title="invert_multiple" class="md-nav__link">
-    invert_multiple
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#remapping" title="Remapping" class="md-nav__link">
     Remapping
   </a>
@@ -383,6 +349,40 @@
           <li class="md-nav__item">
   <a href="#nextentries" title="nextentries" class="md-nav__link">
     nextentries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionary-inverting" title="Dictionary Inverting" class="md-nav__link">
+    Dictionary Inverting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invert" title="invert" class="md-nav__link">
+    invert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert_safe" title="invert_safe" class="md-nav__link">
+    invert_safe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert_multiple" title="invert_multiple" class="md-nav__link">
+    invert_multiple
   </a>
   
 </li>
@@ -843,40 +843,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dictionary-inverting" title="Dictionary Inverting" class="md-nav__link">
-    Dictionary Inverting
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#invert" title="invert" class="md-nav__link">
-    invert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invert_safe" title="invert_safe" class="md-nav__link">
-    invert_safe
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invert_multiple" title="invert_multiple" class="md-nav__link">
-    invert_multiple
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#remapping" title="Remapping" class="md-nav__link">
     Remapping
   </a>
@@ -914,6 +880,40 @@
           <li class="md-nav__item">
   <a href="#nextentries" title="nextentries" class="md-nav__link">
     nextentries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionary-inverting" title="Dictionary Inverting" class="md-nav__link">
+    Dictionary Inverting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invert" title="invert" class="md-nav__link">
+    invert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert_safe" title="invert_safe" class="md-nav__link">
+    invert_safe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert_multiple" title="invert_multiple" class="md-nav__link">
+    invert_multiple
   </a>
   
 </li>
@@ -965,43 +965,6 @@
                   <h1>dicttools</h1>
                 
                 <p><a href="https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py">Source</a></p>
-<h2 id="dictionary-inverting">Dictionary Inverting<a class="headerlink" href="#dictionary-inverting" title="Permanent link">&para;</a></h2>
-<p>Tools for inverting dictionaries.</p>
-<h3 id="invert"><code>invert</code><a class="headerlink" href="#invert" title="Permanent link">&para;</a></h3>
-<p><code>invert(d)</code> inverts <code>(Key, Value)</code> pairs to <code>(Value, Key)</code>.</p>
-<ul>
-<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
-</ul>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">invert({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">})</span>
-<span style="color: #75715e"># {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span>
-</pre></div>
-
-
-<h3 id="invert_safe"><code>invert_safe</code><a class="headerlink" href="#invert_safe" title="Permanent link">&para;</a></h3>
-<p><code>invert_safe(d)</code> inverts <code>(Key, Value)</code> pairs to <code>(Value, List[Key])</code>.</p>
-<ul>
-<li>If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.</li>
-</ul>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">d</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">}</span>
-
-<span style="color: #f8f8f2">invert(d)</span>
-<span style="color: #75715e"># {&#39;a&#39;: 3, &#39;b&#39;: 2}</span>
-
-<span style="color: #f8f8f2">invert_safe(d)</span>
-<span style="color: #75715e"># {&#39;a&#39;: [1, 3], &#39;b&#39;: [2]}</span>
-</pre></div>
-
-
-<h3 id="invert_multiple"><code>invert_multiple</code><a class="headerlink" href="#invert_multiple" title="Permanent link">&para;</a></h3>
-<p><code>invert_multiple(d)</code> inverts either <code>(Key, Value)</code> to <code>(Value, Key)</code>, or <code>(Key, Iterable[Value])</code> pair to multiple <code>(Value, Key)</code>.</p>
-<ul>
-<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
-</ul>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">invert_multiple({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;abc&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;def&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;ghi&#39;</span><span style="color: #f8f8f2">})</span>
-<span style="color: #75715e"># {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 1, &#39;d&#39;: 2, &#39;e&#39;: 2, &#39;f&#39;: 2, &#39;g&#39;: 3}</span>
-</pre></div>
-
-
 <h2 id="remapping">Remapping<a class="headerlink" href="#remapping" title="Permanent link">&para;</a></h2>
 <p>Tools for remapping elements.</p>
 <h3 id="remap"><code>remap</code><a class="headerlink" href="#remap" title="Permanent link">&para;</a></h3>
@@ -1077,10 +1040,47 @@
 </pre></div>
 
 
+<h2 id="dictionary-inverting">Dictionary Inverting<a class="headerlink" href="#dictionary-inverting" title="Permanent link">&para;</a></h2>
+<p>Tools for inverting dictionaries.</p>
+<h3 id="invert"><code>invert</code><a class="headerlink" href="#invert" title="Permanent link">&para;</a></h3>
+<p><code>invert(d)</code> inverts <code>(Key, Value)</code> pairs to <code>(Value, Key)</code>.</p>
+<ul>
+<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">invert({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">})</span>
+<span style="color: #75715e"># {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span>
+</pre></div>
+
+
+<h3 id="invert_safe"><code>invert_safe</code><a class="headerlink" href="#invert_safe" title="Permanent link">&para;</a></h3>
+<p><code>invert_safe(d)</code> inverts <code>(Key, Value)</code> pairs to <code>(Value, List[Key])</code>.</p>
+<ul>
+<li>If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">d</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">}</span>
+
+<span style="color: #f8f8f2">invert(d)</span>
+<span style="color: #75715e"># {&#39;a&#39;: 3, &#39;b&#39;: 2}</span>
+
+<span style="color: #f8f8f2">invert_safe(d)</span>
+<span style="color: #75715e"># {&#39;a&#39;: [1, 3], &#39;b&#39;: [2]}</span>
+</pre></div>
+
+
+<h3 id="invert_multiple"><code>invert_multiple</code><a class="headerlink" href="#invert_multiple" title="Permanent link">&para;</a></h3>
+<p><code>invert_multiple(d)</code> inverts either <code>(Key, Value)</code> to <code>(Value, Key)</code>, or <code>(Key, Iterable[Value])</code> pair to multiple <code>(Value, Key)</code>.</p>
+<ul>
+<li>If multiple keys share the same value, the inverted directory keeps last of the respective keys.</li>
+</ul>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">invert_multiple({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;abc&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;def&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;ghi&#39;</span><span style="color: #f8f8f2">})</span>
+<span style="color: #75715e"># {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 1, &#39;d&#39;: 2, &#39;e&#39;: 2, &#39;f&#39;: 2, &#39;g&#39;: 3}</span>
+</pre></div>
+
+
 <h2 id="dictionary-flattenunflatten">Dictionary Flatten/Unflatten<a class="headerlink" href="#dictionary-flattenunflatten" title="Permanent link">&para;</a></h2>
 <p>Tools for flatten/unflatten a dictionary.</p>
 <h3 id="flatten"><code>flatten</code><a class="headerlink" href="#flatten" title="Permanent link">&para;</a></h3>
-<p><code>flatten(d, force=False)</code> flattens a dictionary by returning <code>(Path, Value</code>) tuples with each path <code>Path</code> from root to each value <code>Value</code>.</p>
+<p><code>flatten(d, force=False)</code> flattens a dictionary by returning by all the tuples, each with a path and the respective value.</p>
 <ul>
 <li>
 <p>For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.</p>

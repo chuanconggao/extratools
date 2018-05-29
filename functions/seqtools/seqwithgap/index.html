@@ -485,6 +485,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#issubseqwithgap" title="issubseqwithgap" class="md-nav__link">
+    issubseqwithgap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bestsubseqwithgap" title="bestsubseqwithgap" class="md-nav__link">
     bestsubseqwithgap
   </a>
@@ -501,13 +508,6 @@
           <li class="md-nav__item">
   <a href="#findsubseqwithgap" title="findsubseqwithgap" class="md-nav__link">
     findsubseqwithgap
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issubseqwithgap" title="issubseqwithgap" class="md-nav__link">
-    issubseqwithgap
   </a>
   
 </li>
@@ -820,6 +820,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#issubseqwithgap" title="issubseqwithgap" class="md-nav__link">
+    issubseqwithgap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bestsubseqwithgap" title="bestsubseqwithgap" class="md-nav__link">
     bestsubseqwithgap
   </a>
@@ -836,13 +843,6 @@
           <li class="md-nav__item">
   <a href="#findsubseqwithgap" title="findsubseqwithgap" class="md-nav__link">
     findsubseqwithgap
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issubseqwithgap" title="issubseqwithgap" class="md-nav__link">
-    issubseqwithgap
   </a>
   
 </li>
@@ -902,6 +902,16 @@
                 
                 <h2 id="sequence-matching-with-gap">Sequence Matching with Gap<a class="headerlink" href="#sequence-matching-with-gap" title="Permanent link">&para;</a></h2>
 <p>Tools for matching sequences (including strings), with gaps allowed between matching items.</p>
+<h3 id="issubseqwithgap"><code>issubseqwithgap</code><a class="headerlink" href="#issubseqwithgap" title="Permanent link">&para;</a></h3>
+<p><code>issubseqwithgap(a, b)</code> checks if <code>a</code> is a sub-sequence of <code>b</code>, where gaps are allowed.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(issubseqwithgap(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># True</span>
+</pre></div>
+
+
 <h3 id="bestsubseqwithgap"><code>bestsubseqwithgap</code><a class="headerlink" href="#bestsubseqwithgap" title="Permanent link">&para;</a></h3>
 <p><code>bestsubseqwithgap(a, key)</code> finds the best sub-sequence of <code>a</code> that maximizes the key function <code>key</code>, where gaps are allowed.</p>
 <div class="admonition warning">
@@ -969,16 +979,6 @@
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># [0, 2, 4]</span>
-</pre></div>
-
-
-<h3 id="issubseqwithgap"><code>issubseqwithgap</code><a class="headerlink" href="#issubseqwithgap" title="Permanent link">&para;</a></h3>
-<p><code>issubseqwithgap(a, b)</code> checks if <code>a</code> is a sub-sequence of <code>b</code>, where gaps are allowed.</p>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(issubseqwithgap(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
-<span style="color: #f8f8f2">))</span>
-<span style="color: #75715e"># True</span>
 </pre></div>
 
 
