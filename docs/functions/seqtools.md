@@ -19,6 +19,52 @@
 
     - [Sequence encoding/decoding](seqtools/encode).
 
+## Sequence Basics
+
+Tools for basic sequence usages.
+
+### `productcmp`
+
+`productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
+
+- Throw exception if `x` and `y` have different lengths.
+
+``` python
+productcmp(
+    [1, 2, 3],
+    [4, 5, 6]
+)
+# 1
+
+productcmp(
+    [1, 2, 3],
+    [4, 3, 2]
+)
+# None
+```
+
+### `sortedbyrank`
+
+`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+
+``` python
+sortedbyrank(
+    ['a', 'b', 'c'],
+    [  3,   2,   1]
+)
+# ['c', 'b', 'a']
+```
+
+### `iter2seq`
+
+`iter2seq(iterable, target=tuple)` converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
+
+!!! warning
+    This function reads the sequence at once.
+
+!!! tip
+    Useful if you need to scan the sequence more than once.
+
 ## Sequence Filtering
 
 Tools for filtering sequence.
@@ -58,7 +104,9 @@ list(filterbyother(
 # [{1}, {2, 3}]
 ```
 
-## Sequence Matching
+## Sequence Alignment and Join
+
+Tools for aligning and joining sequences.
 
 ### `matchingfrequencies`
 
@@ -80,10 +128,6 @@ list(matchingfrequencies(
 ))
 # [(0, 2), (1, 4), (2, 3), (3, 2), (4, 2)]
 ```
-
-## Sequence Alignment and Join
-
-Tools for aligning and joining sequences.
 
 ### `match`
 
@@ -148,7 +192,7 @@ align(
 `join(leftseq, rightseq, leftkey=None, rightkey=None, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to `leftkey` and `rightkey`, respectively. Outer join is also supported.
 
 !!! warning
-    This function reads the first sequence at once.
+    This function reads the first sequence `leftseq` at once. Thus, make `leftseq` the shorter one for best efficiency.
 
 !!! tip
     If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized [`sortedtools.sortedjoin`](sortedtools#sortedjoin) with the same API should be used for better efficiency.
@@ -179,7 +223,7 @@ list(join(
 `cmpjoin(leftseq, rightseq, func=operator.eq, leftdefault=no_default, rightdefault=no_default)` joins two sequences, optionally according to the condition function `func`, respectively. Outer join is also supported.
 
 !!! warning
-    This function reads the first sequence at once.
+    This function reads the first sequence `leftseq` at once. Thus, make `leftseq` the shorter one for best efficiency.
 
 !!! tip
     If both two sequences are sorted according to `leftkey` and `rightkey`, respectively, then optimized [`sortedtools.sortedjoin`](sortedtools#sortedjoin) with the same API should be used for better efficiency.
@@ -275,60 +319,6 @@ list(templateseq((
 ), default='*', simple=False))
 # ['*', 'likes', '*', 'and', '*', '!', '!']
 ```
-
-## Sequence Comparison
-
-Tools for comparing sequences.
-
-### `productcmp`
-
-`productcmp(x, y)` compares two sequences `x` and `y` with equal length according to [product order](https://en.wikipedia.org/wiki/Product_order). Returns `-1` if smaller, `0` if equal, `1` if greater, and `None` if not comparable.
-
-- Throw exception if `x` and `y` have different lengths.
-
-``` python
-productcmp(
-    [1, 2, 3],
-    [4, 5, 6]
-)
-# 1
-
-productcmp(
-    [1, 2, 3],
-    [4, 3, 2]
-)
-# None
-```
-
-## Sequence Sorting
-
-Tools for sorting sequences.
-
-### `sortedbyrank`
-
-`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
-
-``` python
-sortedbyrank(
-    ['a', 'b', 'c'],
-    [  3,   2,   1]
-)
-# ['c', 'b', 'a']
-```
-
-## Sequence Transformation
-
-Tools for transforming sequences.
-
-### `iter2seq`
-
-`iter2seq(iterable, target=tuple)` converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
-
-!!! warning
-    This function reads the sequence at once.
-
-!!! tip
-    Useful if you need to scan the sequence more than once.
 
 ## Sequence Modeling
 

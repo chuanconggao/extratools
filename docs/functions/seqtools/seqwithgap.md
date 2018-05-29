@@ -2,6 +2,18 @@
 
 Tools for matching sequences (including strings), with gaps allowed between matching items.
 
+### `issubseqwithgap`
+
+`issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
+
+``` python
+list(issubseqwithgap(
+    [0,    1,    1],
+    [0, 0, 1, 0, 1, 0]
+))
+# True
+```
+
 ### `bestsubseqwithgap`
 
 `bestsubseqwithgap(a, key)` finds the best sub-sequence of `a` that maximizes the key function `key`, where gaps are allowed.
@@ -70,18 +82,6 @@ list(findsubseqwithgap(
     [0, 0, 1, 0, 1, 0]
 ))
 # [0, 2, 4]
-```
-
-### `issubseqwithgap`
-
-`issubseqwithgap(a, b)` checks if `a` is a sub-sequence of `b`, where gaps are allowed.
-
-``` python
-list(issubseqwithgap(
-    [0,    1,    1],
-    [0, 0, 1, 0, 1, 0]
-))
-# True
 ```
 
 ### `commonsubseqwithgap`

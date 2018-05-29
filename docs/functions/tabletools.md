@@ -13,7 +13,7 @@
 !!! warning
     For all the functions except [`loadcsv`](#loadcsv) and [`dumpcsv`](#dumpcsv), the header must be removed for best result.
 
-## Transformation
+## Table Transformation
 
 Tools for table transformations.
 
@@ -87,7 +87,7 @@ list(trim([
 #  ['c', 'd']]
 ```
 
-## Join
+## Table Join
 
 Tools for join tables.
 

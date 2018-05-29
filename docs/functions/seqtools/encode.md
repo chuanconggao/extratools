@@ -1,10 +1,8 @@
-## Sequence Encoding/Decoding
-
 Tools for encoding/decoding sequences.
 
 ### `compress`
 
-`compress(data, key=None)` compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+`compress(data, key=None)` compresses the sequence `data` by encoding continuous identical items to a tuple of item and count, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 !!! warning
     Different from [`itertools.compress`](https://docs.python.org/3.6/library/itertools.html#itertools.compress).
@@ -16,7 +14,7 @@ list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
 
 ### `decompress`
 
-`decompress(data)` decompresses the sequence by decoding `(Item, Count)` to continuous identical `Item`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+`decompress(data)` decompresses the sequence `data` by decoding each tuple of item and count to continuous identical items, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
 list(decompress([(1, 1), (2, 2), (3, 3), (4, 4)]))

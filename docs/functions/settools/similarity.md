@@ -1,5 +1,3 @@
-## Set Similarity
-
 Tools for set similarities.
 
 ### `jaccard`

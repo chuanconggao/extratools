@@ -1,5 +1,3 @@
-## Parsing Text to Table
-
 Tools for parsing each line of text to a row in respective table.
 
 ### `parse`

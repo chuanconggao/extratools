@@ -21,6 +21,20 @@ issorted([1, 2, 2, 3])
 
 Tools for matching sorted sequences.
 
+### `issubsorted`
+
+`issubsorted(a, b, key=None)` checks if `a` is a sorted sub-sequence of `b`, optionally according to the key function `key`.
+
+- When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
+
+``` python
+issubsorted(
+    [1, 2, 2, 3],
+    [1, 2, 2, 3, 4, 4]
+)
+# True
+```
+
 ### `sortedcommon`
 
 `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`, optionally according to the key function `key`.
@@ -66,19 +80,9 @@ list(sorteddiff(
 # [1, 2]
 ```
 
-### `issubsorted`
+## Sequence Alignment and Join
 
-`issubsorted(a, b, key=None)` checks if `a` is a sorted sub-sequence of `b`, optionally according to the key function `key`.
-
-- When both `a` and `b` are sorted sets with no duplicate element, equal to `set(a) <= set(b)` but more efficient.
-
-``` python
-issubsorted(
-    [1, 2, 2, 3],
-    [1, 2, 2, 3, 4, 4]
-)
-# True
-```
+Tools for aligning and joining sorted sequences.
 
 ### `matchingfrequencies`
 
@@ -102,10 +106,6 @@ list(matchingfrequencies(
 ))
 # [(1, 2), (2, 2), (3, 3), (4, 2), (5, 1)]
 ```
-
-## Sequence Alignment and Join
-
-Tools for aligning and joining sorted sequences.
 
 ### `sortedmatch`
 

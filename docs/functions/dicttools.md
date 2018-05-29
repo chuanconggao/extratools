@@ -1,47 +1,5 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/dicttools.py)
 
-## Dictionary Inverting
-
-Tools for inverting dictionaries.
-
-### `invert`
-
-`invert(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
-
-- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
-
-``` python
-invert({1: 'a', 2: 'b', 3: 'c'})
-# {'a': 1, 'b': 2, 'c': 3}
-```
-
-### `invert_safe`
-
-`invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
-
-- If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
-
-``` python
-d = {1: 'a', 2: 'b', 3: 'a'}
-
-invert(d)
-# {'a': 3, 'b': 2}
-
-invert_safe(d)
-# {'a': [1, 3], 'b': [2]}
-```
-
-### `invert_multiple`
-
-`invert_multiple(d)` inverts either `(Key, Value)` to `(Value, Key)`, or `(Key, Iterable[Value])` pair to multiple `(Value, Key)`.
-
-- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
-
-``` python
-invert_multiple({1: 'abc', 2: 'def', 3: 'ghi'})
-# {'a': 1, 'b': 1, 'c': 1, 'd': 2, 'e': 2, 'f': 2, 'g': 3}
-```
-
 ## Remapping
 
 Tools for remapping elements.
@@ -121,13 +79,55 @@ nextentries(data, entries)
 #  'a': [(2, 4)]}
 ```
 
+## Dictionary Inverting
+
+Tools for inverting dictionaries.
+
+### `invert`
+
+`invert(d)` inverts `(Key, Value)` pairs to `(Value, Key)`.
+
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+``` python
+invert({1: 'a', 2: 'b', 3: 'c'})
+# {'a': 1, 'b': 2, 'c': 3}
+```
+
+### `invert_safe`
+
+`invert_safe(d)` inverts `(Key, Value)` pairs to `(Value, List[Key])`.
+
+- If multiple keys share the same value, the inverted directory keeps a list of all the respective keys.
+
+``` python
+d = {1: 'a', 2: 'b', 3: 'a'}
+
+invert(d)
+# {'a': 3, 'b': 2}
+
+invert_safe(d)
+# {'a': [1, 3], 'b': [2]}
+```
+
+### `invert_multiple`
+
+`invert_multiple(d)` inverts either `(Key, Value)` to `(Value, Key)`, or `(Key, Iterable[Value])` pair to multiple `(Value, Key)`.
+
+- If multiple keys share the same value, the inverted directory keeps last of the respective keys.
+
+``` python
+invert_multiple({1: 'abc', 2: 'def', 3: 'ghi'})
+# {'a': 1, 'b': 1, 'c': 1, 'd': 2, 'e': 2, 'f': 2, 'g': 3}
+```
+
 ## Dictionary Flatten/Unflatten
 
 Tools for flatten/unflatten a dictionary.
 
 ### `flatten`
 
-`flatten(d, force=False)` flattens a dictionary by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+`flatten(d, force=False)` flattens a dictionary by returning by all the tuples, each with a path and the respective value.
 
 - For each path, if any array with nested dictionary is encountered, the index of the array also becomes part of the path.
 
@@ -168,4 +168,3 @@ flatten(json.loads("""{
 #  'children': [],
 #  'spouse': None}
 ```
-

@@ -4,23 +4,23 @@
 
 **Featured on GitHub's Trending Python repos on May 25, 2018. Thank you so much for support!**
 
-120+ extra higher-level functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+130+ extra higher-level functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
-- While `toolz` and others target basic scenarios, most tools in this library target more advanced and complete scenarios.
+- While `toolz` and others target basic scenarios, this library targets more advanced and higher-level scenarios.
 
-- A few useful CLI tools for respective functions are also installed. They are available as `extratools-[funcname]`.
+- A few useful CLI tools for respective functions are also installed. They are available as `extratools-[func]`.
 
 Full documentation is available [here](https://www.chuancong.site/extratools/).
 
 ## Current Progress and Future Plans
 
-There are currently more than 100 functions among 14 categories, 3 data structures, and 3 CLI tools.
+There are currently 120+ functions among 14 categories, 3 data structures, and 3 CLI tools.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
-This library is under active development, and new tools are added on almost weekly basis.
+This library is under active development, and new tools are added on weekly basis.
 
 - Any idea or contribution is highly welcome.
 
@@ -35,7 +35,6 @@ Besides many other interesting ideas, I am planning to make the following update
 ## Index of Available Tools
 
 - Functions:
-
 [`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
 [`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
@@ -52,22 +51,20 @@ Besides many other interesting ideas, I am planning to make the following update
 [`tabletools`](https://chuanconggao.github.io/extratools/functions/tabletools)
 
 - Data Structures:
-
 [`defaultlist`](https://chuanconggao.github.io/extratools/datastructures/defaultlist)
 [`disjointsets`](https://chuanconggao.github.io/extratools/datastructures/disjointsets)
 [`segmenttree`](https://chuanconggao.github.io/extratools/datastructures/segmenttree)
 
 - CLI Tools:
-
 [`dicttools.remap`](https://chuanconggao.github.io/extratools/cli)
 [`jsontools.flatten`](https://chuanconggao.github.io/extratools/cli)
 [`stattools.teststats`](https://chuanconggao.github.io/extratools/cli)
 
 ## Examples
 
-Here are a few examples out of dozens of our tools.
+Here are a few examples out of hundreds of our tools.
 
-- [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/encode#compress) compresses the sequence by encoding continuous identical `Item` to `(Item, Count)`, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+- [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/encode#compress) compresses the sequence `data` by encoding continuous identical items to a tuple of item and count, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
 
 ``` python
 from extratools.seqtools import compress
@@ -89,7 +86,7 @@ list(gaps(
 # [(0, 0.1), (0.2, 0.5), (0.9, 1)]
 ```
 
-- [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools#flatten) flattens a JSON object by returning `(Path, Value`) tuples with each path `Path` from root to each value `Value`.
+- [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools#flatten) flattens a JSON object by all the tuples, each with a path and the respective value.
 
 ``` python
 import json
@@ -157,12 +154,10 @@ list(parsebymarkdown("""
 
 This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
-## Other Libraries
+## Recommended Libraries
 
-The following libraries are highly recommended to use together with `extratools`.
-
-[`toolz`](https://github.com/pytoolz/toolz)
-[`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html)
+Libraries recommended to use with `extratools`:
+[`regex`](https://pypi.org/project/regex/) [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html) [`toolz`](https://github.com/pytoolz/toolz)
 
 ## Reference
 

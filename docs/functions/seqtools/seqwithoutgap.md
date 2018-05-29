@@ -2,6 +2,21 @@
 
 Tools for matching sequences (including strings), without gaps allowed between matching items.
 
+### `issubseq`
+
+`issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
+
+!!! warning
+    This function reads the first sequence at once.
+
+``` python
+issubseq(
+    [   0, 1, 0],
+    [0, 0, 1, 0, 1, 0]
+)
+# True
+```
+
 ### `bestsubseq`
 
 `bestsubseq(a, key)` finds the best sub-sequence of `a` that maximizes the key function `key`.
@@ -54,21 +69,6 @@ findsubseq(
     [0, 0, 1, 0, 1, 0]
 )
 # 1
-```
-
-### `issubseq`
-
-`issubseq(a, b)` checks if `a` is a sub-sequence of `b`.
-
-!!! warning
-    This function reads the first sequence at once.
-
-``` python
-issubseq(
-    [   0, 1, 0],
-    [0, 0, 1, 0, 1, 0]
-)
-# True
 ```
 
 ### `commonsubseq`

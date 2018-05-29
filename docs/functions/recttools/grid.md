@@ -1,5 +1,3 @@
-## Grid Operations
-
 Tools for operating on grid.
 
 ### `grid`
