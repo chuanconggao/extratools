@@ -35,39 +35,6 @@ list(transpose([
 #  (3, 6, 9)]
 ```
 
-### `mergecols`
-
-`mergecols(cols, default=None, blank=None)` merges the columns in `cols` into a single column. Returns `None` if there is conflict in any row.
-
-- A row has conflict if there are more than one valid values, where each valid value is not `None` or empty.
-
-    - `blank=None` is a list of characters denoting empty value. Default to whitespace characters.
-
-- `default` is a placeholder when there are no valid value in one row.
-
-!!! tip
-    Check the builtin function [`str.strip`](https://docs.python.org/3/library/stdtypes.html#str.strip) for details of the behavior with `blank`.
-
-``` python
-cols = list(transpose([
-    [   0, None,    2],
-    [   0,    1, None],
-    [None,    1, None],
-    [0,    None, None]
-]))
-
-# Merge the last two columns.
-mergecols(cols[1:])
-# [2,
-#  1,
-#  1,
-#  None]
-
-# Merge all three columns.
-mergecols(cols)
-# None
-```
-
 ### `trim`
 
 `trim(table, blank=None`) removes any empty column or row.
@@ -85,6 +52,65 @@ list(trim([
 ], blank='-'))
 # [['a', 'b'],
 #  ['c', 'd']]
+```
+
+### `mergecols`
+
+`mergecols(cols, default=None, blank=None)` merges the columns in `cols` into a single column. Returns `None` if there is conflict in any row.
+
+- A row has conflict if there are more than one valid values, where each valid value is not `None` or empty.
+
+    - `blank=None` is a list of characters denoting empty value. Default to whitespace characters.
+
+- `default` is a placeholder when there are no valid value in one row.
+
+!!! tip
+    Check the builtin function [`str.strip`](https://docs.python.org/3/library/stdtypes.html#str.strip) for details of the behavior with `blank`.
+
+``` python
+cols = list(transpose([
+    [   0, None,    2, None],
+    [   0,    1, None, None],
+    [None,    1, None, None],
+    [   0, None, None, None]
+]))
+
+# Merge the last two columns.
+mergecols(cols[1:])
+# [2,
+#  1,
+#  1,
+#  None]
+
+# Merge all three columns.
+mergecols(cols)
+# None
+```
+
+### `sortedbycol`
+
+`sortedbycol(data, key=None)` sorts the columns of table `data` according to key function `key` over each column.
+
+``` python
+list(sortedbycol([
+    ["c1", "b1", "a2", "d1"],
+    ["c2", "b1", "a1", "d1"],
+], key=lambda col: col[0]))
+# [('a2', 'b1', 'c1', 'd1'),
+#  ('a1', 'b1', 'c2', 'd1')]
+```
+
+### `filterbycol`
+
+`filterbycol(data, key=None)` filters the columns of table `data` according to key function `key` over each column.
+
+``` python
+list(filterbycol([
+    ["c1", "b1", "a2", "d1"],
+    ["c2", "b1", "a1", "d1"],
+], key=lambda col: len(set(col)) > 1))
+# [('c1', 'a2'),
+#  ('c2', 'a1')]
 ```
 
 ## Table Join

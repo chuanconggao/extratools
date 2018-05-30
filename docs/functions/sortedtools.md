@@ -35,12 +35,27 @@ issubsorted(
 # True
 ```
 
+### `sortedall`
+
+`sortedall(a, b, key=None)` returns the elements in either `a` or `b`, optionally according to the key function `key`.
+
+!!! success
+    When both `a` and `b` are sorted [multisets](https://en.wikipedia.org/wiki/Multiset), equal to the union of `a` and `b` but more efficient.
+
+``` python
+list(sortedall(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2, 2, 3, 4, 4]
+```
+
 ### `sortedcommon`
 
 `sortedcommon(a, b, key=None)` returns the common elements between `a` and `b`, optionally according to the key function `key`.
 
 !!! success
-    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) & set(b))` but more efficient.
+    When both `a` and `b` are sorted multisets, equal to the intersection of `a` and `b` but more efficient.
 
 ``` python
 list(sortedcommon(
@@ -50,27 +65,12 @@ list(sortedcommon(
 # [2, 3]
 ```
 
-### `sortedalone`
-
-`sortedalone(a, b, key=None)` returns the elements not in both `a` and `b`, optionally according to the key function `key`.
-
-!!! success
-    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted((set(a) | set(b)) - (set(a) & set(b)))` but more efficient.
-
-``` python
-list(sortedalone(
-    [1, 2, 2, 3],
-    [   2,    3, 4, 4]
-))
-# [1, 2, 4, 4]
-```
-
 ### `sorteddiff`
 
 `sorteddiff(a, b, key=None)` returns the elements only in `a` and not in `b`, optionally according to the key function `key`.
 
 !!! success
-    When both `a` and `b` are sorted sets with no duplicate element, equal to `sorted(set(a) - set(b))` but more efficient.
+    When both `a` and `b` are sorted multisets, equal to the [difference](https://en.wikipedia.org/wiki/Set_(mathematics)#Complements) between `a` and `b` but more efficient.
 
 ``` python
 list(sorteddiff(
@@ -78,6 +78,21 @@ list(sorteddiff(
     [   2,    3, 4, 4]
 ))
 # [1, 2]
+```
+
+### `sortedalone`
+
+`sortedalone(a, b, key=None)` returns the elements not in both `a` and `b`, optionally according to the key function `key`.
+
+!!! success
+    When both `a` and `b` are sorted multisets, equal to the difference between the union of `a` and `b` and the intersection of `a` and `b` but more efficient.
+
+``` python
+list(sortedalone(
+    [1, 2, 2, 3],
+    [   2,    3, 4, 4]
+))
+# [1, 2, 4, 4]
 ```
 
 ## Sequence Alignment and Join

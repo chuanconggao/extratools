@@ -15,7 +15,7 @@ from regexorder import RegexOrder
 from toolz.itertoolz import isdistinct
 from toolz.utils import no_default
 
-from .seqtools import iter2seq
+from .seqtools import iter2seq, mergeseqs
 from .settools import dropsupersets
 from .__join import join as seqjoin
 
@@ -43,20 +43,20 @@ def dumpcsv(path: Union[str, TextIOBase], data: Table, delimiter: str = ',') -> 
         writer.writerow(row)
 
 
-def mergecols(cols: Table, default=None, blank=None) -> Optional[List[T]]:
-    mergedcol = []
+def mergecols(cols: Table, default=None, blank=None) -> Optional[Iterable[T]]:
+    return mergeseqs(
+        cols,
+        default=default,
+        key=lambda val: val is not None and str(val).strip(blank) != ""
+    )
 
-    for vals in zip(*cols):
-        mergedvals = [
-            val for val in vals
-            if val is not None and str(val).strip(blank) != ""
-        ]
-        if len(mergedvals) > 1:
-            return None
 
-        mergedcol.append(mergedvals[0] if mergedvals else default)
+def sortedbycol(data: Table, key: Callable[[Iterable[T]], Any]) -> Table:
+    return transpose(sorted(transpose(data), key=key))
 
-    return mergedcol
+
+def filterbycol(data: Table, key: Callable[[Iterable[T]], Any]) -> Table:
+    return transpose(filter(key, transpose(data)))
 
 
 def trim(table: Table, blank=None) -> Table:

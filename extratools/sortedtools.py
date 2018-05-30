@@ -12,6 +12,23 @@ from toolz.itertoolz import count, unique, sliding_window
 
 from .__join import __sortedjoin, sortedjoin
 
+def sortedall(
+        a: Iterable[T], b: Iterable[T],
+        key: Callable[[T], Any] = None
+    ) -> Iterable[T]:
+    sentinel = object()
+
+    for m, n in __sortedjoin(
+            a, b,
+            leftkey=key, rightkey=key,
+            leftdefault=sentinel, rightdefault=sentinel
+        ):
+        yield from (
+            v if w is sentinel else w
+            for v, w in zip_longest(m, n, fillvalue=sentinel)
+        )
+
+
 def sortedcommon(
         a: Iterable[T], b: Iterable[T],
         key: Callable[[T], Any] = None

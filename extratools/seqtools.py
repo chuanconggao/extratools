@@ -518,3 +518,19 @@ def filterbyother(func: Callable[[T, T], bool], seq: Iterable[T]) -> Iterable[T]
 
     for i in filtered:
         yield seq[i]
+
+
+def mergeseqs(seqs: Iterable[Iterable[T]], default: Optional[T] = None, key: Optional[Callable[[T], bool]] = None) -> Optional[Iterable[T]]:
+    if key is None:
+        key = lambda val: val is not None
+
+    mergedseq = []
+
+    for vals in zip(*seqs):
+        mergedvals = [val for val in vals if key(val)]
+        if len(mergedvals) > 1:
+            return None
+
+        mergedseq.append(mergedvals[0] if mergedvals else default)
+
+    return mergedseq

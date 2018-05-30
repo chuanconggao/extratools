@@ -43,18 +43,6 @@ productcmp(
 # None
 ```
 
-### `sortedbyrank`
-
-`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
-
-``` python
-sortedbyrank(
-    ['a', 'b', 'c'],
-    [  3,   2,   1]
-)
-# ['c', 'b', 'a']
-```
-
 ### `iter2seq`
 
 `iter2seq(iterable, target=tuple)` converts any iterable sequence `iterable` to an indexable and sizable sequence with type `target=tuple` if necessary, defaults to tuple.
@@ -65,9 +53,9 @@ sortedbyrank(
 !!! tip
     Useful if you need to scan the sequence more than once.
 
-## Sequence Filtering
+## Sequence Transformation
 
-Tools for filtering sequence.
+Tools for transforming sequence.
 
 ### `takeat`
 
@@ -85,6 +73,44 @@ Tools for filtering sequence.
 ``` python
 list(takeat(range(0, 10, 3), range(100, 110)))
 # [100, 103, 106, 109]
+```
+
+### `mergeseqs`
+
+`mergeseqs(seqs, default=None, key=None)` merges the sequences of equal length in `seqs` into a single sequences. Returns `None` if there is conflict in any position.
+
+- A position has conflict if there are more than one valid values, where each valid value is not `None` in default or judged by a key function `key`.
+
+- `default` is a placeholder when there are no valid value in one position.
+
+``` python
+seqs = [
+    (0   , 0   , None, 0   ),
+    (None, 1   , 1   , None),
+    (2   , None, None, None),
+    (None, None, None, None)
+]
+
+list(mergeseqs(seqs[1:]))
+# [2,
+#  1,
+#  1,
+#  None]
+
+list(mergeseqs(seqs))
+# None
+```
+
+### `sortedbyrank`
+
+`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+
+``` python
+sortedbyrank(
+    ['a', 'b', 'c'],
+    [  3,   2,   1]
+)
+# ['c', 'b', 'a']
 ```
 
 ### `filterbyother`

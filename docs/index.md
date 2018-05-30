@@ -18,32 +18,35 @@ Tools                                  | # Functions | Description
 [`printtools`](functions/printtools)   | 5           | Tools for printing purposes.
 [`rangetools`](functions/rangetools)   | 8           | Tools for operating ranges/intervals.
 [`recttools`](functions/recttools)     | 11          | Tools for operating rectangles.
-[`seqtools`](functions/seqtools)       | 32          | Tools for operating sequences.
+[`seqtools`](functions/seqtools)       | 33          | Tools for operating sequences.
 [`settools`](functions/settools)       | 10          | Tools for operating sets.
-[`sortedtools`](functions/sortedtools) | 8           | Tools for operating sorted sequences.
+[`sortedtools`](functions/sortedtools) | 9           | Tools for operating sorted sequences.
 [`stattools`](functions/stattools)     | 7           | Tools for statistics.
 [`strtools`](functions/strtools)       | 12          | Tools for operating strings.
-[`tabletools`](functions/tabletools)   | 14          | Tools for operating tables/matrices.
+[`tabletools`](functions/tabletools)   | 16          | Tools for operating tables/matrices.
 
 ### By Tag
 
 !!! info
     Only functions sharing similar logics are listed here.
 
-Tag                   | Description                                         | Functions
-----                  | ----                                                | ----
-`cmp`                 | Compare objects/points/sequences.                   | [`misctools.cmp`](functions/misctools#cmp) - [`recttools.pointcmp`](functions/recttools#pointcmp) - [`seqtools.productcmp`](functions/seqtools#productcmp)
-`flatten`             | Flatten nested dictionary/JSON object.              | [`dicttools.flatten`](functions/dicttools#flatten) - [`jsontools.flatten`](functions/jsontools#flatten)
-`intersect`           | Compute the intersection between ranges/rectangles. | [`rangetools.intersect`](functions/rangetools#intersect) - [`recttools.intersect`](functions/recttools#intersect)
-`union`               | Compute the union between ranges/rectangles.        | [`rangetools.union`](functions/rangetools#union) - [`recttools.union`](functions/recttools#union)
-`issub*`              | Verify whether a sub-range/rectange/sequence.       | [`rangetools.issubrange`](functions/rangetools#issubrange) - [`recttools.issubrect`](functions/recttools#issubrect) - [`recttools.issubrect`](functions/recttools#issubrect) - [`seqtools.issubseq`](functions/seqtools/seqwithoutgap#issubseq) - [`seqtools.issubseqwithgap`](functions/seqtools/seqwithgap#issubseqwithgap) - [`sortedtools.issubsorted`](functions/sortedtools#issubsorted)
-`*cover`              | Find the best sub-ranges/sets that cover the whole. | [`rangetools.rangecover`](functions/rangetools#rangecover) - [`settools.setcover`](functions/settools#setcover)
-`bestsub*`            | Find the best sub-set/sequence.                     | [`seqtools.bestsubseq`](functions/seqtools#bestsubseq) - [`seqtools.bestsubseqwithgap`](functions/seqtools#bestsubseqwithgap) - [`settools.bestsubset`](functions/settools#bestsubset)
-`commonsub*`          | Find the common sub-sequence/substring.             | [`seqtools.commonsubseq`](functions/seqtools/seqwithoutgap#commonsubseq) - [`seqtools.commonsubseqwithgap`](functions/seqtools/seqwithgap#commonsubseqwithgap) - [`sortedtools.sortedcommon`](functions/sortedtools#sortedcommon) - [`strtools.commonsubstr`](functions/strtools#commonsubstr)
-`match`               | Match common elements among sequences.              | [`seqtools.match`](functions/seqtools#match) - [`sortedtools.sortedmatch`](functions/sortedtools#sortedmatch)
-`join`                | Join sequences/tables.                              | [`seqtools.join`](functions/seqtools#join) - [`seqtools.cmpjoin`](functions/seqtools#cmpjoin) - [`sortedtools.sortedjoin`](functions/sortedtools#sortedjoin) - [`tabletools.join`](functions/tabletools#join)
-`matchingfrequencies` | Compute the frequency of each item among sequences. | [`seqtools.matchingfrequencies`](functions/seqtools#matchingfrequencies) - [`sortedtools.matchingfrequencies`](functions/sortedtools#matchingfrequencies)
-`*2grams`             | Convert sequence/string to grams.                   | [`seqtools.seq2grams`](functions/seqtools#seq2grams) - [`strtools.str2grams`](functions/strtools#str2grams)
+Tag                   | Description                                                          | Functions
+----                  | ----                                                                 | ----
+`cmp`                 | Compare objects/points/sequences.                                    | [`misctools.cmp`](functions/misctools#cmp) - [`recttools.pointcmp`](functions/recttools#pointcmp) - [`seqtools.productcmp`](functions/seqtools#productcmp)
+`flatten`             | Flatten nested dictionary/JSON object.                               | [`dicttools.flatten`](functions/dicttools#flatten) - [`jsontools.flatten`](functions/jsontools#flatten)
+`intersect`           | Compute the intersection between ranges/rectangles/sorted sequences. | [`rangetools.intersect`](functions/rangetools#intersect) - [`recttools.intersect`](functions/recttools#intersect) - [`sortedtools.sortedcommon`](functions/sortedtools#sortedcommon)
+`union`               | Compute the union between ranges/rectangles/sorted sequences.        | [`rangetools.union`](functions/rangetools#union) - [`recttools.union`](functions/recttools#union) - [`sortedtools.sortedall`](functions/sortedtools#sortedall)
+`issub*`              | Verify whether a sub-range/rectange/sequence.                        | [`rangetools.issubrange`](functions/rangetools#issubrange) - [`recttools.issubrect`](functions/recttools#issubrect) - [`recttools.issubrect`](functions/recttools#issubrect) - [`seqtools.issubseq`](functions/seqtools/seqwithoutgap#issubseq) - [`seqtools.issubseqwithgap`](functions/seqtools/seqwithgap#issubseqwithgap) - [`sortedtools.issubsorted`](functions/sortedtools#issubsorted)
+`*cover`              | Find the best sub-ranges/sets that cover the whole.                  | [`rangetools.rangecover`](functions/rangetools#rangecover) - [`settools.setcover`](functions/settools#setcover)
+`bestsub*`            | Find the best sub-set/sequence.                                      | [`seqtools.bestsubseq`](functions/seqtools#bestsubseq) - [`seqtools.bestsubseqwithgap`](functions/seqtools#bestsubseqwithgap) - [`settools.bestsubset`](functions/settools#bestsubset)
+`commonsub*`          | Find the common sub-sequence/substring.                              | [`seqtools.commonsubseq`](functions/seqtools/seqwithoutgap#commonsubseq) - [`seqtools.commonsubseqwithgap`](functions/seqtools/seqwithgap#commonsubseqwithgap) - [`sortedtools.sortedcommon`](functions/sortedtools#sortedcommon) - [`strtools.commonsubstr`](functions/strtools#commonsubstr)
+`match`               | Match common elements among sequences.                               | [`seqtools.match`](functions/seqtools#match) - [`sortedtools.sortedmatch`](functions/sortedtools#sortedmatch)
+`join`                | Join sequences/tables.                                               | [`seqtools.join`](functions/seqtools#join) - [`seqtools.cmpjoin`](functions/seqtools#cmpjoin) - [`sortedtools.sortedjoin`](functions/sortedtools#sortedjoin) - [`tabletools.join`](functions/tabletools#join)
+`matchingfrequencies` | Compute the frequency of each item among sequences.                  | [`seqtools.matchingfrequencies`](functions/seqtools#matchingfrequencies) - [`sortedtools.matchingfrequencies`](functions/sortedtools#matchingfrequencies)
+`merge*`              | Merge sequence/table without conflict.                               | [`seqtools.mergeseqs`](functions/seqtools#mergeseqs) - [`tabletools.mergecols`](functions/tabletools#mergecols)
+`sortedby*`           | Sort sequence/table.                                                 | [`seqtools.sortedbyrank`](functions/seqtools#sortedbyrank) - [`tabletools.sortedbycol`](functions/tabletools#sortedbycol)
+`filterby*`           | Filter sequence/table.                                               | [`seqtools.filterbyother`](functions/seqtools#filterbyother) - [`tabletools.filterbycol`](functions/tabletools#filterbycol)
+`*2grams`             | Convert sequence/string to grams.                                    | [`seqtools.seq2grams`](functions/seqtools#seq2grams) - [`strtools.str2grams`](functions/strtools#str2grams)
 
 ## Data Structures
 
