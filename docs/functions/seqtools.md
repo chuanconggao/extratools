@@ -303,6 +303,8 @@ list(cmpjoin(
 
     This function reads all the sequences more than once when `simple = False`.
 
+    Unlike `seqtools.commonsubseq(a, b)`, which finds the [longest common sub-sequence](https://en.wikipedia.org/wiki/Longest_common_substring_problem), this function does not guarantee finding the longest template.
+
 !!! tip
     Essentially, each template is a closed sequential pattern covering all the sequences. Please check [PrefixSpan-Py](https://github.com/chuanconggao/PrefixSpan-py) for more advanced scenarios.
 
