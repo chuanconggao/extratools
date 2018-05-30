@@ -587,6 +587,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#sortedall" title="sortedall" class="md-nav__link">
+    sortedall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sortedcommon" title="sortedcommon" class="md-nav__link">
     sortedcommon
   </a>
@@ -594,15 +601,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sortedalone" title="sortedalone" class="md-nav__link">
-    sortedalone
+  <a href="#sorteddiff" title="sorteddiff" class="md-nav__link">
+    sorteddiff
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sorteddiff" title="sorteddiff" class="md-nav__link">
-    sorteddiff
+  <a href="#sortedalone" title="sortedalone" class="md-nav__link">
+    sortedalone
   </a>
   
 </li>
@@ -872,6 +879,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#sortedall" title="sortedall" class="md-nav__link">
+    sortedall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sortedcommon" title="sortedcommon" class="md-nav__link">
     sortedcommon
   </a>
@@ -879,15 +893,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sortedalone" title="sortedalone" class="md-nav__link">
-    sortedalone
+  <a href="#sorteddiff" title="sorteddiff" class="md-nav__link">
+    sorteddiff
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sorteddiff" title="sorteddiff" class="md-nav__link">
-    sorteddiff
+  <a href="#sortedalone" title="sortedalone" class="md-nav__link">
+    sortedalone
   </a>
   
 </li>
@@ -984,11 +998,25 @@
 </pre></div>
 
 
+<h3 id="sortedall"><code>sortedall</code><a class="headerlink" href="#sortedall" title="Permanent link">&para;</a></h3>
+<p><code>sortedall(a, b, key=None)</code> returns the elements in either <code>a</code> or <code>b</code>, optionally according to the key function <code>key</code>.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>When both <code>a</code> and <code>b</code> are sorted <a href="https://en.wikipedia.org/wiki/Multiset">multisets</a>, equal to the union of <code>a</code> and <code>b</code> but more efficient.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedall(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [1, 2, 2, 3, 4, 4]</span>
+</pre></div>
+
+
 <h3 id="sortedcommon"><code>sortedcommon</code><a class="headerlink" href="#sortedcommon" title="Permanent link">&para;</a></h3>
 <p><code>sortedcommon(a, b, key=None)</code> returns the common elements between <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) &amp; set(b))</code> but more efficient.</p>
+<p>When both <code>a</code> and <code>b</code> are sorted multisets, equal to the intersection of <code>a</code> and <code>b</code> but more efficient.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedcommon(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
@@ -998,31 +1026,31 @@
 </pre></div>
 
 
-<h3 id="sortedalone"><code>sortedalone</code><a class="headerlink" href="#sortedalone" title="Permanent link">&para;</a></h3>
-<p><code>sortedalone(a, b, key=None)</code> returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted((set(a) | set(b)) - (set(a) &amp; set(b)))</code> but more efficient.</p>
-</div>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedalone(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
-<span style="color: #f8f8f2">))</span>
-<span style="color: #75715e"># [1, 2, 4, 4]</span>
-</pre></div>
-
-
 <h3 id="sorteddiff"><code>sorteddiff</code><a class="headerlink" href="#sorteddiff" title="Permanent link">&para;</a></h3>
 <p><code>sorteddiff(a, b, key=None)</code> returns the elements only in <code>a</code> and not in <code>b</code>, optionally according to the key function <code>key</code>.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>When both <code>a</code> and <code>b</code> are sorted sets with no duplicate element, equal to <code>sorted(set(a) - set(b))</code> but more efficient.</p>
+<p>When both <code>a</code> and <code>b</code> are sorted multisets, equal to the <a href="https://en.wikipedia.org/wiki/Set_(mathematics)#Complements">difference</a> between <code>a</code> and <code>b</code> but more efficient.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sorteddiff(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">))</span>
 <span style="color: #75715e"># [1, 2]</span>
+</pre></div>
+
+
+<h3 id="sortedalone"><code>sortedalone</code><a class="headerlink" href="#sortedalone" title="Permanent link">&para;</a></h3>
+<p><code>sortedalone(a, b, key=None)</code> returns the elements not in both <code>a</code> and <code>b</code>, optionally according to the key function <code>key</code>.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>When both <code>a</code> and <code>b</code> are sorted multisets, equal to the difference between the union of <code>a</code> and <code>b</code> and the intersection of <code>a</code> and <code>b</code> but more efficient.</p>
+</div>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(sortedalone(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">))</span>
+<span style="color: #75715e"># [1, 2, 4, 4]</span>
 </pre></div>
 
 

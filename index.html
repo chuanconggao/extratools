@@ -903,7 +903,7 @@
 </tr>
 <tr>
 <td><a href="./functions/seqtools"><code>seqtools</code></a></td>
-<td align="right">32</td>
+<td align="right">33</td>
 <td>Tools for operating sequences.</td>
 </tr>
 <tr>
@@ -913,7 +913,7 @@
 </tr>
 <tr>
 <td><a href="./functions/sortedtools"><code>sortedtools</code></a></td>
-<td align="right">8</td>
+<td align="right">9</td>
 <td>Tools for operating sorted sequences.</td>
 </tr>
 <tr>
@@ -928,7 +928,7 @@
 </tr>
 <tr>
 <td><a href="./functions/tabletools"><code>tabletools</code></a></td>
-<td align="right">14</td>
+<td align="right">16</td>
 <td>Tools for operating tables/matrices.</td>
 </tr>
 </tbody>
@@ -959,13 +959,13 @@
 </tr>
 <tr>
 <td><code>intersect</code></td>
-<td>Compute the intersection between ranges/rectangles.</td>
-<td><a href="./functions/rangetools#intersect"><code>rangetools.intersect</code></a> - <a href="./functions/recttools#intersect"><code>recttools.intersect</code></a></td>
+<td>Compute the intersection between ranges/rectangles/sorted sequences.</td>
+<td><a href="./functions/rangetools#intersect"><code>rangetools.intersect</code></a> - <a href="./functions/recttools#intersect"><code>recttools.intersect</code></a> - <a href="./functions/sortedtools#sortedcommon"><code>sortedtools.sortedcommon</code></a></td>
 </tr>
 <tr>
 <td><code>union</code></td>
-<td>Compute the union between ranges/rectangles.</td>
-<td><a href="./functions/rangetools#union"><code>rangetools.union</code></a> - <a href="./functions/recttools#union"><code>recttools.union</code></a></td>
+<td>Compute the union between ranges/rectangles/sorted sequences.</td>
+<td><a href="./functions/rangetools#union"><code>rangetools.union</code></a> - <a href="./functions/recttools#union"><code>recttools.union</code></a> - <a href="./functions/sortedtools#sortedall"><code>sortedtools.sortedall</code></a></td>
 </tr>
 <tr>
 <td><code>issub*</code></td>
@@ -1001,6 +1001,21 @@
 <td><code>matchingfrequencies</code></td>
 <td>Compute the frequency of each item among sequences.</td>
 <td><a href="./functions/seqtools#matchingfrequencies"><code>seqtools.matchingfrequencies</code></a> - <a href="./functions/sortedtools#matchingfrequencies"><code>sortedtools.matchingfrequencies</code></a></td>
+</tr>
+<tr>
+<td><code>merge*</code></td>
+<td>Merge sequence/table without conflict.</td>
+<td><a href="./functions/seqtools#mergeseqs"><code>seqtools.mergeseqs</code></a> - <a href="./functions/tabletools#mergecols"><code>tabletools.mergecols</code></a></td>
+</tr>
+<tr>
+<td><code>sortedby*</code></td>
+<td>Sort sequence/table.</td>
+<td><a href="./functions/seqtools#sortedbyrank"><code>seqtools.sortedbyrank</code></a> - <a href="./functions/tabletools#sortedbycol"><code>tabletools.sortedbycol</code></a></td>
+</tr>
+<tr>
+<td><code>filterby*</code></td>
+<td>Filter sequence/table.</td>
+<td><a href="./functions/seqtools#filterbyother"><code>seqtools.filterbyother</code></a> - <a href="./functions/tabletools#filterbycol"><code>tabletools.filterbycol</code></a></td>
 </tr>
 <tr>
 <td><code>*2grams</code></td>
