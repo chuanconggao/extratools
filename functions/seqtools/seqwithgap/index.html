@@ -988,6 +988,11 @@
 <p class="admonition-title">Warning</p>
 <p>This function reads all sequences at once.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To work on more than two sequences, please refer to <a href="https://github.com/chuanconggao/PrefixSpan-py">PrefixSpan-py</a> using the following snippet.</p>
+<p><code>max((p for _, p in PrefixSpan(seqs).frequent(len(seqs))), key=len)</code></p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(commonsubseqwithgap(</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span>
     <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>

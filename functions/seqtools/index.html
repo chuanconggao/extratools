@@ -1390,10 +1390,11 @@
 <p class="admonition-title">Warning</p>
 <p>This function reads all the sequences at once.</p>
 <p>This function reads all the sequences more than once when <code>simple = False</code>.</p>
+<p>Unlike <code>seqtools.commonsubseq(a, b)</code>, which finds the <a href="https://en.wikipedia.org/wiki/Longest_common_substring_problem">longest common sub-sequence</a>, this function does not guarantee finding the longest template.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Essentially, each template is a closed sequential pattern covering all the sequences. Please check <a href="https://github.com/chuanconggao/PrefixSpan-py">PrefixSpan-Py</a> for more advanced scenarios.</p>
+<p>Essentially, each template is a closed sequential pattern covering all the sequences. Please check <a href="https://github.com/chuanconggao/PrefixSpan-py">PrefixSpan-py</a> for more advanced scenarios.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">list(templateseq((</span>
     <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[</span>
