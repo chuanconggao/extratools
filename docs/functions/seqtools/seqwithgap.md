@@ -91,6 +91,13 @@ list(findsubseqwithgap(
 !!! warning
     This function reads all sequences at once.
 
+!!! tip
+    To work on more than two sequences, please refer to [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py) using the following snippet.
+
+    ```
+    max((p for _, p in PrefixSpan(seqs).frequent(len(seqs))), key=len)
+    ```
+
 ``` python
 list(commonsubseqwithgap(
     [0,    1, 1, 0, 1],

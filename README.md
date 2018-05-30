@@ -30,7 +30,7 @@ Besides many other interesting ideas, I am planning to make the following update
 
 - Add `trie` and `suffixtree` (according to [generalized suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)).
 
-- Update `seqtools.commonsubseq`, `seqtools.commonsubseqwithgap`, `seqtools.align`, and `strtools.commonsubstr` to support more than two sequences/strings.
+- Update `seqtools.align` to support more than two sequences.
 
 ## Index of Available Tools
 
