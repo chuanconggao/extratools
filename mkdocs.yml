@@ -32,7 +32,11 @@ markdown_extensions:
     - toc:
         permalink: true
 
-extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"]
+extra_css:
+    - "extra.css"
+
+extra_javascript: 
+    - "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
 
 google_analytics: ["UA-119119396-1", "www.chuancong.site"]
 
