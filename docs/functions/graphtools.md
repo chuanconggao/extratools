@@ -11,6 +11,9 @@ Tools for computing PageRank of a graph.
 !!! info
     According to [Wikipedia](https://en.wikipedia.org/wiki/PageRank#PageRank_of_an_undirected_graph), the PageRank of an undirected graph is statistically close to its degree distribution.
 
+!!! tip
+    If there is no edge between two nodes, `func` can simply return a weight of $0$.
+
 ``` python
 approxpagerank(
     [

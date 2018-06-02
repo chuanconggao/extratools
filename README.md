@@ -16,7 +16,7 @@ Full documentation is available [here](https://www.chuancong.site/extratools/).
 
 ## Current Progress and Future Plans
 
-There are currently 120+ functions among 14 categories, 3 data structures, and 3 CLI tools.
+There are currently 130+ functions among 15 categories, 3 data structures, and 3 CLI tools.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
