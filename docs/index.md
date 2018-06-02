@@ -12,6 +12,7 @@ Tools                                  | # Functions | Description
 ----                                   | ----       :| ----
 [`debugtools`](functions/debugtools)   | 4           | Tools for debugging purposes.
 [`dicttools`](functions/dicttools)     | 7           | Tools for operating dictionaries.
+[`gittools`](functions/gittools)       | 1           | Tools for interacting with Git.
 [`graphtools`](functions/graphtools)   | 1           | Tools for graph.
 [`jsontools`](functions/jsontools)     | 1           | Tools for operating JSON data.
 [`mathtools`](functions/mathtools)     | 2           | Tools for math.

@@ -22,7 +22,7 @@ This library reduces the burden of writing and refining the lower-level details 
 
 ## Current status and future plans?
 
-There are currently 130+ functions among 15 categories, 3 data structures, and 3 CLI tools.
+There are currently 130+ functions among 16 categories, 3 data structures, and 3 CLI tools.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
@@ -45,6 +45,7 @@ No plan to implement tools that are well covered by other popular libraries.
 - Function Categories:
 [`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
+[`gittools`](https://chuanconggao.github.io/extratools/functions/gittools)
 [`graphtools`](https://chuanconggao.github.io/extratools/functions/graphtools)
 [`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
 [`mathtools`](https://chuanconggao.github.io/extratools/functions/mathtools)
