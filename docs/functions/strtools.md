@@ -108,9 +108,9 @@ smartsplit("/usr/local/lib/")
 
 smartsplit("a ::b:: c :: d")
 # ('::',
-#  {'a ', 'b', ' c ', ' d'})
+#  ['a ', 'b', ' c ', ' d'])
 
-smartsplit("[1, 2, 3, 4, 5]")
+smartsplit("{1, 2, 3, 4, 5}")
 # (', ',
 #  ['{1', '2', '3', '4', '5}'])
 ```

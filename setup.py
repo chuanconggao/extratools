@@ -23,7 +23,7 @@ setup(
     author="Chuancong Gao",
     author_email="chuancong@gmail.com",
 
-    description="130+ extra higher-level functional tools beyond standard and third-Party libraries.",
+    description="135+ extra higher-level functional tools beyond standard and third-Party libraries.",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
 
