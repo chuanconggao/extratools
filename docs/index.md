@@ -23,13 +23,13 @@ Tools                                  | # Functions | Description
 [`settools`](functions/settools)       | 11          | Tools for operating sets.
 [`sortedtools`](functions/sortedtools) | 9           | Tools for operating sorted sequences.
 [`stattools`](functions/stattools)     | 7           | Tools for statistics.
-[`strtools`](functions/strtools)       | 12          | Tools for operating strings.
+[`strtools`](functions/strtools)       | 14          | Tools for operating strings.
 [`tabletools`](functions/tabletools)   | 16          | Tools for operating tables/matrices.
 
 ### By Tag
 
 !!! info
-    Only functions sharing similar logics are listed here.
+    Only functions sharing similar logics among different categories are listed here.
 
 Tag                   | Description                                                          | Functions
 ----                  | ----                                                                 | ----
@@ -41,7 +41,7 @@ Tag                   | Description                                             
 `*cover`              | Find the best sub-ranges/sets that cover the whole.                  | [`rangetools.rangecover`](functions/rangetools#rangecover) <br/> [`settools.setcover`](functions/settools#setcover)
 `bestsub*`            | Find the best sub-set/sequence.                                      | [`seqtools.bestsubseq`](functions/seqtools#bestsubseq) <br/> [`seqtools.bestsubseqwithgap`](functions/seqtools#bestsubseqwithgap) <br/> [`settools.bestsubset`](functions/settools#bestsubset)
 `commonsub*`          | Find the common sub-sequence/substring.                              | [`seqtools.commonsubseq`](functions/seqtools/seqwithoutgap#commonsubseq) <br/> [`seqtools.commonsubseqwithgap`](functions/seqtools/seqwithgap#commonsubseqwithgap) <br/> [`sortedtools.sortedcommon`](functions/sortedtools#sortedcommon) <br/> [`strtools.commonsubstr`](functions/strtools#commonsubstr)
-`euumeratesub*`          | Enumerate all the sub-sequences/sets.                              | [`seqtools.enumeratesubseqs`](functions/seqtools/seqwithoutgap#enumeratesubseqs) <br/> [`seqtools.enumeratesubseqswithgap`](functions/seqtools/seqwithgap#enumeratesubseqswithgap) <br/> [`settools.enumeratesubsets`](functions/settools#enumeratesubsets)
+`euumeratesub*`          | Enumerate all the sub-sequences/sets.                              | [`seqtools.enumeratesubseqs`](functions/seqtools/seqwithoutgap#enumeratesubseqs) <br/> [`seqtools.enumeratesubseqswithgap`](functions/seqtools/seqwithgap#enumeratesubseqswithgap) <br/> [`settools.enumeratesubsets`](functions/settools#enumeratesubsets) <br/> [`strtools.enumeratesubstrs`](functions/strtools#enumeratesubstrs)
 `match`               | Match common elements among sequences.                               | [`seqtools.match`](functions/seqtools#match) <br/> [`sortedtools.sortedmatch`](functions/sortedtools#sortedmatch)
 `join`                | Join sequences/tables.                                               | [`seqtools.join`](functions/seqtools#join) <br/> [`seqtools.cmpjoin`](functions/seqtools#cmpjoin) <br/> [`sortedtools.sortedjoin`](functions/sortedtools#sortedjoin) <br/> [`tabletools.join`](functions/tabletools#join)
 `matchingfrequencies` | Compute the frequency of each item among sequences.                  | [`seqtools.matchingfrequencies`](functions/seqtools#matchingfrequencies) <br/> [`sortedtools.matchingfrequencies`](functions/sortedtools#matchingfrequencies)

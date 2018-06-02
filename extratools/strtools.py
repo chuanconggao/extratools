@@ -10,7 +10,7 @@ import regex as re
 import tagstats as tagmatches
 from toolz.itertoolz import no_default
 
-from .seqtools import commonsubseq, align, seq2grams
+from .seqtools import commonsubseq, align, seq2grams, enumeratesubseqs
 from .rangetools import intersect
 
 def commonsubstr(a: str, b: str) -> str:
@@ -128,6 +128,29 @@ def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) ->
             re.I if ignorecase else 0
         ).finditer(s):
         yield m.group(0)
+
+
+def enumeratesubstrs(s: str) -> Iterable[str]:
+    return map(str, enumeratesubseqs(s))
+
+
+__renontext = re.compile(r"\W+", re.U)
+
+def smartsplit(s: str) -> Tuple[Optional[str], Iterable[str]]:
+    c: Counter = Counter()
+    for sep in __renontext.findall(s):
+        c.update([sep])
+        c.update(set(enumeratesubstrs(sep)))
+
+    if not c:
+        return (None, [s])
+
+    bestsep = max(
+        c.items(),
+        key=lambda p: (p[1], len(p[0]))
+    )[0]
+
+    return (bestsep, s.split(bestsep))
 
 
 def __checksum(f: Any, func: Callable[[bytes], Any]) -> str:

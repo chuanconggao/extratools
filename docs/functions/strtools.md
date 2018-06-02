@@ -83,6 +83,38 @@ set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 
 Tools for string transformations.
 
+### `smartsplit`
+
+`smartsplit(s)` finds the best delimiter to automatically split string `s`. Returns a tuple of delimiter and split substrings.
+
+!!! info
+    The delimiter is the most frequent non-text substring, by the number of longest non-text substrings containing it.
+
+!!! tip
+    The behavior of here is designed to be similar to [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split).
+
+``` python
+smartsplit("abcde")
+# (None,
+#  ['abcde'])
+
+smartsplit("a b c d e")
+# (' ',
+#  ['a', 'b', 'c', 'd', 'e'])
+
+smartsplit("/usr/local/lib/")
+# ('/',
+#  ['', 'usr', 'local', 'lib', ''])
+
+smartsplit("a ::b:: c :: d")
+# ('::',
+#  {'a ', 'b', ' c ', ' d'})
+
+smartsplit("[1, 2, 3, 4, 5]")
+# (', ',
+#  ['{1', '2', '3', '4', '5}'])
+```
+
 ### `rewrite`
 
 `rewrite(s, regex, template, transformations=None)` rewrites a string `s` according to the template `template`, where the values are extracted according to the regular expression `regex`.
@@ -145,6 +177,29 @@ rewrite(
     )
 )
 # "icecream is Elisa's favorite."
+```
+
+## Substring Enumeration
+
+Tools for enumerating substrings.
+
+### `enumeratesubstrs`
+
+`enumeratesubstrs(s)` enumerates all of `seq`'s non-empty substrings in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
+
+- Although `s` is a substring of itself, it is not returned.
+
+``` python
+list(enumeratesubstrs("abcd"))
+# ['a',
+#  'ab',
+#  'abc',
+#  'b',
+#  'bc',
+#  'bcd',
+#  'c',
+#  'cd',
+#  'd']
 ```
 
 ## String Modeling
