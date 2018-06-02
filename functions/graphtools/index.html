@@ -825,6 +825,10 @@
 <p class="admonition-title">Info</p>
 <p>According to <a href="https://en.wikipedia.org/wiki/PageRank#PageRank_of_an_undirected_graph">Wikipedia</a>, the PageRank of an undirected graph is statistically close to its degree distribution.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If there is no edge between two nodes, <code>func</code> can simply return a weight of <script type="math/tex">0</script>.</p>
+</div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">approxpagerank(</span>
     <span style="color: #f8f8f2">[</span>
         <span style="color: #e6db74">&quot;apple&quot;</span><span style="color: #f8f8f2">,</span>
