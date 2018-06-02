@@ -91,7 +91,7 @@ Tools for string transformations.
     The delimiter is the most frequent non-text substring, by the number of longest non-text substrings containing it.
 
 !!! tip
-    The behavior of here is designed to be similar to [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split).
+    The behavior here is designed to be similar to [`str.split`](https://docs.python.org/3/library/stdtypes.html#str.split).
 
 ``` python
 smartsplit("abcde")
@@ -128,26 +128,26 @@ smartsplit("{1, 2, 3, 4, 5}")
 
 ``` python
 rewrite(
-    "Elisa likes icecream.",
+    "Elisa likes Apple.",
     r"(\w+) likes (\w+).",
     "{1} is {0}'s favorite."
 )
-# "icecream is Elisa's favorite."
+# "Apple is Elisa's favorite."
 
 rewrite(
-    "Elisa likes icecream.",
+    "Elisa likes Apple.",
     r"(?P<name>\w+) likes (?P<item>\w+).",
     "{item} is {name}'s favorite."
 )
-# "icecream is Elisa's favorite."
+# "Apple is Elisa's favorite."
 
 rewrite(
-    "Elisa likes icecream.",
+    "Elisa likes Apple.",
     r"(?P<name>\w+) likes (?P<item>\w+).",
     "{item} is {name}'s favorite.",
     {"item": str.upper}
 )
-# "ICECREAM is Elisa's favorite."
+# "APPLE is Elisa's favorite."
 ```
 
 ### `learnrewrite`
@@ -163,20 +163,20 @@ rewrite(
 
 ``` python
 learnrewrite(
-    "Elisa likes icecream.",
-    "icecream is Elisa's favorite."
+    "Elisa likes Apple.",
+    "Apple is Elisa's favorite."
 )
 # ('(.*) likes (.*).',
 #  "{1} is {0}'s favorite.")
 
 rewrite(
-    "Elisa likes icecream.",
+    "Elisa likes Apple.",
     *learnrewrite(
-        "Elisa likes icecream.",
-        "icecream is Elisa's favorite."
+        "Elisa likes Apple.",
+        "Apple is Elisa's favorite."
     )
 )
-# "icecream is Elisa's favorite."
+# "Apple is Elisa's favorite."
 ```
 
 ## Substring Enumeration

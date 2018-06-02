@@ -422,7 +422,7 @@ gramstats([
 - where `n` is specified by `numgrams`.
 
 !!! tip
-    There are many publicily available pre-trained `n`-grams models on text.
+    There are many publicly available pre-trained `n`-grams models on text.
 
 ``` python
 gs = gramstats([
@@ -438,5 +438,4 @@ probability("pypy", gs)
 
 probability("pypy3", gs)
 # 0.07422696190252057
-
 ```

@@ -12,9 +12,15 @@
 
 - A few useful CLI tools for respective functions are also installed. They are available as `extratools-[func]`.
 
-Full documentation is available [here](https://www.chuancong.site/extratools/).
+**Full documentation is available [here](https://www.chuancong.site/extratools/).**
 
-## Current Progress and Future Plans
+## Why this library?
+
+Typical pseudocode has less than 20 lines, where each line is a higher-level description. However, when implementing, many lower-level details have to be filled in.
+
+This library reduces the burden of writing and refining the lower-level details again and again, by including an extensive set of carefully designed general purpose higher-level tools.
+
+## Current status and future plans?
 
 There are currently 130+ functions among 15 categories, 3 data structures, and 3 CLI tools.
 
@@ -32,9 +38,11 @@ Besides many other interesting ideas, I am planning to make the following update
 
 - Update `seqtools.align` to support more than two sequences.
 
-## Index of Available Tools
+No plan to implement tools that are well covered by other popular libraries.
 
-- Functions:
+## Which tools are available?
+
+- Function Categories:
 [`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
 [`graphtools`](https://chuanconggao.github.io/extratools/functions/graphtools)
@@ -61,33 +69,11 @@ Besides many other interesting ideas, I am planning to make the following update
 [`jsontools.flatten`](https://chuanconggao.github.io/extratools/cli)
 [`stattools.teststats`](https://chuanconggao.github.io/extratools/cli)
 
-## Examples
+## Any example?
 
-Here are a few examples out of hundreds of our tools.
+Here are ten examples out of our hundreds of tools.
 
-- [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/encode#compress) compresses the sequence `data` by encoding continuous identical items to a tuple of item and count, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
-
-``` python
-from extratools.seqtools import compress
-
-list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
-# [(1, 1), (2, 2), (3, 3), (4, 4)]
-```
-
-- [`rangetools.gaps(covered, whole=(-inf, inf))`](https://chuanconggao.github.io/extratools/functions/rangetools#gaps) computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
-
-``` python
-from math import inf
-from extratools.rangetools import gaps
-
-list(gaps(
-    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
-    (0, 1)
-))
-# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
-```
-
-- [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools#flatten) flattens a JSON object by all the tuples, each with a path and the respective value.
+- [`jsontools.flatten(data, force=False)`](https://chuanconggao.github.io/extratools/functions/jsontools#flatten) flattens a JSON object by returning all the tuples, each with a path and the respective value.
 
 ``` python
 import json
@@ -123,20 +109,123 @@ flatten(json.loads("""{
 #  'spouse': None}
 ```
 
-[`strtools.learnrewrite(src, dst, minlen=3)`](https://chuanconggao.github.io/extratools/functions/strtools#learnrewrite) learns the respective regular expression and template to rewrite `src` to `dst`.
+- [`rangetools.gaps(covered, whole=(-inf, inf))`](https://chuanconggao.github.io/extratools/functions/rangetools#gaps) computes the uncovered ranges of the whole range `whole`, given the covered ranges `covered`.
+
+``` python
+from math import inf
+from extratools.rangetools import gaps
+
+list(gaps(
+    [(-inf, 0), (0.1, 0.2), (0.5, 0.7), (0.6, 0.9)],
+    (0, 1)
+))
+# [(0, 0.1), (0.2, 0.5), (0.9, 1)]
+```
+
+- [`recttools.heatmap(rect, rows, cols, points, usepos=False)`](https://chuanconggao.github.io/extratools/functions/recttools#heatmap) computes the heatmap within rectangle `rect` by a grid of `rows` rows and `cols` columns.
+
+``` python
+from extratools.recttools import heatmap
+
+heatmap(
+    ((1, 1), (3, 4)),
+    3, 4,
+    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)]
+)
+# {1: 2, 7: 1, 11: 1, None: 1}
+
+heatmap(
+    ((1, 1), (3, 4)),
+    3, 4,
+    [(1.5, 1.25), (1.5, 1.75), (2.75, 2.75), (2.75, 3.5), (3.5, 2.5)],
+    usepos=True
+)
+# {(0, 1): 2, (1, 3): 1, (2, 3): 1, None: 1}
+```
+
+- [`setcover(whole, covered, key=len)`](https://chuanconggao.github.io/extratools/functions/settools#setcover) solves the [set cover problem](https://en.wikipedia.org/wiki/Set_cover_problem) by covering the universe set `whole` as best as possible, using a subset of the covering sets `covered`.
+
+``` python
+from extratools.settools import setcover
+
+list(setcover(
+    { 1, 2, 3,         4,         5},
+    [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
+))
+# [{1, 2, 3}, {2, 4, 5}]
+```
+
+- [`seqtools.compress(data, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools/encode#compress) compresses the sequence `data` by encoding continuous identical items to a tuple of item and count, according to [run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding).
+
+``` python
+from extratools.seqtools import compress
+
+list(compress([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
+# [(1, 1), (2, 2), (3, 3), (4, 4)]
+```
+
+- [`mergeseqs(seqs, default=None, key=None)`](https://chuanconggao.github.io/extratools/functions/seqtools#mergeseqs) merges the sequences of equal length in `seqs` into a single sequences. Returns `None` if there is conflict in any position.
+
+``` python
+from extratools.seqtools import mergeseqs
+
+seqs = [
+    (0   , 0   , None, 0   ),
+    (None, 1   , 1   , None),
+    (2   , None, None, None),
+    (None, None, None, None)
+]
+
+list(mergeseqs(seqs[1:]))
+# [2,
+#  1,
+#  1,
+#  None]
+
+list(mergeseqs(seqs))
+# None
+```
+
+- [`strtools.smartsplit(s)`]((https://chuanconggao.github.io/extratools/functions/strtools#smartsplit)) finds the best delimiter to automatically split string `s`. Returns a tuple of delimiter and split substrings.
+
+``` python
+from extratools.strtools import smartsplit
+
+smartsplit("abcde")
+# (None,
+#  ['abcde'])
+
+smartsplit("a b c d e")
+# (' ',
+#  ['a', 'b', 'c', 'd', 'e'])
+
+smartsplit("/usr/local/lib/")
+# ('/',
+#  ['', 'usr', 'local', 'lib', ''])
+
+smartsplit("a ::b:: c :: d")
+# ('::',
+#  ['a ', 'b', ' c ', ' d'])
+
+smartsplit("{1, 2, 3, 4, 5}")
+# (', ',
+#  ['{1', '2', '3', '4', '5}'])
+```
+
+- [`strtools.learnrewrite(src, dst, minlen=3)`](https://chuanconggao.github.io/extratools/functions/strtools#learnrewrite) learns the respective regular expression and template to rewrite `src` to `dst`.
 
 ``` python
 from extratools.strtools import learnrewrite
 
 learnrewrite(
-    "Elisa likes icecream.",
-    "icecream is Elisa's favorite."
+    "Elisa likes Apple.",
+    "Apple is Elisa's favorite."
 )
 # ('(.*) likes (.*).',
 #  "{1} is {0}'s favorite.")
 ```
 
-[`tabletools.parsebymarkdown(text)`](https://chuanconggao.github.io/extratools/functions/tabletools#parsebymarkdown) parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
+- [`tabletools.parsebymarkdown(text)`](https://chuanconggao.github.io/extratools/functions/tabletools#parsebymarkdown) parses a text of multiple lines to a table, according to [Markdown](https://github.github.com/gfm/#tables-extension-) format.
 
 
 ``` python
@@ -151,16 +240,36 @@ list(parsebymarkdown("""
 #  ['baz', 'bim']]
 ```
 
-## Installation
+- [`tabletools.hasheader(data)`](https://chuanconggao.github.io/extratools/functions/tabletools#hasheader) returns the confidence (between `0` and `1`) of whether the first row of the table `data` is header.
+
+``` python
+from extratools.tabletools import hasheader
+
+t = [
+    ['Los Angeles'  , '34°03′'   , '118°15′'  ],
+    ['New York City', '40°42′46″', '74°00′21″'],
+    ['Paris'        , '48°51′24″', '2°21′03″' ]
+]
+
+hasheader(t)
+# 0.0
+
+hasheader([
+    ['City', 'Latitude', 'Longitude']
+] + t)
+# 0.6666666666666666
+
+hasheader([
+    ['C1', 'C2', 'C3']
+] + t)
+# 1.0
+```
+
+## How to install?
 
 This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
-## Recommended Libraries
-
-Libraries recommended to use with `extratools`:
-[`regex`](https://pypi.org/project/regex/) [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html) [`toolz`](https://github.com/pytoolz/toolz)
-
-## Reference
+## How to cite?
 
 When using for research purpose, please cite this library as follows.
 
@@ -172,3 +281,8 @@ When using for research purpose, please cite this library as follows.
   year = {2018}
 }
 ```
+
+## Any recommended library?
+
+There are several great libraries recommended to use together with `extratools`:
+[`regex`](https://pypi.org/project/regex/) [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html) [`toolz`](https://github.com/pytoolz/toolz)

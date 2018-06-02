@@ -91,7 +91,7 @@ list(setcover(
     { 1, 2, 3,         4,         5},
     [{1, 2, 3}, {2, 3, 4}, {2, 4, 5}]
 ))
-# [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
+# [{1, 2, 3}, {2, 4, 5}]
 ```
 
 ## Subset Enumeration
