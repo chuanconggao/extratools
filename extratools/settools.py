@@ -6,7 +6,7 @@ T = TypeVar('T')
 
 from itertools import filterfalse
 
-from .seqtools import bestsubseqwithgap, iter2seq, filterbyother
+from .seqtools import bestsubseqwithgap, filterbyother, enumeratesubseqswithgap
 from .mathtools import safediv
 
 def bestsubset(a: Set[T], key: Callable[[Iterable[T]], Any]) -> Set[T]:
@@ -17,11 +17,11 @@ def setcover(whole: Iterable[T], covered: Iterable[Set[T]], key: Callable = len)
     whole = set(whole)
     covers = set(frozenset(x) for x in covered)
 
-    while len(whole) and len(covers):
+    while whole and covers:
         bestval, best = None, None
         for curr in covers:
             currtemp = curr & whole
-            if len(currtemp):
+            if currtemp:
                 currval = key(currtemp)
                 if not bestval or currval > bestval:
                     bestval, best = currval, curr
@@ -70,3 +70,7 @@ def dropsupersetsof(a: Iterable[Set[T]], b: Set[T]) -> Iterable[Set[T]]:
 
 def dropsupersets(a: Iterable[Set[T]]) -> Iterable[Set[T]]:
     return filterbyother(lambda x, y: not x >= y, a)
+
+
+def enumeratesubsets(a: Set[T]) -> Iterable[Set[T]]:
+    return map(set, enumeratesubseqswithgap(a))

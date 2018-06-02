@@ -37,6 +37,7 @@ Besides many other interesting ideas, I am planning to make the following update
 - Functions:
 [`debugtools`](https://chuanconggao.github.io/extratools/functions/debugtools)
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
+[`graphtools`](https://chuanconggao.github.io/extratools/functions/graphtools)
 [`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
 [`mathtools`](https://chuanconggao.github.io/extratools/functions/mathtools)
 [`misctools`](https://chuanconggao.github.io/extratools/functions/misctools)

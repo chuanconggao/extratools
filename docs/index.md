@@ -12,14 +12,15 @@ Tools                                  | # Functions | Description
 ----                                   | ----       :| ----
 [`debugtools`](functions/debugtools)   | 4           | Tools for debugging purposes.
 [`dicttools`](functions/dicttools)     | 7           | Tools for operating dictionaries.
+[`graphtools`](functions/graphtools)   | 1           | Tools for graph.
 [`jsontools`](functions/jsontools)     | 1           | Tools for operating JSON data.
 [`mathtools`](functions/mathtools)     | 2           | Tools for math.
 [`misctools`](functions/misctools)     | 2           | Tools for miscellaneous purposes.
 [`printtools`](functions/printtools)   | 5           | Tools for printing purposes.
 [`rangetools`](functions/rangetools)   | 8           | Tools for operating ranges/intervals.
 [`recttools`](functions/recttools)     | 11          | Tools for operating rectangles.
-[`seqtools`](functions/seqtools)       | 33          | Tools for operating sequences.
-[`settools`](functions/settools)       | 10          | Tools for operating sets.
+[`seqtools`](functions/seqtools)       | 34          | Tools for operating sequences.
+[`settools`](functions/settools)       | 11          | Tools for operating sets.
 [`sortedtools`](functions/sortedtools) | 9           | Tools for operating sorted sequences.
 [`stattools`](functions/stattools)     | 7           | Tools for statistics.
 [`strtools`](functions/strtools)       | 12          | Tools for operating strings.
@@ -40,11 +41,12 @@ Tag                   | Description                                             
 `*cover`              | Find the best sub-ranges/sets that cover the whole.                  | [`rangetools.rangecover`](functions/rangetools#rangecover) <br/> [`settools.setcover`](functions/settools#setcover)
 `bestsub*`            | Find the best sub-set/sequence.                                      | [`seqtools.bestsubseq`](functions/seqtools#bestsubseq) <br/> [`seqtools.bestsubseqwithgap`](functions/seqtools#bestsubseqwithgap) <br/> [`settools.bestsubset`](functions/settools#bestsubset)
 `commonsub*`          | Find the common sub-sequence/substring.                              | [`seqtools.commonsubseq`](functions/seqtools/seqwithoutgap#commonsubseq) <br/> [`seqtools.commonsubseqwithgap`](functions/seqtools/seqwithgap#commonsubseqwithgap) <br/> [`sortedtools.sortedcommon`](functions/sortedtools#sortedcommon) <br/> [`strtools.commonsubstr`](functions/strtools#commonsubstr)
+`euumeratesub*`          | Enumerate all the sub-sequences/sets.                              | [`seqtools.enumeratesubseqs`](functions/seqtools/seqwithoutgap#enumeratesubseqs) <br/> [`seqtools.enumeratesubseqswithgap`](functions/seqtools/seqwithgap#enumeratesubseqswithgap) <br/> [`settools.enumeratesubsets`](functions/settools#enumeratesubsets)
 `match`               | Match common elements among sequences.                               | [`seqtools.match`](functions/seqtools#match) <br/> [`sortedtools.sortedmatch`](functions/sortedtools#sortedmatch)
 `join`                | Join sequences/tables.                                               | [`seqtools.join`](functions/seqtools#join) <br/> [`seqtools.cmpjoin`](functions/seqtools#cmpjoin) <br/> [`sortedtools.sortedjoin`](functions/sortedtools#sortedjoin) <br/> [`tabletools.join`](functions/tabletools#join)
 `matchingfrequencies` | Compute the frequency of each item among sequences.                  | [`seqtools.matchingfrequencies`](functions/seqtools#matchingfrequencies) <br/> [`sortedtools.matchingfrequencies`](functions/sortedtools#matchingfrequencies)
 `merge*`              | Merge sequence/table without conflict.                               | [`seqtools.mergeseqs`](functions/seqtools#mergeseqs) <br/> [`tabletools.mergecols`](functions/tabletools#mergecols)
-`sortedby*`           | Sort sequence/table.                                                 | [`seqtools.sortedbyrank`](functions/seqtools#sortedbyrank) <br/> [`tabletools.sortedbycol`](functions/tabletools#sortedbycol)
+`sorted*`           | Sort sequence/table.                                                 | [`seqtools.sortedbyrank`](functions/seqtools#sortedbyrank) <br/> [`seqtools.sortedtorank`](functions/seqtools#sortedtorank) <br/> [`tabletools.sortedbycol`](functions/tabletools#sortedbycol)
 `filterby*`           | Filter sequence/table.                                               | [`seqtools.filterbyother`](functions/seqtools#filterbyother) <br/> [`tabletools.filterbycol`](functions/tabletools#filterbycol)
 `*2grams`             | Convert sequence/string to grams.                                    | [`seqtools.seq2grams`](functions/seqtools#seq2grams) <br/> [`strtools.str2grams`](functions/strtools#str2grams)
 

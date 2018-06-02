@@ -45,11 +45,11 @@
         },
         "sortedcontainers": {
             "hashes": [
-                "sha256:2c9db81119d0285a26119554e1ce7332b846ff7f0d05c9a46e9490423685808a",
-                "sha256:87b80f909def3f73778a7c4572ae1d3615daad0c86fc01cb046b51c32bbf85c1"
+                "sha256:34014aa3f1da6d7196d4733f8b058b5b4239534e3df9366f899394336c5b5ed5",
+                "sha256:5ef9b9e3da1e235c54dc5ff0233ca663e1eb96063bf5ad1a67fa0acb780c9f57"
             ],
             "index": "pypi",
-            "version": "==2.0.2"
+            "version": "==2.0.3"
         },
         "tagstats": {
             "hashes": [

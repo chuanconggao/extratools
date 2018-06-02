@@ -262,6 +262,12 @@ def sortedbyrank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False)
     ]
 
 
+def sortedtorank(data: Iterable[T], ranks: Iterable[Any], reverse: bool = False) -> Iterable[T]:
+    ranks = iter2seq(ranks)
+
+    return sortedbyrank(data, sortedbyrank(range(len(ranks)), ranks, reverse=reverse))
+
+
 def compress(data: Iterable[T], key: Optional[Callable[[T], Any]] = None) -> Iterable[Tuple[T, int]]:
     for k, g in itertools.groupby(data, key=key):
         yield (k, itertoolz.count(g))

@@ -103,14 +103,26 @@ list(mergeseqs(seqs))
 
 ### `sortedbyrank`
 
-`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, according to the respective rank of each individual element in `ranks`.
+`sortedbyrank(data, ranks, reverse=False)` returns the sorted list of `data`, by the respective rank of each individual element in `ranks`.
 
 ``` python
 sortedbyrank(
-    ['a', 'b', 'c'],
-    [  3,   2,   1]
+    ['a', 'b', 'c', 'd'],
+    [0.2, 0.3, 0.1, 0.0]
 )
-# ['c', 'b', 'a']
+# ['d', 'c', 'a', 'b']
+```
+
+### `sortedtorank`
+
+`sortedtorank(data, ranks, reverse=False)` returns the list of `data` rearranged w.r.t. the sorted positions, by the respective rank of each individual element in `ranks`.
+
+``` python
+sortedtorank(
+    ['a', 'b', 'c', 'd'],
+    [0.2, 0.3, 0.1, 0.0]
+)
+# ['c', 'd', 'b', 'a']
 ```
 
 ### `filterbyother`

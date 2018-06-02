@@ -48,6 +48,7 @@ pages:
     - Functions:
         - debugtools: functions/debugtools.md
         - dicttools: functions/dicttools.md
+        - graphtools: functions/graphtools.md
         - jsontools: functions/jsontools.md
         - mathtools: functions/mathtools.md
         - misctools: functions/misctools.md

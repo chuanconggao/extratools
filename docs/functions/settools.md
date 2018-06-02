@@ -93,3 +93,21 @@ list(setcover(
 ))
 # [frozenset({1, 2, 3}), frozenset({2, 4, 5})]
 ```
+
+## Subset Enumeration
+
+Tools for enumerating subsets.
+
+### `enumeratesubsets`
+
+`enumeratesubsets(a)` enumerates all of `a`'s non-empty subsets in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order).
+
+- Although `a` is a subset of itself, it is not returned.
+
+!!! warning
+    This function reads the set at once.
+
+``` python
+list(enumeratesubsets({1, 3, 5}))
+# [{1}, {3}, {5}, {1, 3}, {1, 5}, {3, 5}]
+```
