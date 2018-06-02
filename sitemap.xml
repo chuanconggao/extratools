@@ -32,6 +32,12 @@
     </url>
         
     <url>
+     <loc>/functions/graphtools/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/functions/jsontools/</loc>
      <lastmod>2018-06-01</lastmod>
      <changefreq>daily</changefreq>

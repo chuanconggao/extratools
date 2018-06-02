@@ -303,6 +303,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../graphtools/" title="graphtools" class="md-nav__link">
+      graphtools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../jsontools/" title="jsontools" class="md-nav__link">
       jsontools
     </a>
@@ -364,13 +376,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
     
-    <label class="md-nav__link" for="nav-3-8">
+    <label class="md-nav__link" for="nav-3-9">
       recttools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-8">
+      <label class="md-nav__title" for="nav-3-9">
         recttools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -412,13 +424,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10">
     
-    <label class="md-nav__link" for="nav-3-9">
+    <label class="md-nav__link" for="nav-3-10">
       seqtools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-9">
+      <label class="md-nav__title" for="nav-3-10">
         seqtools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -486,13 +498,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11" checked>
     
-    <label class="md-nav__link" for="nav-3-10">
+    <label class="md-nav__link" for="nav-3-11">
       settools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-10">
+      <label class="md-nav__title" for="nav-3-11">
         settools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -618,13 +630,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-15" type="checkbox" id="nav-3-15">
     
-    <label class="md-nav__link" for="nav-3-14">
+    <label class="md-nav__link" for="nav-3-15">
       tabletools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-14">
+      <label class="md-nav__title" for="nav-3-15">
         tabletools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -811,10 +823,46 @@
                 <p>Tools for set similarities.</p>
 <h3 id="jaccard"><code>jaccard</code><a class="headerlink" href="#jaccard" title="Permanent link">&para;</a></h3>
 <p><code>jaccard(a, b)</code> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two sets <code>a</code> and <code>b</code>.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jaccard(</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span>   <span style="color: #f8f8f2">},</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0.5 = 2 / 4</span>
+</pre></div>
+
+
 <h3 id="multisetjaccard"><code>multisetjaccard</code><a class="headerlink" href="#multisetjaccard" title="Permanent link">&para;</a></h3>
 <p><code>multisetjaccard(a, b)</code> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two multi-sets (Counters) <code>a</code> and <code>b</code>.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">multisetjaccard(</span>
+    <span style="color: #f8f8f2">Counter([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span>   <span style="color: #f8f8f2">]),</span>
+    <span style="color: #f8f8f2">Counter([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>       <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">])</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0.4 = 2 / 5</span>
+</pre></div>
+
+
 <h3 id="weightedjaccard"><code>weightedjaccard</code><a class="headerlink" href="#weightedjaccard" title="Permanent link">&para;</a></h3>
 <p><code>weightedjaccard(a, b, key=sum)</code> computes the weighted <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity</a> between two sets <code>a</code> and <code>b</code>, using function <code>key</code> to compute the total weight of the elements within a set.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">weightedjaccard(</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span>   <span style="color: #f8f8f2">},</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0.36363636363636365 = (1 + 3) / (1 + 2 + 3 + 5) = 4 / 11</span>
+
+<span style="color: #f8f8f2">weightedjaccardjaccard(</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span>   <span style="color: #f8f8f2">},</span>
+    <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>    <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">},</span>
+    <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">len</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0.5 = 2 / 4</span>
+
+<span style="color: #f8f8f2">weightedjaccard(</span>
+    <span style="color: #f8f8f2">Counter([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span>   <span style="color: #f8f8f2">]),</span>
+    <span style="color: #f8f8f2">Counter([</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>       <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">]),</span>
+    <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">c:</span> <span style="color: #f8f8f2">sum(c</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values())</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># 0.4 = 2 / 5</span>
+</pre></div>
                 
                   
                 

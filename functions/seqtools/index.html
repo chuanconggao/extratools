@@ -303,6 +303,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../graphtools/" title="graphtools" class="md-nav__link">
+      graphtools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../jsontools/" title="jsontools" class="md-nav__link">
       jsontools
     </a>
@@ -364,13 +376,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
     
-    <label class="md-nav__link" for="nav-3-8">
+    <label class="md-nav__link" for="nav-3-9">
       recttools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-8">
+      <label class="md-nav__title" for="nav-3-9">
         recttools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -414,13 +426,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10" checked>
     
-    <label class="md-nav__link" for="nav-3-9">
+    <label class="md-nav__link" for="nav-3-10">
       seqtools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-9">
+      <label class="md-nav__title" for="nav-3-10">
         seqtools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -506,6 +518,13 @@
           <li class="md-nav__item">
   <a href="#sortedbyrank" title="sortedbyrank" class="md-nav__link">
     sortedbyrank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortedtorank" title="sortedtorank" class="md-nav__link">
+    sortedtorank
   </a>
   
 </li>
@@ -670,13 +689,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11">
     
-    <label class="md-nav__link" for="nav-3-10">
+    <label class="md-nav__link" for="nav-3-11">
       settools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-10">
+      <label class="md-nav__title" for="nav-3-11">
         settools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -754,13 +773,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-15" type="checkbox" id="nav-3-15">
     
-    <label class="md-nav__link" for="nav-3-14">
+    <label class="md-nav__link" for="nav-3-15">
       tabletools
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-14">
+      <label class="md-nav__title" for="nav-3-15">
         tabletools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -954,6 +973,13 @@
           <li class="md-nav__item">
   <a href="#sortedbyrank" title="sortedbyrank" class="md-nav__link">
     sortedbyrank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortedtorank" title="sortedtorank" class="md-nav__link">
+    sortedtorank
   </a>
   
 </li>
@@ -1187,12 +1213,22 @@
 
 
 <h3 id="sortedbyrank"><code>sortedbyrank</code><a class="headerlink" href="#sortedbyrank" title="Permanent link">&para;</a></h3>
-<p><code>sortedbyrank(data, ranks, reverse=False)</code> returns the sorted list of <code>data</code>, according to the respective rank of each individual element in <code>ranks</code>.</p>
+<p><code>sortedbyrank(data, ranks, reverse=False)</code> returns the sorted list of <code>data</code>, by the respective rank of each individual element in <code>ranks</code>.</p>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">sortedbyrank(</span>
-    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">],</span>
-    <span style="color: #f8f8f2">[</span>  <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span>   <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>   <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">]</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+<span style="color: #75715e"># [&#39;d&#39;, &#39;c&#39;, &#39;a&#39;, &#39;b&#39;]</span>
+</pre></div>
+
+
+<h3 id="sortedtorank"><code>sortedtorank</code><a class="headerlink" href="#sortedtorank" title="Permanent link">&para;</a></h3>
+<p><code>sortedtorank(data, ranks, reverse=False)</code> returns the list of <code>data</code> rearranged w.r.t. the sorted positions, by the respective rank of each individual element in <code>ranks</code>.</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">sortedtorank(</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;c&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f8f8f2">],</span>
+    <span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">)</span>
+<span style="color: #75715e"># [&#39;c&#39;, &#39;d&#39;, &#39;b&#39;, &#39;a&#39;]</span>
 </pre></div>
 
 
