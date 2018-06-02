@@ -1136,7 +1136,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The behavior of here is designed to be similar to <a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>str.split</code></a>.</p>
+<p>The behavior here is designed to be similar to <a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>str.split</code></a>.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">smartsplit(</span><span style="color: #e6db74">&quot;abcde&quot;</span><span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># (None,</span>
@@ -1171,26 +1171,26 @@
 <p>Check <a href="https://docs.python.org/3.4/library/string.html#formatstrings"><code>str.format</code></a> for details of referring captured values in template.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">rewrite(</span>
-    <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">r&quot;(\w+) likes (\w+).&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">&quot;{1} is {0}&#39;s favorite.&quot;</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># &quot;icecream is Elisa&#39;s favorite.&quot;</span>
+<span style="color: #75715e"># &quot;Apple is Elisa&#39;s favorite.&quot;</span>
 
 <span style="color: #f8f8f2">rewrite(</span>
-    <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">r&quot;(?P&lt;name&gt;\w+) likes (?P&lt;item&gt;\w+).&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">&quot;{item} is {name}&#39;s favorite.&quot;</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># &quot;icecream is Elisa&#39;s favorite.&quot;</span>
+<span style="color: #75715e"># &quot;Apple is Elisa&#39;s favorite.&quot;</span>
 
 <span style="color: #f8f8f2">rewrite(</span>
-    <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">r&quot;(?P&lt;name&gt;\w+) likes (?P&lt;item&gt;\w+).&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #e6db74">&quot;{item} is {name}&#39;s favorite.&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;item&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">str</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">upper}</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># &quot;ICECREAM is Elisa&#39;s favorite.&quot;</span>
+<span style="color: #75715e"># &quot;APPLE is Elisa&#39;s favorite.&quot;</span>
 </pre></div>
 
 
@@ -1209,20 +1209,20 @@
 <p>As regular expression is greedy, it cannot learn capturing groups next to each other.</p>
 </div>
 <div class="codehilite" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">learnrewrite(</span>
-    <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #e6db74">&quot;icecream is Elisa&#39;s favorite.&quot;</span>
+    <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;Apple is Elisa&#39;s favorite.&quot;</span>
 <span style="color: #f8f8f2">)</span>
 <span style="color: #75715e"># (&#39;(.*) likes (.*).&#39;,</span>
 <span style="color: #75715e">#  &quot;{1} is {0}&#39;s favorite.&quot;)</span>
 
 <span style="color: #f8f8f2">rewrite(</span>
-    <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
     <span style="color: #f92672">*</span><span style="color: #f8f8f2">learnrewrite(</span>
-        <span style="color: #e6db74">&quot;Elisa likes icecream.&quot;</span><span style="color: #f8f8f2">,</span>
-        <span style="color: #e6db74">&quot;icecream is Elisa&#39;s favorite.&quot;</span>
+        <span style="color: #e6db74">&quot;Elisa likes Apple.&quot;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #e6db74">&quot;Apple is Elisa&#39;s favorite.&quot;</span>
     <span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">)</span>
-<span style="color: #75715e"># &quot;icecream is Elisa&#39;s favorite.&quot;</span>
+<span style="color: #75715e"># &quot;Apple is Elisa&#39;s favorite.&quot;</span>
 </pre></div>
 
 
