@@ -6,7 +6,7 @@ Tools for generating HTML snippets.
 
 ### `emmet`
 
-`emmet(abbr)` generated the HTML snippet according to abbreviation `abbr` in [Emmet](https://docs.emmet.io/abbreviations/) syntax.
+`emmet(abbr)` generates the HTML snippet according to abbreviation `abbr` in [Emmet](https://docs.emmet.io/abbreviations/) syntax.
 
 !!! danger
     [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) must be properly installed and accessible on `PATH`.
