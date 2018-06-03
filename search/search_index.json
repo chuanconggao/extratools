@@ -197,7 +197,7 @@
         },
         {
             "location": "/functions/htmltools/",
-            "text": "Source\n\n\nGenerating HTML\n\u00b6\n\n\nTools for generating HTML snippets.\n\n\nemmet\n\u00b6\n\n\nemmet(abbr)\n generated the HTML snippet according to abbreviation \nabbr\n in \nEmmet\n syntax.\n\n\n\n\nDanger\n\n\nNode.js\n and \nNPM\n must be properly installed and accessible on \nPATH\n.\n\n\n\n\n\n\nWarning\n\n\nWhen calling for the first time, proper Node.js dependencies will be installed, with the following message \nInstalling Node.js dependencies...\n printed to standard error.\n\n\n\n\n\n\nInfo\n\n\nThis function is a wrapper of the official Node.js package \n@emmetio/expand-abbreviation\n.\n\n\n\n\nprint\n(emmet(\n\"ul.nav>.nav-item{Item $}*2\"\n))\n\n\n# <ul class=\"nav\">\n\n\n#   <li class=\"nav-item\">Item 1</li>\n\n\n#   <li class=\"nav-item\">Item 2</li>\n\n\n# </ul>",
+            "text": "Source\n\n\nGenerating HTML\n\u00b6\n\n\nTools for generating HTML snippets.\n\n\nemmet\n\u00b6\n\n\nemmet(abbr)\n generates the HTML snippet according to abbreviation \nabbr\n in \nEmmet\n syntax.\n\n\n\n\nDanger\n\n\nNode.js\n and \nNPM\n must be properly installed and accessible on \nPATH\n.\n\n\n\n\n\n\nWarning\n\n\nWhen calling for the first time, proper Node.js dependencies will be installed, with the following message \nInstalling Node.js dependencies...\n printed to standard error.\n\n\n\n\n\n\nInfo\n\n\nThis function is a wrapper of the official Node.js package \n@emmetio/expand-abbreviation\n.\n\n\n\n\nprint\n(emmet(\n\"ul.nav>.nav-item{Item $}*2\"\n))\n\n\n# <ul class=\"nav\">\n\n\n#   <li class=\"nav-item\">Item 1</li>\n\n\n#   <li class=\"nav-item\">Item 2</li>\n\n\n# </ul>",
             "title": "htmltools"
         },
         {
@@ -207,7 +207,7 @@
         },
         {
             "location": "/functions/htmltools/#emmet",
-            "text": "emmet(abbr)  generated the HTML snippet according to abbreviation  abbr  in  Emmet  syntax.   Danger  Node.js  and  NPM  must be properly installed and accessible on  PATH .    Warning  When calling for the first time, proper Node.js dependencies will be installed, with the following message  Installing Node.js dependencies...  printed to standard error.    Info  This function is a wrapper of the official Node.js package  @emmetio/expand-abbreviation .   print (emmet( \"ul.nav>.nav-item{Item $}*2\" ))  # <ul class=\"nav\">  #   <li class=\"nav-item\">Item 1</li>  #   <li class=\"nav-item\">Item 2</li>  # </ul>",
+            "text": "emmet(abbr)  generates the HTML snippet according to abbreviation  abbr  in  Emmet  syntax.   Danger  Node.js  and  NPM  must be properly installed and accessible on  PATH .    Warning  When calling for the first time, proper Node.js dependencies will be installed, with the following message  Installing Node.js dependencies...  printed to standard error.    Info  This function is a wrapper of the official Node.js package  @emmetio/expand-abbreviation .   print (emmet( \"ul.nav>.nav-item{Item $}*2\" ))  # <ul class=\"nav\">  #   <li class=\"nav-item\">Item 1</li>  #   <li class=\"nav-item\">Item 2</li>  # </ul>",
             "title": "emmet"
         },
         {
