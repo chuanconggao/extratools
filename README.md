@@ -4,7 +4,7 @@
 
 **Featured on GitHub's Trending Python repos on May 25, 2018. Thank you so much for support!**
 
-135+ extra higher-level functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
+140+ extra higher-level functional tools that go beyond standard library's `itertools`, `functools`, etc. and popular third-party libraries like [`toolz`](https://github.com/pytoolz/toolz), [`fancy`](https://github.com/Suor/funcy), and [`more-itertools`](https://github.com/erikrose/more-itertools).
 
 - Like `toolz` and others, most of the tools are designed to be efficient, pure, and lazy. Several useful yet non-functional tools are also included.
 
@@ -22,7 +22,7 @@ This library reduces the burden of writing and refining the lower-level details 
 
 ## Current status and future plans?
 
-There are currently 130+ functions among 16 categories, 3 data structures, and 3 CLI tools.
+There are currently 130+ functions among 17 categories, 3 data structures, and 3 CLI tools.
 
 - Currently adopted by [TopSim](https://github.com/chuanconggao/TopSim) and [PrefixSpan-py](https://github.com/chuanconggao/PrefixSpan-py).
 
@@ -47,6 +47,7 @@ No plan to implement tools that are well covered by other popular libraries.
 [`dicttools`](https://chuanconggao.github.io/extratools/functions/dicttools)
 [`gittools`](https://chuanconggao.github.io/extratools/functions/gittools)
 [`graphtools`](https://chuanconggao.github.io/extratools/functions/graphtools)
+[`htmltools`](https://chuanconggao.github.io/extratools/functions/htmltools)
 [`jsontools`](https://chuanconggao.github.io/extratools/functions/jsontools)
 [`mathtools`](https://chuanconggao.github.io/extratools/functions/mathtools)
 [`misctools`](https://chuanconggao.github.io/extratools/functions/misctools)
@@ -286,4 +287,4 @@ When using for research purpose, please cite this library as follows.
 ## Any recommended library?
 
 There are several great libraries recommended to use together with `extratools`:
-[`regex`](https://pypi.org/project/regex/) [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html) [`toolz`](https://github.com/pytoolz/toolz)
+[`regex`](https://pypi.org/project/regex/) [`sortedcontainers`](http://www.grantjenks.com/docs/sortedcontainers/index.html) [`toolz`](https://github.com/pytoolz/toolz) [`sh`](https://amoffat.github.io/sh/index.html)

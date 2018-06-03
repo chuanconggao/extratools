@@ -3,15 +3,15 @@
 from typing import *
 
 import os
-import subprocess
+
+import sh
 
 def status(path: str = '.') -> Optional[Mapping[str, Any]]:
-    output = subprocess.Popen(
-        ["git", "status", "-s", "-b", "--porcelain=2"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-        cwd=os.path.expanduser(path)
-    ).communicate()[0].decode("utf-8")
+    output = sh.git(
+        "status", "-s", "-b", "--porcelain=2",
+        _cwd=os.path.expanduser(path)
+    )
+
     if output == "":
         return None
 

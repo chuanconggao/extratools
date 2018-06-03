@@ -50,6 +50,7 @@ pages:
         - dicttools: functions/dicttools.md
         - gittools: functions/gittools.md
         - graphtools: functions/graphtools.md
+        - htmltools: functions/htmltools.md
         - jsontools: functions/jsontools.md
         - mathtools: functions/mathtools.md
         - misctools: functions/misctools.md
