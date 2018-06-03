@@ -7,12 +7,12 @@ import os
 import sh
 
 def status(path: str = '.') -> Optional[Mapping[str, Any]]:
-    output = sh.git(
-        "status", "-s", "-b", "--porcelain=2",
-        _cwd=os.path.expanduser(path)
-    )
-
-    if output == "":
+    try:
+        output = sh.git(
+            "status", "-s", "-b", "--porcelain=2",
+            _cwd=os.path.expanduser(path)
+        )
+    except:
         return None
 
     head = None
