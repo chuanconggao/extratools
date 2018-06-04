@@ -130,6 +130,44 @@ def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) ->
         yield m.group(0)
 
 
+def __findeqtagpair(s: str, pos: int, tag: str) -> Optional[str]:
+    for match in re.finditer(r"{0}{1}{0}".format(re.escape(tag), r".*?"), s):
+        if match.start() <= pos < match.end():
+            return match.group()
+
+    return None
+
+
+def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None) -> Optional[str]:
+    if closetag is None or tag == closetag:
+        return __findeqtagpair(s, pos, tag)
+
+    startposs = []
+
+    currpos = 0
+    slen = len(s)
+    while currpos < slen:
+        if s.find(tag, currpos, currpos + len(tag)) != -1:
+            startposs.append(currpos)
+            currpos += len(tag)
+            continue
+
+        if s.find(closetag, currpos, currpos + len(closetag)) != -1:
+            if startposs:
+                startpos = startposs.pop()
+                endpos = currpos + len(closetag)
+
+                if startpos <= pos < endpos:
+                    return s[startpos:endpos]
+
+            currpos += len(closetag)
+            continue
+
+        currpos += 1
+
+    return None
+
+
 def enumeratesubstrs(s: str) -> Iterable[str]:
     return map(str, enumeratesubseqs(s))
 

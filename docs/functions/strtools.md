@@ -79,6 +79,44 @@ set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 # {'Unicode string', 'patterns', 'byte', 'Unicode strings', 'str', 'pattern'}
 ```
 
+### `findtagpair`
+
+`findtagpair(s, pos, tag, closetag=None)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+
+- `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
+
+!!! tip
+    If the open tag and the close tag are identical, there is no nested tag structure.
+
+``` python
+# | denotes each position
+
+findtagpair("a$b$c$$d$ef$g", 4, '$')
+#                |
+# None
+
+findtagpair("a$b$c$$d$ef$g", 6, '$')
+#                  |
+#                '$$'
+
+findtagpair("a(b(c()d)ef)g", 4, '(', ')')
+#                |
+#              '(c()d)'
+
+findtagpair("a(b(c()d)ef)g", 6, '(', ')')
+#                  |
+#                '()'
+
+findtagpair("a<h>b<h>c<h></h>d</h>ef</h>g", 8, "<h>", "</h>")
+#                    |
+#                '<h>c<h></h>d</h>
+
+findtagpair("a<h>b<h>c<h></h>d</h>ef</h>g", 10, "<h>", "</h>")
+#                      |
+#                    '<h></h>'
+
+```
+
 ## String Transformation
 
 Tools for string transformations.
