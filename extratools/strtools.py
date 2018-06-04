@@ -130,42 +130,60 @@ def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) ->
         yield m.group(0)
 
 
-def __findeqtagpairspans(s: str, tag: str, regex: bool = False) -> Iterable[Tuple[int, int]]:
-    for match in re.finditer(r"({}).*?\1".format(tag if regex else re.escape(tag)), s):
-        yield match.span()
+def __findeqtagpairspans(s: str, tag: str, useregex: bool = False) -> Iterable[Tuple[int, int]]:
+    for match in re.finditer(r"(?P<__open>{})(?P<__content>.*?)(?P<__close>\1)".format(tag if useregex else re.escape(tag)), s):
+        yield (match.span("__open"), match.span("__content"), match.span("__close"))
 
 
-def findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, regex: bool = False) -> Iterable[Tuple[int, int]]:
+def __findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Iterable[Tuple[int, int]]:
     if closetag is None or tag == closetag:
-        yield from __findeqtagpairspans(s, tag, regex=regex)
+        yield from __findeqtagpairspans(s, tag, useregex=useregex)
         return
 
-    if not regex:
+    if not useregex:
         tag = re.escape(tag)
         closetag = re.escape(closetag)
 
     retags = re.compile(r"(?P<__open>{})|(?P<__close>{})".format(tag, closetag))
 
-    startposs = []
+    startspans = []
 
     for match in retags.finditer(s):
         opengroup = match.group("__open")
         if opengroup:
-            startposs.append(match.start())
+            startspans.append(match.span())
             continue
 
         closegroup = match.group("__close")
-        if closegroup and startposs:
-            startpos = startposs.pop()
-            endpos = match.end()
+        if closegroup and startspans:
+            startspan = startspans.pop()
+            endspan = match.span()
 
-            yield (startpos, endpos)
+            yield (startspan, (startspan[1], endspan[0]), endspan)
 
 
-def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None, regex: bool = False) -> Optional[str]:
-    for startpos, endpos in findtagpairspans(s, tag, closetag, regex=regex):
+def findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Iterable[Tuple[int, int]]:
+    return (
+        (startspan[0], endspan[1])
+        for startspan, _, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex)
+    )
+
+
+def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Optional[str]:
+    for startpos, endpos in findtagpairspans(s, tag, closetag, useregex=useregex):
         if startpos <= pos < endpos:
             return s[startpos:endpos]
+
+    return None
+
+
+def findmatchingtag(s: str, pos: int, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Optional[Tuple[int, int]]:
+    for startspan, _, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startspan[0] <= pos < endspan[1]:
+            if pos < startspan[1]:
+                return endspan
+
+            return startspan
 
     return None
 

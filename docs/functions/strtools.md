@@ -79,21 +79,28 @@ set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 # {'Unicode string', 'patterns', 'byte', 'Unicode strings', 'str', 'pattern'}
 ```
 
+## Matching Pair of Tags
+
+Tools for matching pair of tags.
+
+!!! warning
+    Functions below assume the tags are well balanced. May work for certain unbalanced scenarios without guarantee.
+
+    When the open tag and the close tag are identical, there is no nested tag structure.
+
 ### `findtagpairspans`
 
-`findtagpairspans(s, tag, closetag=None, regex=False)` finds the position span of each pair of tags in string `s`.
+`findtagpairspans(s, tag, closetag=None, useregex=False)` finds the position span of each pair of tags in string `s`.
 
 - `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
 
-- `regex` specifies whether to use regex for `tag` and `closetag`, and defaults to `False`.
+- `useregex` specifies whether to use regular expression for `tag` and `closetag`, and defaults to `False`.
 
-!!! tip
-    If the open tag and the close tag are identical, there is no nested tag structure.
 
 ``` python
-# |--| denotes each span.
+# |--| denotes each found span.
 
-list(findtagpairspans("a$b$c$$d#ef#g", r"\$|#", regex=True))
+list(findtagpairspans("a$b$c$$d#ef#g", r"\$|#", useregex=True))
 # [(1, 4),              |-|
 #  (5, 7),                  ||
 #  (8, 12)]                    |--|
@@ -103,7 +110,7 @@ list(findtagpairspans("a(b(c()d)ef)g", '(', ')'))
 #  (3, 9),                |----|
 #  (1, 12)]             |---------|
 
-list(findtagpairspans("a<a>b<b>c<c></c>d</b>ef</a>g", r"<\w+>", r"</\w+>", regex=True))
+list(findtagpairspans("a<a>b<b>c<c></c>d</b>ef</a>g", r"<\w+>", r"</\w+>", useregex=True))
 # [(9, 16),                     |-----|
 #  (5, 21),                 |--------------|
 #  (1, 27)]             |------------------------|
@@ -111,23 +118,23 @@ list(findtagpairspans("a<a>b<b>c<c></c>d</b>ef</a>g", r"<\w+>", r"</\w+>", regex
 
 ### `findtagpair`
 
-`findtagpair(s, pos, tag, closetag=None, regex=False)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+`findtagpair(s, pos, tag, closetag=None, useregex=False)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
 
 - `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
 
-- `regex` specifies whether to use regex for `tag` and `closetag`, and defaults to `False`.
+- `useregex` specifies whether to use regular expression for `tag` and `closetag`, and defaults to `False`.
 
 !!! tip
-    If the open tag and the close tag are identical, there is no nested tag structure.
+    The behavior of this function is designed to mimic Vim's [`vat` operation](http://vimdoc.sourceforge.net/htmldoc/motion.html#v_at).
 
 ``` python
-# | denotes each position
+# | denotes each specified position.
 
-findtagpair("a$b$c$$d#ef#g", 4, r"\$|#", regex=True)
+findtagpair("a$b$c$$d#ef#g", 4, r"\$|#", useregex=True)
 #                |
 # None
 
-findtagpair("a$b$c$$d#ef#g", 6, r"\$|#", regex=True)
+findtagpair("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
 #                  |
 #                '$$'
 
@@ -139,13 +146,49 @@ findtagpair("a(b(c()d)ef)g", 6, '(', ')')
 #                  |
 #                '()'
 
-findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", regex=True)
+findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", useregex=True)
 #                    |
 #                '<b>c<c></c>d</b>'
 
-findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", regex=True)
+findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", useregex=True)
 #                      |
 #                    '<c></c>'
+```
+
+### `findmatchingtag`
+
+`findmatchingtag(s, pos, tag, closetag=None, useregex=False)` finds the matching tag of the current tag at the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+
+- `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
+
+- `useregex` specifies whether to use regular expression for `tag` and `closetag`, and defaults to `False`.
+
+- If there is no tag at the specified position, returns the open tag.
+
+!!! tip
+    The behavior of this function is designed to mimic Vim's [`%` operation](http://vimdoc.sourceforge.net/htmldoc/motion.html#%).
+
+``` python
+# | denotes each specified position.
+# == denotes each matching tag.
+
+findmatchingtag("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
+#                      |
+#                    '$$'
+#                     =
+# (5, 6)
+
+findmatchingtag("a(b(c()d)ef)g", 4, '(', ')')
+#                    |
+#                  '(c()d)'
+#                   =
+# (3, 4)
+
+findmatchingtag("a<a>b<b>c<c></c>d</b>ef</a>g", 6, r"<\w+>", r"</\w+>", useregex=True)
+#                      |
+#                    '<b>c<c></c>d</b>'
+#                                 ====
+# (17, 21)
 ```
 
 ## String Transformation

@@ -1,5 +1,8 @@
 [Source](https://github.com/chuanconggao/extratools/blob/master/extratools/tabletools.py)
 
+!!! warning
+    For all the functions except [`loadcsv`](#loadcsv) and [`dumpcsv`](#dumpcsv), the header must be removed for best result.
+
 !!! info
     A table is a list of rows having the same number of column values.
 
@@ -9,9 +12,6 @@
     - [Parsing text to table](tabletools/parse).
 
     - [Schema of table](tabletools/schema).
-
-!!! warning
-    For all the functions except [`loadcsv`](#loadcsv) and [`dumpcsv`](#dumpcsv), the header must be removed for best result.
 
 ## Table Transformation
 

@@ -64,6 +64,7 @@ pages:
             - Sub-Sequence without Gap: functions/seqtools/seqwithoutgap.md
             - Sub-Sequence with Gap: functions/seqtools/seqwithgap.md
             - Encoding/Decoding: functions/seqtools/encode.md
+            - Sequence Modeling: functions/seqtools/modelling.md
         - settools:
             - Overview: functions/settools.md
             - Similarity: functions/settools/similarity.md

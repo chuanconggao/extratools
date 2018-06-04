@@ -25,7 +25,7 @@ Tools                                  | # Functions | Description
 [`settools`](functions/settools)       | 11          | Tools for operating sets.
 [`sortedtools`](functions/sortedtools) | 9           | Tools for operating sorted sequences.
 [`stattools`](functions/stattools)     | 7           | Tools for statistics.
-[`strtools`](functions/strtools)       | 15          | Tools for operating strings.
+[`strtools`](functions/strtools)       | 16          | Tools for operating strings.
 [`tabletools`](functions/tabletools)   | 16          | Tools for operating tables/matrices.
 
 ### By Tag
@@ -50,7 +50,7 @@ Tag                   | Description                                             
 `merge*`              | Merge sequence/table without conflict.                               | [`seqtools.mergeseqs`](functions/seqtools#mergeseqs) <br/> [`tabletools.mergecols`](functions/tabletools#mergecols)
 `sorted*`             | Sort sequence/table.                                                 | [`seqtools.sortedbyrank`](functions/seqtools#sortedbyrank) <br/> [`seqtools.sortedtorank`](functions/seqtools#sortedtorank) <br/> [`tabletools.sortedbycol`](functions/tabletools#sortedbycol)
 `filterby*`           | Filter sequence/table.                                               | [`seqtools.filterbyother`](functions/seqtools#filterbyother) <br/> [`tabletools.filterbycol`](functions/tabletools#filterbycol)
-`*2grams`             | Convert sequence/string to grams.                                    | [`seqtools.seq2grams`](functions/seqtools#seq2grams) <br/> [`strtools.str2grams`](functions/strtools#str2grams)
+`*2grams`             | Convert sequence/string to grams.                                    | [`seqtools.seq2grams`](functions/seqtools/modelling#seq2grams) <br/> [`strtools.str2grams`](functions/strtools#str2grams)
 
 ## Data Structures
 
