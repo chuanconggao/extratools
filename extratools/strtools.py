@@ -130,40 +130,42 @@ def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) ->
         yield m.group(0)
 
 
-def __findeqtagpair(s: str, pos: int, tag: str) -> Optional[str]:
-    for match in re.finditer(r"{0}{1}{0}".format(re.escape(tag), r".*?"), s):
-        if match.start() <= pos < match.end():
-            return match.group()
-
-    return None
+def __findeqtagpairspans(s: str, tag: str, regex: bool = False) -> Iterable[Tuple[int, int]]:
+    for match in re.finditer(r"({}).*?\1".format(tag if regex else re.escape(tag)), s):
+        yield match.span()
 
 
-def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None) -> Optional[str]:
+def findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, regex: bool = False) -> Iterable[Tuple[int, int]]:
     if closetag is None or tag == closetag:
-        return __findeqtagpair(s, pos, tag)
+        yield from __findeqtagpairspans(s, tag, regex=regex)
+        return
+
+    if not regex:
+        tag = re.escape(tag)
+        closetag = re.escape(closetag)
+
+    retags = re.compile(r"(?P<__open>{})|(?P<__close>{})".format(tag, closetag))
 
     startposs = []
 
-    currpos = 0
-    slen = len(s)
-    while currpos < slen:
-        if s.find(tag, currpos, currpos + len(tag)) != -1:
-            startposs.append(currpos)
-            currpos += len(tag)
+    for match in retags.finditer(s):
+        opengroup = match.group("__open")
+        if opengroup:
+            startposs.append(match.start())
             continue
 
-        if s.find(closetag, currpos, currpos + len(closetag)) != -1:
-            if startposs:
-                startpos = startposs.pop()
-                endpos = currpos + len(closetag)
+        closegroup = match.group("__close")
+        if closegroup and startposs:
+            startpos = startposs.pop()
+            endpos = match.end()
 
-                if startpos <= pos < endpos:
-                    return s[startpos:endpos]
+            yield (startpos, endpos)
 
-            currpos += len(closetag)
-            continue
 
-        currpos += 1
+def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None, regex: bool = False) -> Optional[str]:
+    for startpos, endpos in findtagpairspans(s, tag, closetag, regex=regex):
+        if startpos <= pos < endpos:
+            return s[startpos:endpos]
 
     return None
 

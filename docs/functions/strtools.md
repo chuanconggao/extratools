@@ -79,11 +79,43 @@ set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 # {'Unicode string', 'patterns', 'byte', 'Unicode strings', 'str', 'pattern'}
 ```
 
-### `findtagpair`
+### `findtagpairspans`
 
-`findtagpair(s, pos, tag, closetag=None)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+`findtagpairspans(s, tag, closetag=None, regex=False)` finds the position span of each pair of tags in string `s`.
 
 - `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
+
+- `regex` specifies whether to use regex for `tag` and `closetag`, and defaults to `False`.
+
+!!! tip
+    If the open tag and the close tag are identical, there is no nested tag structure.
+
+``` python
+# |--| denotes each span.
+
+list(findtagpairspans("a$b$c$$d#ef#g", r"\$|#", regex=True))
+# [(1, 4),              |-|
+#  (5, 7),                  ||
+#  (8, 12)]                    |--|
+
+list(findtagpairspans("a(b(c()d)ef)g", '(', ')'))
+# [(5, 7),                  ||
+#  (3, 9),                |----|
+#  (1, 12)]             |---------|
+
+list(findtagpairspans("a<a>b<b>c<c></c>d</b>ef</a>g", r"<\w+>", r"</\w+>", regex=True))
+# [(9, 16),                     |-----|
+#  (5, 21),                 |--------------|
+#  (1, 27)]             |------------------------|
+```
+
+### `findtagpair`
+
+`findtagpair(s, pos, tag, closetag=None, regex=False)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+
+- `tag` specifies the open tag, while `closetag` specifies the close tag. If `closetag` is unspecified, the open tag and the close tag are assumed to be identical.
+
+- `regex` specifies whether to use regex for `tag` and `closetag`, and defaults to `False`.
 
 !!! tip
     If the open tag and the close tag are identical, there is no nested tag structure.
@@ -91,11 +123,11 @@ set(extract(s, ["str", "byte", "unicode strings?", "patterns?"], useregex=True))
 ``` python
 # | denotes each position
 
-findtagpair("a$b$c$$d$ef$g", 4, '$')
+findtagpair("a$b$c$$d#ef#g", 4, r"\$|#", regex=True)
 #                |
 # None
 
-findtagpair("a$b$c$$d$ef$g", 6, '$')
+findtagpair("a$b$c$$d#ef#g", 6, r"\$|#", regex=True)
 #                  |
 #                '$$'
 
@@ -107,14 +139,13 @@ findtagpair("a(b(c()d)ef)g", 6, '(', ')')
 #                  |
 #                '()'
 
-findtagpair("a<h>b<h>c<h></h>d</h>ef</h>g", 8, "<h>", "</h>")
+findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", regex=True)
 #                    |
-#                '<h>c<h></h>d</h>
+#                '<b>c<c></c>d</b>'
 
-findtagpair("a<h>b<h>c<h></h>d</h>ef</h>g", 10, "<h>", "</h>")
+findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", regex=True)
 #                      |
-#                    '<h></h>'
-
+#                    '<c></c>'
 ```
 
 ## String Transformation
