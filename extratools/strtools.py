@@ -181,7 +181,7 @@ def findtagpairspans(
     )
 
 
-def findtagpair(
+def gettagpair(
         s: str, pos: int,
         tag: str, closetag: Optional[str] = None,
         useregex: bool = False
@@ -189,6 +189,18 @@ def findtagpair(
     for startpos, endpos in findtagpairspans(s, tag, closetag, useregex=useregex):
         if startpos <= pos < endpos:
             return s[startpos:endpos]
+
+    return None
+
+
+def gettagpaircontent(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> Optional[str]:
+    for startspan, midspan, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startspan[0] <= pos < endspan[1]:
+            return s[slice(*midspan)]
 
     return None
 
@@ -239,7 +251,7 @@ def addtagpair(
     return s
 
 
-def changetagpair(
+def settagpair(
         s: str, pos: int,
         tag: str, closetag: Optional[str] = None,
         newtag: Optional[str] = None, newclosetag: Optional[str] = None,
@@ -253,6 +265,19 @@ def changetagpair(
     for startspan, midspan, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
         if startspan[0] <= pos < endspan[1]:
             return s[:startspan[0]] + newtag + s[slice(*midspan)] + newclosetag + s[endspan[1]:]
+
+    return s
+
+
+def settagpaircontent(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        newcontent: str = '',
+        useregex: bool = False
+    ) -> str:
+    for startspan, _, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startspan[0] <= pos < endspan[1]:
+            return s[:startspan[1]] + newcontent + s[endspan[0]:]
 
     return s
 

@@ -22,54 +22,22 @@ Tools for finding pair of tags.
 
 
 ``` python
-# |--| denotes each span.
+# ~~~~ denotes each span.
 
 list(findtagpairspans("a$b$c$$d#ef#g", r"\$|#", useregex=True))
-# [(1, 4),              |-|
-#  (5, 7),                  ||
-#  (8, 12)]                    |--|
+# [(1, 4),              ~~~
+#  (5, 7),                  ~~
+#  (8, 12)]                    ~~~~
 
 list(findtagpairspans("a(b(c()d)ef)g", '(', ')'))
-# [(5, 7),                  ||
-#  (3, 9),                |----|
-#  (1, 12)]             |---------|
+# [(5, 7),                  ~~
+#  (3, 9),                ~~~~~~
+#  (1, 12)]             ~~~~~~~~~~~
 
 list(findtagpairspans("a<a>b<b>c<c></c>d</b>ef</a>g", r"<\w+>", r"</\w+>", useregex=True))
-# [(9, 16),                     |-----|
-#  (5, 21),                 |--------------|
-#  (1, 27)]             |------------------------|
-```
-
-### `findtagpair`
-
-`findtagpair(s, pos, tag, closetag=None, useregex=False)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
-
-``` python
-# | denotes each specified position.
-
-#                |
-findtagpair("a$b$c$$d#ef#g", 4, r"\$|#", useregex=True)
-# None
-
-#                  |
-findtagpair("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
-#                '$$'
-
-#                |
-findtagpair("a(b(c()d)ef)g", 4, '(', ')')
-#              '(c()d)'
-
-#                  |
-findtagpair("a(b(c()d)ef)g", 6, '(', ')')
-#                '()'
-
-#                    |
-findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", useregex=True)
-#                '<b>c<c></c>d</b>'
-
-#                      |
-findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", useregex=True)
-#                    '<c></c>'
+# [(9, 16),                     ~~~~~~~
+#  (5, 21),                 ~~~~~~~~~~~~~~~~
+#  (1, 27)]             ~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ### `findmatchingtag`
@@ -83,22 +51,75 @@ findtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", useregex=Tr
 
 ``` python
 # | denotes each specified position.
+# ~~~~ denotes each span.
 # == denotes the other matching tag.
 
 #                      |
 findmatchingtag("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
-#                     =
-# (5, 6)             '$$'
+#                     ~~
+# (5, 6)              =
 
 #                    |
 findmatchingtag("a(b(c()d)ef)g", 4, '(', ')')
-#                   =
-# (3, 4)           '(c()d)'
+#                   ~~~~~~
+# (3, 4)            =
 
 #                      |
 findmatchingtag("a<a>b<b>c<c></c>d</b>ef</a>g", 6, r"<\w+>", r"</\w+>", useregex=True)
-#                                 ====
-# (17, 21)           '<b>c<c></c>d</b>'
+#                     ~~~~~~~~~~~~~~~~
+# (17, 21)                        ====
+```
+
+### `gettagpair`
+
+`gettagpair(s, pos, tag, closetag=None, useregex=False)` finds the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+
+``` python
+# | denotes each specified position.
+
+#               |
+gettagpair("a$b$c$$d#ef#g", 4, r"\$|#", useregex=True)
+# None
+
+#                 |
+gettagpair("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
+#               '$$'
+
+#               |
+gettagpair("a(b(c()d)ef)g", 4, '(', ')')
+#             '(c()d)'
+
+#                 |
+gettagpair("a(b(c()d)ef)g", 6, '(', ')')
+#               '()'
+
+#                   |
+gettagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", useregex=True)
+#               '<b>c<c></c>d</b>'
+
+#                     |
+gettagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 10, r"<\w+>", r"</\w+>", useregex=True)
+#                   '<c></c>'
+```
+
+### `gettagpaircontent`
+
+`gettagpaircontent(s, pos, tag, closetag=None, useregex=False)` finds the content of the pair of tags covering the specified position `pos` in string `s`. Returns `None` if there is no covering pair of tags.
+
+``` python
+# | denotes each specified position.
+
+#                        |
+gettagpaircontent("a$b$c$$d#ef#g", 6, r"\$|#", useregex=True)
+#                       ''
+
+#                      |
+gettagpaircontent("a(b(c()d)ef)g", 4, '(', ')')
+#                     'c()d'
+
+#                          |
+gettagpaircontent("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", useregex=True)
+#                         'c<c></c>d'
 ```
 
 ## Updating Pair of Tags
@@ -136,9 +157,9 @@ addtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", "<x>", "</x>"
 #                +++================++++
 ```
 
-### `changetagpair`
+### `settagpair`
 
-`changetagpair(s, pos, tag, closetag=None, newtag=None, newclosetag=None, useregex=False)` changes the pair of tags, specified by `newtag` and `newclosetag`, covering the specified position `pos` in string `s`. Returns `s` if there is no covering pair of tags.
+`settagpair(s, pos, tag, closetag=None, newtag=None, newclosetag=None, useregex=False)` changes the pair of tags, specified by `newtag` and `newclosetag`, covering the specified position `pos` in string `s`. Returns `s` if there is no covering pair of tags.
 
 !!! info
     If `newtag` is not specified, `tag` is used as the new open tag. Same for `newclosetag`. This only works properly when `useregex = False`.
@@ -149,23 +170,50 @@ addtagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", "<x>", "</x>"
 # - denotes each removed part.
 # + denotes each added part.
 
-#                    |
-changetagpair("a$b$c$$d#ef#g", 6, r"\$|#", newtag='%', useregex=True)
-#                   --
-#             'a$b$c%%d#ef#g'
-#                   ++
+#                 |
+settagpair("a$b$c$$d#ef#g", 6, r"\$|#", newtag='%', useregex=True)
+#                --
+#          'a$b$c%%d#ef#g'
+#                ++
 
-#                  |
-changetagpair("a(b(c()d)ef)g", 4, '(', ')', '[', ']')
-#                 -====-
-#             'a(b[c()d]ef)g'
-#                 +====+
+#               |
+settagpair("a(b(c()d)ef)g", 4, '(', ')', '[', ']')
+#              -====-
+#          'a(b[c()d]ef)g'
+#              +====+
 
-#                    |
-changetagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", "<x>", "</x>", useregex=True)
-#                   ---=========----
-#             'a<a>b<x>c<c></c>d</x>ef</a>g'
-#                   +++=========++++
+#                 |
+settagpair("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", "<x>", "</x>", useregex=True)
+#                ---=========----
+#          'a<a>b<x>c<c></c>d</x>ef</a>g'
+#                +++=========++++
+```
+
+### `settagpaircontent`
+
+`settagpaircontent(s, pos, tag, closetag=None, newcontent='', useregex=False)` changes the content of the pair of tags, specified by `newtag` and `newclosetag`, covering the specified position `pos` in string `s`. Returns `s` if there is no covering pair of tags.
+
+``` python
+# | denotes each specified position.
+# - denotes each removed part.
+# + denotes each added part.
+
+#                        |
+settagpaircontent("a$b$c$$d#ef#g", 6, r"\$|#", newcontent='x', useregex=True)
+#                 'a$b$c$x$d#ef#g'
+#                        +
+
+#                      |
+settagpaircontent("a(b(c()d)ef)g", 4, '(', ')', newcontent="xyz")
+#                      ----
+#                 'a(b(xyz)ef)g'
+#                      +++
+
+#                        |
+settagpaircontent("a<a>b<b>c<c></c>d</b>ef</a>g", 8, r"<\w+>", r"</\w+>", newcontent="xyz", useregex=True)
+#                          ---------
+#                 'a<a>b<b>xyz</b>ef</a>g'
+#                          +++
 ```
 
 ### `removetagpair`
