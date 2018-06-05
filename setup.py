@@ -4,7 +4,7 @@ from setuptools import setup
 from glob import glob
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.7.8"
+version = "0.7.9"
 
 setup(
     name="extratools",
@@ -23,7 +23,7 @@ setup(
     author="Chuancong Gao",
     author_email="chuancong@gmail.com",
 
-    description="140+ extra higher-level functional tools beyond standard and third-Party libraries.",
+    description="145+ extra higher-level functional tools beyond standard and third-Party libraries.",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
 

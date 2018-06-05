@@ -70,7 +70,9 @@ pages:
             - Similarity: functions/settools/similarity.md
         - sortedtools: functions/sortedtools.md
         - stattools: functions/stattools.md
-        - strtools: functions/strtools.md
+        - strtools:
+            - Overview: functions/strtools.md
+            - Matching Pair of Tags: functions/strtools/tagpair.md
         - tabletools:
             - Overview: functions/tabletools.md
             - Parsing: functions/tabletools/parse.md

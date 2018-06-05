@@ -130,12 +130,20 @@ def extract(s: str, entities: Iterable[str], useregex=False, ignorecase=True) ->
         yield m.group(0)
 
 
-def __findeqtagpairspans(s: str, tag: str, useregex: bool = False) -> Iterable[Tuple[int, int]]:
+def __findeqtagpairspans(
+        s: str,
+        tag: str,
+        useregex: bool = False
+    ) -> Iterable[Tuple[Tuple[int, int], ...]]:
     for match in re.finditer(r"(?P<__open>{})(?P<__content>.*?)(?P<__close>\1)".format(tag if useregex else re.escape(tag)), s):
         yield (match.span("__open"), match.span("__content"), match.span("__close"))
 
 
-def __findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Iterable[Tuple[int, int]]:
+def __findtagpairspans(
+        s: str,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> Iterable[Tuple[Tuple[int, int], ...]]:
     if closetag is None or tag == closetag:
         yield from __findeqtagpairspans(s, tag, useregex=useregex)
         return
@@ -162,14 +170,22 @@ def __findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, userege
             yield (startspan, (startspan[1], endspan[0]), endspan)
 
 
-def findtagpairspans(s: str, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Iterable[Tuple[int, int]]:
+def findtagpairspans(
+        s: str,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> Iterable[Tuple[int, int]]:
     return (
         (startspan[0], endspan[1])
         for startspan, _, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex)
     )
 
 
-def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Optional[str]:
+def findtagpair(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> Optional[str]:
     for startpos, endpos in findtagpairspans(s, tag, closetag, useregex=useregex):
         if startpos <= pos < endpos:
             return s[startpos:endpos]
@@ -177,7 +193,11 @@ def findtagpair(s: str, pos: int, tag: str, closetag: Optional[str] = None, user
     return None
 
 
-def findmatchingtag(s: str, pos: int, tag: str, closetag: Optional[str] = None, useregex: bool = False) -> Optional[Tuple[int, int]]:
+def findmatchingtag(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> Optional[Tuple[int, int]]:
     for startspan, _, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
         if startspan[0] <= pos < endspan[1]:
             if pos < startspan[1]:
@@ -186,6 +206,55 @@ def findmatchingtag(s: str, pos: int, tag: str, closetag: Optional[str] = None, 
             return startspan
 
     return None
+
+
+def removetagpair(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        useregex: bool = False,
+        removecontent: bool = False
+    ) -> str:
+    for startspan, midspan, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startspan[0] <= pos < endspan[1]:
+            return s[:startspan[0]] + ('' if removecontent else s[slice(*midspan)]) + s[endspan[1]:]
+
+    return s
+
+
+def addtagpair(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        newtag: Optional[str] = None, newclosetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> str:
+    if newtag is None:
+        newtag = tag
+    if newclosetag is None:
+        newclosetag = newtag if closetag is None else closetag
+
+    for startpos, endpos in findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startpos <= pos < endpos:
+            return s[:startpos] + newtag + s[startpos:endpos] + newclosetag + s[endpos:]
+
+    return s
+
+
+def changetagpair(
+        s: str, pos: int,
+        tag: str, closetag: Optional[str] = None,
+        newtag: Optional[str] = None, newclosetag: Optional[str] = None,
+        useregex: bool = False
+    ) -> str:
+    if newtag is None:
+        newtag = tag
+    if newclosetag is None:
+        newclosetag = newtag if closetag is None else closetag
+
+    for startspan, midspan, endspan in __findtagpairspans(s, tag, closetag, useregex=useregex):
+        if startspan[0] <= pos < endspan[1]:
+            return s[:startspan[0]] + newtag + s[slice(*midspan)] + newclosetag + s[endspan[1]:]
+
+    return s
 
 
 def enumeratesubstrs(s: str) -> Iterable[str]:
