@@ -1,2 +1,3 @@
 include requirements.txt
 include extratools/htmltools/emmet.js
+include LICENSE
