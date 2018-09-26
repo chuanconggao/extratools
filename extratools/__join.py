@@ -75,12 +75,12 @@ def __sortedjoin(
         if m is sentinel or n is sentinel:
             break
 
-        if leftkey(m[0]) < rightkey(n[0]):
+        if m[0] < n[0]:
             if rightdefault is not no_default:
                 yield (m[1], [rightdefault])
 
             m = sentinel
-        elif leftkey(m[0]) > rightkey(n[0]):
+        elif m[0] > n[0]:
             if leftdefault is not no_default:
                 yield ([leftdefault], n[1])
 
