@@ -318,7 +318,7 @@ def fromdeltas(data: Iterable[T], op: Callable[[T, T], T] = operator.add) -> Ite
 
 
 def matchingfrequencies(*seqs: Iterable[T], key=None) -> Iterable[Tuple[T, int]]:
-    c: Counter[T] = Counter()
+    c: Counter = Counter()
     for seq in seqs:
         c.update(unique(seq, key=key))
 
