@@ -4,7 +4,7 @@ from setuptools import setup
 from glob import glob
 
 url = "https://github.com/chuanconggao/extratools"
-version = "0.8.1"
+version = "0.8.2.1"
 
 setup(
     name="extratools",
@@ -40,5 +40,10 @@ setup(
     python_requires=">= 3",
     install_requires=[
         line.strip() for line in open("requirements.txt")
-    ]
+    ],
+    extras_require={
+        "all": [
+            line.strip() for line in open("optional-requirements.txt")
+        ]
+    }
 )
