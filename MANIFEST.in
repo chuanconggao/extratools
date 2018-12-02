@@ -1,3 +1,4 @@
 include requirements.txt
+include optional-requirements.txt
 include extratools/htmltools/emmet.js
 include LICENSE

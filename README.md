@@ -271,6 +271,8 @@ hasheader([
 
 This package is available on PyPI. Just use `pip3 install -U extratools` to install it.
 
+To enable all the features, please install extra dependencies by `pip3 install -U sh RegexOrder TagStats`.
+
 ## How to cite?
 
 When using for research purpose, please cite this library as follows.
