@@ -1,3 +1,11 @@
+This package is splitting into modern smaller dedicated packages, and new features are only added to dedicated packages.
+
+- [extratools-git](https://github.com/chuanconggao/extratools-git)
+- [extratools-image](https://github.com/chuanconggao/extratools-image)
+- ...
+
+----
+
 [![PyPI version](https://img.shields.io/pypi/v/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/extratools.svg)](https://pypi.python.org/pypi/extratools/)
 [![PyPI license](https://img.shields.io/pypi/l/extratools.svg)](https://pypi.python.org/pypi/extratools/)
