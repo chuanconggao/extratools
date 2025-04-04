@@ -1,5 +1,7 @@
-This package is splitting into modern smaller dedicated packages, and new features are only added to dedicated packages.
+This package is splitting into modern smaller dedicated packages, and new features are only added to dedicated packages. Note that new packages may contain breaking changes.
 
+- [extratools-core](https://github.com/chuanconggao/extratools-core)
+  - This package is for essential tools with minimal dependencies with full upgrade.
 - [extratools-git](https://github.com/chuanconggao/extratools-git)
 - [extratools-image](https://github.com/chuanconggao/extratools-image)
 - ...
