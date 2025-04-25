@@ -3,7 +3,15 @@ This package is splitting into modern smaller dedicated packages, and new featur
 - [extratools-core](https://github.com/chuanconggao/extratools-core)
   - This package is for essential tools with minimal dependencies with full upgrade.
 - [extratools-git](https://github.com/chuanconggao/extratools-git)
+  - For git related operations
 - [extratools-image](https://github.com/chuanconggao/extratools-image)
+  - For image processing
+- [extratools-av](https://github.com/chuanconggao/extratools-av)
+  - For audio/video processing
+- [extratools-html](https://github.com/chuanconggao/extratools-html)
+  - For downloading webpage (either via HTTP request or via head-less browser)
+- [extratools-limit](https://github.com/chuanconggao/extratools-limit)
+  - For rate limiting
 - ...
 
 ----
